@@ -1,0 +1,19 @@
+.tabbedWindowContent {
+  .bx--tabs__nav {
+    padding-left: $layout-01;
+  }
+
+  .bx--tabs__nav-link,
+  .bx--tabs__nav-link:active {
+    outline: none;
+  }
+
+  .bx--tabs__nav-item .bx--tabs__nav-link:focus {
+    outline: none;
+  }
+
+  .bx--tabs__nav-item--selected:hover .bx--tabs__nav-link {
+    border-bottom: 2px solid $interactive-04;
+    cursor: default;
+  }
+}

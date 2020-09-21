@@ -1,0 +1,12 @@
+@import './_HeaderTileRow/header-tile-row.scss';
+@import './_MainContentRow/main-content-row.scss';
+@import './_FooterControlsRow/footer-controls-row';
+
+.mainBodyGrid.bx--grid {
+  display: grid;
+  height: 100vh;
+  padding: $layout-01 $layout-03;
+  padding-bottom: $layout-01;
+  grid-template-rows: fit-content(20%) auto $layout-05;
+
+}

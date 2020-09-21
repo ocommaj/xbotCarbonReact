@@ -1,0 +1,15 @@
+@import './_SinglePane/_single-pane-content';
+@import './_Tabbed/tabbed-window-content';
+
+.mainContentWindow {
+  background-color: $ui-01;
+  flex-grow: 1;
+  z-index: 1;
+  width: 0;
+  height: 0;
+
+}
+
+.mainContentWindow * {
+  //opacity: 0;
+}

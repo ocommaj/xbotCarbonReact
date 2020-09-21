@@ -1,0 +1,41 @@
+.fleetGraphic {
+  position: absolute;
+
+  top: 4rem;
+  left: 4rem;
+  width: 20rem;
+  height: 20rem;
+  z-index: 5;
+
+  .fleetGraphicContainer {
+    display: flex;
+
+    .pictogramWrapper {
+      display: flex;
+      flex-direction: row;
+
+      justify-content: flex-start;
+      align-content: center;
+
+      width: 25%;
+      height: 100%;
+
+      svg {
+        width: 80px;
+        height: 240px;
+
+        stroke: $interactive-01;
+        position: relative;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .helperText {
+    @include carbon--type-style("expressive-heading-03", true);
+    color: $text-02;
+    display: block;
+    position: absolute;
+    bottom: $spacing-07;
+  }
+}

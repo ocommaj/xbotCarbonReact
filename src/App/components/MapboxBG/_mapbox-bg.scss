@@ -1,0 +1,10 @@
+.mapboxBG {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  z-index: -3;
+  background-size: cover;
+  opacity: 0;
+  //background-color: $visited-link;
+}

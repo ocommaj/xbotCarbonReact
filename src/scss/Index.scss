@@ -1,0 +1,10 @@
+@import './globals.scss';
+
+@include carbon--theme();
+
+@import '~carbon-components/scss/globals/scss/styles.scss';
+
+
+body {
+  background-color: $ui-01;
+}

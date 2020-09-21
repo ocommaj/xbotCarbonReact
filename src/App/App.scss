@@ -1,0 +1,12 @@
+@import '../scss/globals';
+@import '~carbon-components/scss/globals/scss/vars';
+@import '@carbon/type/scss/type';
+@import 'carbon-components/scss/components/tabs/tabs';
+
+@import './containers/containers';
+
+@include carbon--theme();
+
+body {
+  color: $text-02;
+}

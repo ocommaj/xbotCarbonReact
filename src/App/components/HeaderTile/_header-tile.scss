@@ -1,0 +1,22 @@
+@import './TileLabel/tile-label.scss';
+
+.headerTile.bx--col {
+  //max-width: 312px;
+  //padding-bottom: $spacing-05;
+}
+
+.headerTile.bx--tile {
+  background-color: $interactive-01;
+  display: flex;
+  flex-direction: column-reverse;
+
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  cursor: pointer;
+  //visibility: collapse;
+}
+
+.headerTile.bx--tile:hover {
+  background-color: $hover-primary;
+}

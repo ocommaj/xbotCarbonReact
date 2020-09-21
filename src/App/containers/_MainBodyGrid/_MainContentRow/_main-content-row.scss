@@ -1,0 +1,11 @@
+@import '../../../components/ContentWindow/content-window';
+
+.mainContentRow.bx--row {
+  font-size: 4rem;
+  padding: $layout-01 0;
+
+  .bx--col {
+    display: flex;
+
+  }
+}
