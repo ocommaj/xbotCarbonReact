@@ -1,5 +1,6 @@
 import React from 'react';
 import { Tabs, Tab } from 'carbon-components-react';
+import TabPanel from './TabPanel'
 
 export default function TabbedWindowContent(props) {
   const { tabs } = props
@@ -14,7 +15,7 @@ export default function TabbedWindowContent(props) {
             id={`tab_${tab.id}`}
             href={tab.id}
             label={tab.title}>
-            <div><h1>{tab.title} content</h1></div>
+            { TabPanel(tab) }
           </Tab>
         )
       })}

@@ -10,30 +10,30 @@ const codeDemos = {
         "id": "internalCodeDemos",
         "title": "Xavier Made",
         "content": {
-          "defaultStr": "Locally Sourced Tutorials & Livestreams.",
+          "defaultStr": "Locally sourced tutorials & livestreams.",
           "panelTemplateId": "collapsing-tile-tab-panel",
           "sourceJSON": "../../data/internalDemos.json",
           "filters": [
             {
               "id": "language",
-              "labelMsg": "Filter by Language",
-              "filters": {
-                "python": "Python",
-                "htmlCss": "HTML & CSS",
-                "vanillaJS": "JavaScript",
-                "c++": "C++",
-                "bash": "$Bash"}
+              "label": "Filter by Language",
+              "items": [
+                {id: "python", label: "Python"},
+                {id: "htmlCss", label: "HTML & CSS"},
+                {id: "vanillaJS", label: "JavaScript"},
+                {id: "c++", label: "C++"},
+                {id: "bash", label: "$Bash"} ]
               },
               {
                 "id": "topics",
-                "labelMsg": "Filter by Topic",
-                "filters": {
-                  "fundamentals": "Fundamentals",
-                  "frontEnd": "Front End",
-                  "appStructure": "App Architecture",
-                  "iot": "Internet of Things",
-                  "animation": "Animation",
-                  "frameworks": "Frameworks"}
+                "label": "Filter by Topic",
+                "items": [
+                  {id: "fundamentals", label: "Fundamentals"},
+                  {id: "frontEnd", label: "Front End"},
+                  {id: "appStructure", label: "App Architecture"},
+                  {id: "iot", label: "Internet of Things"},
+                  {id: "animation", label: "Animation"},
+                  {id: "frameworks", label: "Frameworks"}]
                 }
             ]
             }
