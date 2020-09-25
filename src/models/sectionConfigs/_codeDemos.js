@@ -11,7 +11,7 @@ const codeDemos = {
         "title": "Xavier Made",
         "content": {
           "defaultStr": "Locally sourced tutorials & livestreams.",
-          "panelTemplateId": "collapsing-tile-tab-panel",
+          "panelTemplateId": "CollapsingTilesPreviewer",
           "sourceJSON": "../../data/internalDemos.json",
           "filters": [
             {

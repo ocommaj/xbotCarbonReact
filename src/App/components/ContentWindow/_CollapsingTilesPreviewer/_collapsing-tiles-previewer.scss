@@ -1,0 +1,12 @@
+.collapsingTilesPreviewer {
+  flex-grow: 1;
+  background-color: $ui-02;
+  display: flex;
+
+  .bx--tile {
+      background-color: $decorative-01;
+      height: 120px;
+      padding: 1rem;
+    }
+
+}

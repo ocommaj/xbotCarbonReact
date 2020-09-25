@@ -1,20 +1,27 @@
-.panelHeader {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 0;
-}
-
-.headerDropdowns {
-  display: flex;
-  justify-content: stretch;
-
-}
-
-.dropdownFilter {
+.tabPanel {
   flex-grow: 1;
-}
+  display: flex;
+  flex-direction: column;
 
-.bx--multi-select__wrapper {
-  width: 12.5rem;
-  margin: 0 $spacing-03;
+  .panelHeader {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0;
+  }
+
+  .headerDropdowns {
+    display: flex;
+    justify-content: stretch;
+
+  }
+
+  .dropdownFilter {
+    flex-grow: 1;
+  }
+
+  .bx--multi-select__wrapper {
+    width: 12.5rem;
+    margin-left: $spacing-03;
+  }
+
 }

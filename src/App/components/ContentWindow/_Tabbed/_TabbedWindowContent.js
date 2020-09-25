@@ -6,6 +6,7 @@ export default function TabbedWindowContent(props) {
   const { tabs } = props
 
   return (
+    <div className="tabbedWindowContent">
     <Tabs className="tabBar" >
       { tabs.map((tab, i) => {
         return (
@@ -20,5 +21,6 @@ export default function TabbedWindowContent(props) {
         )
       })}
     </Tabs>
+    </div>
   )
 }
