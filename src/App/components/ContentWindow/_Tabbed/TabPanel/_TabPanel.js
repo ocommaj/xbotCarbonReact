@@ -10,7 +10,8 @@ export default function TabPanel(tab) {
 
   let panelBody = content.panelTemplateId === "CollapsingTilesPreviewer" ?
         CollapsingTilesPreviewer() : <></>
-  console.log(content.panelTemplateId)
+
+  if (content.panelTemplateId) { content.defaultStr = "" }
 
   return (
     <div className="tabPanel">

@@ -1,12 +1,35 @@
-.collapsingTilesPreviewer {
-  flex-grow: 1;
-  background-color: $ui-02;
-  display: flex;
+@import './PreviewPane/preview-pane';
 
-  .bx--tile {
-      background-color: $decorative-01;
-      height: 120px;
-      padding: 1rem;
+.collapsingTilesPreviewer {
+  max-height: inherit;
+  overflow: scroll;
+
+  .overflowWrapper {
+    max-height: inherit;
+    background-color: $ui-02;
+    display: flex;
+
+    .tilesColumn {
+      overflow: scroll;
+      flex-grow: 1;
+      background-color: $ui-01;
+
+      .bx--tile {
+          background-color: $decorative-01;
+          height: 120px;
+          padding: 1rem;
+          margin: $layout-01 0;
+        }
+
+        .bx--tile:first-of-type {
+          margin-top: 0;
+        }
+
     }
 
+    .previewColumn {
+
+    }
+
+  }
 }

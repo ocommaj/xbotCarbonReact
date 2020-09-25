@@ -1,12 +1,14 @@
 .tabPanel {
-  flex-grow: 1;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
+  max-height: 100%;
+  //padding-bottom: $layout-01;
 
   .panelHeader {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 0;
+    margin-bottom: $layout-01;
   }
 
   .headerDropdowns {

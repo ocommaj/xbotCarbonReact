@@ -2,12 +2,10 @@
 @import 'carbon-components/scss/globals/scss/vars';
 @import '@carbon/type/scss/type';
 
-
-
 @import './containers/containers';
-
 @include carbon--theme();
 
 body {
+  overflow: hidden;
   color: $text-02;
 }
