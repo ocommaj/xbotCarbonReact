@@ -1,3 +1,4 @@
+@import './ArticleTile/article-tile';
 @import './PreviewPane/preview-pane';
 
 .collapsingTilesPreviewer {
@@ -18,7 +19,7 @@
           background-color: $decorative-01;
           height: 120px;
           padding: 1rem;
-          margin: $layout-01 0;
+          margin: $spacing-03 0;
         }
 
         .bx--tile:first-of-type {

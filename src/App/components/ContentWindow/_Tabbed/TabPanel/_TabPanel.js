@@ -9,7 +9,8 @@ export default function TabPanel(tab) {
   function loadFilters(filters) { return filters.map(f => DropdownFilter(f) ) }
 
   let panelBody = content.panelTemplateId === "CollapsingTilesPreviewer" ?
-        CollapsingTilesPreviewer() : <></>
+        //CollapsingTilesPreviewer() : null
+        () => CollapsingTilesPreviewer() : () => { return null }
 
   if (content.panelTemplateId) { content.defaultStr = "" }
 
@@ -19,7 +20,7 @@ export default function TabPanel(tab) {
         <h2>{content.defaultStr}</h2>
         <span className="headerDropdowns">{ filters }</span>
       </div>
-      { panelBody }
+      { panelBody() }
     </div>
   )
 }

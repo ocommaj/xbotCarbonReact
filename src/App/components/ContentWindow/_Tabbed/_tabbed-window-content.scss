@@ -25,11 +25,10 @@
   }
 
   .bx--tab-content {
-    background-color: $interactive-01;
+    //background-color: $interactive-01;
     max-height: calc(100% - 2.5rem);
-    //padding-top: 0;
-    //max-height: inherit;
-    //flex-grow: 1;
+    padding-top: $spacing-03;
+
 
   }
 
