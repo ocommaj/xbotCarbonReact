@@ -9,7 +9,6 @@ export default function TabbedWindowContent(props) {
     <div className="tabbedWindowContent">
     <Tabs className="tabBar" >
       { tabs.map((tab, i) => {
-
         return (
           <Tab
             key={`tab_${tab.id}`}

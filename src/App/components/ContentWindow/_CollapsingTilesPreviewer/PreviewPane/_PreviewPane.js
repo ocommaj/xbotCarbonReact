@@ -2,6 +2,6 @@ import React from 'react'
 
 export default function PreviewPane() {
   return (
-    <div className="previewPane">Preview Pane</div>
+    <div className="previewPane"></div>
   )
 }

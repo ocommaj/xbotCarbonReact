@@ -1,11 +1,12 @@
-import React, { useState } from 'react'
+import React, {useState } from 'react'
 import ArticleTile from './ArticleTile'
 import PreviewPane from './PreviewPane'
 
 import placeholderData from './_placeholderData'
 
 export default function CollapsingTilesPreviewer() {
-  const tiles = loadTiles(placeholderData)
+  const initTiles = loadTiles(placeholderData),
+        [tiles, setTiles] = useState(initTiles);
 
   function loadTiles(fromList) {
     return fromList.map((entry, idx) => {
