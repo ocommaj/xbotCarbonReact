@@ -3,7 +3,7 @@ import revealFromHidden from './_revealFromHidden'
 
 const registerAnimations = () => ({
   collapse: (completionHandler) => collapseToHide(completionHandler),
-  reveal: () => revealFromHidden()
+  reveal: (obj) => revealFromHidden(obj)
 })
 
 export default function ComposeAnimations() {

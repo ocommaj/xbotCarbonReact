@@ -1,34 +1,27 @@
-import React, { useContext, useState, useEffect } from 'react';
-import { AppContext } from '@App';
-import { MainBodyContext } from '@containers/_MainBodyGrid';
+import React, { useState, useEffect } from 'react';
 import ContentWindow from '@components/ContentWindow';
 
-export default function MainContentRow() {
-  const { sections } = useContext(AppContext),
-        { activeSectionId, animate } = useContext(MainBodyContext),
-        [ contentWindow, setContentWindow ] = useState(),
-        anim = animate.contentWindow,
-        activeSection = sections[activeSectionId],
-        props = { anim, activeSection };
+export default function MainContentRow(props) {
+  const { sections, activeSectionId, animate } = props,
+        [ contentWindow, setContentWindow ] = useState(null);
 
   useEffect(() => { loadContentWindow() }, [activeSectionId])
-  useEffect(() => { if (contentWindow) { anim.reveal() } }, [contentWindow])
+  useEffect(() => { displayContentWindow() }, [contentWindow])
+
+  function displayContentWindow() { if (contentWindow) { animate.reveal() } }
 
   function loadContentWindow() {
-    const toLoad = activeSectionId === "/" ? null : ContentWindow(props)
+    const activeSection = !!activeSectionId ? sections[activeSectionId] : null,
+          toLoad = !!activeSection ?
+            <ContentWindow activeSection={activeSection} /> : null;
 
-    if (!contentWindow) { setContentWindow(toLoad) }
-      else { anim.collapse(() => { setContentWindow(toLoad) }) }
-
-  }
-
-  /*function useSectionId() {
-    const [contWindow, setContWindow] = useState()
-  }*/
+    if (contentWindow) { animate.collapse(() => { setContentWindow(toLoad) }) }
+        else { setContentWindow(toLoad) }
+    }
 
   return (
     <div className="bx--row mainContentRow">
-      { contentWindow }
+      { activeSectionId && contentWindow }
     </div>
   )
 }

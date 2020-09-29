@@ -5,18 +5,8 @@ import PreviewPane from './PreviewPane'
 import placeholderData from './_placeholderData'
 
 export default function CollapsingTilesPreviewer() {
-  const initTiles = loadTiles(placeholderData),
-        [tiles, setTiles] = useState(initTiles);
-
-  function loadTiles(fromList) {
-    return fromList.map((entry, idx) => {
-            const props = {
-                    key: `articleTile_${idx}`,
-                    headline: entry.tileHeadline
-                  };
-            return ArticleTile(props)
-          })
-      }
+  const [tiles] = useState( loadTiles(placeholderData) ),
+        [previewArticle, setPreviewArticle] = useState(null);
 
   return (
     <div className="collapsingTilesPreviewer">
@@ -25,9 +15,23 @@ export default function CollapsingTilesPreviewer() {
           { tiles }
         </div>
         <div className="previewColumn">
-          { PreviewPane() }
+          {previewArticle && <PreviewPane article={previewArticle} />}
         </div>
       </div>
     </div>
   )
+
+  function previewClickedArticle(article) { setPreviewArticle(article) }
+
+  function loadTiles(fromList) {
+    return fromList.map((entry, idx) => {
+            const props = {
+                    key: `articleTile_${idx}`,
+                    headline: entry.tileHeadline,
+                    clickHandler: () => previewClickedArticle(entry)
+                  };
+            return ArticleTile(props)
+          })
+      }
+
 }

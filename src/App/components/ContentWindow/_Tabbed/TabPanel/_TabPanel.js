@@ -3,23 +3,31 @@ import DropdownFilter from '@components/DropdownFilter'
 import CollapsingTilesPreviewer from '../../_CollapsingTilesPreviewer'
 
 export default function TabPanel(tab) {
-  const { title, content, panelTemplateId } = tab,
-        filters = !!content.filters ? loadFilters(content.filters) : [];
+  const { title, content } = tab,
+        filterConfigs = content.filters,
+        templateId = content.panelTemplateId;
 
-  function loadFilters(filters) { return filters.map(f => DropdownFilter(f) ) }
+  function loadFilters(filters) {
+    return filters.map(f => {
+      return <DropdownFilter key={`${f.id}_filter`} props={f}/> })
+  }
 
-  let panelBody = content.panelTemplateId === "CollapsingTilesPreviewer" ?
-        () => { return (<CollapsingTilesPreviewer />) } : () => { return null }
+  function loadPanel(templateId) {
+     return templateId === "CollapsingTilesPreviewer" ?
+        <CollapsingTilesPreviewer />  :  null
+      }
 
-  if (content.panelTemplateId) { content.defaultStr = "" }
+  if (templateId) { content.defaultStr = null }
 
   return (
     <div className="tabPanel">
       <div className="panelHeader">
         <h2>{content.defaultStr}</h2>
-        <span className="headerDropdowns">{ filters }</span>
+        <span className="headerDropdowns">
+          { filterConfigs && loadFilters(filterConfigs) }
+        </span>
       </div>
-      { panelBody() }
+      { templateId && loadPanel(templateId) }
     </div>
   )
 }

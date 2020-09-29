@@ -1,18 +1,16 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import HeaderTile from '@components/HeaderTile';
-import { MainBodyContext } from '@containers/_MainBodyGrid';
 
-export default function HeaderTileRow() {
+export default function HeaderTileRow(props) {
   const {
     tileConfigs,
     activeSectionId,
     setActiveSectionId,
-    animate } = useContext(MainBodyContext),
-    anim = animate.header;
+    animate } = props;
 
   const constructClickHandler = () => {
     const args = {activeId: activeSectionId, setActiveId: setActiveSectionId},
-          func = activeSectionId === "/" ? anim.reduceTiles : anim.switchTiles;
+          func = !activeSectionId ? animate.reduceTiles : animate.switchTiles;
 
     return {args, func}
   }
@@ -20,7 +18,7 @@ export default function HeaderTileRow() {
   return (
     <div className="bx--row headerTileRow">
       { tileConfigs.map((config, i) => {
-          let colClass = i === 0 ? "bx--offset-lg-1" : ""
+          let colClass = i === 0 ? "bx--offset-lg-1" : null
           return (
             <HeaderTile
               key={ `headerTile_${ config.sectionId }`}

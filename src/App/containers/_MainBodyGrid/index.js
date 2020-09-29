@@ -1,3 +1,2 @@
-import MainBodyGrid, { MainBodyContext } from './_MainBodyGrid'
+import MainBodyGrid from './_MainBodyGrid'
 export default MainBodyGrid
-export { MainBodyContext }
