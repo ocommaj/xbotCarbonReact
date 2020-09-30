@@ -3,18 +3,15 @@
   display: flex;
   flex-direction: column;
   max-height: 100%;
-  //padding-bottom: $layout-01;
 
   .panelHeader {
-    display: flex;
-    justify-content: space-between;
     margin-bottom: $spacing-03;
   }
 
   .headerDropdowns {
     display: flex;
-    justify-content: stretch;
-
+    justify-content: flex-end;
+    align-content: flex-end;
   }
 
   .dropdownFilter {

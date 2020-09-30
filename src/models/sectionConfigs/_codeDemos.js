@@ -2,16 +2,17 @@ const codeDemos = {
     "mainId": "codeDemos",
     "displayTitle": "Code Demos",
     "defaultStr": "Coding Tutorials",
+    "windowType": "tabbedWindow",
     "options": {
-      "type": "tabbed",
-      "contentTemplateId": "tabbed-content-window",
+      "type": "tabbedWindow",
+      "contentTemplateId": "tabbedWindow",
       "tabs": [
         {
         "id": "internalCodeDemos",
         "title": "Xavier Made",
         "content": {
           "defaultStr": "Locally sourced tutorials & livestreams.",
-          "panelTemplateId": "CollapsingTilesPreviewer",
+          "panelTemplateId": "tilesPreviewer",
           "sourceJSON": "../../data/internalDemos.json",
           "filters": [
             {
@@ -43,6 +44,7 @@ const codeDemos = {
         "title": "External",
         "content": {
           "defaultStr": "Great Stuff from the wide wide world of sports.",
+          "panelTemplateId": "singlePane",
           "sourceJSON": "some-url"
           }
         }

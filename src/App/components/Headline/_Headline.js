@@ -1,7 +1,9 @@
 import React from 'react'
 
-export default function Headline(text) {
+export default function Headline({props}) {
+  const { text } = props
+  
   return (
-    <div className="headline">{text}</div>
+    <h1 className="headline">{text}</h1>
   )
 }

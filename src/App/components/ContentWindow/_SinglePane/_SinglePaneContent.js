@@ -1,13 +1,16 @@
 import React from 'react'
 import Headline from '@components/Headline'
 
-export default function SinglePaneContent(props) {
-  const { title } = props,
-        content = () => Headline(title)
+export default function SinglePaneContent({props}) {
+  const { title, content } = {...props}
 
   return (
-    <span className="paneContents">
-      { content() }
-    </span>
+    <div>
+      { content ? renderHeadline(content.defaultStr) : renderHeadline(title) }
+    </div>
   )
+
+  function renderHeadline(text) {
+    return <Headline props={ {text} } />
+  }
 }

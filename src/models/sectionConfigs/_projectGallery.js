@@ -2,9 +2,10 @@ const projectGallery = {
   "mainId": "projectGallery",
   "displayTitle": "Project Gallery",
   "defaultStr": "Things People Made",
+  "windowType": "singlePane",
   "options": {
-    "type": "blank",
-    "contentTemplateId": "main-content-window"
+    "type": "singlePane",
+    "contentTemplateId": "singlePane"
   }
 }
 

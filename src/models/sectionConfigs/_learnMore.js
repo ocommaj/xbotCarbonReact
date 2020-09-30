@@ -2,9 +2,10 @@ const learnMore = {
     "mainId": "learnMore",
     "displayTitle": "Learn More",
     "defaultStr": "All Our Platforms",
+    "windowType": "singlePane",
     "options": {
-      "type": "blank",
-      "contentTemplateId": "main-content-window"
+      "type": "singlePane",
+      "contentTemplateId": "singlePane"
     }
 }
 

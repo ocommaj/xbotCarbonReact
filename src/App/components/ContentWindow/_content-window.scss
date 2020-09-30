@@ -1,6 +1,6 @@
-@import './_CollapsingTilesPreviewer/_collapsing-tiles-previewer';
 @import './_SinglePane/_single-pane-content';
 @import './_Tabbed/tabbed-window-content';
+@import './_TilesPreviewer/tiles-previewer';
 
 .mainContentWindow {
   background-color: $ui-01;
@@ -13,10 +13,4 @@
   max-height: 100%;
 
   overflow: hidden;
-  
-
-}
-
-.mainContentWindow * {
-  //opacity: 0;
 }

@@ -4,18 +4,19 @@ import PreviewPane from './PreviewPane'
 
 import placeholderData from './_placeholderData'
 
-export default function CollapsingTilesPreviewer() {
-  const [tiles] = useState( loadTiles(placeholderData) ),
+export default function TilesPreviewer({props}) {
+  const { title } = props,
+        [tiles] = useState( loadTiles(placeholderData) ),
         [previewArticle, setPreviewArticle] = useState(null);
 
   return (
-    <div className="collapsingTilesPreviewer">
+    <div className="tilesPreviewer">
       <div className="overflowWrapper">
         <div className="tilesColumn">
           { tiles }
         </div>
         <div className="previewColumn">
-          {previewArticle && <PreviewPane article={previewArticle} />}
+          {previewArticle && <PreviewPane props={previewArticle} />}
         </div>
       </div>
     </div>

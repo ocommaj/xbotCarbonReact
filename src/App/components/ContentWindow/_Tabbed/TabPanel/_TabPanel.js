@@ -1,33 +1,29 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import DropdownFilter from '@components/DropdownFilter'
-import CollapsingTilesPreviewer from '../../_CollapsingTilesPreviewer'
+import { templates } from '@components/ContentWindow'
 
-export default function TabPanel(tab) {
+export default function TabPanel({tab}) {
   const { title, content } = tab,
         filterConfigs = content.filters,
-        templateId = content.panelTemplateId;
+        templateId = content.panelTemplateId,
+        [panelContent, setPanelContent] = useState( loadPanel(templateId) );
+
+  useEffect(() => { setPanelContent(loadPanel(templateId) )}, [tab])
 
   function loadFilters(filters) {
     return filters.map(f => {
-      return <DropdownFilter key={`${f.id}_filter`} props={f}/> })
-  }
+      return <DropdownFilter key={`${f.id}_filter`} props={f}/> }) }
 
-  function loadPanel(templateId) {
-     return templateId === "CollapsingTilesPreviewer" ?
-        <CollapsingTilesPreviewer />  :  null
-      }
-
-  if (templateId) { content.defaultStr = null }
+  function loadPanel(templateId) { return templates[templateId]({...tab}) }
 
   return (
     <div className="tabPanel">
       <div className="panelHeader">
-        <h2>{content.defaultStr}</h2>
         <span className="headerDropdowns">
           { filterConfigs && loadFilters(filterConfigs) }
         </span>
       </div>
-      { templateId && loadPanel(templateId) }
+      { panelContent }
     </div>
   )
 }

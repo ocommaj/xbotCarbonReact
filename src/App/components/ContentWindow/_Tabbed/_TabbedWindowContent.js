@@ -1,13 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Tabs, Tab } from 'carbon-components-react';
 import TabPanel from './TabPanel'
 
-export default function TabbedWindowContent(props) {
-  const { tabs } = props;
+export default function TabbedWindowContent({props}) {
+  const { mainId, tabs } = props,
+        [content, setContent] = useState(null);
 
   return (
     <div className="tabbedWindowContent">
-    <Tabs className="tabBar" >
+    <Tabs className="tabBar" key={`${mainId}_tabs`}>
       { tabs.map((tab, i) => {
         return (
           <Tab
@@ -16,7 +17,7 @@ export default function TabbedWindowContent(props) {
             id={`tab_${tab.id}`}
             href={tab.id}
             label={tab.title}>
-            { TabPanel(tab) }
+            <TabPanel tab={tab} />
           </Tab>
         )
       })}
