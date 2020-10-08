@@ -9,12 +9,12 @@ export default function reduceHeaderTileRow(params) {
           onComplete: () => { setActiveId(fromTile.id) }
         })
           .toggleActiveTile(fromTile)
-          .add(_resizeTiles(tiles, fromTile), '<.2')
+          .add(_collapseTiles(tiles, fromTile), '<.2')
           .set(row, { height: '4.5rem' })
         tl.play()
 }
 
-const _resizeTiles = (tiles, fromTile) => {
+const _collapseTiles = (tiles, fromTile) => {
   const tilesArr = gsap.utils.toArray(tiles),
         labels = tilesArr.map(t => t.querySelector('.tileLabel .title') ),
         fromIdx = tilesArr.indexOf(fromTile),

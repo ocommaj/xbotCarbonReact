@@ -12,8 +12,9 @@ export default function MainContentRow(props) {
 
   function loadContentWindow() {
     const activeSection = !!activeSectionId ? sections[activeSectionId] : null,
+          props = { activeSection, animate: animate.content },
           toLoad = !!activeSection ?
-            <ContentWindow activeSection={activeSection} /> : null;
+            <ContentWindow props={ props } /> : null;
 
     if (contentWindow) { animate.collapse(() => { setContentWindow(toLoad) }) }
         else { setContentWindow(toLoad) }

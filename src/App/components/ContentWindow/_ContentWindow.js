@@ -1,21 +1,23 @@
 import React, { useState, useEffect } from 'react'
 import templates from './_templates'
 
-export default function ContentWindow(props) {
-  const { activeSection } = props,
-        [content, setContent] = useState(loadWindow(activeSection.windowType));
+export default function ContentWindow({ props }) {
+  const { activeSection, animate } = props,
+        [content, setContent] = useState(
+          loadFromTemplate(activeSection.windowType));
 
   useEffect(() => {
-    setContent( loadWindow(activeSection.windowType) )}, [activeSection])
+    setContent( loadFromTemplate(activeSection.windowType) )}, [activeSection])
 
-  function loadWindow(type) {
+  function loadFromTemplate(templateId) {
     const props = {
+      animate,
       'mainId': activeSection.mainId,
       'title': activeSection.defaultStr,
       'tabs': activeSection.options.tabs,
     }
 
-    return templates[type](props)
+    return templates[templateId](props)
   }
 
   return (

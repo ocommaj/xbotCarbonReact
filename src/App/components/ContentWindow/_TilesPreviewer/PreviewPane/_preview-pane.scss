@@ -6,14 +6,17 @@
   //width: 0;
   //flex-basis: 0;
   display: flex;
+  //flex-grow: 1;
   //overflow-x: hidden;
-  //justify-content: flex-start;
+  align-content: stretch;
   //transform: translateX(480px);
   //transform: scaleX(0%);
 
 
   .previewPane {
     background-color: $interactive-04;
+    //margin: auto;
+    flex-grow: 1;
     //flex-basis: 100%;
     //margin-left: $spacing-03;
     //transform: scaleX(0%);

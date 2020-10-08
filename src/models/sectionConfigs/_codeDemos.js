@@ -13,7 +13,7 @@ const codeDemos = {
         "content": {
           "defaultStr": "Locally sourced tutorials & livestreams.",
           "panelTemplateId": "tilesPreviewer",
-          "sourceJSON": "../../data/internalDemos.json",
+          "sourceJSON": "@models/sectionConfigs/_codeDemos.json",
           "filters": [
             {
               "id": "language",

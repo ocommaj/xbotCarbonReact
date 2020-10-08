@@ -1,13 +1,13 @@
-import React, {useState } from 'react'
+import React, { useState } from 'react'
 import ArticleTile from './ArticleTile'
 import PreviewPane from './PreviewPane'
 
 import placeholderData from './_placeholderData'
 
-export default function TilesPreviewer({props}) {
-  const { data } = props,
-        [tiles] = useState( loadTiles(data || placeholderData) ),
-        [previewArticle, setPreviewArticle] = useState(null);
+export default function TilesPreviewer({ props }) {
+  const { animate, data, content } = props,
+        [previewArticle, setPreviewArticle] = useState(null),
+        [tiles] = useState( loadTiles(data || placeholderData) );
 
   return (
     <div className="tilesPreviewer">
@@ -16,23 +16,36 @@ export default function TilesPreviewer({props}) {
           { tiles }
         </div>
         <div className="previewColumn">
-          {previewArticle && <PreviewPane props={previewArticle} />}
+          { previewArticle && <PreviewPane props={previewArticle} /> }
         </div>
       </div>
     </div>
   )
 
-  function previewClickedArticle(article) { setPreviewArticle(article) }
-
   function loadTiles(fromList) {
-    return fromList.map((entry, idx) => {
-            const props = {
-                    key: `articleTile_${idx}`,
-                    headline: entry.tileHeadline,
-                    clickHandler: () => previewClickedArticle(entry)
+    return fromList.map((article, idx) => {
+            const key = `articleTile_${article.id}`,
+                  props = {
+                    key,
+                    headline: article.tileHeadline,
+                    clickHandler: () => constClickHandler(key, article)
                   };
             return ArticleTile(props)
           })
       }
+
+  function constClickHandler(key, article) {
+      const previewCol = document.querySelector('.previewColumn'),
+            args = {
+              caller: key,
+              setPreviewArticle: () => setPreviewArticle(article)
+            },
+
+            func = !!previewCol.classList.contains('previewArticleSelected') ?
+                       animate.switchTiles : animate.collapseTiles ;
+
+      return func(args)
+
+    }
 
 }

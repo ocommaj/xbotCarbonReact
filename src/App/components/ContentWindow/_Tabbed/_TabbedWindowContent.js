@@ -4,7 +4,7 @@ import TabPanel from './TabPanel'
 import DropdownFilter from '@components/DropdownFilter'
 
 export default function TabbedWindowContent({props}) {
-  const { mainId, tabs } = props,
+  const { animate, mainId, tabs } = props,
         [filters, setFilters] = useState( loadFilters(tabs[0]) );
 
   useEffect(() => { setFilters( loadFilters(tabs[0] ))}, [props])
@@ -14,7 +14,7 @@ export default function TabbedWindowContent({props}) {
       <span className="headerDropdowns">{ filters }</span>
       <Tabs
         className="tabBar"
-        key={`${mainId}_tabs`}
+        key={ `${mainId}_tabs` }
         onSelectionChange={ (i) => setFilters( loadFilters(tabs[i]) ) }>
         { tabs.map((tab, i) => {
           return (
@@ -24,7 +24,7 @@ export default function TabbedWindowContent({props}) {
               id={`tab_${tab.id}`}
               href={tab.id}
               label={tab.title}>
-              <TabPanel tab={tab} />
+              <TabPanel props={ { animate, tab } } />
             </Tab>) })}
       </Tabs>
     </div>

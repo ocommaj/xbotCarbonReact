@@ -8,12 +8,10 @@ export default function HeaderTileRow(props) {
     setActiveSectionId,
     animate } = props;
 
-  const constructClickHandler = () => {
-    const args = {activeId: activeSectionId, setActiveId: setActiveSectionId},
-          func = !activeSectionId ? animate.reduceTiles : animate.switchTiles;
-
-    return {args, func}
-  }
+  const constructClickHandler = () => ({
+    args: {activeId: activeSectionId, setActiveId: setActiveSectionId},
+    func: !activeSectionId ? animate.reduceTiles : animate.switchTiles
+  })
 
   return (
     <div className="bx--row headerTileRow">
