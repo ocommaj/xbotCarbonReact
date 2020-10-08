@@ -3,11 +3,12 @@
 
 .tilesPreviewer {
   max-height: inherit;
-  overflow: scroll;
+  overflow-y: scroll;
+  overflow-x: hidden;
 
   .overflowWrapper {
     max-height: inherit;
-    background-color: $ui-02;
+    //background-color: $ui-02;
     display: flex;
 
     .tilesColumn {
@@ -21,6 +22,7 @@
           height: 120px;
           padding: 1rem;
           margin: $spacing-03 0;
+          cursor: pointer;
         }
 
         .bx--tile:first-of-type {

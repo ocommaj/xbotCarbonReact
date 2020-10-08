@@ -1,6 +1,6 @@
 .previewColumn {
   //visibility: collapse;
-  background-color: $interactive-01;
+  //background-color: $interactive-01;
   position: relative;
   //padding-left: $spacing-03;
   //width: 0;
@@ -15,8 +15,10 @@
 
   .previewPane {
     background-color: $interactive-04;
+    margin-left: $layout-01;
     //margin: auto;
-    flex-grow: 1;
+    opacity: 0;
+    flex-grow: 0;
     //flex-basis: 100%;
     //margin-left: $spacing-03;
     //transform: scaleX(0%);

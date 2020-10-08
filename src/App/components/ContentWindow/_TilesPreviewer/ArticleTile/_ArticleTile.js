@@ -1,5 +1,5 @@
 import React from 'react'
-import { ClickableTile } from 'carbon-components-react'
+import { Tile } from 'carbon-components-react'
 
 export default function ArticleTile(props) {
   const {
@@ -9,13 +9,15 @@ export default function ArticleTile(props) {
   } = props;
 
   return (
-    <ClickableTile
+    <Tile
       key={key}
       id={key}
       className="articlePreviewTile"
-      handleClick={  () => clickHandler() }>
+      onClick={ (e) => {
+        if (!e.currentTarget.classList.contains('activeArticleTile')) {
+          clickHandler() } } }>
       <h2>{ headline }</h2>
-    </ClickableTile>
+    </Tile>
   )
 
 }

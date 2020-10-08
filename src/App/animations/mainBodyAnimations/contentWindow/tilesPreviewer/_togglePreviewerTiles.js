@@ -6,11 +6,11 @@ export default function togglePreviewerTiles(params) {
         tileCol = document.querySelector('.tilesColumn'),
         previewCol = document.querySelector('.previewColumn'),
         tiles = document.querySelectorAll('.articlePreviewTile'),
-        shouldExpand = previewCol.classList.contains('previewArticleSelected'),
+        shouldExpand = previewCol.classList.contains('previewPaneShows'),
         tl = gsap.timeline({
           paused: true,
           onComplete: () => {
-            previewCol.classList.toggle('previewArticleSelected')
+            previewCol.classList.toggle('previewPaneShows')
             setPreviewArticle()
           }
         })

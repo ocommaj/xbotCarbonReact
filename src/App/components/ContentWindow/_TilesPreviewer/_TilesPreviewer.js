@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import ArticleTile from './ArticleTile'
 import PreviewPane from './PreviewPane'
 
@@ -8,6 +8,8 @@ export default function TilesPreviewer({ props }) {
   const { animate, data, content } = props,
         [previewArticle, setPreviewArticle] = useState(null),
         [tiles] = useState( loadTiles(data || placeholderData) );
+
+  useEffect(() => { animatePreviewPane() }, [previewArticle])
 
   return (
     <div className="tilesPreviewer">
@@ -22,11 +24,21 @@ export default function TilesPreviewer({ props }) {
     </div>
   )
 
+  function animatePreviewPane() {
+    const params = {
+            previewCol: document.querySelector('.previewColumn'),
+            previewPane: document.querySelector('.previewPane')
+          }
+
+    return previewArticle && animate.showPreviewPane(params)
+  }
+
   function loadTiles(fromList) {
     return fromList.map((article, idx) => {
             const key = `articleTile_${article.id}`,
                   props = {
                     key,
+                    activePreviewId: previewArticle && previewArticle.id,
                     headline: article.tileHeadline,
                     clickHandler: () => constClickHandler(key, article)
                   };
@@ -35,13 +47,18 @@ export default function TilesPreviewer({ props }) {
       }
 
   function constClickHandler(key, article) {
-      const previewCol = document.querySelector('.previewColumn'),
-            args = {
-              caller: key,
-              setPreviewArticle: () => setPreviewArticle(article)
+      const args = {
+              tile: document.getElementById(key),
+              tileCol: document.querySelector('.tilesColumn'),
+              tiles: document.querySelectorAll('.articlePreviewTile'),
+              previewCol: document.querySelector('.previewColumn'),
+              previewPane: document.querySelector('.previewPane'),
+              setPreviewArticle: () => setPreviewArticle(article),
+              tilesExpanded: document.querySelector('.previewColumn')
+                .classList.contains('previewPaneShows')
             },
 
-            func = !!previewCol.classList.contains('previewArticleSelected') ?
+            func = !!args.tilesExpanded ?
                        animate.switchTiles : animate.collapseTiles ;
 
       return func(args)
