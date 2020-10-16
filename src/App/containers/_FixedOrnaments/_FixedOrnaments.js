@@ -1,17 +1,15 @@
 import React, { useContext } from 'react'
 import { AppContext } from '@App'
-import Background from './Background'
+import MapboxBG from '@components/MapboxBG'
 import FleetGraphic from './FleetGraphic'
 
 export default function FixedOrnaments() {
-  const { animate, mapbox } = useContext(AppContext),
-        bgAnimations = animate.fixedOrnaments.background(),
-        fleetAnimations = animate.fixedOrnaments.fleet();
+  const { animate, bg } = useContext(AppContext);
 
   return (
     <>
-      <Background animate={ bgAnimations } mapboxConfig={ mapbox } />
-      <FleetGraphic animate={ fleetAnimations }/>
+      <MapboxBG imageURL={ bg.satView_url } />
+      <FleetGraphic animate={ animate.fixedOrnaments.fleet() }/>
     </>
   )
 }

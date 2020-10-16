@@ -3,13 +3,17 @@ import MainBodyAnimations from './mainBodyAnimations'
 import FixedOrnamentAnimations from './fixedOrnaments'
 
 const Animate = () => {
-  const self = {
-    mainBody: MainBodyAnimations(),
-    fixedOrnaments: FixedOrnamentAnimations()
-  }
+  const mainBody = MainBodyAnimations(),
+        fixedOrnaments = FixedOrnamentAnimations(),
+        background = fixedOrnaments.background(),
+        self = {
+          mainBody,
+          fixedOrnaments,
+          background
+        }
 
   RegisterEffects()
-  
+
   return Object.assign(self)
 }
 
