@@ -9,7 +9,7 @@ import 'codemirror/mode/javascript/javascript';
 import { Controlled as ControlledEditor } from 'react-codemirror2';
 import { Maximize20, Minimize20 } from '@carbon/icons-react';
 
-export default function Editor(props) {
+export default function CodeMirrorEditor(props) {
   const {
     displayName,
     language,
@@ -23,8 +23,8 @@ export default function Editor(props) {
   }
 
   return (
-    <div className={`editor-container ${ open ? '' : 'collapsed' }`}>
-      <div className="editor-title">
+    <div className={`cm-editor-container ${ open ? '' : 'collapsed' }`}>
+      <div className="cm-editor-title">
         {displayName}
         <button
           type='button'

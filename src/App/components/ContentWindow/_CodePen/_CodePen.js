@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import Editor from './Editor';
-import DefaultSrc from './_DefaultSrc';
 import useLocalStorage from '@hooks/useLocalStorage';
+import CodeMirrorEditor from '@components/CodeMirrorEditor'
+import DefaultSrc from './_DefaultSrc';
+
 
 export default function CodePen({props}) {
   const [html, setHtml] = useLocalStorage('html', DefaultSrc.html()),
@@ -21,17 +22,17 @@ export default function CodePen({props}) {
   return (
     <div className="codepen">
       <div className="pane top-pane">
-        <Editor
+        <CodeMirrorEditor
           language="xml"
           displayName="HTML"
           value={ html }
           onChange={ setHtml } />
-        <Editor
+        <CodeMirrorEditor
           language="css"
           displayName="CSS"
           value={ css }
           onChange={ setCss } />
-        <Editor
+        <CodeMirrorEditor
           language="javascript"
           displayName="JS"
           value={ js }

@@ -4,11 +4,7 @@ import StickyButton from '@components/StickyButton';
 import BackgroundPicker from '@components/BackgroundPicker';
 
 export default function FooterControlsRow() {
-  const {
-    animate,
-    staticMaps,
-    bg,
-    setBg } = useContext(AppContext);
+  const { animate, staticMaps, bg, setBg } = useContext(AppContext);
 
   return (
     <div className="bx--row footerControlsRow">

@@ -8,15 +8,14 @@ export const AppContext = React.createContext()
 
 export default function App() {
   const [ staticMaps, getRandomStaticMap ] = Configs.mapbox(),
-        [ bg, setBg ] = useState( getRandomStaticMap() );
-
-  const contextValue = {
-    staticMaps,
-    bg,
-    setBg,
-    animate: Animate(),
-    sections: Configs.sections(),
-  };
+        [ bg, setBg ] = useState( getRandomStaticMap() ),
+        contextValue = {
+          staticMaps,
+          bg,
+          setBg,
+          animate: Animate(),
+          sections: Configs.sections()
+        };
 
   return (
     <AppContext.Provider value={ contextValue }>
