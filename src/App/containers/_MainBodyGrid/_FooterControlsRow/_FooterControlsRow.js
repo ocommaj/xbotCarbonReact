@@ -17,7 +17,7 @@ export default function FooterControlsRow() {
         animation={ animate.background.fadeBetweenViews }
         mapConfigs={ staticMaps }
         currentBackground={ bg }
-        updateBackgroundImage={ setBg }/>
+        updateBackgroundImage={ setBg } />
     </div>
   )
 }

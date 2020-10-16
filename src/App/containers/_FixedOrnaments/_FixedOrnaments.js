@@ -9,7 +9,7 @@ export default function FixedOrnaments() {
   return (
     <>
       <MapboxBG imageURL={ bg.satView_url } />
-      <FleetGraphic animate={ animate.fixedOrnaments.fleet() }/>
+      <FleetGraphic animate={ animate.fleet }/>
     </>
   )
 }
