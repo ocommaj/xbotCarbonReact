@@ -6,7 +6,6 @@
   bottom: 1rem;
   left: 2rem;
 
-
   Button {
     width: 100%;
     height: 100%;
@@ -26,16 +25,23 @@
     display: flex;
   }
 
+  .bx--btn.bx--btn--icon-only.bx--tooltip__trigger::after, .bx--btn.bx--btn--icon-only.bx--tooltip__trigger .bx--assistive-text, .bx--btn.bx--btn--icon-only.bx--tooltip__trigger + .bx--assistive-text {
+    background-color: $decorative-01;
+    color: $text-01;
+  }
+
+  .bx--tooltip__trigger.bx--tooltip--top.bx--tooltip--align-center::before {
+    border-color: $decorative-01 transparent transparent transparent;
+  }
+
   svg {
     fill: $text-02;
     }
 
-  }
 
   Button:hover {
-
       transform: rotateZ(360deg);
-
       transition-duration: 1;
-
   }
+
+}

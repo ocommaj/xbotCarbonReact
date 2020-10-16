@@ -1,3 +1,3 @@
 export default function html() {
-  return () => '<h1>Output Renders Here</h1>'
+  return () => `<h1>\n"Now you're the author of...great stuff."\n</h1>`
 }

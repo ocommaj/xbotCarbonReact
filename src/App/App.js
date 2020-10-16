@@ -1,8 +1,8 @@
 import React from 'react';
-import './App.scss';
 import Configs from '@Models';
 import Animate from '@animations';
 import ScreenContents from '@containers';
+import './App.scss';
 
 export const AppContext = React.createContext()
 

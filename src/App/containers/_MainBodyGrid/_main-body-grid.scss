@@ -1,5 +1,5 @@
-@import './_HeaderTileRow/header-tile-row.scss';
-@import './_MainContentRow/main-content-row.scss';
+@import './_HeaderTileRow/header-tile-row';
+@import './_MainContentRow/main-content-row';
 @import './_FooterControlsRow/footer-controls-row';
 
 .mainBodyGrid.bx--grid {
@@ -8,5 +8,4 @@
   padding: $layout-01 $layout-03;
   padding-bottom: $layout-01;
   grid-template-rows: fit-content(20%) auto $layout-05;
-
 }
