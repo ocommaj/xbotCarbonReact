@@ -14,7 +14,8 @@ export default function MainBodyGrid() {
         }) );
 
   return (
-      <div className="bx--grid bx--grid--full-width mainBodyGrid">
+      <div className="mainBodyGrid">
+      <div className="bx--grid bx--grid--full-width">
         <HeaderTileRow
           tileConfigs={tileConfigs}
           activeSectionId={activeSectionId}
@@ -26,6 +27,7 @@ export default function MainBodyGrid() {
           activeSectionId={activeSectionId}
           animate={animate.mainBody.contentWindow}/>
         <FooterControlsRow />
+      </div>
       </div>
   )
 }

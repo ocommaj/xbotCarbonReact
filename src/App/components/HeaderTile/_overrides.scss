@@ -1,0 +1,16 @@
+span.headerTile {
+  .bx--tile {
+    background-color: $interactive-01;
+    display: flex;
+    flex-direction: column-reverse;
+
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    cursor: pointer;
+  }
+
+  .bx--tile:hover {
+    background-color: $hover-primary;
+  }
+}

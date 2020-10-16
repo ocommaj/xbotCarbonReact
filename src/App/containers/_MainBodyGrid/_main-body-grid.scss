@@ -2,7 +2,7 @@
 @import './_MainContentRow/main-content-row';
 @import './_FooterControlsRow/footer-controls-row';
 
-.mainBodyGrid.bx--grid {
+.mainBodyGrid .bx--grid {
   display: grid;
   height: 100vh;
   padding: $layout-01 $layout-03;

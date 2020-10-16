@@ -1,26 +1,7 @@
+@import './overrides';
+
 .backgroundPicker {
   position: absolute;
   bottom: $layout-01;
   right: $layout-02;
-
-  .bx--dropdown.bx--list-box,
-  .bx--list-box__menu {
-    background-color: $ui-01;
-    width: $layout-07;
-  }
-
-  .bx--list-box__label,
-  .bx--dropdown.bx--list-box .bx--list-box__menu-item__option {
-    color: $text-01;
-  }
-
-  .bx--dropdown.bx--list-box .bx--list-box__menu-item--highlighted {
-    background-color: $ui-04;
-  }
-
-  .bx--list-box__field:focus,
-  .bx--list-box__menu:focus {
-    outline: solid 1px $ui-05;
-  }
-
 }

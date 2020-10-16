@@ -2,7 +2,6 @@
   display: flex;
   justify-content: space-between;
 
-
   .title {
     @include carbon--type-style("expressive-heading-05", true);
     color: $text-04;
