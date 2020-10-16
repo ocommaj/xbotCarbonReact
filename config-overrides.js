@@ -18,6 +18,7 @@ module.exports = override(
     ['@animations']: path.resolve(__dirname, './src/App/animations'),
     ['@components']: path.resolve(__dirname, './src/App/components'),
     ['@containers']: path.resolve(__dirname, './src/App/containers'),
+    ['@hooks']: path.resolve(__dirname, './src/App/hooks'),
     ['@models']: path.resolve(__dirname, './src/models'),
     ['@scss']: path.resolve(__dirname, './src/scss')
   })

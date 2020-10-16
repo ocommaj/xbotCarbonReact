@@ -4,6 +4,7 @@
 .tabbedWindowContent {
   max-height: 100%;
   display: flex;
+  flex-grow: 1;
   flex-direction: column;
 
   .bx--tabs__nav {
@@ -26,6 +27,10 @@
 
   .bx--tab-content {
     max-height: calc(100% - 2.5rem);
+    flex-grow: 1;
+    //display: flex;
+    //flex-direction: column;
+    //background-color: $interactive-04;
   }
 
   // sections about dropdown filters below

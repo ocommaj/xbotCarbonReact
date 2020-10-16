@@ -1,9 +1,9 @@
 @import './_SinglePane/_single-pane-content';
 @import './_Tabbed/tabbed-window-content';
 @import './_TilesPreviewer/tiles-previewer';
+@import './_CodePen/codepen';
 
 .mainContentWindow {
-  
   background-color: $ui-01;
   flex-grow: 1;
   display: flex;

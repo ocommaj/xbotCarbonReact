@@ -1,0 +1,40 @@
+@import './Editor/editor';
+
+.codepen {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-content: stretch;
+  height: 100%;
+}
+
+.pane {
+  display: flex;
+  position: relative;
+}
+
+.top-pane {
+  background-color: $ui-01;
+  flex-grow: 1;
+  //resize: vertical;
+  //overflow-y: auto;
+  //overflow-x: hidden;
+  max-height: 40vh;
+}
+
+/*.resizer-btm {
+    position: absolute;
+    bottom: 0;
+    cursor: row-resize;
+    height: $layout-01;
+    left: 0;
+    width: 100%;
+}*/
+
+.bottom-pane {
+  //flex-basis: 400px;
+  flex-grow: 1;
+  //align-content: stretch;
+
+
+}

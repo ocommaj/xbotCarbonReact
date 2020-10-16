@@ -1,0 +1,56 @@
+.editor-container {
+  flex-grow: 1;
+  flex-basis: 0;
+  display: flex;
+  flex-direction: column;
+  align-content: stretch;
+  padding: 0;
+  padding-bottom: $spacing-02;
+}
+
+.editor-container:nth-child(2) {
+  padding: 0 $spacing-03;
+  padding-bottom: $spacing-02;
+}
+
+.editor-container.collapsed {
+  flex-grow: 0;
+}
+
+.editor-container.collapsed .CodeMirror-scroll {
+  position: absolute;
+  overflow: hidden !important;
+}
+
+.editor-title {
+  @include carbon--type-style('expressive-heading-03');
+  display: flex;
+  justify-content: space-between;
+  background-color: $interactive-04;
+  color: $text-04;
+  padding: $spacing-03 $spacing-03 $spacing-03 $spacing-05;
+  //border-top-right-radius: $spacing-03;
+  //border-top-left-radius: $spacing-03;
+}
+
+.expand-collapse-button {
+  margin-left: $spacing-03;
+  background: none;
+  border: none;
+  color: $icon-01;
+  cursor: pointer;
+}
+
+.CodeMirror {
+  @include carbon--type-style('code-02');
+  font-family: carbon--font-family('mono');
+  height: 100% !important;
+}
+
+.code-mirror-wrapper {
+  //flex-shrink: 1;
+  flex-grow: 1;
+  //border-bottom-right-radius: $spacing-03;
+  //border-bottom-left-radius: $spacing-03;
+  overflow: hidden;
+}
