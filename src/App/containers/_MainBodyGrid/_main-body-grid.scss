@@ -1,22 +1,11 @@
 @import './_HeaderTileRow/header-tile-row';
 @import './_MainContentRow/main-content-row';
-@import '../_FooterControls/footer-controls';
+@import './_FooterControlsRow/footer-controls-row';
 
-.mainBodyGrid {
-  display: grid;
-  height: 100vh;
-  padding: 0 $layout-03;
-  padding-top: $layout-01;
-
-  //padding-bottom: $layout-01;
-  //grid-template-rows: fit-content(20%) auto $layout-05;
-  grid-template-rows: fit-content(20%) auto;
-}
-
-/*.mainBodyGrid .bx--grid {
+.mainBodyGrid .bx--grid {
   display: grid;
   height: 100vh;
   padding: $layout-01 $layout-03;
   padding-bottom: $layout-01;
   grid-template-rows: fit-content(20%) auto $layout-05;
-}*/
+}
