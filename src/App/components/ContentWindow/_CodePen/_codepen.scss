@@ -1,5 +1,5 @@
-//@import './Editor/editor';
 @import '../../CodeMirrorEditor/code-mirror-editor';
+@import '../../ResizablePane/resizable-pane';
 
 .codepen {
   position: relative;
@@ -15,26 +15,23 @@
   flex-grow: 1;
 }
 
+#codepenTopPane {
+    background-color: $ui-01;
+    overflow-y: auto;
+    overflow-x: hidden;
+    max-height: 40vh;
+}
+
 .top-pane {
   background-color: $ui-01;
-  //flex-grow: 1;
-  //resize: vertical;
-  //overflow-y: auto;
-  //overflow-x: hidden;
   max-height: 40vh;
 }
 
-/*.resizer-btm {
-    position: absolute;
-    bottom: 0;
-    cursor: row-resize;
-    height: $layout-01;
-    left: 0;
-    width: 100%;
-}*/
-
 .bottom-pane {
-  //flex-basis: 400px;
-  //flex-grow: 1;
-  //align-content: stretch;
+  align-content: stretch;
+
+  iframe {
+    flex-grow: 1;
+    margin: 0;
+  }
 }
