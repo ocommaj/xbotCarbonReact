@@ -6,26 +6,25 @@ export default function BackgroundPicker(props) {
     animation,
     mapConfigs,
     currentBackground,
-    updateBackgroundImage
+    setBackground
   } = props
 
   const [currentItem, setCurrentItem] = useState(currentBackground),
         satelliteViewItems = mapConfigs.map(conf => {
           return {
             label: conf.label,
-            satView_url: conf.satView_url
-          }
+            satView_url: conf.satView_url  }
         });
 
   useEffect(() => {
-    const params = { setNewURL: updateBackgroundImage, url: currentItem }
+    const params = { setNewURL: setBackground, url: currentItem }
     animation(params)
 
   }, [currentItem])
 
   return (
-    <span className="backgroundPicker">
     <Dropdown
+      className="backgroundPicker"
       arialabel="Change Background"
       id="backgroundPicker"
       titleText="Satellite view"
@@ -34,8 +33,7 @@ export default function BackgroundPicker(props) {
       itemToString={(item) => (item ? item.label : '')}
       onChange={({ selectedItem }) => setCurrentItem(selectedItem)}
       selectedItem={ currentItem }
-      label={currentItem.label}
+      label={ currentItem.label }
     />
-    </span>
   )
 }

@@ -1,9 +1,7 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 export default function MapboxBG(props) {
-  const {
-    imageURL
-  } = props
+  const { imageURL } = props
 
   return (
     <div

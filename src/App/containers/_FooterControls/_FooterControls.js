@@ -12,26 +12,12 @@ export default function FooterControls() {
         <StickyButton />
       </span>
       <span className="controlMenus">
-      <BackgroundPicker
-        animation={ animate.background.fadeBetweenViews }
-        mapConfigs={ staticMaps }
-        currentBackground={ bg }
-        updateBackgroundImage={ setBg } />
+        <BackgroundPicker
+          animation={ animate.background.fadeBetweenViews }
+          mapConfigs={ staticMaps }
+          currentBackground={ bg }
+          setBackground={ setBg } />
       </span>
     </div>
   )
 }
-
-/*<div className="bx--row footerControlsRow">
-  <span className="dashTopButtons">
-    <StickyButton />
-  </span>
-</div>*/
-
-/*<span className="controlMenus">
-<BackgroundPicker
-  animation={ animate.background.fadeBetweenViews }
-  mapConfigs={ staticMaps }
-  currentBackground={ bg }
-  updateBackgroundImage={ setBg } />
-</span>*/
