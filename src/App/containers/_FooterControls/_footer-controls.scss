@@ -6,7 +6,8 @@
   bottom: $layout-01;
   padding: 0 $layout-01;
   display: flex;
-  background-color: $interactive-04;
+  justify-content: space-between;
+  //background-color: $interactive-04;
 
   .controlMenus {
     opacity: 0;
