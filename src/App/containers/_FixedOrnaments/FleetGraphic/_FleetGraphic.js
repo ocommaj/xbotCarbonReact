@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import WrappedVG from '@components/VectorGraphics/WrappedPictogram'
-import Ship from '@components/VectorGraphics/CargoShip240'
+import Graphic from '@components/VectorGraphics'
 
 export default function FleetGraphic(props) {
   const { animate } = props,
@@ -32,9 +31,9 @@ export default function FleetGraphic(props) {
     <div className="fleetGraphic">
       <span className="fleetGraphicContainer">
         {offsets.map((off, i) => { return (
-          <WrappedVG
+          <Graphic
             key={i}
-            pictogram=<Ship />
+            pictogram='cargoShip240'
             style={ {marginTop: off} }
             onClick={() => {
               const params = {

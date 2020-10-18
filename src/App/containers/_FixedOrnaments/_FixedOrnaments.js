@@ -4,7 +4,7 @@ import MapboxBG from '@components/MapboxBG'
 import FleetGraphic from './FleetGraphic'
 
 export default function FixedOrnaments() {
-  const { animate, bg, setBg } = useContext(AppContext);
+  const { animate, bg } = useContext(AppContext);
 
   return (
     <>

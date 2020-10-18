@@ -3,12 +3,12 @@
 
 .footerControls {
   position: fixed;
-  //width: calc(100% - 2rem);
-  bottom: 0;
-  margin: $layout-01;
-  //left: $layout-03;
+  bottom: $layout-01;
+  padding: 0 $layout-01;
   display: flex;
-  //width: $layout-05;
-  justify-content: space-between;
   background-color: $interactive-04;
+
+  .controlMenus {
+    opacity: 0;
+  }
 }
