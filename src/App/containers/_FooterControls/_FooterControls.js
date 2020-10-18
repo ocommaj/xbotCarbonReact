@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState } from 'react';
 import { AppContext } from '@App';
 import StickyButton from '@components/StickyButton';
 import BackgroundPicker from '@components/BackgroundPicker';
@@ -6,8 +6,6 @@ import BackgroundPicker from '@components/BackgroundPicker';
 export default function FooterControls() {
   const { animate, staticMaps, bg, setBg } = useContext(AppContext),
         [menusExpanded, setMenusExpanded] = useState(false);
-
-  useEffect(() => menusExpander(menusExpanded), [menusExpanded])
 
   return (
     <div className="footerControls">
@@ -26,12 +24,18 @@ export default function FooterControls() {
     </div>
   )
 
-  function menusExpander(openState) {
-    const footerControls = document.querySelector('.footerControls')
-    animate.contentWindow.heightToggler(openState)
-    footerControls.style.width = !openState ? '5rem' : '100vw'
+  function clickHandler() {
+    setMenusExpanded(!menusExpanded)
+    footerToggler(!menusExpanded)
+   }
+
+  function footerToggler(openState) {
+    const toggleFooter = animate.footerControls.toggler,
+          toggleWindow = animate.contentWindow.heightToggler,
+          openFooter = () => { toggleWindow(openState, toggleFooter) },
+          closeFooter = () => { toggleFooter(openState, toggleWindow) };
+
+    return openState === true ? openFooter() : closeFooter()
   }
 
-  function clickHandler() {
-    setMenusExpanded(!menusExpanded) }
 }

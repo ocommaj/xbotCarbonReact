@@ -6,11 +6,8 @@ import TilesPreviewerAnimations from './tilesPreviewer';
 const registerAnimations = () => ({
   collapse: (completionHandler) => collapseToHide(completionHandler),
   reveal: (obj) => revealFromHidden(obj),
-  heightToggler: (respondToState) => heightToggler(respondToState),
-  content: {
-    tilesPreviewer: () => TilesPreviewerAnimations()
-  }
-
+  heightToggler: (state, onComplete) => heightToggler(state, onComplete),
+  content: { tilesPreviewer: () => TilesPreviewerAnimations() }
 })
 
 export default function ComposeAnimations() {

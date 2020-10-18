@@ -6,6 +6,7 @@ const Animate = () => {
   const self = {
           header: MainBodyAnimations.header(),
           contentWindow: MainBodyAnimations.contentWindow(),
+          footerControls: MainBodyAnimations.footerControls,
           background: FixedOrnamentAnimations.background(),
           fleet: FixedOrnamentAnimations.fleet()
         }

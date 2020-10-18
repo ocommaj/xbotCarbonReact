@@ -1,13 +1,15 @@
 import { gsap } from 'gsap'
 
-export default function heightToggler(respondToState) {
-  const mainWindow = document.querySelector('.mainContentWindow');
+export default function heightToggler(respondToState, onComplete) {
+  const mainWindow = document.querySelector('.mainContentWindow'),
+        deltaHeight = respondToState === true ? '-=6rem' : '+=6rem',
+          tl = gsap.timeline({
+            paused: true,
+            onComplete: () => { if (onComplete) { onComplete(respondToState) }}
+          });
 
-  if (!!mainWindow) {
-    const deltaHeight = respondToState === true ? '-=6rem' : '+=6rem',
-          tl = gsap.timeline({ paused: true })
-            .to(mainWindow, {height: deltaHeight});
+    if (!!mainWindow) { tl.to(mainWindow, {height: deltaHeight}) };
 
     tl.play()
-  }
+  
 }
