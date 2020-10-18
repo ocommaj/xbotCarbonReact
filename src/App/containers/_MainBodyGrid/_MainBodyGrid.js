@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react';
 import { AppContext } from '@App';
 import HeaderTileRow from './_HeaderTileRow';
 import MainContentRow from './_MainContentRow';
+import FooterControlsRow from './_FooterControlsRow';
 
 export default function MainBodyGrid() {
   const { animate, sections } = useContext(AppContext),
@@ -14,6 +15,7 @@ export default function MainBodyGrid() {
 
   return (
     <div className="mainBodyGrid">
+      <div className="bx--grid bx--grid--full-width">
         <HeaderTileRow
           className="headerTileRow"
           tileConfigs={ tileConfigs }
@@ -25,6 +27,8 @@ export default function MainBodyGrid() {
           sections={ sections }
           activeSectionId={ activeSectionId }
           animate={ animate.contentWindow } />
+        <FooterControlsRow />
+      </div>
     </div>
   )
 }

@@ -1,4 +1,5 @@
-@import './_EditorsPane/editors-pane';
+@import '../../CodeMirrorEditor/code-mirror-editor';
+@import '../../ResizablePane/resizable-pane';
 
 .codepen {
   position: relative;
