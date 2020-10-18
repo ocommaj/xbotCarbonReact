@@ -1,13 +1,7 @@
 import React, { useState } from 'react';
-import 'codemirror/lib/codemirror.css';
-import 'codemirror/addon/edit/closebrackets';
-import 'codemirror/addon/display/autorefresh';
-import './mirrorCarbonGray90.css';
-import 'codemirror/mode/xml/xml';
-import 'codemirror/mode/css/css';
-import 'codemirror/mode/javascript/javascript';
 import { Controlled as ControlledEditor } from 'react-codemirror2';
 import { Maximize20, Minimize20 } from '@carbon/icons-react';
+import './_codeMirrorImports';
 
 export default function CodeMirrorEditor(props) {
   const {

@@ -14,7 +14,7 @@ export default function FooterControls() {
       <span className="dashTopButtons">
         <StickyButton
           clickHandler={ clickHandler }
-          assistiveText={ 'Settings' }/>
+          assistiveText={ 'Settings' } />
       </span>
       <span className="controlMenus">
         <BackgroundPicker
@@ -28,8 +28,10 @@ export default function FooterControls() {
 
   function menusExpander(openState) {
     const footerControls = document.querySelector('.footerControls')
+    animate.contentWindow.heightToggler(openState)
     footerControls.style.width = !openState ? '5rem' : '100vw'
   }
 
-  function clickHandler() { setMenusExpanded(!menusExpanded) }
+  function clickHandler() {
+    setMenusExpanded(!menusExpanded) }
 }

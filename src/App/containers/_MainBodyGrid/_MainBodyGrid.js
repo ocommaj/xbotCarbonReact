@@ -15,11 +15,13 @@ export default function MainBodyGrid() {
   return (
     <div className="mainBodyGrid">
         <HeaderTileRow
+          className="headerTileRow"
           tileConfigs={ tileConfigs }
           activeSectionId={ activeSectionId }
           setActiveSectionId={ setActiveSectionId }
           animate={ animate.header } />
         <MainContentRow
+          className="mainContentRow"
           sections={ sections }
           activeSectionId={ activeSectionId }
           animate={ animate.contentWindow } />
