@@ -21,7 +21,7 @@ export default function switchPreviewerTiles(params) {
           })
           .collapsePreviewPane({ previewCol, previewPane })
           .resizeArticlePreviewTiles(
-            {tile: outgoingTile, tiles, tilesExpanded})
+            {tile: outgoingTile, tiles, tilesExpanded}, '<.4')
           .resizeArticlePreviewTiles(
             {tile, tiles, tilesExpanded: false})
 
