@@ -1,14 +1,18 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useRef } from 'react';
 import { AppContext } from '@App';
 import StickyButton from '@components/StickyButton';
 import BackgroundPicker from '@components/BackgroundPicker';
+import useClickOutsideDetector from '@hooks/useClickOutsideDetector';
 
 export default function FooterControls() {
   const { animate, staticMaps, bg, setBg } = useContext(AppContext),
-        [menusExpanded, setMenusExpanded] = useState(false);
+        [menusExpanded, setMenusExpanded] = useState(false),
+        wrapperRef = useRef(null);
+
+  useClickOutsideDetector(wrapperRef, handleClickOutside)
 
   return (
-    <div className="footerControls">
+    <div className="footerControls" ref={wrapperRef}>
       <span className="dashTopButtons">
         <StickyButton
           clickHandler={ clickHandler }
@@ -29,13 +33,16 @@ export default function FooterControls() {
     footerToggler(!menusExpanded)
    }
 
-  function footerToggler(openState) {
-    const toggleFooter = animate.footerControls.toggler,
-          toggleWindow = animate.contentWindow.heightToggler,
-          openFooter = () => { toggleWindow(openState, toggleFooter) },
-          closeFooter = () => { toggleFooter(openState, toggleWindow) };
+   function handleClickOutside() {
+     if (menusExpanded === true) { clickHandler() }
+   }
 
-    return openState === true ? openFooter() : closeFooter()
-  }
+   function footerToggler(openState) {
+     const toggleFooter = animate.footerControls.toggler,
+           toggleWindow = animate.contentWindow.heightToggler,
+           openFooter = () => toggleWindow(openState, toggleFooter),
+           closeFooter = () => toggleFooter(openState, toggleWindow);
 
+     return openState === true ? openFooter() : closeFooter()
+   }
 }
