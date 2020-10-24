@@ -1,18 +1,17 @@
 import React, { useEffect } from 'react'
 import useLocalStorage from '@hooks/useLocalStorage';
 import CodeMirrorEditor from '@components/CodeMirrorEditor';
-import ResizablePane from '@components/ResizablePane';
 import DefaultSrc from './_DefaultSrc';
 
 export default function EditorsPane(props) {
-  const { srcDoc, setSrcDoc } = props,
+  const { setSrcDoc } = props,
         [html, setHtml] = useLocalStorage('html', DefaultSrc.html()),
         [css, setCss] = useLocalStorage('css', DefaultSrc.css()),
         [js, setJs] = useLocalStorage('js', DefaultSrc.js());
 
   useEffect(() => {
-    const timeout = setTimeout(() => {
-          setSrcDoc( DefaultSrc.template(html, css, js) ) }, 250)
+    const timeout = setTimeout(
+          setSrcDoc( DefaultSrc.template(html, css, js) ) , 250)
 
     return () => clearTimeout(timeout)
   }, [html, css, js])

@@ -5,7 +5,7 @@ import PreviewPane from './PreviewPane'
 import placeholderData from './_placeholderData'
 
 export default function TilesPreviewer({ props }) {
-  const { animate, data, content } = props,
+  const { animate, data } = props,
         [previewArticle, setPreviewArticle] = useState(null),
         [tiles] = useState( loadTiles(data || placeholderData) );
 

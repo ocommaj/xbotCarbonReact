@@ -2,7 +2,6 @@ import { gsap } from 'gsap'
 
 export default function collapsePreviewerTiles(params) {
   const { tile,
-          previewPane,
           previewCol,
           tileCol,
           tiles,

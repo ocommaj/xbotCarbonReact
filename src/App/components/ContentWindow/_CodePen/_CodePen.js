@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import ResizablePane from '@components/ResizablePane';
 import EditorsPane from './_EditorsPane';
 
@@ -8,7 +8,7 @@ export default function CodePen() {
   return (
     <div className="codepen">
       <ResizablePane id="codepenTopPane" content={
-        <EditorsPane srcDoc={ srcDoc } setSrcDoc={ setSrcDoc } /> }/>
+        <EditorsPane setSrcDoc={ setSrcDoc } /> }/>
       <div className="pane bottom-pane">
         <iframe
           srcDoc={ srcDoc }

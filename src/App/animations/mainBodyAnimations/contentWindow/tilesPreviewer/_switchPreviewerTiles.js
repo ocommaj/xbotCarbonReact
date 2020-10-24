@@ -4,7 +4,6 @@ export default function switchPreviewerTiles(params) {
   const { tile,
           previewPane,
           previewCol,
-          tileCol,
           tiles,
           setPreviewArticle,
           tilesExpanded } = params;

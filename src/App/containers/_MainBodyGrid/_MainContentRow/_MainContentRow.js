@@ -5,8 +5,8 @@ export default function MainContentRow(props) {
   const { sections, activeSectionId, animate } = props,
         [ contentWindow, setContentWindow ] = useState(null);
 
-  useEffect(() => { loadContentWindow() }, [activeSectionId])
-  useEffect(() => { displayContentWindow() }, [contentWindow])
+  useEffect(loadContentWindow, [activeSectionId])
+  useEffect(displayContentWindow, [contentWindow])
 
   function displayContentWindow() { if (contentWindow) { animate.reveal() } }
 
