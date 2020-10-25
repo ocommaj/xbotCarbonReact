@@ -22,11 +22,13 @@ export default function FooterControls() {
       <StickyButton
         clickHandler={ handleClick.footerToggler }
         pictogram={ 'idBadge' }
-        assistiveText={ 'Log In' } />
+        assistiveText={ 'Log In' }
+        hoverAnimation={ animate.stickyButton.bounceScale } />
       <StickyButton
         clickHandler={ handleClick.footerToggler }
         pictogram={ 'gear' }
-        assistiveText={ 'Settings' } />
+        assistiveText={ 'Settings' }
+        hoverAnimation={ animate.stickyButton.spinOnZ } />
       </span>
       <span className="controlMenus">
         <BackgroundPicker

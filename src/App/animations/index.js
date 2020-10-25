@@ -8,7 +8,8 @@ const Animate = () => {
           contentWindow: MainBodyAnimations.contentWindow,
           footerControls: MainBodyAnimations.footerControls,
           background: FixedOrnamentAnimations.background,
-          fleet: FixedOrnamentAnimations.fleet
+          fleet: FixedOrnamentAnimations.fleet,
+          stickyButton: FixedOrnamentAnimations.stickyButtons
         }
 
   RegisterEffects()
