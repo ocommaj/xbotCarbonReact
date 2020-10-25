@@ -5,6 +5,7 @@ import Graphic from '@components/VectorGraphics'
 export default function StickyButton(props) {
   const {
     clickHandler,
+    pictogram,
     assistiveText
   } = props;
 
@@ -14,7 +15,7 @@ export default function StickyButton(props) {
   <span className="stickyButton">
     <Button className={ carbonClassStr } onClick={ () => clickHandler() }>
       <span className="bx--assistive-text">{ assistiveText}</span>
-      <Graphic pictogram={ 'gear' } />
+      <Graphic pictogram={ pictogram } />
     </Button>
   </span>
   )

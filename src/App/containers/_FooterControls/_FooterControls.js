@@ -9,14 +9,24 @@ export default function FooterControls() {
         [menusExpanded, setMenusExpanded] = useState(false),
         wrapperRef = useRef(null);
 
-  useClickOutsideDetector(wrapperRef, handleClickOutside)
+  const handleClick = {
+    footerToggler: () => menuToggler(),
+    outsideFooter: () => { if (!!menusExpanded) { menuToggler() } }
+  }
+
+  useClickOutsideDetector(wrapperRef, handleClick.outsideFooter)
 
   return (
     <div className="footerControls" ref={wrapperRef}>
       <span className="dashTopButtons">
-        <StickyButton
-          clickHandler={ clickHandler }
-          assistiveText={ 'Settings' } />
+      <StickyButton
+        clickHandler={ handleClick.footerToggler }
+        pictogram={ 'idBadge' }
+        assistiveText={ 'Log In' } />
+      <StickyButton
+        clickHandler={ handleClick.footerToggler }
+        pictogram={ 'gear' }
+        assistiveText={ 'Settings' } />
       </span>
       <span className="controlMenus">
         <BackgroundPicker
@@ -28,16 +38,12 @@ export default function FooterControls() {
     </div>
   )
 
-  function clickHandler() {
+  function menuToggler() {
     setMenusExpanded(!menusExpanded)
     footerToggler(!menusExpanded)
-   }
+  }
 
-   function handleClickOutside() {
-     if (menusExpanded === true) { clickHandler() }
-   }
-
-   function footerToggler(openState) {
+  function footerToggler(openState) {
      const toggleFooter = animate.footerControls.toggler,
            toggleWindow = animate.contentWindow.heightToggler,
            openFooter = () => toggleWindow(openState, toggleFooter),

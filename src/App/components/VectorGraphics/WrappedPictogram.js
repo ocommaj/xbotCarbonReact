@@ -1,6 +1,7 @@
 import React from 'react'
 import CargoShip240 from './_CargoShip240'
 import Gear from './_Gear'
+import IdBadge from './_UserId'
 
 export default function WrappedPictogram(props) {
   const {
@@ -18,5 +19,6 @@ export default function WrappedPictogram(props) {
 
 const appGraphics = {
   'cargoShip240' : <CargoShip240 />,
-  'gear' : <Gear />
+  'gear' : <Gear />,
+  'idBadge'  : <IdBadge />
 }

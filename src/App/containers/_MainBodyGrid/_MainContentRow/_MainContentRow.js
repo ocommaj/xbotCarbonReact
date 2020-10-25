@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import ContentWindow from '@components/ContentWindow';
+import ContentWindow, { templates } from '@components/ContentWindow';
 
 export default function MainContentRow(props) {
   const { sections, activeSectionId, animate } = props,
@@ -11,10 +11,19 @@ export default function MainContentRow(props) {
   function displayContentWindow() { if (contentWindow) { animate.reveal() } }
 
   function loadContentWindow() {
-    const activeSection = !!activeSectionId ? sections[activeSectionId] : null,
-          props = { activeSection, animate: animate.content },
-          toLoad = !!activeSection ?
-            <ContentWindow props={ props } /> : null;
+    const activeSection = !!activeSectionId ? sections[activeSectionId] : null;
+    
+    if (!activeSection) { return }
+
+    const props = {
+            animate,
+            'mainId': activeSection.mainId,
+            'title': activeSection.defaultStr,
+            'tabs': activeSection.options.tabs,
+          },
+          template = templates[activeSection.windowType],
+          content = template(props),
+          toLoad = <ContentWindow content={ content } />;
 
     if (contentWindow) { animate.collapse(() => { setContentWindow(toLoad) }) }
         else { setContentWindow(toLoad) }
