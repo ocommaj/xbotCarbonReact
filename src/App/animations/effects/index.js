@@ -4,6 +4,7 @@ import IconFlipperEffect from './_iconFlipper'
 import TextFlipEffect from './_textFlip'
 import HideByHeightToZero from './_hideByHeightToZero'
 import ElemBgColorChanger from './_elemBgColorChanger'
+import { HeaderTileEffects } from '../mainBodyAnimations/headerTileRow'
 
 export default function RegisterEffects() {
     ArrayFaderEffect()
@@ -12,4 +13,5 @@ export default function RegisterEffects() {
     TextFlipEffect()
     HideByHeightToZero()
     ElemBgColorChanger()
+    HeaderTileEffects()
 }

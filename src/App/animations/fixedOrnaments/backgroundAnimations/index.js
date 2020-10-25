@@ -1,9 +1,7 @@
 import fadeBetweenViews from './_backgroundFader'
 
-const registerAnimations = () => ({
+const animations = {
   fadeBetweenViews: (params) => fadeBetweenViews(params)
-})
-
-export default function ComposeAnimations() {
-  return Object.assign({}, registerAnimations())
 }
+
+export default animations

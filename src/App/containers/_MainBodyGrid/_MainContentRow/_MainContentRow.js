@@ -12,11 +12,11 @@ export default function MainContentRow(props) {
 
   function loadContentWindow() {
     const activeSection = !!activeSectionId ? sections[activeSectionId] : null;
-    
+
     if (!activeSection) { return }
 
     const props = {
-            animate,
+            'animate': animate.content,
             'mainId': activeSection.mainId,
             'title': activeSection.defaultStr,
             'tabs': activeSection.options.tabs,
