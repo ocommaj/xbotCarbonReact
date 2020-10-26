@@ -7,9 +7,15 @@
   padding: 0 $layout-01;
   display: flex;
   justify-content: space-between;
+  z-index: 5;
   //background-color: $interactive-04;
 
-  .controlMenus {
-    opacity: 0;
-  }
+}
+
+.footerControls .dashTopButtons {
+  display: flex;
+}
+
+.footerControls .controlMenus {
+  opacity: 0;
 }

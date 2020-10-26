@@ -7,15 +7,17 @@ export default function StickyButton(props) {
     clickHandler,
     pictogram,
     assistiveText,
-    hoverAnimation
+    hoverAnimation,
+    showToolTip
   } = props;
 
-  const carbonClassStr = "bx--btn bx--btn--primary bx--btn--icon-only bx--tooltip__trigger bx--tooltip--a11y bx--tooltip--top bx--tooltip--align-center";
+  const baseClassStr = "bx--btn bx--btn--primary bx--btn--icon-only"
+  const toolTipStr = "bx--tooltip__trigger bx--tooltip--a11y bx--tooltip--top bx--tooltip--align-center";
 
   return (
   <span className="stickyButton">
     <Button
-      className={ carbonClassStr }
+      className={ /*baseClassStr + ' ' + toolTipStr*/ className() }
       onClick={ () => {
         try { clickHandler() }
         catch { return }
@@ -30,4 +32,11 @@ export default function StickyButton(props) {
     </Button>
   </span>
   )
+
+  function className() {
+    const baseClassStr = "bx--btn bx--btn--primary bx--btn--icon-only";
+    const toolTipStr = "bx--tooltip__trigger bx--tooltip--a11y bx--tooltip--top bx--tooltip--align-center";
+
+    return !!showToolTip ? baseClassStr.concat(' ', toolTipStr) : baseClassStr
+  }
 }
