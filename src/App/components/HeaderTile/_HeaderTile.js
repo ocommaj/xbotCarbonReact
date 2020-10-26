@@ -22,7 +22,10 @@ export default function HeaderTile(props) {
               args.caller = e.currentTarget
               func(args)
             } }>
-          <TileLabel displayTitle={displayTitle} icon={<ChevronDown32 />} />
+          <TileLabel
+            displayTitle={displayTitle}
+            icon={<ChevronDown32 />}
+          />
         </Tile>
       </span>
     </span>

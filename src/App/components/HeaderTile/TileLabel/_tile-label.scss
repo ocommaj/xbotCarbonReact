@@ -1,18 +1,24 @@
 .tileLabel {
   display: flex;
   justify-content: space-between;
+  color: $text-04;
 
-  .title {
-    @include carbon--type-style("expressive-heading-05", true);
-    color: $text-04;
-    //opacity: 0;
+  .title.large {
+    @include carbon--type-style("expressive-heading-06", true);
+  }
+
+  .title.medium {
+    @include carbon--type-style("expressive-heading-04", true);
+  }
+
+  .title.small {
+    @include carbon--type-style("expressive-heading-03", true);
   }
 
   .iconWrapper {
     display: flex;
     flex-direction: column-reverse;
     padding-bottom: $spacing-02;
-    //opacity: 0;
 
     svg {
       fill: $text-04;

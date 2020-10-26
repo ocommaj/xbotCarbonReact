@@ -13,7 +13,7 @@ export default function MainContentRow(props) {
   function loadContentWindow() {
     const activeSection = !!activeSectionId ? sections[activeSectionId] : null;
 
-    if (!activeSection) { return }
+    if (!activeSection) return;
 
     const props = {
             'animate': animate.content,
