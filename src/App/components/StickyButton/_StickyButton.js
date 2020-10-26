@@ -11,13 +11,10 @@ export default function StickyButton(props) {
     showToolTip
   } = props;
 
-  const baseClassStr = "bx--btn bx--btn--primary bx--btn--icon-only"
-  const toolTipStr = "bx--tooltip__trigger bx--tooltip--a11y bx--tooltip--top bx--tooltip--align-center";
-
   return (
   <span className="stickyButton">
     <Button
-      className={ /*baseClassStr + ' ' + toolTipStr*/ className() }
+      className={ className() }
       onClick={ () => {
         try { clickHandler() }
         catch { return }
