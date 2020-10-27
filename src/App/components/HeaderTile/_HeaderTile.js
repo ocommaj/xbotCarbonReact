@@ -12,7 +12,7 @@ export default function HeaderTile(props) {
   } = props
 
   return (
-    <span className={`bx--col ${colClass} headerTile`}>
+    <span className={`bx--col ${colClass} headerTileWrapper`}>
       <span className="bx--aspect-ratio bx--aspect-ratio--1x1">
         <Tile
           id={sectionId}
@@ -21,7 +21,10 @@ export default function HeaderTile(props) {
               const {args, func} = clickHandler
               args.caller = e.currentTarget
               func(args)
-            } }>
+            } }
+          onMouseOver={ (e) => _highlightTile(e.currentTarget, true) }
+          onMouseLeave={ (e) => _highlightTile(e.currentTarget, false) }
+          >
           <TileLabel
             displayTitle={displayTitle}
             icon={<ChevronDown32 />}
@@ -30,4 +33,9 @@ export default function HeaderTile(props) {
       </span>
     </span>
   )
+
+  function _highlightTile(tile, makeHighlighted) {
+    if (tile.classList.contains('activeSection')) { return };
+    tile.style.background = !!makeHighlighted ? '#0353e9' : '#0f62fe';
+  }
 }

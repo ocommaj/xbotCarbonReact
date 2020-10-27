@@ -1,4 +1,4 @@
-span.headerTile {
+.headerTileWrapper {
   .bx--tile {
     background-color: $interactive-01;
     display: flex;
@@ -10,7 +10,10 @@ span.headerTile {
     cursor: pointer;
   }
 
-  .bx--tile:hover {
-    background-color: $hover-primary;
-  }
+
+}
+
+.bx--tile.headerTile.activeSection {
+  background-color: red;
+  //visibility: hidden;
 }
