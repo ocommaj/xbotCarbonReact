@@ -1,5 +1,5 @@
-.backgroundPicker {
-
+#backgroundPicker {
+  width: $layout-07;
   .bx--dropdown.bx--list-box,
   .bx--list-box__menu {
     background-color: $ui-01;
@@ -19,5 +19,5 @@
   .bx--list-box__menu:focus {
     outline: solid 1px $ui-05;
   }
-  
+
 }

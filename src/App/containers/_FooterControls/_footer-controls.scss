@@ -8,7 +8,6 @@
   display: flex;
   justify-content: space-between;
   z-index: 5;
-  //background-color: $interactive-04;
 
 }
 
@@ -17,5 +16,11 @@
 }
 
 .footerControls .controlMenus {
+  display: flex;
+  align-items: flex-start;
   opacity: 0;
+
+  .bx--dropdown__wrapper.bx--list-box__wrapper {
+    margin-left: $layout-03;
+  }
 }

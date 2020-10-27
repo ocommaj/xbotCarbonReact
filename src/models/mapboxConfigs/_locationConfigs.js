@@ -15,5 +15,5 @@ const locationConfigs = [
     label: 'Kiribati',
     pos: {lat: 1.88, long: -157.45, zoom: 10, pitch: 35, hdg: 10} }
   ]
-
+  
 export default locationConfigs

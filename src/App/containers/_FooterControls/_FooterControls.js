@@ -1,5 +1,6 @@
 import React, { useContext, useState, useRef } from 'react';
 import { AppContext } from '@App';
+import { Toggle } from 'carbon-components-react';
 import StickyButton from '@components/StickyButton';
 import BackgroundPicker from '@components/BackgroundPicker';
 import useClickOutsideDetector from '@hooks/useClickOutsideDetector';
@@ -33,6 +34,12 @@ export default function FooterControls() {
         showToolTip={ true } />
       </span>
       <span className="controlMenus">
+        <Toggle
+          id={ 'tooltipToggler' }
+          labelText={'Tool Tips'}
+          labelA={''}
+          labelB={''}
+        />
         <BackgroundPicker
           animation={ animate.background.fadeBetweenViews }
           mapConfigs={ staticMaps }
