@@ -12,6 +12,7 @@ export default function App() {
         [ bg, setBg ] = useState( getRandomStaticMap() ),
         [ showLoginModal, setShowLoginModal ] = useState(false),
         [ showToolTips, setShowToolTips ] = useState(true),
+        
         contextValue = {
           staticMaps,
           bg,
