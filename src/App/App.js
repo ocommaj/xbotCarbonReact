@@ -10,7 +10,7 @@ export const AppContext = React.createContext()
 export default function App() {
   const [ staticMaps, getRandomStaticMap ] = Configs.mapbox(),
         [ bg, setBg ] = useState( getRandomStaticMap() ),
-        [ showLoginModal, setShowLoginModal ] = useState(true),
+        [ showLoginModal, setShowLoginModal ] = useState(false),
         [ showToolTips, setShowToolTips ] = useState(true),
         contextValue = {
           staticMaps,
