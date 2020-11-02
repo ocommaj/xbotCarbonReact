@@ -1,7 +1,7 @@
 import { gsap } from 'gsap'
 
 export default function reduceHeaderTileRow(params) {
-  const { caller: fromTile, setActiveId } = params,
+  const { caller: fromTile, setActiveId, setHeaderBannerMode } = params,
         row = document.querySelector('.bx--row.headerTileRow'),
         tiles = row.querySelectorAll('.bx--tile.headerTile'),
         tl = gsap.timeline({
@@ -16,9 +16,10 @@ export default function reduceHeaderTileRow(params) {
 
 const _collapseTiles = (tiles, fromTile) => {
   const tilesArr = gsap.utils.toArray(tiles),
-        labels = tilesArr.map(t => t.querySelector('.tileLabel .title') ),
+        labels = tilesArr.map(t => t.querySelector('.tileLabel') ),
+        titles = labels.map(t => t.querySelector('.title') ),
         fromIdx = tilesArr.indexOf(fromTile),
         tl = gsap.timeline()
-          .collapseHeaderTiles({tiles, labels, idx: fromIdx});
+          .collapseHeaderTiles({tiles, titles, idx: fromIdx});
   return tl
 }

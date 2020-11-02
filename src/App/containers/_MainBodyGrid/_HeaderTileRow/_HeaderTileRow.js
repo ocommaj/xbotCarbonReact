@@ -9,7 +9,7 @@ export default function HeaderTileRow(props) {
     animate } = props;
 
   const constructClickHandler = () => ({
-    args: {activeId: activeSectionId, setActiveId: setActiveSectionId},
+    args: { activeId: activeSectionId, setActiveId: setActiveSectionId },
     func: !activeSectionId ? animate.reduceTiles : animate.switchTiles
   })
 

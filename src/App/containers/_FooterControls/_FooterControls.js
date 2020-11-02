@@ -6,9 +6,16 @@ import BackgroundPicker from '@components/BackgroundPicker';
 import useClickOutsideDetector from '@hooks/useClickOutsideDetector';
 
 export default function FooterControls() {
-  const { animate, staticMaps, bg, setBg } = useContext(AppContext),
-        [menusExpanded, setMenusExpanded] = useState(false),
-        wrapperRef = useRef(null);
+  const {
+    animate,
+    staticMaps,
+    bg,
+    setBg,
+    showToolTips,
+    setShowToolTips
+  } = useContext(AppContext),
+    [menusExpanded, setMenusExpanded] = useState(false),
+    wrapperRef = useRef(null);
 
   const handleClick = {
     footerToggler: () => menuToggler(),
@@ -25,13 +32,13 @@ export default function FooterControls() {
         pictogram={ 'idBadge' }
         assistiveText={ 'Log In' }
         hoverAnimation={ animate.stickyButton.bounceScale }
-        showToolTip={ true } />
+        showToolTip={ showToolTips } />
       <StickyButton
         clickHandler={ handleClick.footerToggler }
         pictogram={ 'gear' }
         assistiveText={ 'Settings' }
         hoverAnimation={ animate.stickyButton.spinOnZ }
-        showToolTip={ true } />
+        showToolTip={ showToolTips } />
       </span>
       <span className="controlMenus">
         <Toggle
@@ -39,6 +46,8 @@ export default function FooterControls() {
           labelText={'Tool Tips'}
           labelA={''}
           labelB={''}
+          defaultToggled={ showToolTips }
+          onToggle={ () => setShowToolTips(!showToolTips) }
         />
         <BackgroundPicker
           animation={ animate.background.fadeBetweenViews }

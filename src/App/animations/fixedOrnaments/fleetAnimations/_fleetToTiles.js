@@ -59,7 +59,6 @@ const _expandTiles = (tiles) => {
   const tileArray = gsap.utils.toArray(tiles),
         titles = tileArray.map(t => {return t.querySelector('.title')}),
         icons = tileArray.map(t => { return t.querySelector('.iconWrapper')}),
-
         tl = gsap.timeline({
           defaults: {
             duration: .7,
@@ -73,6 +72,7 @@ const _expandTiles = (tiles) => {
       .to(tiles, { height: "100%" }, '<.4')
       .from(titles, { opacity: 0}, '-=.4')
       .from(icons, { opacity: 0, rotateY: '-=180deg'}, '<.2')
+
 
 
   return tl

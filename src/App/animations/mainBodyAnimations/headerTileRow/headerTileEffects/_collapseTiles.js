@@ -4,7 +4,7 @@ const initCollapseHeaderTiles = () => {
   gsap.registerEffect({
     name: "collapseHeaderTiles",
     effect: (target, config) => {
-      const { tiles, labels, idx } = [...target][0],
+      const { tiles, titles, idx } = [...target][0],
             tl = gsap.timeline({
               defaults: {
                 duration: 1,
@@ -13,7 +13,7 @@ const initCollapseHeaderTiles = () => {
                 stagger: {amount: .2, from: idx}
               } })
             .to(tiles, {height: "4.5rem" })
-            .restyleHeaderLabel(labels, '<');
+            .restyleHeaderLabel(titles, '<');
 
       return tl
       },

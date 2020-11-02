@@ -9,10 +9,13 @@ export const AppContext = React.createContext()
 export default function App() {
   const [ staticMaps, getRandomStaticMap ] = Configs.mapbox(),
         [ bg, setBg ] = useState( getRandomStaticMap() ),
+        [ showToolTips, setShowToolTips ] = useState(true),
         contextValue = {
           staticMaps,
           bg,
           setBg,
+          showToolTips,
+          setShowToolTips,
           animate: Animate(),
           sections: Configs.sections()
         };

@@ -6,7 +6,7 @@ export default function TileLabel(props) {
     icon
   } = props
   return (
-    <div className="tileLabel">
+    <div className="tileLabel bannerMode">
       <h1 className="title large">{displayTitle}</h1>
       <span className="iconWrapper">
         {icon}
