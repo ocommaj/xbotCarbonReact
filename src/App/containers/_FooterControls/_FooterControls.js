@@ -12,7 +12,6 @@ export default function FooterControls() {
     staticMaps,
     bg,
     setBg,
-    setShowLoginModal,
     showToolTips,
     setShowToolTips
   } = useContext(AppContext),
@@ -21,7 +20,6 @@ export default function FooterControls() {
   wrapperRef = useRef(null);
 
   const handleClick = {
-    showLoginModal: () => setShowLoginModal(true),
     footerToggler: () => menuToggler(),
     outsideFooter: () => { if (!!menusExpanded) { menuToggler() } }
   }
@@ -31,12 +29,6 @@ export default function FooterControls() {
   return (
     <div className="footerControls" ref={wrapperRef}>
       <span className="dashTopButtons">
-      <StickyButton
-        clickHandler={ handleClick.showLoginModal }
-        pictogram={ 'idBadge' }
-        assistiveText={ 'Log In' }
-        hoverAnimation={ animate.stickyButton.bounceScale }
-        showToolTip={ showToolTips } />
       <StickyButton
           clickHandler={ () => loginWithRedirect() }
           pictogram={ 'idBadge' }
