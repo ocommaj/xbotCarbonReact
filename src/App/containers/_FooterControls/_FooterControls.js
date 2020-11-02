@@ -1,4 +1,5 @@
 import React, { useContext, useState, useRef } from 'react';
+import { useAuth0 } from '@auth0/auth0-react';
 import { AppContext } from '@App';
 import { Toggle } from 'carbon-components-react';
 import StickyButton from '@components/StickyButton';
@@ -15,6 +16,7 @@ export default function FooterControls() {
     showToolTips,
     setShowToolTips
   } = useContext(AppContext),
+  { loginWithRedirect, logout } = useAuth0(),
   [menusExpanded, setMenusExpanded] = useState(false),
   wrapperRef = useRef(null);
 
@@ -33,6 +35,18 @@ export default function FooterControls() {
         clickHandler={ handleClick.showLoginModal }
         pictogram={ 'idBadge' }
         assistiveText={ 'Log In' }
+        hoverAnimation={ animate.stickyButton.bounceScale }
+        showToolTip={ showToolTips } />
+      <StickyButton
+          clickHandler={ () => loginWithRedirect() }
+          pictogram={ 'idBadge' }
+          assistiveText={ 'auth0 Log In' }
+          hoverAnimation={ animate.stickyButton.bounceScale }
+          showToolTip={ showToolTips } />
+      <StickyButton
+        clickHandler={ () => logout() }
+        pictogram={ 'idBadge' }
+        assistiveText={ 'auth0 Logout' }
         hoverAnimation={ animate.stickyButton.bounceScale }
         showToolTip={ showToolTips } />
       <StickyButton
