@@ -19,6 +19,7 @@ export default function App() {
           setBg,
           showToolTips,
           setShowToolTips,
+          user,
           isAuthenticated,
           animate: Animate(),
           sections: Configs.sections()

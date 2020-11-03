@@ -1,6 +1,7 @@
 import React, { useContext, useState, useRef } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 import { AppContext } from '@App';
+import ProfileModal from '@components/ProfileModal';
 import { Toggle } from 'carbon-components-react';
 import StickyButton from '@components/StickyButton';
 import BackgroundPicker from '@components/BackgroundPicker';
@@ -14,9 +15,12 @@ export default function FooterControls() {
     setBg,
     showToolTips,
     setShowToolTips,
+    user,
     isAuthenticated,
   } = useContext(AppContext),
+
   { loginWithRedirect, logout } = useAuth0(),
+  [profileModalOpen, setProfileModalOpen] = useState(false),
   [menusExpanded, setMenusExpanded] = useState(false),
   wrapperRef = useRef(null),
 
@@ -29,12 +33,13 @@ export default function FooterControls() {
   useClickOutsideDetector(wrapperRef, handleClick.outsideFooter)
 
   return (
+    <>
     <div className="footerControls" ref={wrapperRef}>
       <span className="dashTopButtons">
       <StickyButton
         clickHandler={ handleClick.loginToggler }
         pictogram={ isAuthenticated === false ? 'idBadge' : 'userProfile' }
-        assistiveText={ isAuthenticated === false ? 'login' : 'logout' }
+        assistiveText={ isAuthenticated === false ? 'Login' : 'Profile' }
         hoverAnimation={ animate.stickyButton.bounceScale }
         showToolTip={ showToolTips } />
       <StickyButton
@@ -59,12 +64,18 @@ export default function FooterControls() {
           setBackground={ setBg } />
       </span>
     </div>
+    <ProfileModal
+      user={ user }
+      logout={ () => logout({ returnTo: window.location.origin }) }
+      profileModalOpen={ profileModalOpen }
+      setProfileModalOpen={ setProfileModalOpen }/>
+    </>
   )
 
   function setLoginToggler() {
      return !isAuthenticated ?
               () => loginWithRedirect() :
-              () => logout({ returnTo: window.location.origin })
+              () => setProfileModalOpen(!profileModalOpen)
   }
 
   function menuToggler() {
