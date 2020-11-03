@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useAuth0 } from '@auth0/auth0-react';
 import Configs from '@Models';
 import Animate from '@animations';
 import ScreenContents from '@containers';
@@ -10,6 +11,7 @@ export default function App() {
   const [ staticMaps, getRandomStaticMap ] = Configs.mapbox(),
         [ bg, setBg ] = useState( getRandomStaticMap() ),
         [ showToolTips, setShowToolTips ] = useState(true),
+        { isAuthenticated, user } = useAuth0(),
 
         contextValue = {
           staticMaps,
@@ -17,6 +19,7 @@ export default function App() {
           setBg,
           showToolTips,
           setShowToolTips,
+          isAuthenticated,
           animate: Animate(),
           sections: Configs.sections()
         };

@@ -13,16 +13,18 @@ export default function FooterControls() {
     bg,
     setBg,
     showToolTips,
-    setShowToolTips
+    setShowToolTips,
+    isAuthenticated,
   } = useContext(AppContext),
   { loginWithRedirect, logout } = useAuth0(),
   [menusExpanded, setMenusExpanded] = useState(false),
-  wrapperRef = useRef(null);
+  wrapperRef = useRef(null),
 
-  const handleClick = {
+  handleClick = {
     footerToggler: () => menuToggler(),
-    outsideFooter: () => { if (!!menusExpanded) { menuToggler() } }
-  }
+    outsideFooter: () => { if (!!menusExpanded) { menuToggler() } },
+    loginToggler: setLoginToggler()
+  };
 
   useClickOutsideDetector(wrapperRef, handleClick.outsideFooter)
 
@@ -30,15 +32,9 @@ export default function FooterControls() {
     <div className="footerControls" ref={wrapperRef}>
       <span className="dashTopButtons">
       <StickyButton
-          clickHandler={ () => loginWithRedirect() }
-          pictogram={ 'idBadge' }
-          assistiveText={ 'auth0 Log In' }
-          hoverAnimation={ animate.stickyButton.bounceScale }
-          showToolTip={ showToolTips } />
-      <StickyButton
-        clickHandler={ () => logout() }
-        pictogram={ 'idBadge' }
-        assistiveText={ 'auth0 Logout' }
+        clickHandler={ handleClick.loginToggler }
+        pictogram={ isAuthenticated === false ? 'idBadge' : 'userProfile' }
+        assistiveText={ isAuthenticated === false ? 'login' : 'logout' }
         hoverAnimation={ animate.stickyButton.bounceScale }
         showToolTip={ showToolTips } />
       <StickyButton
@@ -55,8 +51,7 @@ export default function FooterControls() {
           labelA={''}
           labelB={''}
           defaultToggled={ showToolTips }
-          onToggle={ () => setShowToolTips(!showToolTips) }
-        />
+          onToggle={ () => setShowToolTips(!showToolTips) } />
         <BackgroundPicker
           animation={ animate.background.fadeBetweenViews }
           mapConfigs={ staticMaps }
@@ -65,6 +60,12 @@ export default function FooterControls() {
       </span>
     </div>
   )
+
+  function setLoginToggler() {
+     return !isAuthenticated ?
+              () => loginWithRedirect() :
+              () => logout({ returnTo: window.location.origin })
+  }
 
   function menuToggler() {
     setMenusExpanded(!menusExpanded)
