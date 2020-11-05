@@ -29,8 +29,7 @@
   background-color: $interactive-04;
   color: $text-04;
   padding: $spacing-03 $spacing-03 $spacing-03 $spacing-05;
-  //border-top-right-radius: $spacing-03;
-  //border-top-left-radius: $spacing-03;
+  height: auto;
 }
 
 .expand-collapse-button {
@@ -48,9 +47,8 @@
 }
 
 .code-mirror-wrapper {
-  //flex-shrink: 1;
   flex-grow: 1;
-  //border-bottom-right-radius: $spacing-03;
-  //border-bottom-left-radius: $spacing-03;
+  height: 100%;
   overflow: hidden;
+  padding-bottom: $spacing-02;
 }
