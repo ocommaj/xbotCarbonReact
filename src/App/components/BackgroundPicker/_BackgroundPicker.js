@@ -19,7 +19,7 @@ export default function BackgroundPicker(props) {
   useEffect(() => {
     const params = { setNewURL: setBackground, url: currentItem }
     animation(params)
-  }, [currentItem])
+  }, [animation, currentItem, setBackground])
 
   return (
     <Dropdown

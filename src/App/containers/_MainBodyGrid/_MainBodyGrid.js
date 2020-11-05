@@ -12,8 +12,6 @@ export default function MainBodyGrid() {
           "sectionTitle": sections[k]["displayTitle"]
         }) );
 
-  animate.header.labelFader()
-
   return (
     <div className="mainBodyGrid">
         <HeaderTileRow

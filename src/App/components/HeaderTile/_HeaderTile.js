@@ -12,8 +12,8 @@ export default function HeaderTile(props) {
   } = props
 
   return (
-    <span className={`bx--col ${colClass} headerTileWrapper`}>
-      <span className="bx--aspect-ratio bx--aspect-ratio--1x1">
+    <div className={`bx--col ${colClass} headerTileWrapper`}>
+      <span className="bx--aspect-ratio bx--aspect-ratio--1x1 headerTileRatio">
         <Tile
           id={sectionId}
           className="headerTile"
@@ -31,7 +31,7 @@ export default function HeaderTile(props) {
           />
         </Tile>
       </span>
-    </span>
+    </div>
   )
 
   function _highlightTile(tile, makeHighlighted) {

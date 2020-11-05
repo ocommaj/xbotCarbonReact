@@ -7,7 +7,7 @@ export default function TabbedWindowContent({props}) {
   const { animate, mainId, tabs } = props,
         [filters, setFilters] = useState( loadFilters(tabs[0]) );
 
-  useEffect(() => { setFilters( loadFilters(tabs[0] ))}, [props])
+  useEffect(() => { setFilters( loadFilters(tabs[0] ))}, [tabs])
 
   return (
     <div className="tabbedWindowContent" key={`${mainId}_tabWindow`}>

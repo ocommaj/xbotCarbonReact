@@ -8,12 +8,14 @@ export default function TabPanel({ props }) {
         [panelContent, setPanelContent] = useState(
           loadFromTemplate(templateId) );
 
-  useEffect(() => { setPanelContent(loadFromTemplate(templateId) )}, [tab])
+  useEffect(() => {
+    setPanelContent( loadFromTemplate(templateId) )
+  }, [tab, templateId])
 
   function loadFromTemplate(templateId) {
     const props = {
       ...tab,
-      animate: animate[templateId] ? animate[templateId]() : null 
+      animate: animate[templateId] ? animate[templateId]() : null
     }
     return templates[templateId](props)
   }

@@ -6,7 +6,7 @@ export default function FleetGraphic(props) {
         [helperMsg, setHelperMsg] = useState(),
         offsets = ['-.5rem', '1rem', '-.75rem', '-2.25rem'];
 
-  useEffect(initAnimation, [])
+  useEffect(initAnimation, [animate])
 
   return (
     <div className="fleetGraphic">

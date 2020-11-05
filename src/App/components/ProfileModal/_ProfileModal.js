@@ -13,14 +13,10 @@ export default function ProfileModal(props) {
 
   if ( !profileModalOpen ) { return null }
 
-  const INPUT_STYLES = {
-    margin: '.5rem 0'
-  }
-
   return ReactDOM.createPortal(
     <>
     <ComposedModal
-      open={profileModalOpen}
+      open={ profileModalOpen }
       onClose={ () => setProfileModalOpen(false) }>
       <ModalHeader>
         { !!user ? user.name : 'Profile' }

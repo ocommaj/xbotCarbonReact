@@ -43,7 +43,8 @@ const _quickFleetCollapser = (wrappers, graphics, container) => {
 const _quickFleetToTiles = (graphics, tiles, container) => {
   const tl = gsap.timeline({
           defaults: {duration: .7},
-          onComplete: () => container.remove() });
+          onComplete: () => container.remove()
+        });
 
     for (var i = 0; i < graphics.length; i++) {
       let delta = MotionPathPlugin.getRelativePosition(container, tiles[i], [1, 0.25], [0.5,.75])
@@ -68,12 +69,10 @@ const _expandTiles = (tiles) => {
               ease: 'cubic-bezier(.62, .1, .8, 1)',
               from: 1} }});
 
-    tl.to(tiles, { width: "100%", opacity: 1 }, "-=.1")
+    tl.to(tiles, { width: "100%", flex: "0 0 100%", opacity: 1 }, "-=.1")
       .to(tiles, { height: "100%" }, '<.4')
-      .from(titles, { opacity: 0}, '-=.4')
-      .from(icons, { opacity: 0, rotateY: '-=180deg'}, '<.2')
-
-
+      .fromTo(titles, {opacity: 0}, { opacity: 1}, '<.2')
+      .fromTo(icons, { opacity: 0 }, { opacity: 1 }, '<')
 
   return tl
 }

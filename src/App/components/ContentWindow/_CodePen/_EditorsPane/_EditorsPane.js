@@ -14,7 +14,7 @@ export default function EditorsPane(props) {
           setSrcDoc( DefaultSrc.template(html, css, js) ) , 250)
 
     return () => clearTimeout(timeout)
-  }, [html, css, js])
+  }, [html, css, js, setSrcDoc])
 
   return (
     <>

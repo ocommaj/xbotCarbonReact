@@ -1,7 +1,7 @@
 import { gsap } from 'gsap'
 
 export default function reduceHeaderTileRow(params) {
-  const { caller: fromTile, setActiveId, setHeaderBannerMode } = params,
+  const { caller: fromTile, setActiveId } = params,
         row = document.querySelector('.bx--row.headerTileRow'),
         tiles = row.querySelectorAll('.bx--tile.headerTile'),
         tl = gsap.timeline({
