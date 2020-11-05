@@ -2,7 +2,6 @@
   display: flex;
   justify-content: space-between;
   color: $text-04;
-  //opacity: 0;
 
   .title.large {
     @include carbon--type-style("expressive-heading-06", true);
@@ -21,11 +20,8 @@
     flex-direction: column-reverse;
     padding-bottom: $spacing-02;
 
-
     svg {
-      //fill: none;
       fill: $text-04;
-      //opacity: 0;
     }
   }
 }

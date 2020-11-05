@@ -4,7 +4,8 @@ export default function TileLabel(props) {
   const {
     displayTitle,
     icon
-  } = props
+  } = props;
+  
   return (
     <div className="tileLabel bannerMode">
       <h1 className="title large">{displayTitle}</h1>

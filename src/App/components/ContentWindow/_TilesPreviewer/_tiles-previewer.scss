@@ -4,11 +4,13 @@
 
 .tilesPreviewer {
   max-height: inherit;
+  flex: 0 0 100%;
   overflow-y: scroll;
   overflow-x: hidden;
 
   .overflowWrapper {
     max-height: inherit;
+    flex: 0 0 100%;
     display: flex;
 
     .tilesColumn {

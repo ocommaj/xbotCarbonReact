@@ -19,6 +19,7 @@
 
   .bx--tab-content {
     max-height: calc(100% - 2.5rem);
+    flex: 0 0 calc(100% - 2.5rem);
     flex-grow: 1;
   }
 }
