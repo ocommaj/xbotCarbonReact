@@ -11,9 +11,12 @@ export default function HeaderTile(props) {
     colClass,
   } = props
 
+  let aspectRatio = window.matchMedia('(min-width: 376px)').matches === true ?
+          'bx--aspect-ratio bx--aspect-ratio--1x1' : null
+
   return (
     <div className={`bx--col ${colClass} headerTileWrapper`}>
-      <span className="bx--aspect-ratio bx--aspect-ratio--1x1 headerTileRatio">
+      <span className={ aspectRatio } >
         <Tile
           id={sectionId}
           className="headerTile"

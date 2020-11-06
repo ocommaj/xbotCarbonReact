@@ -35,7 +35,7 @@ const _quickFleetCollapser = (wrappers, graphics, container) => {
       tl.to(graphics, { rotateZ: "-90deg", stagger: { amount: .2} })
 
       for (let wrapper of gsap.utils.toArray(wrappers).reverse()) {
-          let delta = MotionPathPlugin.getRelativePosition(wrapper, container, [1, .5], [1,.5])
+          let delta = MotionPathPlugin.getRelativePosition(wrapper, container, [.75, .5], [.75, .5])
           tl.to(wrapper, { x: "+=" + delta.x, y: "+=" + delta.y }, '<') }
     return tl
 }

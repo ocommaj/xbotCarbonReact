@@ -1,0 +1,7 @@
+@include media('<=phone') {
+  .headerTileRow .bx--col {
+    max-width: 100%;
+    margin: $spacing-01 0;
+  }
+
+}

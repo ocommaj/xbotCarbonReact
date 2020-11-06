@@ -1,0 +1,8 @@
+@include media('<=smallDesk') {
+  .tileLabel {
+
+    .iconWrapper {
+      visibility: hidden;
+    }
+  }
+}
