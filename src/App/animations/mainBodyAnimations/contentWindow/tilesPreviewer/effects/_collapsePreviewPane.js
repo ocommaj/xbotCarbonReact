@@ -12,10 +12,11 @@ export default function initCollapsePreviewPane() {
                 ease: "cubic-bezier(0.2, 0, 0.38, 0.9)"},
               })
                 .to(previewPane.children, {
-                  opacity: 0,
-                  width: 0,
-                  duration: .5})
-                .to(previewPane, {opacity: 0 }, '<');
+                  opacity: 0, duration: .5})
+                .to(previewPane, {
+                  opacity: 0 }, '<.2')
+                .to(previewPane.children, {
+                  width: 0}, '<');
         return tl
     },
     extendTimeline: true
