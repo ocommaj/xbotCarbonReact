@@ -1,3 +1,6 @@
+@import './breakpoints';
+@import 'include-media/dist/include-media';
+
 @import '@carbon/type/scss/type';
 @import '@carbon/type/scss/styles';
 @import '@carbon/type/scss/font-face/sans';

@@ -1,8 +1,8 @@
 .fleetGraphic {
   position: absolute;
 
-  top: 4rem;
-  left: 4rem;
+  top: $layout-05;
+  left: $layout-05;
   width: 20rem;
   height: 20rem;
   z-index: 5;
@@ -39,3 +39,5 @@
     bottom: $spacing-07;
   }
 }
+
+@import './media-queries';

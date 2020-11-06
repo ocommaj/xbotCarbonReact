@@ -1,0 +1,6 @@
+@include media("<=phone") {
+  .fleetGraphic {
+    top: $layout-04;
+    left: $layout-02;
+  }
+}
