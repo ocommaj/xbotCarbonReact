@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 
 const PREFIX = 'xbot-codepen-';
 
-export default function useLocalStorage(key, initialValue) {
+export default function useLocalStorage(prefix, key, initialValue) {
   const prefixedKey = PREFIX + key;
 
   const [ value, setValue ] = useState(() => {

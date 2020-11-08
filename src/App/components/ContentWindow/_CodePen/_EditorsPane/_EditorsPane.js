@@ -5,9 +5,13 @@ import DefaultSrc from './_DefaultSrc';
 
 export default function EditorsPane(props) {
   const { setSrcDoc } = props,
-        [html, setHtml] = useLocalStorage('html', DefaultSrc.html()),
-        [css, setCss] = useLocalStorage('css', DefaultSrc.css()),
-        [js, setJs] = useLocalStorage('js', DefaultSrc.js());
+        storagePrefix = 'xbot-codepen-',
+        [html, setHtml] = useLocalStorage(
+          storagePrefix, 'html', DefaultSrc.html() ),
+        [css, setCss] = useLocalStorage(
+          storagePrefix, 'css', DefaultSrc.css()),
+        [js, setJs] = useLocalStorage(
+          storagePrefix, 'js', DefaultSrc.js());
 
   useEffect(() => {
     const timeout = setTimeout(
