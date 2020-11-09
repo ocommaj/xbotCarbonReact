@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
+import useLocalStorage from '@hooks/useLocalStorage';
 import Configs from '@Models';
 import Animate from '@animations';
 import ScreenContents from '@containers';
@@ -10,8 +11,9 @@ export const AppContext = React.createContext()
 export default function App() {
   const [ staticMaps, getRandomStaticMap ] = Configs.mapbox(),
         [ bg, setBg ] = useState( getRandomStaticMap() ),
-        [ showToolTips, setShowToolTips ] = useState(true),
         { isAuthenticated, user } = useAuth0(),
+        [ showToolTips, setShowToolTips ] = useLocalStorage(
+          'xbot-settings-', 'showToolTips', true),
 
         contextValue = {
           staticMaps,
