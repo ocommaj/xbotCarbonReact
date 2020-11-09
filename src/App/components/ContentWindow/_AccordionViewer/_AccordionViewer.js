@@ -18,15 +18,19 @@ export default function AccordionViewer({ props }) {
       return (
         <AccordionItem
           key={ key }
-          title={ <h3>{item.itemHeadline}</h3> }>
-          <p>{ item.belowTheFoldLabel }</p>
-          <Link
-            size='lg'
-            target="_blank"
-            href={ item.externalUrl }
-            children={ item.externalUrlDisplay } />
-        </AccordionItem>
-      )
+          title={ <h3>{item.itemHeadline}</h3> }
+          children={
+            <>
+              <p>{ item.belowTheFoldLabel }</p>
+              <Link
+                size='lg'
+                target="_blank"
+                href={ item.externalUrl }
+                children={ item.externalUrlDisplay }
+              />
+            </> }
+          />
+        )
     })
   }
 }
