@@ -1,9 +1,9 @@
-import React from 'react';
-import SinglePane from './_SinglePane';
-import TabbedWindow from './_Tabbed';
-import TilesPreviewer from './_TilesPreviewer';
-import CodePen from './_CodePen';
-import AccordionViewer from './_AccordionViewer';
+import React from 'react'
+import SinglePane from './_SinglePane'
+import TabbedWindow from './_Tabbed'
+import TilesPreviewer from './_TilesPreviewer'
+import CodePen from './_CodePen'
+import AccordionViewer from './_AccordionViewer'
 
 const templates = {
   'singlePane': (props) => { return <SinglePane props={props} /> },
