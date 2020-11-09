@@ -13,26 +13,20 @@ export default function AccordionViewer({ props }) {
 
   function loadItems(fromList) {
     return fromList.map((item, idx) => {
-      const key = `accordionItem_${item.id}`,
-            props = {
-              key,
-              headline: item.itemHeadline,
-              body: item.belowTheFoldLabel,
-              url: item.externalUrl
-            }
-        return (
-          <AccordionItem
-            key={ key }
-            title={ <h3>{item.itemHeadline}</h3> } >
-            <p>{ item.belowTheFoldLabel }</p>
-            <Link
-              size='lg'
-              target="_blank"
-              href={ item.externalUrl }
-              children={ item.externalUrlDisplay } />
+      const key = `accordionItem_${item.id}`
 
-          </AccordionItem>
-        )
+      return (
+        <AccordionItem
+          key={ key }
+          title={ <h3>{item.itemHeadline}</h3> }>
+          <p>{ item.belowTheFoldLabel }</p>
+          <Link
+            size='lg'
+            target="_blank"
+            href={ item.externalUrl }
+            children={ item.externalUrlDisplay } />
+        </AccordionItem>
+      )
     })
   }
 }
