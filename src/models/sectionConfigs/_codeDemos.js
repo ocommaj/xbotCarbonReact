@@ -44,7 +44,7 @@ const codeDemos = {
         "title": "External",
         "content": {
           "defaultStr": "Great Stuff from the wide wide world of sports.",
-          "panelTemplateId": "singlePane",
+          "panelTemplateId": "accordionViewer",
           "sourceJSON": "some-url"
           }
         }

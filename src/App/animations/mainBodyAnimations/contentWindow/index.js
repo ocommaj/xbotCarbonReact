@@ -7,7 +7,9 @@ const animations = {
   collapse: (completionHandler) => collapseToHide(completionHandler),
   reveal: (obj) => revealFromHidden(obj),
   heightToggler: (state, onComplete) => heightToggler(state, onComplete),
-  content: { tilesPreviewer: () => TilesPreviewerAnimations() }
+  content: {
+    tilesPreviewer: () => TilesPreviewerAnimations()
+  }
 }
 
 export default animations

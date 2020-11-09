@@ -17,6 +17,15 @@ const placeholderData = [
   { id: "tilePlaceholder_6",
     tileHeadline: "Article 6",
     previewHeadline: "Article Six"},
+  { id: "tilePlaceholder_7",
+    tileHeadline: "Article 7",
+    previewHeadline: "Article Seven"},
+  { id: "tilePlaceholder_8",
+    tileHeadline: "Article 8",
+    previewHeadline: "Article Eight"},
+  { id: "tilePlaceholder_9",
+    tileHeadline: "Article 9",
+    previewHeadline: "Article Nine"},
 ]
 
 export default placeholderData
