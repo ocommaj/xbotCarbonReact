@@ -21,6 +21,7 @@ export default function AccordionViewer({ props }) {
         <AccordionItem
           key={ key }
           title={ <h3>{item.itemHeadline}</h3> }
+          onHeadingClick={ e => collapseAllButOne(e.target) }
           children={
             <>
               <p>{ item.belowTheFoldLabel }</p>
@@ -28,11 +29,15 @@ export default function AccordionViewer({ props }) {
                 size='lg'
                 target="_blank"
                 href={ item.externalUrl }
-                children={ item.externalUrlDisplay }
-              />
-            </> }
+                children={ item.externalUrlDisplay } />
+            </>
+            }
           />
         )
     })
+  }
+
+  function collapseAllButOne(caller) {
+    console.log(caller)
   }
 }
