@@ -8,7 +8,9 @@ export default function AccordionViewer({ props }) {
         [accordionItems] = useState( loadItems(placeholderData) );
 
   return (
-    <Accordion children={ accordionItems } />
+    <Accordion
+      className="accordionViewer"
+      children={ accordionItems } />
   )
 
   function loadItems(fromList) {
