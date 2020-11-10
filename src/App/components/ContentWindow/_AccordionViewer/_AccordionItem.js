@@ -1,5 +1,6 @@
 import React from 'react';
 import { AccordionItem, Link } from 'carbon-components-react';
+import { Launch16 } from '@carbon/icons-react';
 
 export default function ExtendedItem({ props }) {
   const {
@@ -24,7 +25,15 @@ export default function ExtendedItem({ props }) {
             size='lg'
             target="_blank"
             href={ item.externalUrl }
-            children={ item.externalUrlDisplay } />
+            children={
+              <>
+              { item.externalUrlDisplay }
+              <Launch16 style={
+                { margin: 'auto',
+                  display: 'inline-block',
+                  marginLeft: '.25rem' } }/>
+              </>
+              } />
         </>
       }
     />
