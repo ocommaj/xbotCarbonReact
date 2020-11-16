@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 import useLocalStorage from '@hooks/useLocalStorage';
 import Configs from '@Models';
@@ -26,6 +26,12 @@ export default function App() {
           animate: Animate(),
           sections: Configs.sections()
         };
+
+  useEffect(() => {
+    if (user) {
+      console.log(user)
+    } else { console.log('no one logged in')}
+  }, [user])
 
   return (
     <AppContext.Provider value={ contextValue }>
