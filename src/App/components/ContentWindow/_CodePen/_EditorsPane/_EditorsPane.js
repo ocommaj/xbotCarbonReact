@@ -1,17 +1,14 @@
 import React, { useEffect } from 'react'
-import useLocalStorage from '@hooks/useLocalStorage';
+import { useLocalStorage } from '@hooks';
 import CodeMirrorEditor from '@components/CodeMirrorEditor';
 import DefaultSrc from './_DefaultSrc';
 
 export default function EditorsPane(props) {
   const { setSrcDoc } = props,
-        storagePrefix = 'xbot-codepen-',
-        [html, setHtml] = useLocalStorage(
-          storagePrefix, 'html', DefaultSrc.html() ),
-        [css, setCss] = useLocalStorage(
-          storagePrefix, 'css', DefaultSrc.css()),
-        [js, setJs] = useLocalStorage(
-          storagePrefix, 'js', DefaultSrc.js());
+        prefix = 'codepen-',
+        [html, setHtml] = useLocalStorage(`${prefix}-html`, DefaultSrc.html()),
+        [css, setCss] = useLocalStorage(`${prefix}-css`, DefaultSrc.css()),
+        [js, setJs] = useLocalStorage(`${prefix}-js`, DefaultSrc.js());
 
   useEffect(() => {
     const timeout = setTimeout(

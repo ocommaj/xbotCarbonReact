@@ -1,6 +1,10 @@
 import { useEffect, useState } from 'react'
 
-export default function useLocalStorage(prefix, key, initialValue) {
+export default function useLocalStorage(
+  key,
+  initialValue=true,
+  prefix='xbot-settings-'
+) {
   const prefixedKey = prefix + key;
 
   const [ value, setValue ] = useState(() => {

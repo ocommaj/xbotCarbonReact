@@ -5,17 +5,15 @@ import ProfileModal from '@components/ProfileModal';
 import { Toggle } from 'carbon-components-react';
 import StickyButton from '@components/StickyButton';
 import BackgroundPicker from '@components/BackgroundPicker';
-import useClickOutsideDetector from '@hooks/useClickOutsideDetector';
+import { useClickOutsideDetector } from '@hooks';
 
-export default function FooterControls() {
+export default function FooterControls({props}) {
+  const { staticMaps, bg, setBg } = props;
   const {
     animate,
-    staticMaps,
-    bg,
-    setBg,
     showToolTips,
     setShowToolTips,
-    user,
+    authUser,
     isAuthenticated,
   } = useContext(AppContext),
 
@@ -30,7 +28,7 @@ export default function FooterControls() {
     loginToggler: setLoginToggler()
   };
 
-  useClickOutsideDetector(wrapperRef, handleClick.outsideFooter)
+  useClickOutsideDetector(wrapperRef, handleClick.outsideFooter);
 
   return (
     <>
@@ -65,7 +63,7 @@ export default function FooterControls() {
       </span>
     </div>
     <ProfileModal
-      user={ user }
+      user={ authUser }
       logout={ () => logout({ returnTo: window.location.origin }) }
       profileModalOpen={ profileModalOpen }
       setProfileModalOpen={ setProfileModalOpen }/>
@@ -75,12 +73,12 @@ export default function FooterControls() {
   function setLoginToggler() {
      return !isAuthenticated ?
               () => loginWithRedirect() :
-              () => setProfileModalOpen(!profileModalOpen)
+              () => setProfileModalOpen(!profileModalOpen);
   }
 
   function menuToggler() {
-    setMenusExpanded(!menusExpanded)
-    footerToggler(!menusExpanded)
+    setMenusExpanded(!menusExpanded);
+    footerToggler(!menusExpanded);
   }
 
   function footerToggler(openState) {
@@ -89,6 +87,6 @@ export default function FooterControls() {
            openFooter = () => toggleWindow(openState, toggleFooter),
            closeFooter = () => toggleFooter(openState, toggleWindow);
 
-     return openState === true ? openFooter() : closeFooter()
+     return openState === true ? openFooter() : closeFooter();
    }
 }

@@ -3,8 +3,9 @@ import { AppContext } from '@App'
 import MapboxBG from '@components/MapboxBG'
 import FleetGraphic from './FleetGraphic'
 
-export default function FixedOrnaments() {
-  const { animate, bg } = useContext(AppContext);
+export default function FixedOrnaments({ props }) {
+  const  bg  = props,
+        { animate } = useContext(AppContext);
 
   return (
     <>
