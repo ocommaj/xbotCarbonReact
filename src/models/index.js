@@ -4,5 +4,4 @@ import UserRecord from './UserRecord'
 
 export function sections() { return Object.assign(SectionConfigs) }
 export function mapbox() { return MapboxConfigs() }
-export function userRecord(input) { return new UserRecord(input) }
 export { UserRecord }

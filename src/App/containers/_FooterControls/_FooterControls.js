@@ -13,8 +13,7 @@ export default function FooterControls({props}) {
     animate,
     showToolTips,
     setShowToolTips,
-    authUser,
-    isAuthenticated,
+    activeUser,
   } = useContext(AppContext),
 
   { loginWithRedirect, logout } = useAuth0(),
@@ -36,8 +35,8 @@ export default function FooterControls({props}) {
       <span className="dashTopButtons">
       <StickyButton
         clickHandler={ handleClick.loginToggler }
-        pictogram={ isAuthenticated === false ? 'idBadge' : 'userProfile' }
-        assistiveText={ isAuthenticated === false ? 'Login' : 'Profile' }
+        pictogram={ !activeUser ? 'idBadge' : 'userProfile' }
+        assistiveText={ !activeUser ? 'Login' : 'Profile' }
         hoverAnimation={ animate.stickyButton.bounceScale }
         showToolTip={ showToolTips } />
       <StickyButton
@@ -63,7 +62,7 @@ export default function FooterControls({props}) {
       </span>
     </div>
     <ProfileModal
-      user={ authUser }
+      user={ activeUser }
       logout={ () => logout({ returnTo: window.location.origin }) }
       profileModalOpen={ profileModalOpen }
       setProfileModalOpen={ setProfileModalOpen }/>
@@ -71,7 +70,7 @@ export default function FooterControls({props}) {
   )
 
   function setLoginToggler() {
-     return !isAuthenticated ?
+     return !activeUser ?
               () => loginWithRedirect() :
               () => setProfileModalOpen(!profileModalOpen);
   }

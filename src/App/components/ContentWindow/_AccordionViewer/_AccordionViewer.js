@@ -22,7 +22,7 @@ export default function AccordionViewer({ props }) {
 
     setAccordionItems( loadItems(placeholderData) )
 
-    }, [placeholderData, expandedItem])
+    }, [expandedItem])
 
   return (
     <Accordion

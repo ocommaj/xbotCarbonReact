@@ -9,30 +9,37 @@ import './App.scss';
 export const AppContext = React.createContext()
 
 export default function App() {
-  const { isAuthenticated, user: authUser } = useAuth0(),
+  const { user: authUser, logout } = useAuth0(),
         [ showToolTips, setShowToolTips ] = useLocalStorage('showToolTips'),
         [ login, loginError ] = useLoggedInUserRecord(),
-        [ activeUser, setActiveUser ] = useState(),
+        [ activeUser, setActiveUser ] = useState(null),
         contextValue = {
           showToolTips,
           setShowToolTips,
-          authUser,
-          isAuthenticated,
+          activeUser,
           animate: Animate(),
           sections: sections()
         };
 
   useEffect(() => {
     if (authUser) {
-      const input = UserRecord.apolloRequestReducer(authUser)
+      getActiveUserRecord(authUser, (record) => setActiveUser(record))
+    }
+
+    function getActiveUserRecord(authUser, callback) {
+      const input = UserRecord.apolloRequestReducer(authUser);
       login({ variables: { input } })
         .then(({ data }) => {
           const apolloResponse = data.loginUser.loggedInUser;
           const record = UserRecord.apolloResponseReducer(apolloResponse);
-          setActiveUser( new UserRecord(record) )
+          return callback( new UserRecord(record) )
         })
-        .catch((error) => console.log('errory!'))
-    } else { console.log('no one logged in')}
+        .catch((error) => {
+          console.dir(error)
+          logout()
+          return callback(null)
+        })
+    }
   }, [authUser])
 
   useEffect(() => { console.dir(activeUser) }, [activeUser])

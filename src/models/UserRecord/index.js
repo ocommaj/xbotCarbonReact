@@ -19,7 +19,6 @@ export default class UserRecord {
 
   static apolloResponseReducer(apolloUserRecord) {
     return {
-      id: apolloUserRecord._id,
       atXavierAccount: apolloUserRecord.atXavierAccount,
       firstName: apolloUserRecord.firstName,
       familyName: apolloUserRecord.familyName,

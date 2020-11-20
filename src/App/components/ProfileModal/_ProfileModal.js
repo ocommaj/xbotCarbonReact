@@ -19,7 +19,7 @@ export default function ProfileModal(props) {
       open={ profileModalOpen }
       onClose={ () => setProfileModalOpen(false) }>
       <ModalHeader>
-        { !!user ? user.name : 'Profile' }
+        { !!user ? user.fullName : 'Profile' }
       </ModalHeader>
       <ModalBody></ModalBody>
       <ModalFooter>
