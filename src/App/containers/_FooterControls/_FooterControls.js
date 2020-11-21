@@ -1,8 +1,8 @@
 import React, { useContext, useState, useRef } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
+import { Toggle } from 'carbon-components-react';
 import { AppContext } from '@App';
 import ProfileModal from '@components/ProfileModal';
-import { Toggle } from 'carbon-components-react';
 import StickyButton from '@components/StickyButton';
 import BackgroundPicker from '@components/BackgroundPicker';
 import { useClickOutsideDetector } from '@hooks';
@@ -24,7 +24,7 @@ export default function FooterControls({props}) {
   handleClick = {
     footerToggler: () => menuToggler(),
     outsideFooter: () => { if (!!menusExpanded) { menuToggler() } },
-    loginToggler: setLoginToggler()
+    loginToggler: loginToggler()
   };
 
   useClickOutsideDetector(wrapperRef, handleClick.outsideFooter);
@@ -69,7 +69,7 @@ export default function FooterControls({props}) {
     </>
   )
 
-  function setLoginToggler() {
+  function loginToggler() {
      return !activeUser ?
               () => loginWithRedirect() :
               () => setProfileModalOpen(!profileModalOpen);

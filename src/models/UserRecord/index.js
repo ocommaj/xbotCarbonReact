@@ -1,4 +1,4 @@
-import reducer from './_reducers'
+import reducer from './_reducers';
 
 export default class UserRecord {
   constructor(cleanedInput={}) {
