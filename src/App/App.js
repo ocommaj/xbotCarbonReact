@@ -12,7 +12,7 @@ export default function App() {
   const { user: authUser, logout } = useAuth0(),
         [ activeUser, setActiveUser ] = useState(null),
         [ showToolTips, setShowToolTips ] = useLocalStorage('showToolTips'),
-        [ login, loginError ] = useLoggedInUserRecord(),
+        [ login ] = useLoggedInUserRecord(),
         contextValue = {
           showToolTips,
           setShowToolTips,
