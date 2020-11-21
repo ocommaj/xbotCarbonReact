@@ -9,16 +9,15 @@ const styles = ['productive', 'expressive'];
 
 export default function defineCustomEases() {
   //on return, gsap eases will exist for all Carbon 'path_style' combo keys
-  for (const ease of __constructCarbonMotionCurves(paths, styles)) {
-    CustomEase.create(ease[0], ease[1]);
+  for (const {name, ease} of __constructCarbonMotionCurves(paths, styles)) {
+    CustomEase.create(name, ease);
   };
 }
 
 function __constructCarbonMotionCurves(paths, styles) {
-  return [].concat(...paths.map(p => styles.map(s => {
-     return [ `${p}_${s}`, __getBezierStr(motion(p, s)) ]
-    })
-  ))
+  return [].concat(...paths.map(p => styles.map(s =>
+    ({ name: `${p}_${s}`, ease: __getBezierStr(motion(p, s)) })
+  )))
 }
 
 function __getBezierStr(string) {
