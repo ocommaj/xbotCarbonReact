@@ -1,6 +1,23 @@
 export default class UserRecord {
-  constructor(cleanedInput) {
+  constructor(cleanedInput={}) {
     Object.assign(this, cleanedInput)
+  }
+
+  static loginUser(authorizedUser, apolloHook) {
+    const newUser = new UserRecord();
+    const { login, errorCallback } = apolloHook;
+    const input = this.apolloRequestReducer(authorizedUser);
+    login({ variables: { input } })
+      .then(({ data }) => {
+        const apolloResponse = data.loginUser.loggedInUser;
+        const record = this.apolloResponseReducer(apolloResponse);
+        Object.assign(newUser, record)
+      })
+      .catch(( error ) => {
+        console.log('errory!')
+        errorCallback()
+      })
+    return newUser
   }
 
   static apolloRequestReducer(auth0userRecord) {

@@ -10,9 +10,9 @@ export const AppContext = React.createContext()
 
 export default function App() {
   const { user: authUser, logout } = useAuth0(),
+        [ activeUser, setActiveUser ] = useState(null),
         [ showToolTips, setShowToolTips ] = useLocalStorage('showToolTips'),
         [ login, loginError ] = useLoggedInUserRecord(),
-        [ activeUser, setActiveUser ] = useState(null),
         contextValue = {
           showToolTips,
           setShowToolTips,
@@ -23,22 +23,9 @@ export default function App() {
 
   useEffect(() => {
     if (authUser) {
-      getActiveUserRecord(authUser, (record) => setActiveUser(record))
-    }
-
-    function getActiveUserRecord(authUser, callback) {
-      const input = UserRecord.apolloRequestReducer(authUser);
-      login({ variables: { input } })
-        .then(({ data }) => {
-          const apolloResponse = data.loginUser.loggedInUser;
-          const record = UserRecord.apolloResponseReducer(apolloResponse);
-          return callback( new UserRecord(record) )
-        })
-        .catch((error) => {
-          console.dir(error)
-          logout()
-          return callback(null)
-        })
+      const apolloHook = { login, errorCallback: logout };
+      const user = UserRecord.loginUser(authUser, apolloHook);
+      setActiveUser(user);
     }
   }, [authUser])
 

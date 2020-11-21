@@ -13,7 +13,7 @@ export default function FooterControls({props}) {
     animate,
     showToolTips,
     setShowToolTips,
-    activeUser,
+    activeUser
   } = useContext(AppContext),
 
   { loginWithRedirect, logout } = useAuth0(),
