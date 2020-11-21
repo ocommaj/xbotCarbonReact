@@ -16,8 +16,7 @@ export default class UserRecord {
         Object.assign(newUser, record)
       })
       .catch(( error ) => {
-        console.log('errory!')
-        console.log(error)
+        errorCallback()
         return
       })
     return newUser
