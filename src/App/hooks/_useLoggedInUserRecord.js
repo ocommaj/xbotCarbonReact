@@ -14,6 +14,7 @@ export default function useLoggedInUserRecord() {
           fullName
           goesBy
           isEditor
+          lastLogin
         }
       }
     }
