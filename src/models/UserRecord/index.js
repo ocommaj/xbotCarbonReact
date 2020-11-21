@@ -17,7 +17,8 @@ export default class UserRecord {
       })
       .catch(( error ) => {
         console.log('errory!')
-        errorCallback()
+        console.log(error)
+        return
       })
     return newUser
   }

@@ -9,6 +9,7 @@ export default {
         familyName: auth0userRecord.family_name,
         fullName: auth0userRecord.name,
         goesBy: auth0userRecord.nickname || '',
+        lastLogin: new Date()
       }
     }
   },
@@ -19,7 +20,8 @@ export default {
       familyName: apolloUserRecord.familyName,
       fullName: `${apolloUserRecord.firstName} ${apolloUserRecord.familyName}`,
       goesBy: apolloUserRecord.goesBy || '',
-      isEditor: apolloUserRecord.isEditor
+      isEditor: apolloUserRecord.isEditor,
+      lastLogin: new Date().toUTCString(apolloUserRecord.lastLogin)
     }
   }
 }
