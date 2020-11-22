@@ -6,6 +6,7 @@ export default function reduceHeaderTileRow(params) {
         tiles = row.querySelectorAll('.bx--tile.headerTile'),
         tl = gsap.timeline({
           paused: true,
+          defaults: { ease: "standard_expressive" },
           onComplete: () => { setActiveId(fromTile.id) }
         })
           .toggleActiveTile(fromTile)

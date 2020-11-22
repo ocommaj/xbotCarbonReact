@@ -12,7 +12,7 @@ export default function fleetToTiles(params) {
           immediateRender: true,
           defaults: {
             duration: 1, transformOrigin: "50% 50%",
-            ease: 'cubic-bezier(0.2, 0, 0.38, 0.9)'
+            ease: 'standard_expressive'
           }
         });
 
@@ -42,7 +42,7 @@ const _quickFleetCollapser = (wrappers, graphics, container) => {
 
 const _quickFleetToTiles = (graphics, tiles, container) => {
   const tl = gsap.timeline({
-          defaults: {duration: .7},
+          defaults: {ease: "entrance_expressive", duration: .7},
           onComplete: () => container.remove()
         });
 
@@ -63,10 +63,10 @@ const _expandTiles = (tiles) => {
         tl = gsap.timeline({
           defaults: {
             duration: .7,
-            ease: 'cubic-bezier(.62, .1, .8, 1)',
+            ease: 'entrance_expressive',
             stagger: {
               amount: .2,
-              ease: 'cubic-bezier(.62, .1, .8, 1)',
+              ease: 'entrance_expressive',
               from: 1} }});
 
     tl.to(tiles, { width: "100%", flex: "0 0 100%", opacity: 1 }, "-=.1")

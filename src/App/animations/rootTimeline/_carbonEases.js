@@ -1,6 +1,6 @@
 import { gsap } from 'gsap';
 import { CustomEase } from 'gsap/CustomEase';
-import { easings, motion } from '@carbon/motion';
+import { motion } from '@carbon/motion';
 
 gsap.registerPlugin(CustomEase);
 
@@ -16,7 +16,7 @@ export default function defineCustomEases() {
 
 function __constructCarbonMotionCurves(paths, styles) {
   return [].concat( ...paths.map(path => styles.map(style =>
-    ({ name: `${path}_${style}`, ease: __getBezierStr(motion(path, style)) })
+    ({ name: `${path}_${style}`, ease: __getBezierStr( motion(path, style) ) })
   )))
 }
 

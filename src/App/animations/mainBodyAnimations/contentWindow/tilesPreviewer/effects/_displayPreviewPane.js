@@ -8,7 +8,7 @@ export default function initDisplayPreviewPane() {
             tl = gsap.timeline({
               defaults: {
                 duration: 1,
-                ease: "cubic-bezier(0.2, 0, 0.38, 0.9)"},
+                ease: "standard_productive"},
               })
                 .set(previewPane.children, {width: 'auto'})
                 .to(previewCol, {flexGrow: 1})

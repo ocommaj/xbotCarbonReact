@@ -5,7 +5,7 @@ const initArrayBobberEffect = () => {
     name: "bobber",
     effect: (targets, config) => {
       const tl = gsap.timeline({ delay: .4, repeat: -1, repeatDelay: .4,
-                defaults: { duration: 1, ease: "sine" } })
+                defaults: { duration: 1, ease: "standard_expressive" } })
 
       .to(targets, {
         rotateY: "-5deg",
@@ -17,4 +17,4 @@ const initArrayBobberEffect = () => {
     extendTimeline: true })
 }
 
-export default initArrayBobberEffect 
+export default initArrayBobberEffect

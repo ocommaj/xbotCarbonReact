@@ -85,7 +85,6 @@ export default function FooterControls({props}) {
            toggleWindow = animate.contentWindow.heightToggler,
            openFooter = () => toggleWindow(openState, toggleFooter),
            closeFooter = () => toggleFooter(openState, toggleWindow);
-
      return openState === true ? openFooter() : closeFooter();
    }
 }

@@ -13,7 +13,7 @@ const initTextFlipEffect = () => {
         repeat: -1,
         repeatDelay: 1.4,
         yoyo: true,
-        defaults: { duration: .7, ease: "sine" },
+        defaults: { duration: .7, ease: "standard_expressive" },
         smoothChildTiming: true,
         onRepeat: () => switchTextOnRepeat()
        })

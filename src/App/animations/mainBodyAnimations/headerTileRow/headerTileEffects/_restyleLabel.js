@@ -7,6 +7,7 @@ const initRestyleHeaderLabel = () => {
       const tl = gsap.timeline({
               defaults: {
                 duration: .4,
+                ease: "standard_productive",
                 transformOrigin: "bottom center"} })
               .to(labels, { opacity: 0, scaleY: .1 })
               .add( () => _toggleLabelClass(labels) )
