@@ -23,7 +23,7 @@ export default function FooterControls({props}) {
 
   handleClick = {
     footerToggler: () => setFooterOpen(!footerOpen),
-    outsideFooter: () => { if (footerOpen) setFooterOpen(!footerOpen) },
+    outsideFooter: () => !!footerOpen ? setFooterOpen() : null,
     loginToggler: loginToggler()
   };
 
