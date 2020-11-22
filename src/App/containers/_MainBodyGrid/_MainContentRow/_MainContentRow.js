@@ -23,8 +23,7 @@ export default function MainContentRow(props) {
             'tabs': activeSection.options.tabs,
           },
           template = templates[activeSection.windowType],
-          content = template(props),
-          toLoad = <ContentWindow content={ content } />;
+          toLoad = template(props);
 
     if (contentWindow) { animate.collapse(() => { setContentWindow(toLoad) }) }
         else { setContentWindow(toLoad) }
@@ -34,7 +33,7 @@ export default function MainContentRow(props) {
 
   return (
     <div className="bx--row mainContentRow">
-      { contentWindow }
+      <ContentWindow content={ contentWindow } />
     </div>
   )
 }
