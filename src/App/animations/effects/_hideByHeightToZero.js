@@ -8,7 +8,7 @@ const initHideByHeightToZero = () => {
         immediateRender: true,
         defaults: {
           duration: 1, transformOrigin: "50% 50%",
-          ease: 'cubic-bezier(0.2, 0, 0.38, 0.9)'
+          ease: 'exit_expressive'
         }});
 
         tl.to(target, {

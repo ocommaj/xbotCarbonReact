@@ -8,7 +8,9 @@ export default function revealFromHidden() {
     const padding = window.getComputedStyle(contentRow)
                           .getPropertyValue('padding-top').slice(0,2),
           height = contentRow.clientHeight - padding*2,
-          tl = gsap.timeline({ paused: true })
+          tl = gsap.timeline({
+            paused: true,
+            defaults: {ease: 'entrance_expressive'}})
             .to(contentWindow, {height: height}, '<.4')
             .fromTo(contentWindow.children, {opacity: 0}, {opacity: 1}, '<.2');
 

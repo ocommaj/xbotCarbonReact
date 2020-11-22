@@ -1,6 +1,6 @@
 import { gsap } from 'gsap';
 import { CustomEase } from 'gsap/CustomEase';
-import { easings, motion } from '@carbon/motion';
+import { motion } from '@carbon/motion';
 
 gsap.registerPlugin(CustomEase);
 

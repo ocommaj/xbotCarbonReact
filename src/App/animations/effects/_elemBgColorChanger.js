@@ -12,7 +12,7 @@ const initElemBgColorChangerEffect = () => {
       const tl = gsap.timeline({
         defaults: {
           duration: .7,
-          ease: "sine" }
+          ease: "standard_expressive" }
       });
 
       tl.to(elem, {

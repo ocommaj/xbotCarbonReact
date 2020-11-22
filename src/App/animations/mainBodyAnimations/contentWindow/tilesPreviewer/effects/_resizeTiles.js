@@ -11,7 +11,7 @@ export default function initResizePreviewTiles() {
             tl = gsap.timeline({
               defaults: {
                 duration: 1,
-                ease: "cubic-bezier(0.2, 0, 0.38, 0.9)",
+                ease: "standard_productive",
                 transformOrigin: "center left",
                 stagger: {amount: .2, from: idx}
                 } })

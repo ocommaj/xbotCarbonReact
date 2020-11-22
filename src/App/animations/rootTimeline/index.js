@@ -1,7 +1,7 @@
 import { gsap } from 'gsap';
 import defineCustomEases from './_carbonEases';
 
-export default function() {
+export default function RootTimeline() {
   defineCustomEases()
   const timeline = gsap.timeline({
     repeat: -1,

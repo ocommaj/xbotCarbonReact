@@ -9,7 +9,7 @@ export default function initCollapsePreviewPane() {
               defaults: {
                 duration: 1,
                 transformOrigin: "center right",
-                ease: "cubic-bezier(0.2, 0, 0.38, 0.9)"},
+                ease: "standard_productive"},
               })
                 .to(previewPane.children, {
                   opacity: 0, duration: .5})
