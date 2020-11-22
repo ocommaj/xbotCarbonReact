@@ -13,9 +13,8 @@ export default function MainContentRow(props) {
   useEffect(() => displayContentWindow(), [displayContentWindow])
 
   function loadContentWindow() {
-    const activeSection = !!activeSectionId ? sections[activeSectionId] : null;
-
-    if (!activeSection) return;
+    if (!activeSectionId) return
+    const activeSection = sections[activeSectionId];
 
     const props = {
             'animate': animate.content,
@@ -31,12 +30,11 @@ export default function MainContentRow(props) {
         else { setContentWindow(toLoad) }
     }
 
-
-
+  if (!activeSectionId) return null
 
   return (
     <div className="bx--row mainContentRow">
-      { activeSectionId && contentWindow }
+      { contentWindow }
     </div>
   )
 }
