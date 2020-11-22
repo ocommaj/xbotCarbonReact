@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 import { useLocalStorage, useLoggedInUserRecord } from '@hooks/';
 import { sections, UserRecord } from '@Models';
@@ -21,20 +21,20 @@ export default function App() {
           sections: sections()
         };
 
-  useEffect(() => {
+  const loginAppUser = useCallback(() => {
     if (authUser) {
-      const apolloHook = { login, errorCallback: logout };
-      const user = UserRecord.loginUser(authUser, apolloHook);
-      setActiveUser(user);
-    }
-  }, [authUser])
+        const apolloHook = { login, errorCallback: logout };
+        const user = UserRecord.loginUser(authUser, apolloHook);
+        setActiveUser(user);
+      }
+  }, [authUser, login, logout]);
 
-  useEffect(() => { console.dir(activeUser) }, [activeUser])
+  useEffect(() => loginAppUser(), [loginAppUser]);
+  useEffect(() => { console.dir(activeUser) }, [activeUser]);
 
   return (
       <AppContext.Provider value={ contextValue }>
         <ScreenContents />
       </AppContext.Provider>
   )
-
 }
