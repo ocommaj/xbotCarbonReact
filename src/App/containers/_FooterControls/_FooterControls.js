@@ -1,4 +1,4 @@
-import React, { useContext, useState, useRef } from 'react';
+import React, { useContext, useState, useEffect, useRef } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 import { Toggle } from 'carbon-components-react';
 import { AppContext } from '@App';
@@ -18,15 +18,16 @@ export default function FooterControls({props}) {
 
   { loginWithRedirect, logout } = useAuth0(),
   [profileModalOpen, setProfileModalOpen] = useState(false),
-  [menusExpanded, setMenusExpanded] = useState(false),
+  [footerOpen, setFooterOpen] = useState(false),
   wrapperRef = useRef(null),
 
   handleClick = {
-    footerToggler: () => menuToggler(),
-    outsideFooter: () => { if (!!menusExpanded) { menuToggler() } },
+    footerToggler: () => setFooterOpen(!footerOpen),
+    outsideFooter: () => { if (footerOpen) setFooterOpen(!footerOpen) },
     loginToggler: loginToggler()
   };
 
+  useEffect( () => footerToggler(footerOpen), [footerOpen])
   useClickOutsideDetector(wrapperRef, handleClick.outsideFooter);
 
   return (
@@ -73,11 +74,6 @@ export default function FooterControls({props}) {
      return !activeUser ?
               () => loginWithRedirect() :
               () => setProfileModalOpen(!profileModalOpen);
-  }
-
-  function menuToggler() {
-    setMenusExpanded(!menusExpanded);
-    footerToggler(!menusExpanded);
   }
 
   function footerToggler(openState) {
