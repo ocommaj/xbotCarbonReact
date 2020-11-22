@@ -1,14 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import ContentWindow, { templates } from '@components/ContentWindow';
 
 export default function MainContentRow(props) {
   const { sections, activeSectionId, animate } = props,
         [ contentWindow, setContentWindow ] = useState(null);
 
-  useEffect(() => loadContentWindow(), [activeSectionId] )
-  useEffect(() => displayContentWindow(), [contentWindow])
+  const displayContentWindow = useCallback(() => {
+    if (contentWindow) { animate.reveal() }
+  }, [animate, contentWindow])
 
-  function displayContentWindow() { if (contentWindow) { animate.reveal() } }
+  useEffect(() => loadContentWindow(), [activeSectionId] )
+  useEffect(() => displayContentWindow(), [displayContentWindow])
 
   function loadContentWindow() {
     const activeSection = !!activeSectionId ? sections[activeSectionId] : null;
@@ -28,6 +30,9 @@ export default function MainContentRow(props) {
     if (contentWindow) { animate.collapse(() => { setContentWindow(toLoad) }) }
         else { setContentWindow(toLoad) }
     }
+
+
+
 
   return (
     <div className="bx--row mainContentRow">

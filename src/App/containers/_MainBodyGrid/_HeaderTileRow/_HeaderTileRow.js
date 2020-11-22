@@ -18,7 +18,7 @@ export default function HeaderTileRow(props) {
     <div className="bx--row headerTileRow">
       { tileConfigs.map((config, i) => {
           let colClass = "bx--col-sm-4 bx--col-md-2 bx--col-lg-4";
-          colClass = i === 0 ? colClass + " bx--offset-lg-1" : colClass;
+          colClass = i === 0 ? `${colClass} bx--offset-lg-1` : colClass;
 
           return (
             <HeaderTile
