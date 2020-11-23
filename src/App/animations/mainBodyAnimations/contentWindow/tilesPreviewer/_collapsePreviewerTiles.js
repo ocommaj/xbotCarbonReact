@@ -4,19 +4,19 @@ export default function collapsePreviewerTiles(params) {
   const { tile,
           previewCol,
           tileCol,
-          tiles,
           setPreviewArticle,
-          tilesExpanded } = params,
+          previewShows } = params,
+          tiles = tileCol.children;
 
-    tl = gsap.timeline({
+  const tl = gsap.timeline({
           paused: true,
+          onStart: () => tile.classList.toggle('activeArticleTile'),
           onComplete: () => {
-            previewCol.classList.toggle('previewPaneShows')
-            tile.classList.toggle('activeArticleTile')
+            previewCol.classList.toggle('visible')
             setPreviewArticle()
           }
         })
-          .resizeArticlePreviewTiles({tile, tiles, tilesExpanded})
+          .resizeArticlePreviewTiles({tile, tiles, previewShows})
           .set(tileCol, {flexGrow: 0});
 
 

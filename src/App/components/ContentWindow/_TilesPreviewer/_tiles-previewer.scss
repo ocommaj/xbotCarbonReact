@@ -1,6 +1,5 @@
 @import './ArticleTile/article-tile';
 @import './PreviewPane/preview-pane';
-@import './overrides';
 
 .tilesPreviewer {
   max-height: inherit;
@@ -17,7 +16,6 @@
       overflow-y: scroll;
       overflow-x: hidden;
       flex-grow: 1;
-      background-color: $ui-01;
     }
   }
 }

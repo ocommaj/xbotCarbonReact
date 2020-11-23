@@ -1,0 +1,29 @@
+.articlePreviewTile {
+  .bx--tile {
+      background-color: $decorative-01;
+      height: 7.5rem;
+      padding: 1rem;
+      margin: $spacing-03 0;
+      cursor: pointer;
+
+      transition: background-color 0.7s carbon--motion(standard);
+    }
+  .bx--tile:hover {
+      background-color: $ui-04;
+    }
+  }
+.articlePreviewTile:first-of-type {
+  .bx--tile {
+      margin-top: 0;
+    }
+  }
+.articlePreviewTile.activeArticleTile {
+  .bx--tile {
+    background-color: $ui-02;
+    transition: background-color 0.7s carbon--motion(standard);
+  }
+
+  .bx--tile h2 {
+    color: $text-04;
+  }
+}

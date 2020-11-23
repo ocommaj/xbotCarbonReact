@@ -4,10 +4,10 @@ export default function initResizePreviewTiles() {
   gsap.registerEffect({
     name: 'resizeArticlePreviewTiles',
     effect: (target, config) => {
-      const { tile, tiles, tilesExpanded } = [...target][0],
+      const { tile, tiles, previewShows } = [...target][0],
             tilesArr = gsap.utils.toArray(tiles),
             idx = tilesArr.indexOf(tile),
-            deltaWidth = !!tilesExpanded ? "+=480px" : "-=480px",
+            deltaWidth = !!previewShows ? "+=480px" : "-=480px",
             tl = gsap.timeline({
               defaults: {
                 duration: 1,

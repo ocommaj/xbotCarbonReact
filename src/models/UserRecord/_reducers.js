@@ -1,4 +1,4 @@
-export default {
+const reducers = {
   apolloRequest: (auth0userRecord) => {
     return {
       atXavierAccount: auth0userRecord.email,
@@ -25,3 +25,5 @@ export default {
     }
   }
 }
+
+export default reducers

@@ -1,24 +1,21 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useCallback, useEffect } from 'react'
 import { templates } from '@components/ContentWindow'
 
 export default function TabPanel({ props }) {
   const { animate, tab } = props,
-        content = tab.content,
-        templateId = content.panelTemplateId,
-        [panelContent, setPanelContent] = useState(
-          loadFromTemplate(templateId) );
+        [panelContent, setPanelContent] = useState();
 
-  useEffect(() => {
-    setPanelContent( loadFromTemplate(templateId) )
-  }, [tab, templateId])
+  const loadPanel = useCallback(() => {
+    const templateId = tab.content.panelTemplateId,
+          props = {
+            ...tab,
+            animate: animate[templateId] ? animate[templateId]() : null
+          };
 
-  function loadFromTemplate(templateId) {
-    const props = {
-      ...tab,
-      animate: animate[templateId] ? animate[templateId]() : null
-    }
-    return templates[templateId](props)
-  }
+    setPanelContent( templates[templateId](props) )
+  }, [animate, tab, setPanelContent])
+
+  useEffect(() => loadPanel(), [loadPanel])
 
   return (
     <div className="tabPanel">

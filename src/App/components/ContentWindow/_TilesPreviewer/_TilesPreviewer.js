@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import ArticleTile from './ArticleTile'
 import PreviewPane from './PreviewPane'
 
@@ -6,32 +6,38 @@ import placeholderData from './_placeholderData'
 
 export default function TilesPreviewer({ props }) {
   const { animate, data } = props,
-        [previewArticle, setPreviewArticle] = useState(null),
+        previewCol = useRef(),
+        previewPane = useRef(),
+        tilesCol = useRef();
+
+  const [previewArticle, setPreviewArticle] = useState(null),
         [tiles] = useState( loadTiles(data || placeholderData) );
 
-  useEffect(() => { animatePreviewPane() }, [previewArticle])
+  useEffect(() => {
+    if (!previewArticle) return
+    animate.showPreviewPane({
+      previewCol: previewCol.current,
+      previewPane: previewPane.current
+    })
+  }, [animate, previewArticle])
 
   return (
     <div className="tilesPreviewer">
       <div className="overflowWrapper">
-        <div className="tilesColumn">
+        <div className="tilesColumn" ref={ tilesCol }>
           { tiles }
         </div>
-        <div className="previewColumn">
-          { previewArticle && <PreviewPane props={previewArticle} /> }
+        <div className="previewColumn" ref={ previewCol }>
+          { previewArticle &&
+            <PreviewPane
+              ref= { previewPane }
+              props={ previewArticle }
+            />
+          }
         </div>
       </div>
     </div>
   )
-
-  function animatePreviewPane() {
-    const params = {
-            previewCol: document.querySelector('.previewColumn'),
-            previewPane: document.querySelector('.previewPane')
-          }
-
-    return previewArticle && animate.showPreviewPane(params)
-  }
 
   function loadTiles(fromList) {
     return fromList.map((article, idx) => {
@@ -40,29 +46,24 @@ export default function TilesPreviewer({ props }) {
                     key,
                     activePreviewId: previewArticle && previewArticle.id,
                     headline: article.tileHeadline,
-                    clickHandler: () => constClickHandler(key, article)
+                    clickHandler: () => constClickHandler(article)
                   };
-            return ArticleTile(props)
+            return <ArticleTile key={key} props={props} />
           })
-      }
 
-  function constClickHandler(key, article) {
+
+    function constClickHandler(article) {
+      const previewShows = previewCol.current.classList.contains('visible');
+      const func = previewShows ? animate.switchTiles : animate.collapseTiles;
       const args = {
-              tile: document.getElementById(key),
-              tileCol: document.querySelector('.tilesColumn'),
-              tiles: document.querySelectorAll('.articlePreviewTile'),
-              previewCol: document.querySelector('.previewColumn'),
-              previewPane: document.querySelector('.previewPane'),
-              setPreviewArticle: () => setPreviewArticle(article),
-              tilesExpanded: document.querySelector('.previewColumn')
-                .classList.contains('previewPaneShows')
-            },
+        previewShows: previewShows,
+        tileCol: tilesCol.current,
+        previewCol: previewCol.current,
+        previewPane: previewPane.current,
+        setPreviewArticle: () => setPreviewArticle(article),
+      };
 
-            func = !!args.tilesExpanded ?
-                       animate.switchTiles : animate.collapseTiles ;
-
-      return func(args)
-
+      return [func, args]
     }
-
+  }
 }

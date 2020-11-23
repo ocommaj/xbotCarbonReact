@@ -1,4 +1,5 @@
-import React, { useContext, useState, useEffect, useRef } from 'react';
+import React, {
+  useContext, useState, useRef, useCallback, useEffect } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 import { Toggle } from 'carbon-components-react';
 import { AppContext } from '@App';
@@ -15,16 +16,22 @@ export default function FooterControls({props}) {
     setShowToolTips,
     activeUser
   } = useContext(AppContext),
-
-  { loginWithRedirect, logout } = useAuth0(),
+  { loginWithRedirect: redirectLogin, logout } = useAuth0(),
   [profileModalOpen, setProfileModalOpen] = useState(false),
   [footerOpen, setFooterOpen] = useState(false),
   wrapperRef = useRef(null),
 
+  toggleFooter = useCallback(() => setFooterOpen(o => !o), [setFooterOpen]),
+  toggleLogin = useCallback(() => {
+    return !activeUser
+      ? () => redirectLogin()
+      : () => setProfileModalOpen(o => !o)
+    }, [activeUser, redirectLogin, setProfileModalOpen]),
+
   handleClick = {
-    footerToggler: () => setFooterOpen(!footerOpen),
-    outsideFooter: () => { if (footerOpen) setFooterOpen(!footerOpen) },
-    loginToggler: loginToggler()
+    footerToggler: () => toggleFooter(),
+    outsideFooter: () => !!footerOpen ? toggleFooter() : null,
+    loginToggler: toggleLogin()
   };
 
   useEffect( () => footerToggler(footerOpen), [footerOpen])
@@ -54,7 +61,7 @@ export default function FooterControls({props}) {
           labelA={''}
           labelB={''}
           defaultToggled={ showToolTips }
-          onToggle={ () => setShowToolTips(!showToolTips) } />
+          onToggle={ () => setShowToolTips(state => !state) } />
         <BackgroundPicker
           animation={ animate.background.fadeBetweenViews }
           mapConfigs={ staticMaps }
@@ -69,12 +76,6 @@ export default function FooterControls({props}) {
       setProfileModalOpen={ setProfileModalOpen }/>
     </>
   )
-
-  function loginToggler() {
-     return !activeUser ?
-              () => loginWithRedirect() :
-              () => setProfileModalOpen(!profileModalOpen);
-  }
 
   function footerToggler(openState) {
      const toggleFooter = animate.footerControls.toggler,
