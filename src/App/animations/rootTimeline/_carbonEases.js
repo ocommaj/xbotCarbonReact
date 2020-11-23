@@ -21,5 +21,5 @@ function __constructCarbonMotionCurves(paths, styles) {
 }
 
 function __getBezierStr(string) {
-  return string.replace(/[^0-9 \.]+/g, "")
+  return string.replace(/[^0-9 .]+/g, "")
 }
