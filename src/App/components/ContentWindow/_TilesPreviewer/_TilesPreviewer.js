@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useCallback, useRef, useEffect } from 'react'
 import ArticleTile from './ArticleTile'
 import PreviewPane from './PreviewPane'
 
@@ -7,9 +7,19 @@ import placeholderData from './_placeholderData'
 export default function TilesPreviewer({ props }) {
   const { animate, data } = props,
         [previewArticle, setPreviewArticle] = useState(null),
-        [tiles] = useState( loadTiles(data || placeholderData) );
+        [tiles] = useState( loadTiles(data || placeholderData) ),
+        previewColumn = useRef(),
+        previewPane = useRef();
 
-  useEffect(() => { animatePreviewPane() }, [previewArticle])
+  const animatePreviewPane = useCallback(() => {
+    if (!previewArticle) return
+    return animate.showPreviewPane({
+      previewCol: previewColumn.current,
+      previewPane: previewPane.current
+    })
+  }, [animate, previewArticle])
+
+  useEffect(() => animatePreviewPane(), [animatePreviewPane])
 
   return (
     <div className="tilesPreviewer">
@@ -17,21 +27,17 @@ export default function TilesPreviewer({ props }) {
         <div className="tilesColumn">
           { tiles }
         </div>
-        <div className="previewColumn">
-          { previewArticle && <PreviewPane props={previewArticle} /> }
+        <div className="previewColumn" ref={ previewColumn }>
+          { previewArticle &&
+            <PreviewPane
+              ref= { previewPane }
+              props={previewArticle}
+            />
+          }
         </div>
       </div>
     </div>
   )
-
-  function animatePreviewPane() {
-    const params = {
-            previewCol: document.querySelector('.previewColumn'),
-            previewPane: document.querySelector('.previewPane')
-          }
-
-    return previewArticle && animate.showPreviewPane(params)
-  }
 
   function loadTiles(fromList) {
     return fromList.map((article, idx) => {
