@@ -1,20 +1,6 @@
 @import './_overrides';
 
 .stickyButton {
-  width: $layout-05;
-  height: $layout-05;
-  margin: $spacing-01;
-
-  Button {
-    width: $layout-05;
-    height: $layout-05;
-    border-radius: $layout-03;
-    background-color: $interactive-01;
-    display: flex;
-    justify-content: center;
-    padding: 0;
-  }
-
   .pictogramWrapper {
     display: flex;
 

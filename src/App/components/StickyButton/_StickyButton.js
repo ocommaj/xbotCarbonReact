@@ -8,13 +8,15 @@ export default function StickyButton(props) {
     pictogram,
     assistiveText,
     hoverAnimation,
-    showToolTip
+    showToolTip,
+    kind
   } = props;
 
   return (
   <span className="stickyButton">
     <Button
       className={ className() }
+      kind={ kind || 'primary' }
       onClick={ () => {
         try { clickHandler() }
         catch { return }
