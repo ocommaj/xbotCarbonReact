@@ -1,6 +1,6 @@
 import React from 'react'
 
-const PreviewPane = React.forwardRef(({props}, ref) => {
+const PreviewPane = React.forwardRef( ({props}, ref) => {
   const { previewHeadline } = props;
 
   return (

@@ -4,13 +4,13 @@ export default function switchPreviewerTiles(params) {
   const { tile,
           previewPane,
           previewCol,
-          tiles,
+          tileCol,
           setPreviewArticle,
-          tilesExpanded } = params;
+          previewShows } = params,
+          tiles = tileCol.children,
+          outgoingTile = document.querySelector('.activeArticleTile');
 
-
-    const outgoingTile = document.querySelector('.activeArticleTile'),
-          tl = gsap.timeline({
+  const tl = gsap.timeline({
             paused: true,
             onStart: () => {
               outgoingTile.classList.toggle('activeArticleTile')
@@ -20,9 +20,9 @@ export default function switchPreviewerTiles(params) {
           })
           .collapsePreviewPane({ previewCol, previewPane })
           .resizeArticlePreviewTiles(
-            {tile: outgoingTile, tiles, tilesExpanded}, '<.4')
+            {tile: outgoingTile, tiles, previewShows}, '<.4')
           .resizeArticlePreviewTiles(
-            {tile, tiles, tilesExpanded: false})
+            {tile, tiles, previewShows: false});
 
     tl.play()
 
