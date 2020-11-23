@@ -6,10 +6,13 @@ import placeholderData from './_placeholderData'
 
 export default function TilesPreviewer({ props }) {
   const { animate, data } = props,
-        [previewArticle, setPreviewArticle] = useState(null),
-        [tiles] = useState( loadTiles(data || placeholderData) ),
         previewColumn = useRef(),
-        previewPane = useRef();
+        previewPane = useRef(),
+        tilesColumn = useRef(),
+        tileRef = useRef();
+
+  const [previewArticle, setPreviewArticle] = useState(null),
+        [tiles] = useState( loadTiles(data || placeholderData) );
 
   const animatePreviewPane = useCallback(() => {
     if (!previewArticle) return
@@ -24,7 +27,7 @@ export default function TilesPreviewer({ props }) {
   return (
     <div className="tilesPreviewer">
       <div className="overflowWrapper">
-        <div className="tilesColumn">
+        <div className="tilesColumn" ref={ tilesColumn }>
           { tiles }
         </div>
         <div className="previewColumn" ref={ previewColumn }>
@@ -50,18 +53,19 @@ export default function TilesPreviewer({ props }) {
                   };
             return ArticleTile(props)
           })
-      }
+
 
   function constClickHandler(key, article) {
       const args = {
               tile: document.getElementById(key),
-              tileCol: document.querySelector('.tilesColumn'),
-              tiles: document.querySelectorAll('.articlePreviewTile'),
-              previewCol: document.querySelector('.previewColumn'),
-              previewPane: document.querySelector('.previewPane'),
+              tileCol: tilesColumn.current,
+              tiles: tilesColumn.current
+                                .querySelectorAll('.articlePreviewTile'),
+              previewCol: previewColumn.current,
+              previewPane: previewPane.current,
               setPreviewArticle: () => setPreviewArticle(article),
-              tilesExpanded: document.querySelector('.previewColumn')
-                .classList.contains('previewPaneShows')
+              tilesExpanded: previewColumn.current.classList
+                                          .contains('previewPaneShows')
             },
 
             func = !!args.tilesExpanded ?
@@ -70,5 +74,6 @@ export default function TilesPreviewer({ props }) {
       return func(args)
 
     }
+  }
 
 }
