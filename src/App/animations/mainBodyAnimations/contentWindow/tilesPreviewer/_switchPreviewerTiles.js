@@ -12,12 +12,11 @@ export default function switchPreviewerTiles(params) {
     const outgoingTile = document.querySelector('.activeArticleTile'),
           tl = gsap.timeline({
             paused: true,
-            onComplete: () => {
-              tile.classList.toggle('activeArticleTile')
+            onStart: () => {
               outgoingTile.classList.toggle('activeArticleTile')
-              setPreviewArticle()
-
-            }
+              tile.classList.toggle('activeArticleTile')
+            },
+            onComplete: () => setPreviewArticle()
           })
           .collapsePreviewPane({ previewCol, previewPane })
           .resizeArticlePreviewTiles(
