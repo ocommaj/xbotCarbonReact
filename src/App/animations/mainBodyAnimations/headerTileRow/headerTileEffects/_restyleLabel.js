@@ -8,7 +8,8 @@ const initRestyleHeaderLabel = () => {
               defaults: {
                 duration: .4,
                 ease: "standard_productive",
-                transformOrigin: "bottom center"} })
+                //transformOrigin: "bottom center"
+              } })
               .to(labels, { opacity: 0, scaleY: .1 })
               .add( () => _toggleLabelClass(labels) )
               .to(labels, { opacity: 1, scaleY: 1 })

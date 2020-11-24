@@ -11,7 +11,8 @@ export default function fleetToTiles(params) {
         tl = gsap.timeline({
           immediateRender: true,
           defaults: {
-            duration: 1, transformOrigin: "50% 50%",
+            duration: 1,
+            transformOrigin: "center center",
             ease: 'standard_expressive'
           }
         });

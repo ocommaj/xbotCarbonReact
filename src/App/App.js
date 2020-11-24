@@ -9,12 +9,13 @@ export const AppContext = React.createContext()
 
 export default function App() {
   const [ showToolTips, setShowToolTips ] = useLocalStorage('showToolTips'),
+        animate = Animate(),
         activeUser = useUser(),
         contextValue = {
           showToolTips,
           setShowToolTips,
           activeUser,
-          animate: Animate(),
+          animate,
           sections: sections()
         };
 

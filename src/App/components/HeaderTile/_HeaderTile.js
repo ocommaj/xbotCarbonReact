@@ -28,10 +28,7 @@ export default function HeaderTile(props) {
           onMouseOver={ (e) => _highlightTile(e.currentTarget, true) }
           onMouseLeave={ (e) => _highlightTile(e.currentTarget, false) }
           >
-          <TileLabel
-            displayTitle={displayTitle}
-            icon={<ChevronDown32 />}
-          />
+          <TileLabel displayTitle={displayTitle} icon={<ChevronDown32 />} />
         </Tile>
       </span>
     </div>

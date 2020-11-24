@@ -19,7 +19,8 @@ export default function MainBodyGrid() {
           tileConfigs={ tileConfigs }
           activeSectionId={ activeSectionId }
           setActiveSectionId={ setActiveSectionId }
-          animate={ animate.header } />
+          animate={ animate.header }
+          rootTimeline={ animate.rootTimeline }/>
         <MainContentRow
           className="mainContentRow"
           sections={ sections }

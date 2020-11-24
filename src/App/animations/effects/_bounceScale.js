@@ -5,7 +5,7 @@ const initBounceScale = () => {
     name: "bounceScale",
     effect: (graphic, config) => {
       const tl = gsap.timeline({ paused: false, defaults: {
-        duration: .7,
+        duration: .4,
         ease: 'standard_expressive'
       }})
               .to(graphic, {scale: 1.1})
