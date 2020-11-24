@@ -16,7 +16,8 @@ export default function initCollapsePreviewPane() {
                 .to(previewPane, {
                   opacity: 0 }, '<.2')
                 .to(previewPane.children, {
-                  width: 0}, '<');
+                  width: 0,
+                }, '<');
         return tl
     },
     extendTimeline: true
