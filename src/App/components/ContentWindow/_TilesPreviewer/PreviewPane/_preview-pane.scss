@@ -22,8 +22,6 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-
-
     }
     .buttonColumn {
       flex-grow: 0;
@@ -33,7 +31,6 @@
         margin-bottom: $spacing-03;
         padding: $spacing-03;
       }
-
     }
   }
 }

@@ -4,8 +4,7 @@ import AccordionItem from './_AccordionItem';
 import placeholderData from './_placeholderData';
 
 export default function AccordionViewer({ props }) {
-  const { content } = props,
-        [expandedItem, setExpandedItem] = useState(),
+  const [expandedItem, setExpandedItem] = useState(),
         [accordionItems, setAccordionItems] = useState();
 
   useEffect(() => {

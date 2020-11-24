@@ -6,7 +6,6 @@ export default function ExtendedItem({ props }) {
   const {
     key,
     item,
-    expandedItem,
     setExpandedItem,
     isOpen
   } = props;
