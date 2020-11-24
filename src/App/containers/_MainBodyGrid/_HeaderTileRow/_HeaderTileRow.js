@@ -9,6 +9,7 @@ export default function HeaderTileRow(props) {
     activeSectionId: activeId,
     setActiveSectionId: setActiveId
    } = props;
+  const timelineRef = useRef(rootTimeline);
   const headerTileRow = useRef(null);
   const tileFaderAnim = animate.labelFader( headerTileRow.current );
 
@@ -21,15 +22,15 @@ export default function HeaderTileRow(props) {
 
   useEffect(() => {
     if (!tileFaderAnim) return
-    rootTimeline.add( tileFaderAnim.play() );
+    timelineRef.current.add( tileFaderAnim.play() );
   });
 
   useEffect(() => {
     if (activeId) {
-      rootTimeline.progress(1);
-      rootTimeline.clear();
+      timelineRef.current.progress(1);
+      timelineRef.current.clear();
     }
-  }, [rootTimeline, activeId]);
+  }, [activeId]);
 
   return (
     <div className="bx--row headerTileRow" ref={ headerTileRow }>
