@@ -5,12 +5,13 @@ export default function HeaderTileRow(props) {
   const {
     animate,
     tileConfigs,
-    rootTimeline,
+    wrapperTimeline,
     activeSectionId: activeId,
     setActiveSectionId: setActiveId
    } = props;
+
   const headerTileRow = useRef(null);
-  const timelineRef = useRef( rootTimeline() );
+  const timelineRef = useRef( wrapperTimeline() );
   const tileFaderAnim = animate.labelFader( headerTileRow.current );
 
   const clickHandler = useCallback(() => ({
@@ -20,14 +21,14 @@ export default function HeaderTileRow(props) {
 
   useEffect(() => {
     if (!tileFaderAnim) return
+    if (activeId) return
     timelineRef.current.add( tileFaderAnim.play() );
   });
 
   useEffect(() => {
-    if (activeId) {
+    if (!activeId) return
       timelineRef.current.progress(1);
       timelineRef.current.clear();
-    }
   });
 
   return (

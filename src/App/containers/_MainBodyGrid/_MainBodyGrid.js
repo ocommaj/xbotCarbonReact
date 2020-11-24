@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect, useRef } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { AppContext } from '@App';
 import HeaderTileRow from './_HeaderTileRow';
 import MainContentRow from './_MainContentRow';
@@ -14,12 +14,6 @@ export default function MainBodyGrid() {
           "sectionTitle": sections[k]["displayTitle"]
         }) );
 
-  const renderCount = useRef(1);
-  useEffect(() => {
-    console.log(`MainBodyGrid rendered ${renderCount.current} time(s)`)
-    renderCount.current = renderCount.current + 1
-  })
-
   useEffect(() => {
     if (!activeSectionId) return
     setActiveSection(sections[activeSectionId])
@@ -33,7 +27,7 @@ export default function MainBodyGrid() {
           activeSectionId={ activeSectionId }
           setActiveSectionId={ setActiveSectionId }
           animate={ animate.header }
-          rootTimeline={ animate.rootTimeline }/>
+          wrapperTimeline={ animate.wrapperTimeline }/>
         <MainContentRow
           className="mainContentRow"
           activeSection={ activeSection }

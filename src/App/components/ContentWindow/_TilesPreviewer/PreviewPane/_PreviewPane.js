@@ -14,7 +14,7 @@ const PreviewPane = React.forwardRef( ({props}, ref) => {
       </div>
       <div className="buttonColumn">
       <StickyButton
-        clickHandler={ console.log('clicky') }
+        clickHandler={ () => console.log('clicky') }
         pictogram={ <Maximize32 /> }
         assistiveText={ "expand preview" }
         hoverAnimation={ animate.stickyButton.bounceScale }
