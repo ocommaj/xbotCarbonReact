@@ -19,6 +19,7 @@ export default function RegisterEffects() {
     HideByHeightToZero()
     ElemBgColorChanger()
     SpinGraphicX()
+    SpinGraphicY()
     SpinGraphicZ()
     HeaderTileEffects()
 }
