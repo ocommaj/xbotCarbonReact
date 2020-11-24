@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { useLocalStorage, useUser } from '@hooks/';
 import { sections } from '@Models';
 import Animate from '@animations';
@@ -9,13 +9,13 @@ export const AppContext = React.createContext()
 
 export default function App() {
   const [ showToolTips, setShowToolTips ] = useLocalStorage('showToolTips'),
-        animate = Animate(),
+        animate = useRef( Animate() ),
         activeUser = useUser(),
         contextValue = {
           showToolTips,
           setShowToolTips,
           activeUser,
-          animate,
+          animate: animate.current,
           sections: sections()
         };
 

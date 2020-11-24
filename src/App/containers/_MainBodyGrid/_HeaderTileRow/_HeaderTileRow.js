@@ -13,12 +13,10 @@ export default function HeaderTileRow(props) {
   const headerTileRow = useRef(null);
   const tileFaderAnim = animate.labelFader( headerTileRow.current );
 
-  const clickHandler = useCallback(() => {
-    return {
+  const clickHandler = useCallback(() => ({
       args: { activeId, setActiveId },
       func: !activeId ? animate.reduceTiles : animate.switchTiles
-    }
-  }, [activeId, setActiveId, animate]);
+  }), [activeId, setActiveId, animate]);
 
   useEffect(() => {
     if (!tileFaderAnim) return
