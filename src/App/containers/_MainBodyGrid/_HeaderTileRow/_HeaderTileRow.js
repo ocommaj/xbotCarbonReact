@@ -9,8 +9,8 @@ export default function HeaderTileRow(props) {
     activeSectionId: activeId,
     setActiveSectionId: setActiveId
    } = props;
-  const timelineRef = useRef(rootTimeline);
   const headerTileRow = useRef(null);
+  const timelineRef = useRef( rootTimeline() );
   const tileFaderAnim = animate.labelFader( headerTileRow.current );
 
   const clickHandler = useCallback(() => ({
@@ -28,7 +28,7 @@ export default function HeaderTileRow(props) {
       timelineRef.current.progress(1);
       timelineRef.current.clear();
     }
-  }, [activeId]);
+  });
 
   return (
     <div className="bx--row headerTileRow" ref={ headerTileRow }>

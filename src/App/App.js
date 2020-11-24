@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 import { useLocalStorage, useUser } from '@hooks/';
-import { sections } from '@Models';
+import { SectionConfigs } from '@Models';
 import Animate from '@animations';
 import ScreenContents from '@containers';
 import './App.scss';
@@ -11,13 +11,20 @@ export default function App() {
   const [ showToolTips, setShowToolTips ] = useLocalStorage('showToolTips'),
         animate = useRef( Animate() ),
         activeUser = useUser(),
+        sections = SectionConfigs,
         contextValue = {
           showToolTips,
           setShowToolTips,
           activeUser,
-          animate: animate.current,
-          sections: sections()
+          sections,
+          animate: animate.current
         };
+
+  const renderCount = useRef(1);
+  useEffect(() => {
+    console.log(`App rendered ${renderCount.current} time(s)`)
+    renderCount.current = renderCount.current + 1
+  })
 
   useEffect(() => { console.dir(activeUser) }, [activeUser]);
 

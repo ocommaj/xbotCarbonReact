@@ -4,31 +4,38 @@ import ContentWindow, { templates } from '@components/ContentWindow';
 export default function MainContentRow(props) {
   const { animate, activeSection } = props,
         [ nextWindow, setNextWindow ] = useState(null),
-        [ contentWindow, setContentWindow ] = useState(null);
+        [ contentWindow, setContentWindow ] = useState(null),
+        anim = useRef(animate);
+
+  const renderCount = useRef(1);
+  useEffect(() => {
+    console.log(`MainContentRow rendered ${renderCount.current} time(s)`)
+    renderCount.current = renderCount.current + 1
+  })
 
   const loadTemplate = useCallback(() => {
       if (!activeSection) return
 
       const template = templates[activeSection.windowType];
       setNextWindow( template({
-              'animate': animate.content,
+              'animate': anim.current.content,
               'mainId': activeSection.mainId,
               'title': activeSection.defaultStr,
               'tabs': activeSection.options.tabs,
             })
           );
-  }, [animate, setNextWindow, activeSection])
+  }, [setNextWindow, activeSection])
 
   const loadContentWindow = useCallback(() => {
     setContentWindow(prevState => !prevState
        ? nextWindow
-       : animate.collapse( () => setContentWindow(nextWindow) )
+       : anim.current.collapse( () => setContentWindow(nextWindow) )
     )
-  }, [animate, nextWindow, setContentWindow])
+  }, [nextWindow, setContentWindow])
 
   const displayContentWindow = useCallback(() => {
-    if (contentWindow) { animate.reveal() }
-  }, [animate, contentWindow])
+    if (contentWindow) { anim.current.reveal() }
+  }, [contentWindow])
 
   useEffect(() => loadTemplate(), [loadTemplate])
   useEffect(() => loadContentWindow(), [loadContentWindow])

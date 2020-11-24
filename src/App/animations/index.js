@@ -5,7 +5,7 @@ import FixedOrnamentAnimations from './fixedOrnaments';
 
 const Animate = () => {
   const self = {
-          rootTimeline: RootTimeline(),
+          rootTimeline: () => RootTimeline(),
           header: MainBodyAnimations.header,
           contentWindow: MainBodyAnimations.contentWindow,
           footerControls: MainBodyAnimations.footerControls,
@@ -13,7 +13,7 @@ const Animate = () => {
           fleet: FixedOrnamentAnimations.fleet,
           stickyButton: FixedOrnamentAnimations.stickyButtons
         }
-  
+
   RegisterEffects()
 
   return Object.assign(self)

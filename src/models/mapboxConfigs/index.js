@@ -5,11 +5,11 @@ import getRandom from './_getRandom';
 
 const mapboxConfigs = () => {
   const client = Client(),
-        getRandomStaticMap = () => getRandom(staticLocations);
+        randomBG = getRandom(staticLocations);
 
   setStaticImgUrls(client, staticLocations)
 
-  return [staticLocations, getRandomStaticMap]
+  return [staticLocations, randomBG]
 }
 
 export default mapboxConfigs

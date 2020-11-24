@@ -5,8 +5,8 @@ import MainBodyGrid from '@containers/_MainBodyGrid';
 import FooterControls from '@containers/_FooterControls';
 
 export default function ScreenContents() {
-  const [ staticMaps, getRandomStaticMap ] = mapbox(),
-        [ bg, setBg ] = useState( getRandomStaticMap() );
+  const [ staticMaps, randomBG ] = mapbox(),
+        [ bg, setBg ] = useState( randomBG );
   const props = { bg, setBg, staticMaps }
 
   return (
