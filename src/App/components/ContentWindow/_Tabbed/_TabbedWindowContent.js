@@ -22,7 +22,6 @@ export default function TabbedWindowContent({props}) {
               key={`tab_${tab.id}`}
               tabIndex={i}
               id={`tab_${tab.id}`}
-              href={ `${tab.id}` }
               label={tab.title}>
               <TabPanel props={ { animate, tab } } />
             </Tab>) })}
