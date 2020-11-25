@@ -16,11 +16,7 @@ const PreviewPane = React.forwardRef( ({props}, ref) => {
       </div>
       <div className="buttonColumn">
       <StickyButton
-        clickHandler={ () => {
-          animate.wrapperTimeline()
-                  .add(isMaximized ? minimizePane.play() : maximizePane.play())
-                  .then(() => setIsMaximized(prevState => !prevState));
-        } }
+        clickHandler={ () => clickHandler() }
         pictogram={ isMaximized ? <Minimize32 /> : <Maximize32 /> }
         assistiveText={ isMaximized ? "shrink" : "expand" }
         hoverAnimation={ animate.stickyButton.bounceScale }
@@ -29,6 +25,12 @@ const PreviewPane = React.forwardRef( ({props}, ref) => {
       </div>
     </div>
   )
+
+  function clickHandler() {
+    animate.wrapperTimeline()
+      .add(isMaximized ? minimizePane.play() : maximizePane.play())
+      .then(() => setIsMaximized(prevState => !prevState));
+  }
 })
 
 export default PreviewPane
