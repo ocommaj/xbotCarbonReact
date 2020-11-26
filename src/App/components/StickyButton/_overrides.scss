@@ -1,8 +1,4 @@
 .stickyButton {
-  .bx--tooltip__trigger {
-    //transition-delay: 1;
-  }
-
   .bx--btn.bx--btn--icon-only.bx--tooltip__trigger::after, .bx--btn.bx--btn--icon-only.bx--tooltip__trigger .bx--assistive-text, .bx--btn.bx--btn--icon-only.bx--tooltip__trigger + .bx--assistive-text {
     background-color: $decorative-01;
     color: $text-01;
