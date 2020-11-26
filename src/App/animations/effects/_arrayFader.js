@@ -9,13 +9,12 @@ const initArrayFaderEffect = () => {
 
           .to(targets, {
             opacity: "-=.3",
-            transformOrigin: "bottom left",
             repeat: -1,
             yoyo: true,
-            stagger: { amount: .4, from: 0 } });
+            stagger: { amount: .4, from: 1 } });
 
           return tl },
-        extendTimeline: true })
+        extendTimeline: true });
 }
 
 export default initArrayFaderEffect

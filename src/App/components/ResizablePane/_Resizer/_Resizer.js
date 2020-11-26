@@ -17,16 +17,16 @@ export default function Resizer(props) {
   )
 
   function mouseDownHandler(e, id) {
-    const x = e.clientX,
-          y = e.clientY,
+    //const x = e.clientX;
+    const y = e.clientY,
           pane = document.getElementById(id),
           paneStyles = window.getComputedStyle(pane),
-          w = parseInt(paneStyles.width, 10),
+          //w = parseInt(paneStyles.width, 10),
           h = parseInt(paneStyles.height, 10);
 
     const mouseMoveHandler = (e) => {
-            const deltaX = e.clientX - x,
-                  deltaY = e.clientY - y;
+            //const deltaX = e.clientX - x;
+            const deltaY = e.clientY - y;
 
             pane.style.flexBasis = `${h + deltaY}px`
           },

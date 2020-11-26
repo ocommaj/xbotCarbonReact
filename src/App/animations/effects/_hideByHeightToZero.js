@@ -7,7 +7,8 @@ const initHideByHeightToZero = () => {
       const tl = gsap.timeline({
         immediateRender: true,
         defaults: {
-          duration: 1, transformOrigin: "50% 50%",
+          duration: 1,
+          transformOrigin: "50% 50%",
           ease: 'exit_expressive'
         }});
 

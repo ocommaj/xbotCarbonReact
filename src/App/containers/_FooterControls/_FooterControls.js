@@ -19,22 +19,29 @@ export default function FooterControls({props}) {
   { loginWithRedirect: redirectLogin, logout } = useAuth0(),
   [profileModalOpen, setProfileModalOpen] = useState(false),
   [footerOpen, setFooterOpen] = useState(false),
-  wrapperRef = useRef(null),
+  wrapperRef = useRef(null);
 
-  toggleFooter = useCallback(() => setFooterOpen(o => !o), [setFooterOpen]),
-  toggleLogin = useCallback(() => {
+  const toggleFooter = useCallback(() => {
+    const toggleFooter = animate.footerControls.toggler,
+          toggleWindow = animate.contentWindow.heightToggler,
+          openFooter = () => toggleWindow(footerOpen, toggleFooter),
+          closeFooter = () => toggleFooter(footerOpen, toggleWindow);
+   return footerOpen === true ? openFooter() : closeFooter();
+  }, [animate, footerOpen]);
+
+  const toggleLogin = useCallback(() => {
     return !activeUser
       ? () => redirectLogin()
       : () => setProfileModalOpen(o => !o)
-    }, [activeUser, redirectLogin, setProfileModalOpen]),
+    }, [activeUser, redirectLogin, setProfileModalOpen]);
 
-  handleClick = {
-    footerToggler: () => toggleFooter(),
-    outsideFooter: () => !!footerOpen ? toggleFooter() : null,
+  const handleClick = {
+    footerToggler: () => setFooterOpen(o => !o),
+    outsideFooter: () => !!footerOpen ? setFooterOpen(!footerOpen) : null,
     loginToggler: toggleLogin()
   };
 
-  useEffect( () => footerToggler(footerOpen), [footerOpen])
+  useEffect(() => toggleFooter(), [toggleFooter]);
   useClickOutsideDetector(wrapperRef, handleClick.outsideFooter);
 
   return (
@@ -76,12 +83,4 @@ export default function FooterControls({props}) {
       setProfileModalOpen={ setProfileModalOpen }/>
     </>
   )
-
-  function footerToggler(openState) {
-     const toggleFooter = animate.footerControls.toggler,
-           toggleWindow = animate.contentWindow.heightToggler,
-           openFooter = () => toggleWindow(openState, toggleFooter),
-           closeFooter = () => toggleFooter(openState, toggleWindow);
-     return openState === true ? openFooter() : closeFooter();
-   }
 }

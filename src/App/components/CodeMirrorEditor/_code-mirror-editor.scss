@@ -6,6 +6,7 @@
   align-content: stretch;
   padding: 0;
   padding-bottom: $spacing-02;
+  transition: flex-grow 0.7s carbon--motion(standard);
 }
 
 .cm-editor-container:nth-child(2) {

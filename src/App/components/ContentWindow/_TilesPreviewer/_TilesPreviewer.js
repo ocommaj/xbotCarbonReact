@@ -31,13 +31,27 @@ export default function TilesPreviewer({ props }) {
           { previewArticle &&
             <PreviewPane
               ref= { previewPane }
-              props={ previewArticle }
+              props={{
+                ...previewArticle,
+                maximizePane: maximizePane(),
+                minimizePane: minimizePane()
+              }}
             />
           }
         </div>
       </div>
     </div>
   )
+
+  function maximizePane() {
+    const params = { tilesCol }
+    return animate.maximizePreviewPane(params)
+  }
+
+  function minimizePane() {
+    const params = { tilesCol, previewPane }
+    return animate.reducePreviewPane(params)
+  }
 
   function loadTiles(fromList) {
     return fromList.map((article, idx) => {

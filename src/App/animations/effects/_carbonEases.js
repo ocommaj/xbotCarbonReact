@@ -7,7 +7,7 @@ gsap.registerPlugin(CustomEase);
 const paths = ['standard', 'entrance', 'exit'];
 const styles = ['productive', 'expressive'];
 
-export default function defineCustomEases() {
+export default function DefineCustomEases() {
   //on return, gsap eases will exist for all Carbon 'path_style' combo keys
   for (const {name, ease} of __constructCarbonMotionCurves(paths, styles)) {
     CustomEase.create(name, ease);

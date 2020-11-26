@@ -6,5 +6,4 @@ export default function hidePreviewPane(params) {
           .collapsePreviewPane({previewCol, previewPane});
 
         tl.play()
-
 }

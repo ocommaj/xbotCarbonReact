@@ -1,11 +1,11 @@
-import RootTimeline from './rootTimeline';
+import WrapperTimeline from './wrapperTimeline';
 import RegisterEffects from './effects';
 import MainBodyAnimations from './mainBodyAnimations';
 import FixedOrnamentAnimations from './fixedOrnaments';
 
 const Animate = () => {
   const self = {
-          rootTimeline: RootTimeline(),
+          wrapperTimeline: () => WrapperTimeline(),
           header: MainBodyAnimations.header,
           contentWindow: MainBodyAnimations.contentWindow,
           footerControls: MainBodyAnimations.footerControls,
@@ -13,7 +13,7 @@ const Animate = () => {
           fleet: FixedOrnamentAnimations.fleet,
           stickyButton: FixedOrnamentAnimations.stickyButtons
         }
-  
+
   RegisterEffects()
 
   return Object.assign(self)

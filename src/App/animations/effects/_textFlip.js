@@ -20,7 +20,7 @@ const initTextFlipEffect = () => {
 
       tl.to(inComp, {
         scaleY: 0,
-        transformOrigin: "center left",
+        //transformOrigin: "center center",
         opacity: 0
       })
       return tl },

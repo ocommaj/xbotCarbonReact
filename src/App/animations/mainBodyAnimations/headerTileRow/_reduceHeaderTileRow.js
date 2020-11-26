@@ -7,7 +7,7 @@ export default function reduceHeaderTileRow(params) {
         tl = gsap.timeline({
           paused: true,
           defaults: { ease: "standard_expressive" },
-          onComplete: () => { setActiveId(fromTile.id) }
+          onComplete: () => setActiveId(fromTile.id)
         })
           .toggleActiveTile(fromTile)
           .add(_collapseTiles(tiles, fromTile), '<.2')

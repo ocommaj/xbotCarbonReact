@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
+import React, { useRef } from 'react';
 import { useLocalStorage, useUser } from '@hooks/';
-import { sections } from '@Models';
+import { SectionConfigs } from '@Models';
 import Animate from '@animations';
 import ScreenContents from '@containers';
 import './App.scss';
@@ -9,16 +9,16 @@ export const AppContext = React.createContext()
 
 export default function App() {
   const [ showToolTips, setShowToolTips ] = useLocalStorage('showToolTips'),
+        animate = useRef( Animate() ),
         activeUser = useUser(),
+        sections = SectionConfigs,
         contextValue = {
           showToolTips,
           setShowToolTips,
           activeUser,
-          animate: Animate(),
-          sections: sections()
+          sections,
+          animate: animate.current
         };
-
-  useEffect(() => { console.dir(activeUser) }, [activeUser]);
 
   return (
       <AppContext.Provider value={ contextValue }>
