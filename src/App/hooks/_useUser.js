@@ -14,5 +14,5 @@ export default function useUser() {
     }
   }, [authUser, login, errorCallback]);
 
-  return activeUser;
+  return [activeUser, setActiveUser];
 }

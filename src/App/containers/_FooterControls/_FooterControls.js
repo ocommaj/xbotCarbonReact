@@ -14,7 +14,8 @@ export default function FooterControls({props}) {
     animate,
     showToolTips,
     setShowToolTips,
-    activeUser
+    activeUser,
+    setActiveUser
   } = useContext(AppContext),
   { loginWithRedirect: redirectLogin, logout } = useAuth0(),
   [profileModalOpen, setProfileModalOpen] = useState(false),
@@ -77,10 +78,12 @@ export default function FooterControls({props}) {
       </span>
     </div>
     <ProfileModal
-      user={ activeUser }
-      logout={ () => logout({ returnTo: window.location.origin }) }
-      profileModalOpen={ profileModalOpen }
-      setProfileModalOpen={ setProfileModalOpen }/>
+      props={ {
+        activeUser,
+        profileModalOpen,
+        setProfileModalOpen,
+        logout: () => logout({ returnTo: window.location.origin })
+      } }/>
     </>
   )
 }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import {
   ComposedModal,
@@ -7,9 +7,24 @@ import {
   ModalFooter,
   Button
  } from 'carbon-components-react';
+ import { useUserUpdateMutation } from '@hooks';
 
-export default function ProfileModal(props) {
-  const { user, logout, profileModalOpen, setProfileModalOpen } = props;
+export default function ProfileModal({ props }) {
+  const {
+    activeUser,
+    profileModalOpen,
+    setProfileModalOpen,
+    logout
+  } = props;
+  const [ mutate, error ] = useUserUpdateMutation();
+  const [rerender, setRerender] = useState(false)
+  const [displayName, setDisplayName] = useState();
+
+  useEffect(() => {
+    if (activeUser) {
+      setDisplayName(activeUser.fullName)
+    }
+  }, [activeUser, profileModalOpen, rerender])
 
   if ( !profileModalOpen ) { return null }
 
@@ -19,7 +34,7 @@ export default function ProfileModal(props) {
       open={ profileModalOpen }
       onClose={ () => setProfileModalOpen(false) }>
       <ModalHeader>
-        { !!user ? user.fullName : 'Profile' }
+        {  displayName ? displayName : 'Profile' }
       </ModalHeader>
       <ModalBody></ModalBody>
       <ModalFooter>
@@ -28,7 +43,9 @@ export default function ProfileModal(props) {
           onClick={ () => logout() }>
           Logout
         </Button>
-        <Button kind="primary">
+        <Button
+          kind="primary"
+          onClick={ () => updateUserClickHandler() }>
           Edit Profile
         </Button>
       </ModalFooter>
@@ -36,4 +53,11 @@ export default function ProfileModal(props) {
     </>,
     document.getElementById('modalPortal')
   )
+
+  function updateUserClickHandler(input) {
+    if (!activeUser) return
+      activeUser.updateRecord({mutate, error})
+            .then(() => setRerender(prevState => !prevState) )
+            .catch((error) => console.dir(error))
+  }
 }

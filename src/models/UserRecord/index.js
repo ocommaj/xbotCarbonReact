@@ -19,7 +19,35 @@ export default class UserRecord {
         errorCallback()
         return
       })
-    return newUser
+    return newUser;
+  }
+
+  updateRecord(apolloHook) {
+    const { mutate } = apolloHook;
+    const input = {
+      atXavierAccount: this.atXavierAccount,
+      firstName: "Jim",
+      familyName: this.familyName,
+      fullName: this.fullName,
+      goesBy: this.goesBy,
+      isEditor: this.isEditor,
+      lastLogin: this.lastLogin
+    };
+
+    return new Promise((resolve, reject) => {
+      mutate({ variables: { input } })
+        .then(({ data }) => {
+          const response = reducer.apolloResponse(data.updateUser.updatedUser);
+          for (const [key, value] of Object.entries(response)) {
+            this[key] = value;
+          }
+          return resolve();
+        })
+        .catch((error) => {
+          console.dir(error);
+          return reject(error);
+        })
+    })
   }
 
 }

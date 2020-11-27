@@ -15,6 +15,7 @@ const reducers = {
   },
   apolloResponse: (apolloUserRecord) => {
     return {
+      _id: apolloUserRecord._id,
       atXavierAccount: apolloUserRecord.atXavierAccount,
       firstName: apolloUserRecord.firstName,
       familyName: apolloUserRecord.familyName,
