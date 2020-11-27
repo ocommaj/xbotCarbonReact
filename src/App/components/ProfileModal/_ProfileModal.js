@@ -7,7 +7,7 @@ import {
   ModalFooter,
   Button
  } from 'carbon-components-react';
- import { useUserUpdateMutation } from '@hooks';
+import { useUserUpdateMutation } from '@hooks';
 
 export default function ProfileModal({ props }) {
   const {
@@ -32,7 +32,8 @@ export default function ProfileModal({ props }) {
     <>
     <ComposedModal
       open={ profileModalOpen }
-      onClose={ () => setProfileModalOpen(false) }>
+      onClose={ () => setProfileModalOpen(false) }
+      preventCloseOnClickOutside={ true }>
       <ModalHeader>
         {  displayName ? displayName : 'Profile' }
       </ModalHeader>
