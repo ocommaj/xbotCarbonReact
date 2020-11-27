@@ -14,8 +14,7 @@ export default function FooterControls({props}) {
     animate,
     showToolTips,
     setShowToolTips,
-    activeUser,
-    setActiveUser
+    activeUser
   } = useContext(AppContext),
   { loginWithRedirect: redirectLogin, logout } = useAuth0(),
   [profileModalOpen, setProfileModalOpen] = useState(false),
@@ -33,11 +32,11 @@ export default function FooterControls({props}) {
   const toggleLogin = useCallback(() => {
     return !activeUser
       ? () => redirectLogin()
-      : () => setProfileModalOpen(o => !o)
+      : () => setProfileModalOpen(state => !state)
     }, [activeUser, redirectLogin, setProfileModalOpen]);
 
   const handleClick = {
-    footerToggler: () => setFooterOpen(o => !o),
+    footerToggler: () => setFooterOpen(state => !state),
     outsideFooter: () => !!footerOpen ? setFooterOpen(!footerOpen) : null,
     loginToggler: toggleLogin()
   };
@@ -80,8 +79,7 @@ export default function FooterControls({props}) {
     <ProfileModal
       props={ {
         activeUser,
-        profileModalOpen,
-        setProfileModalOpen,
+        modalState: { isOpen: profileModalOpen, setOpen: setProfileModalOpen },
         logout: () => logout({ returnTo: window.location.origin })
       } }/>
     </>

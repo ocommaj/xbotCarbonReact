@@ -12,8 +12,7 @@ import { useUserUpdateMutation } from '@hooks';
 export default function ProfileModal({ props }) {
   const {
     activeUser,
-    profileModalOpen,
-    setProfileModalOpen,
+    modalState,
     logout
   } = props;
   const [ mutate, error ] = useUserUpdateMutation();
@@ -24,15 +23,15 @@ export default function ProfileModal({ props }) {
     if (activeUser) {
       setDisplayName(activeUser.fullName)
     }
-  }, [activeUser, profileModalOpen, rerender])
+  }, [activeUser, modalState.isOpen, rerender])
 
-  if ( !profileModalOpen ) { return null }
+  if ( !modalState.isOpen ) { return null }
 
   return ReactDOM.createPortal(
     <>
     <ComposedModal
-      open={ profileModalOpen }
-      onClose={ () => setProfileModalOpen(false) }
+      open={ modalState.isOpen }
+      onClose={ () => modalState.setOpen(false) }
       preventCloseOnClickOutside={ true }>
       <ModalHeader>
         {  displayName ? displayName : 'Profile' }
