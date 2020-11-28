@@ -1,13 +1,10 @@
-import { gsap } from 'gsap'
+import { gsap } from 'gsap';
 
-const initSpinGraphicX = () => {
+export default function initSpinGraphicX() {
   gsap.registerEffect({
     name: "spinGraphicX",
     effect: (graphic, config) => {
-      const tl = gsap.timeline({ paused: false, defaults: { duration: .7 }})
-              .to(graphic, {rotateX: '+=360deg'});
-      return tl },
-    extendTimeline: true })
-}
-
-export default initSpinGraphicX
+      return gsap.timeline().to(graphic, {rotateX: '+=360deg'});
+      },
+    extendTimeline: true });
+};

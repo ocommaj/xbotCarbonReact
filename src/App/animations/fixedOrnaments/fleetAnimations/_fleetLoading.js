@@ -1,4 +1,4 @@
-import { gsap } from 'gsap'
+import { gsap } from 'gsap';
 
 export default function fleetLoading(params) {
   const { graphics } = params,
@@ -6,4 +6,4 @@ export default function fleetLoading(params) {
           .fader(graphics)
           .bobber(graphics);
   tl.play();
-}
+};

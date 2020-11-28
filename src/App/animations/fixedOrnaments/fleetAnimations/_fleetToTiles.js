@@ -1,4 +1,4 @@
-import { gsap } from 'gsap'
+import { gsap } from 'gsap';
 import { MotionPathPlugin } from "gsap/MotionPathPlugin";
 
 gsap.registerPlugin(MotionPathPlugin);
@@ -21,25 +21,27 @@ export default function fleetToTiles(params) {
     tl.add(_hideHelperText(helperText))
       .add(_quickFleetCollapser(wrappers, graphics, fleetContainer), '<')
       .add(_quickFleetToTiles(graphics, headerTiles, fleetContainer))
-      .add(_expandTiles(headerTiles), '-=.4')
-  return tl
-}
+      .add(_expandTiles(headerTiles), '-=.4');
+  return tl;
+};
 
 const  _hideHelperText = (helperText) => {
   const tl = gsap.timeline()
-          .hideByHeightToZero(helperText)
-  return tl
-}
+          .hideByHeightToZero(helperText);
+  return tl;
+};
 
 const _quickFleetCollapser = (wrappers, graphics, container) => {
   const tl = gsap.timeline({defaults: {duration: .7}});
 
-      tl.to(graphics, { rotateZ: "-90deg", stagger: { amount: .2} })
+      tl.to(graphics, { rotateZ: "-90deg", stagger: { amount: .2} });
 
       for (let wrapper of gsap.utils.toArray(wrappers).reverse()) {
-          let delta = MotionPathPlugin.getRelativePosition(wrapper, container, [.75, .5], [.75, .5])
-          tl.to(wrapper, { x: "+=" + delta.x, y: "+=" + delta.y }, '<') }
-    return tl
+          let delta = MotionPathPlugin
+            .getRelativePosition(wrapper, container, [.75, .5], [.75, .5]);
+          tl.to(wrapper, { x: "+=" + delta.x, y: "+=" + delta.y }, '<');
+        }
+    return tl;
 }
 
 const _quickFleetToTiles = (graphics, tiles, container) => {
@@ -55,8 +57,8 @@ const _quickFleetToTiles = (graphics, tiles, container) => {
 
     tl.to(graphics,
       {opacity: 0, stagger: {amount: .2}, display: "none" }, "-=.2")
-    return tl
-}
+    return tl;
+};
 
 const _expandTiles = (tiles) => {
   const tileArray = gsap.utils.toArray(tiles),
@@ -74,7 +76,7 @@ const _expandTiles = (tiles) => {
     tl.to(tiles, { width: "100%", flex: "0 0 100%", opacity: 1 }, "-=.1")
       .to(tiles, { height: "100%" }, '<.4')
       .fromTo(titles, {opacity: 0}, { opacity: 1}, '<.2')
-      .fromTo(icons, { opacity: 0 }, { opacity: 1 }, '<')
+      .fromTo(icons, { opacity: 0 }, { opacity: 1 }, '<');
 
-  return tl
-}
+  return tl;
+};

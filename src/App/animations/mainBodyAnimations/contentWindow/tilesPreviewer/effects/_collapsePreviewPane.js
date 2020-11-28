@@ -1,11 +1,11 @@
-import { gsap } from 'gsap'
+import { gsap } from 'gsap';
 
 export default function initCollapsePreviewPane() {
   gsap.registerEffect({
     name: 'collapsePreviewPane',
     effect: (target, config) => {
-      const { previewPane } = [...target][0],
-            tl = gsap.timeline({
+      const { previewPane } = [...target][0];
+      return gsap.timeline({
               defaults: {
                 duration: 1,
                 transformOrigin: "center right",
@@ -18,8 +18,7 @@ export default function initCollapsePreviewPane() {
                 .to(previewPane.children, {
                   width: 0,
                 }, '<');
-        return tl
     },
     extendTimeline: true
-  })
-}
+  });
+};

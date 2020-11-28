@@ -12,14 +12,14 @@ export default function DefineCustomEases() {
   for (const {name, ease} of __constructCarbonMotionCurves(paths, styles)) {
     CustomEase.create(name, ease);
   };
-}
+};
 
 function __constructCarbonMotionCurves(paths, styles) {
   return [].concat( ...paths.map(path => styles.map(style =>
     ({ name: `${path}_${style}`, ease: __getBezierStr( motion(path, style) ) })
-  )))
-}
+  )));
+};
 
 function __getBezierStr(string) {
-  return string.replace(/[^0-9 .]+/g, "")
+  return string.replace(/[^0-9 .]+/g, "");
 }

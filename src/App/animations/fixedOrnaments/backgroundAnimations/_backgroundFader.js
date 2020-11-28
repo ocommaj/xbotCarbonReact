@@ -1,4 +1,4 @@
-import { gsap } from 'gsap'
+import { gsap } from 'gsap';
 
 export default function fadeBetweenViews({setNewURL, url}) {
   const bg = document.querySelector('.mapboxBG'),
@@ -11,5 +11,5 @@ export default function fadeBetweenViews({setNewURL, url}) {
         .to(bg, { opacity: 1,
                   ease: "expressive_entrance"
          });
-  tl.play()
-}
+  tl.play();
+};

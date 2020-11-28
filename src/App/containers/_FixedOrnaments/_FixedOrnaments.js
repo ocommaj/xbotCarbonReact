@@ -3,7 +3,7 @@ import MapboxBG from '@components/MapboxBG';
 import FleetGraphic from './FleetGraphic';
 
 export default function FixedOrnaments({ props }) {
-  const  bg  = props;
+  const bg = props;
   const [fleetShows, setFleetShows] = useState(true);
 
   return (

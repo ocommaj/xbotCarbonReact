@@ -13,9 +13,9 @@ const registerAnimations = () => ({
   hidePreviewPane: (params) => hidePreviewPane(params),
   maximizePreviewPane: (params) => {return maximizePreviewPane(params)},
   reducePreviewPane: (params) => {return reducePreviewPane(params)}
-})
+});
 
 export default function ComposeAnimations() {
-  RegisterEffects()
-  return Object.assign({}, registerAnimations())
+  RegisterEffects();
+  return Object.assign({}, registerAnimations());
 }

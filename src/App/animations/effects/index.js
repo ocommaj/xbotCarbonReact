@@ -12,16 +12,16 @@ import SpinGraphicZ from './_spinGraphicZ';
 import { HeaderTileEffects } from '../mainBodyAnimations/headerTileRow';
 
 export default function RegisterEffects() {
-    DefineCustomEases()
-    ArrayFaderEffect()
-    ArrayBobberEffect()
-    BounceScale()
-    ElemBgColorChanger()
-    FadeFlipEffect()
-    HideByHeightToZero()
-    IconFlipperEffect()
-    SpinGraphicX()
-    SpinGraphicY()
-    SpinGraphicZ()
-    HeaderTileEffects()
+    DefineCustomEases();
+    ArrayFaderEffect();
+    ArrayBobberEffect();
+    BounceScale();
+    ElemBgColorChanger();
+    FadeFlipEffect();
+    HideByHeightToZero();
+    IconFlipperEffect();
+    SpinGraphicX();
+    SpinGraphicY();
+    SpinGraphicZ();
+    HeaderTileEffects();
 }

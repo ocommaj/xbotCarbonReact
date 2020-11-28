@@ -1,4 +1,4 @@
-import { gsap } from 'gsap'
+import { gsap } from 'gsap';
 
 export default function switchPreviewerTiles(params) {
   const { tile,
@@ -6,9 +6,10 @@ export default function switchPreviewerTiles(params) {
           previewCol,
           tileCol,
           setPreviewArticle,
-          previewShows } = params,
-          tiles = tileCol.children,
-          outgoingTile = document.querySelector('.activeArticleTile');
+          previewShows
+        } = params;
+  const tiles = tileCol.children;
+  const outgoingTile = document.querySelector('.activeArticleTile');
 
   const tl = gsap.timeline({
             paused: true,
@@ -24,6 +25,6 @@ export default function switchPreviewerTiles(params) {
           .resizeArticlePreviewTiles(
             {tile, tiles, previewShows: false});
 
-    tl.play()
+    tl.play();
 
-}
+};

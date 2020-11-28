@@ -7,7 +7,7 @@ const animations = {
   bounceScale: (element) => bounceScale(element),
   spinOnX: (element) => spinOnX(element),
   spinOnY: (element) => spinOnY(element),
-  spinOnZ: (element) => spinOnZ(element)
-}
+  spinOnZ: (element) => spinOnZ(element),
+};
 
-export default animations
+export default animations;

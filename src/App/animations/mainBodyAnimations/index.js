@@ -1,11 +1,11 @@
-import HeaderRowAnimations from './headerTileRow'
-import ContentWindowAnimations from './contentWindow'
-import FooterControlsAnimations from './footerControls'
+import HeaderRowAnimations from './headerTileRow';
+import ContentWindowAnimations from './contentWindow';
+import FooterControlsAnimations from './footerControls';
 
 const animations = {
   header: HeaderRowAnimations,
   contentWindow: ContentWindowAnimations,
-  footerControls: FooterControlsAnimations
-}
+  footerControls: FooterControlsAnimations,
+};
 
-export default animations
+export default animations;

@@ -1,6 +1,6 @@
-import { gsap } from 'gsap'
+import { gsap } from 'gsap';
 
-const initFadeFlipEffect = () => {
+export default function initFadeFlipEffect() {
   gsap.registerEffect({
     name: "fadeFlip",
     effect: (target, config) => {
@@ -14,7 +14,5 @@ const initFadeFlipEffect = () => {
                 scaleY: 0, opacity: 0, delay: 1.4, ease: "exit_expressive" });
             },
     extendTimeline: true
-  })
-}
-
-export default initFadeFlipEffect
+  });
+};

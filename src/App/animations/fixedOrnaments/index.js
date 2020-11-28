@@ -1,11 +1,11 @@
-import BackgroundAnimations from './backgroundAnimations'
-import FleetAnimations from './fleetAnimations'
-import StickyButtons from './stickyButtons'
+import BackgroundAnimations from './backgroundAnimations';
+import FleetAnimations from './fleetAnimations';
+import StickyButtons from './stickyButtons';
 
 const animations = {
   background: BackgroundAnimations,
   fleet: FleetAnimations,
-  stickyButtons: StickyButtons
-}
+  stickyButtons: StickyButtons,
+};
 
-export default animations
+export default animations;

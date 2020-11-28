@@ -1,11 +1,11 @@
-import { gsap } from 'gsap'
+import { gsap } from 'gsap';
 
 export default function initDisplayPreviewPane() {
   gsap.registerEffect({
     name: 'displayPreviewPane',
     effect: (target, config) => {
-      const { previewCol, previewPane } = [...target][0],
-            tl = gsap.timeline({
+      const { previewCol, previewPane } = [...target][0];
+            return gsap.timeline({
               defaults: {
                 duration: 1,
                 ease: "standard_productive"},
@@ -14,8 +14,7 @@ export default function initDisplayPreviewPane() {
                 .to(previewCol, {flexGrow: 1})
                 .to(previewPane, {opacity: "100%", flexGrow: 1}, '<')
                 .to(previewPane.children, { opacity: "100%"}, '<');
-        return tl
-    },
+            },
     extendTimeline: true
-  })
-}
+  });
+};

@@ -3,7 +3,7 @@ import RegisterEffects from './effects';
 import MainBodyAnimations from './mainBodyAnimations';
 import FixedOrnamentAnimations from './fixedOrnaments';
 
-const Animate = () => {
+export default function Animate() {
   const self = {
           wrapperTimeline: (args) => WrapperTimeline(args),
           header: MainBodyAnimations.header,
@@ -12,11 +12,9 @@ const Animate = () => {
           background: FixedOrnamentAnimations.background,
           fleet: FixedOrnamentAnimations.fleet,
           stickyButton: FixedOrnamentAnimations.stickyButtons
-        }
+        };
 
-  RegisterEffects()
+  RegisterEffects();
 
-  return Object.assign(self)
-}
-
-export default Animate
+  return Object.assign(self);
+};

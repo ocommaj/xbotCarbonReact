@@ -1,9 +1,9 @@
-import { gsap } from 'gsap'
+import { gsap } from 'gsap';
 
 export default function heightToggler(respondToState, onComplete) {
-  const mainWindow = document.querySelector('.mainContentWindow'),
-        deltaHeight = respondToState === true ? '-=5rem' : '+=5rem',
-          tl = gsap.timeline({
+  const mainWindow = document.querySelector('.mainContentWindow');
+  const deltaHeight = respondToState === true ? '-=5rem' : '+=5rem';
+  const tl = gsap.timeline({
             paused: true,
             defaults: { ease: "standard_productive" },
             onComplete: () => { if (onComplete) { onComplete(respondToState) }}
@@ -11,6 +11,5 @@ export default function heightToggler(respondToState, onComplete) {
 
     if (!!mainWindow) { tl.to(mainWindow, {height: deltaHeight}) };
 
-    tl.play()
-
-}
+    tl.play();
+};

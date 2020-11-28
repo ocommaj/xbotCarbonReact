@@ -10,6 +10,6 @@ const animations = {
   content: {
     tilesPreviewer: () => TilesPreviewerAnimations()
   }
-}
+};
 
-export default animations
+export default animations;
