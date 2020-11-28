@@ -10,6 +10,7 @@ export default function fleetToTiles(params) {
         graphics = fleetContainer.querySelectorAll('svg'),
         tl = gsap.timeline({
           immediateRender: true,
+          paused: true,
           defaults: {
             duration: 1,
             transformOrigin: "center center",
@@ -21,7 +22,7 @@ export default function fleetToTiles(params) {
       .add(_quickFleetCollapser(wrappers, graphics, fleetContainer), '<')
       .add(_quickFleetToTiles(graphics, headerTiles, fleetContainer))
       .add(_expandTiles(headerTiles), '-=.4')
-
+  return tl
 }
 
 const  _hideHelperText = (helperText) => {

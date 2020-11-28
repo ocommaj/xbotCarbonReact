@@ -1,16 +1,15 @@
-import React, { useContext } from 'react'
-import { AppContext } from '@App'
-import MapboxBG from '@components/MapboxBG'
-import FleetGraphic from './FleetGraphic'
+import React, { useState } from 'react';
+import MapboxBG from '@components/MapboxBG';
+import FleetGraphic from './FleetGraphic';
 
 export default function FixedOrnaments({ props }) {
-  const  bg  = props,
-        { animate } = useContext(AppContext);
+  const  bg  = props;
+  const [fleetShows, setFleetShows] = useState(true);
 
   return (
     <>
       <MapboxBG imageURL={ bg.satView_url } />
-      <FleetGraphic animate={ animate.fleet }/>
+      <FleetGraphic visibile={{state: fleetShows, setState: setFleetShows}} />
     </>
   )
 }

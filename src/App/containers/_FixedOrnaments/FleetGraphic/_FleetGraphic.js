@@ -1,47 +1,60 @@
-import React, { useState, useEffect } from 'react'
-import Graphic from '@components/VectorGraphics'
+import React, { useContext, useState, useRef, useEffect } from 'react';
+import Graphic from '@components/VectorGraphics';
+import { AppContext } from '@App';
 
 export default function FleetGraphic(props) {
-  const { animate } = props,
-        [helperMsg, setHelperMsg] = useState(),
-        offsets = ['-.5rem', '1rem', '-.75rem', '-2.25rem'];
+  const { visibile } = props;
+  const { animate } = useContext(AppContext);
+  const [helperMsg, setHelperMsg] = useState();
+  const fleetGraphicDiv = useRef();
+  const fleetGraphicWrapper = useRef();
+  const fleetHelperText = useRef();
+  const offsets = ['-.5rem', '1rem', '-.75rem', '-2.25rem'];
 
-  useEffect(initAnimation, [animate])
+  useEffect(initAnimation, [animate]);
 
+  if (!visibile.state) return null
   return (
-    <div className="fleetGraphic">
-      <span className="fleetGraphicContainer">
+    <div className="fleetGraphic" ref={ fleetGraphicDiv }>
+      <span className="fleetGraphicContainer" ref={ fleetGraphicWrapper }>
         {offsets.map((off, i) => { return (
           <Graphic
             key={ `shipGraphic_${i}` }
             pictogram='cargoShip240'
             style={ { marginTop: off } }
-            onClick={ () => fleetToTiles() }
+            onClick={ () => clickHandler() }
           />
         )})}
       </span>
-      <div className="helperText">{ helperMsg }</div>
+      <div className="helperText" ref={ fleetHelperText }>{ helperMsg }</div>
     </div>
   )
 
   function initAnimation() {
-    const params = {
-          graphics: document.querySelector('.fleetGraphicContainer').children,
-          inComp: document.querySelector('.helperText'),
-          msgArr: [ "(scroll to start)", "(click to skip ahead)" ],
-          setState: setHelperMsg
-        };
+    const msgArr = [ "(click to skip ahead)", "(scroll to start)" ];
+    const graphics = fleetGraphicWrapper.current.children;
+    const element = fleetHelperText.current;
 
-    animate.loading(params)
-    animate.messageFlipper(params)
+    animate.fleet.loading({ graphics });
+    animate.wrapperTimeline({ repeat: -1, repeatDelay: 1.4 })
+      .add( animate.fleet.messageFlipper({ element }).play() )
+      .call(() => setHelperMsg(prevState => {
+        return prevState === msgArr[0] ? msgArr[1] : msgArr[0] }
+      ));
+  }
 
+  function clickHandler() {
+    animate.wrapperTimeline()
+      .add( fleetToTiles().play() )
+      .eventCallback( () => visibile.setState(prevState => !prevState) )
   }
 
   function fleetToTiles() {
     const params = {
-      fleetContainer: document.querySelector('.fleetGraphic'),
+      fleetContainer: fleetGraphicDiv.current,
       headerTiles: document.querySelectorAll('.bx--tile.headerTile') }
 
-    animate.fleetToTiles(params)
+    return animate.fleet.fleetToTiles(params)
   }
+
 }

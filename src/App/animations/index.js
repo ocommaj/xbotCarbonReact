@@ -5,7 +5,7 @@ import FixedOrnamentAnimations from './fixedOrnaments';
 
 const Animate = () => {
   const self = {
-          wrapperTimeline: () => WrapperTimeline(),
+          wrapperTimeline: (args) => WrapperTimeline(args),
           header: MainBodyAnimations.header,
           contentWindow: MainBodyAnimations.contentWindow,
           footerControls: MainBodyAnimations.footerControls,

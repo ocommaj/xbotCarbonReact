@@ -1,10 +1,12 @@
 import { gsap } from 'gsap';
 
-export default function WrapperTimeline() {
+export default function WrapperTimeline(args={}) {
   const timeline = gsap.timeline({
+    repeat: args.repeat || 0,
+    repeatDelay: args.repeatDelay || 0,
     defaults: {
-      duration: .7,
-      ease: "standard_productive"
+      duration: args.defaultDuration || .7,
+      ease: args.defaultEase || "standard_productive",
     }
   })
 

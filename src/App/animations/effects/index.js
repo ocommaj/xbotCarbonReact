@@ -2,10 +2,10 @@ import ArrayFaderEffect from './_arrayFader';
 import ArrayBobberEffect from './_arrayBobber';
 import BounceScale from './_bounceScale';
 import DefineCustomEases from './_carbonEases';
-import IconFlipperEffect from './_iconFlipper';
-import TextFlipEffect from './_textFlip';
-import HideByHeightToZero from './_hideByHeightToZero';
 import ElemBgColorChanger from './_elemBgColorChanger';
+import FadeFlipEffect from './_fadeFlip';
+import HideByHeightToZero from './_hideByHeightToZero';
+import IconFlipperEffect from './_iconFlipper';
 import SpinGraphicX from './_spinGraphicX';
 import SpinGraphicY from './_spinGraphicX';
 import SpinGraphicZ from './_spinGraphicZ';
@@ -16,10 +16,10 @@ export default function RegisterEffects() {
     ArrayFaderEffect()
     ArrayBobberEffect()
     BounceScale()
-    IconFlipperEffect()
-    TextFlipEffect()
-    HideByHeightToZero()
     ElemBgColorChanger()
+    FadeFlipEffect()
+    HideByHeightToZero()
+    IconFlipperEffect()
     SpinGraphicX()
     SpinGraphicY()
     SpinGraphicZ()
