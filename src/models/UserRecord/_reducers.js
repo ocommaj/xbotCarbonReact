@@ -24,6 +24,16 @@ const reducers = {
       isEditor: apolloUserRecord.isEditor,
       lastLogin: new Date().toUTCString(apolloUserRecord.lastLogin)
     }
+  },
+  updateUserInfo: (userRecord, updateInput) => {
+    const update = {};
+    for (const key of Object.keys(userRecord)) {
+      if (key !== '_id') {
+      update[key] = updateInput[key] ? updateInput[key] : userRecord[key];
+      }
+    }
+    update.fullName = `${update.firstName} ${update.familyName}`
+    return update;
   }
 }
 

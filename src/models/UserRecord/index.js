@@ -24,15 +24,11 @@ export default class UserRecord {
 
   updateRecord(apolloHook) {
     const { mutate } = apolloHook;
-    const input = {
-      atXavierAccount: this.atXavierAccount,
-      firstName: "Jim",
-      familyName: this.familyName,
-      fullName: this.fullName,
-      goesBy: this.goesBy,
-      isEditor: this.isEditor,
-      lastLogin: this.lastLogin
+    const testInput = {
+      firstName: "Joe"
     };
+
+    const input = reducer.updateUserInfo(this, testInput);
 
     return new Promise((resolve, reject) => {
       mutate({ variables: { input } })
