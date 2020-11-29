@@ -1,5 +1,6 @@
 import React, {
-  useContext, useState, useRef, useCallback, useEffect } from 'react';
+  useContext, useState, useRef, useCallback, useEffect
+} from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 import { Toggle } from 'carbon-components-react';
 import { AppContext } from '@App';
@@ -15,17 +16,17 @@ export default function FooterControls({props}) {
     showToolTips,
     setShowToolTips,
     activeUser
-  } = useContext(AppContext),
-  { loginWithRedirect: redirectLogin, logout } = useAuth0(),
-  [profileModalOpen, setProfileModalOpen] = useState(false),
-  [footerOpen, setFooterOpen] = useState(false),
-  wrapperRef = useRef(null);
+  } = useContext(AppContext);
+  const { loginWithRedirect: redirectLogin, logout } = useAuth0();
+  const [profileModalOpen, setProfileModalOpen] = useState(false);
+  const [footerOpen, setFooterOpen] = useState(false);
+  const wrapperRef = useRef(null);
 
   const toggleFooter = useCallback(() => {
-    const toggleFooter = animate.footerControls.toggler,
-          toggleWindow = animate.contentWindow.heightToggler,
-          openFooter = () => toggleWindow(footerOpen, toggleFooter),
-          closeFooter = () => toggleFooter(footerOpen, toggleWindow);
+    const toggleFooter = animate.footerControls.toggler;
+    const toggleWindow = animate.contentWindow.heightToggler;
+    const openFooter = () => toggleWindow(footerOpen, toggleFooter);
+    const closeFooter = () => toggleFooter(footerOpen, toggleWindow);
    return footerOpen === true ? openFooter() : closeFooter();
   }, [animate, footerOpen]);
 
@@ -70,10 +71,12 @@ export default function FooterControls({props}) {
           defaultToggled={ showToolTips }
           onToggle={ () => setShowToolTips(state => !state) } />
         <BackgroundPicker
-          animation={ animate.background.fadeBetweenViews }
+          animate={ {
+            timeline: animate.wrapperTimeline,
+            effects: animate.background
+           } }
           mapConfigs={ staticMaps }
-          currentBackground={ bg }
-          setBackground={ setBg } />
+          background={ { current: bg, set: setBg } } />
       </span>
     </div>
     <ProfileModal

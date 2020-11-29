@@ -1,2 +1,2 @@
-import FixedOrnaments from './_FixedOrnaments'
-export default FixedOrnaments
+import FixedOrnaments from './_FixedOrnaments';
+export default FixedOrnaments;

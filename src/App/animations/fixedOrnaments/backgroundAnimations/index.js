@@ -1,7 +1,9 @@
-import fadeBetweenViews from './_backgroundFader';
+import fadeIn from './_fadeIn';
+import fadeOut from './_fadeOut';
 
 const animations = {
-  fadeBetweenViews: (params) => fadeBetweenViews(params)
+  fadeIn: () => fadeIn(),
+  fadeOut: () => fadeOut()
 };
 
-export default animations
+export default animations;

@@ -9,7 +9,7 @@ export default function FixedOrnaments({ props }) {
   return (
     <>
       <MapboxBG imageURL={ bg.satView_url } />
-      <FleetGraphic visibile={{state: fleetShows, setState: setFleetShows}} />
+      <FleetGraphic visibile={ {state: fleetShows, setState: setFleetShows} }/>
     </>
   )
 }

@@ -1,25 +1,27 @@
-import React, { useState, useEffect } from 'react'
-import { Dropdown } from 'carbon-components-react'
+import React, { useState, useRef, useEffect } from 'react';
+import { Dropdown } from 'carbon-components-react';
 
 export default function BackgroundPicker(props) {
   const {
-    animation,
+    animate,
     mapConfigs,
-    currentBackground,
-    setBackground
-  } = props
+    background,
+  } = props;
 
-  const [currentItem, setCurrentItem] = useState(currentBackground),
-        satelliteViewItems = mapConfigs.map(conf => {
-          return {
+  const [currentItem, setCurrentItem] = useState( background.current );
+  const prevItem = useRef();
+  const satelliteViewItems = mapConfigs.map(conf => ({
             label: conf.label,
-            satView_url: conf.satView_url  }
-        });
+            satView_url: conf.satView_url
+        }));
 
   useEffect(() => {
-    const params = { setNewURL: setBackground, url: currentItem }
-    animation(params)
-  }, [animation, currentItem, setBackground])
+    if (!prevItem.current || prevItem.current === currentItem) return
+    animate.timeline()
+      .add( animate.effects.fadeOut().play() )
+      .call( () => background.set(currentItem) )
+      .then( () => prevItem.current = currentItem )
+  }, [animate, background, currentItem]);
 
   return (
     <Dropdown
@@ -30,9 +32,13 @@ export default function BackgroundPicker(props) {
       direction="top"
       items={ satelliteViewItems }
       itemToString={(item) => (item ? item.label : '')}
-      onChange={({ selectedItem }) => setCurrentItem(selectedItem)}
+      onChange={({ selectedItem }) => {
+        if (selectedItem.label === currentItem.label) return;
+        if (!prevItem.current) prevItem.current = 'init';
+        setCurrentItem(selectedItem);
+      } }
       selectedItem={ currentItem }
       label={ currentItem.label }
     />
-  )
+  );
 }
