@@ -13,7 +13,7 @@ const locationConfigs = [
     pos: {lat: 9.54, long: 138.05, zoom: 10.5, pitch: 40, hdg: 16} },
   { place: 'kiribati',
     label: 'Kiribati',
-    pos: {lat: 1.88, long: -157.45, zoom: 10, pitch: 35, hdg: 10} }
-  ]
-  
-export default locationConfigs
+    pos: {lat: 1.88, long: -157.45, zoom: 10, pitch: 35, hdg: 10} },
+  ];
+
+export default locationConfigs;

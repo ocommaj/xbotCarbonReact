@@ -1,7 +1,7 @@
-import SectionConfigs from './sectionConfigs'
-import MapboxConfigs from './mapboxConfigs'
-import UserRecord from './UserRecord'
+import SectionConfigs from './sectionConfigs';
+import Mapbox from './mapboxConfigs';
+import UserRecord from './UserRecord';
 
-export function mapbox() { return MapboxConfigs() }
-export { SectionConfigs }
-export { UserRecord }
+export { Mapbox };
+export { SectionConfigs };
+export { UserRecord };

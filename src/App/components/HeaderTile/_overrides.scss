@@ -2,7 +2,7 @@
     background-color: $interactive-01;
     display: flex;
     flex-direction: column-reverse;
-    transition: background-color .4s;
+    transition: background-color .4s carbon--motion(standard);
     width: 1px;
     height: 1px;
     opacity: 0;

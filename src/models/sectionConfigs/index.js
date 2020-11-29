@@ -1,13 +1,13 @@
-import codeDemos from './_codeDemos'
-import learnMore from './_learnMore'
-import projectGallery from './_projectGallery'
-import techSupport from './_techSupport'
+import codeDemos from './_codeDemos';
+import learnMore from './_learnMore';
+import projectGallery from './_projectGallery';
+import techSupport from './_techSupport';
 
-const sectionConfigs = {
-  codeDemos: codeDemos,
-  projectGallery: projectGallery,
-  techSupport: techSupport,
-  learnMore: learnMore,
-}
+const sectionConfigs = [
+  codeDemos,
+  projectGallery,
+  techSupport,
+  learnMore,
+];
 
-export default sectionConfigs
+export default sectionConfigs;

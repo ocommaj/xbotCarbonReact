@@ -23,6 +23,6 @@ const placeholderData = [
     tileHeadline: "External Demo 6",
     previewHeadline: "External Demo Six",
     externalUrl: "https://somelink"},
-]
+];
 
-export default placeholderData
+export default placeholderData;

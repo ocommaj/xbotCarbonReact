@@ -35,6 +35,6 @@ const reducers = {
     update.fullName = `${update.firstName} ${update.familyName}`
     return update;
   }
-}
+};
 
-export default reducers
+export default reducers;

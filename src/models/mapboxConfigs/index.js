@@ -3,13 +3,11 @@ import staticLocations from './_locationConfigs';
 import setStaticImgUrls from './_setStaticImgUrls';
 import getRandom from './_getRandom';
 
-const mapboxConfigs = () => {
-  const client = Client(),
-        randomBG = getRandom(staticLocations);
+export default function configMapbox() {
+  const client = Client();
+  const randomBG = getRandom(staticLocations);
 
-  setStaticImgUrls(client, staticLocations)
+  setStaticImgUrls(client, staticLocations);
 
-  return [staticLocations, randomBG]
-}
-
-export default mapboxConfigs
+  return [staticLocations, randomBG];
+};

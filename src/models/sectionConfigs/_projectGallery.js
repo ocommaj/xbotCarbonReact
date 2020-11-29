@@ -27,9 +27,8 @@ const projectGallery = {
         "sourceJSON": "some-url"
         }
       }
-  ]
-}
-}
+    ]
+  }
+};
 
-
-export default projectGallery
+export default projectGallery;

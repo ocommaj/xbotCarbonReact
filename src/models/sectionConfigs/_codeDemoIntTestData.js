@@ -17,6 +17,6 @@ const placeholderData = [
   { id: "tilePlaceholder_6",
     tileHeadline: "Code Demo 6",
     previewHeadline: "Code Demo Six"},
-]
+];
 
-export default placeholderData
+export default placeholderData;

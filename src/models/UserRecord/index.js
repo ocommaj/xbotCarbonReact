@@ -2,8 +2,8 @@ import reducer from './_reducers';
 
 export default class UserRecord {
   constructor(cleanedInput={}) {
-    Object.assign(this, cleanedInput)
-  }
+    Object.assign(this, cleanedInput);
+  };
 
   static loginUser(authorizedUser, apolloHook) {
     const newUser = new UserRecord();
@@ -18,9 +18,9 @@ export default class UserRecord {
       .catch(( error ) => {
         errorCallback()
         return
-      })
+      });
     return newUser;
-  }
+  };
 
   updateRecord(apolloHook, updateInput) {
     const { mutate } = apolloHook;
@@ -38,8 +38,8 @@ export default class UserRecord {
         .catch((error) => {
           console.dir(error);
           return reject(error);
-        })
-    })
-  }
+        });
+    });
+  };
 
-}
+};

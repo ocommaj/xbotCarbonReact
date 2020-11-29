@@ -1,21 +1,24 @@
-export default function setStaticImgUrls(withClient, forLocations) {
-  forLocations.map(loc => _addKeyUrlPairsForLocation(withClient, loc))
-}
+export default function setStaticImgUrls(withClient, locations) {
+  for (const location of locations) {
+    __addKeyUrlPairsForLocation(withClient, location);
+  };
+};
 
-function _addKeyUrlPairsForLocation(client, location) {
-  const { styleKeys } = client
-  Object.keys(styleKeys).map(style => _addKeyUrlPair(client, location, style) )
-}
+function __addKeyUrlPairsForLocation(client, loc) {
+  for (const style of Object.keys(client.styleKeys)) {
+    __addKeyUrlPair(client, loc, style);
+  };
+};
 
-function _addKeyUrlPair(client, location, style) {
-  const { service, ownerId, styleKeys } = client,
-        { pos } = location,
-        urlKey = `${style}_url`;
+function __addKeyUrlPair(client, location, style) {
+  const { service, ownerId, styleKeys } = client;
+  const { pos } = location;
+  const urlKey = `${style}_url`;
 
-  location.[`${urlKey}`] = _getImgUrl(service, ownerId, styleKeys[style], pos)
-}
+  location[urlKey] = __getImgUrl(service, ownerId, styleKeys[style], pos);
+};
 
-function _getImgUrl(service, ownerId, styleId, pos) {
+function __getImgUrl(service, ownerId, styleId, pos) {
   const request = service.getStaticImage({
         ownerId: ownerId,
         styleId: styleId,
@@ -26,7 +29,7 @@ function _getImgUrl(service, ownerId, styleId, pos) {
           zoom: pos.zoom,
           pitch: pos.pitch,
           bearing: pos.hdg },
-          attribution: false,
-          logo: false });
-    return request.url()
-}
+        attribution: false,
+        logo: false });
+    return request.url();
+};

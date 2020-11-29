@@ -8,7 +8,7 @@ import '@Styles/Index.scss';
 const apolloClient = new ApolloClient({
   uri: "http://localhost:4002",
   cache: new InMemoryCache()
-})
+});
 
 ReactDOM.render(
   <React.StrictMode>

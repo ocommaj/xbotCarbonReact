@@ -33,10 +33,10 @@ const techSupport = {
         "defaultStr": "Explore & become an IT ninja admin mage overlord.",
         "panelTemplateId": "singlePane",
         "sourceJSON": "some-url"
+        }
       }
-    }
-  ]
-}
-}
+    ]
+  }
+};
 
-export default techSupport
+export default techSupport;

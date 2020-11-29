@@ -7,6 +7,6 @@ const learnMore = {
       "type": "singlePane",
       "contentTemplateId": "singlePane"
     }
-}
+};
 
-export default learnMore
+export default learnMore;

@@ -1,13 +1,13 @@
 import { gsap } from 'gsap';
 
 export default function reduceHeaderTileRow(params) {
-  const { caller: fromTile, setActiveId } = params;
+  const { caller: fromTile, setActive } = params;
   const row = document.querySelector('.bx--row.headerTileRow');
   const tiles = row.querySelectorAll('.bx--tile.headerTile');
   const tl = gsap.timeline({
           paused: true,
           defaults: { ease: "standard_expressive" },
-          onComplete: () => setActiveId(fromTile.id)
+          onComplete: () => setActive(fromTile.id)
         })
           .toggleActiveTile(fromTile)
           .add(_collapseTiles(tiles, fromTile), '<.2')

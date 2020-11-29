@@ -50,6 +50,6 @@ const codeDemos = {
         }
       ]
     }
-  }
+  };
 
-export default codeDemos
+export default codeDemos;
