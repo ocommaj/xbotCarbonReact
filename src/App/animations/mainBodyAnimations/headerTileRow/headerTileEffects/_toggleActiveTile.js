@@ -5,19 +5,17 @@ export default function initToggleActiveTile() {
     name: "toggleActiveTile",
     extendTimeline: true,
     effect: (target, config) => {
-      const tile = target[0];
+      const { tile, ACTIVE_CLASS } = target[0];
+      const toggleClass = () => tile.classList.toggle(ACTIVE_CLASS);
       const iconGraphic = tile.querySelector('.iconWrapper svg');
-      const newBgColor = !!tile.classList.contains('activeSection')
+      const newBgColor = !!tile.classList.contains(ACTIVE_CLASS)
               ? "rgba(15, 98, 254, 1)"
               : "rgba(0, 45, 156, 1)";
 
-      return gsap.timeline({ onStart: () => _toggleActiveClass(tile) })
+      return gsap.timeline({ onStart: () => toggleClass() })
               .iconFlipper(iconGraphic)
               .changeElemBgColor({elem: tile, rgbaValue: newBgColor}, '<');
     }
   });
 
-  function _toggleActiveClass(tile) {
-      tile.classList.toggle('activeSection');
-   }
 };

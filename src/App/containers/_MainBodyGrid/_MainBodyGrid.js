@@ -3,18 +3,22 @@ import { AppContext } from '@App';
 import HeaderTileRow from './_HeaderTileRow';
 import MainContentRow from './_MainContentRow';
 
+const DOM = {
+  MAIN_GRID: "mainBodyGrid",
+  HEADER_ROW: "headerTileRow",
+  MAIN_ROW: "mainContentRow",
+};
+
 export default function MainBodyGrid() {
   const { animate, sections } = useContext(AppContext);
   const [activeSection, setActiveSection] = useState(null);
-  const tileConfigs = sections.map(section => ({
-      mainId: section.mainId,
-      displayTitle: section.displayTitle
-    }) );
+  const tileConfigs = sections.map( ({ mainId, displayTitle }) =>
+          ({ mainId, displayTitle }) );
 
   return (
-    <div className="mainBodyGrid">
+    <div className={ DOM.MAIN_GRID }>
         <HeaderTileRow
-          className="headerTileRow"
+          className={ DOM.HEADER_ROW }
           activeId={{
             current: activeSection ? activeSection.mainId : null,
             set: (id) => setActiveSection( __getById(id) )
@@ -25,7 +29,7 @@ export default function MainBodyGrid() {
           }}
           tileConfigs={ tileConfigs } />
         <MainContentRow
-          className="mainContentRow"
+          className={ DOM.MAIN_ROW }
           activeSection={ activeSection }
           animate={ animate.contentWindow } />
     </div>

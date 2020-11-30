@@ -1,6 +1,8 @@
 import React, { useRef, useCallback, useEffect } from 'react';
 import HeaderTile from '@components/HeaderTile';
 
+const DOM = { COLUMN: "bx--col bx--col-sm-4 bx--col-md-2 bx--col-lg-4" };
+
 export default function HeaderTileRow(props) {
   const {
     className,
@@ -15,6 +17,7 @@ export default function HeaderTileRow(props) {
 
   const clickHandler = useCallback(() => ({
       setActive: activeId.set,
+      row: headerTileRow.current,
       func: !activeId.current
         ? animate.effects.reduceTiles
         : animate.effects.switchTiles
@@ -36,17 +39,14 @@ export default function HeaderTileRow(props) {
   return (
     <div className={ `bx--row ${ className }` } ref={ headerTileRow }>
       { tileConfigs.map((config, i) => {
-          let colClass = "bx--col-sm-4 bx--col-md-2 bx--col-lg-4";
-          colClass = i === 0 ? `${colClass} bx--offset-lg-1` : colClass;
-
+          const col = i === 0 ? `${DOM.COLUMN} bx--offset-lg-1` : DOM.COLUMN;
           return (
             <HeaderTile
               key={ `headerTile_${ config.mainId }` }
               timeline={ animate.timeline }
-              sectionId={ config.mainId }
-              displayTitle={ config.displayTitle }
+              sectionConfig={ config }
               clickHandler={ clickHandler() }
-              colClass={ colClass }
+              colClass={ col }
             />
           );
         }) }
