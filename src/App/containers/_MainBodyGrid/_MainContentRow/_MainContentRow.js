@@ -17,7 +17,7 @@ export default function MainContentRow({ className, animate, activeSection }) {
   const loadContentWindow = useCallback(() => {
     setContentWindow(prevState => !prevState
        ? nextWindow
-       : animate.collapse( () => setContentWindow(nextWindow) );
+       : animate.collapse( () => setContentWindow(nextWindow) )
     );
   }, [animate, nextWindow, setContentWindow]);
 
