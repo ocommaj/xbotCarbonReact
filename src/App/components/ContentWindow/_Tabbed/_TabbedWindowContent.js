@@ -1,13 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Tabs, Tab } from 'carbon-components-react';
-import TabPanel from './TabPanel'
-import DropdownFilter from '@components/DropdownFilter'
+import TabPanel from './TabPanel';
+import DropdownFilter from '@components/DropdownFilter';
 
-export default function TabbedWindowContent({props}) {
-  const { animate, mainId, tabs } = props,
-        [filters, setFilters] = useState( loadFilters(tabs[0]) );
-
-  useEffect(() => { setFilters( loadFilters(tabs[0] ))}, [tabs])
+export default function TabbedWindowContent({ props }) {
+  const { animate, activeSection: { mainId, options: { tabs } } } = props;
+  const [filters, setFilters] = useState( loadFilters(tabs[0]) );
 
   return (
     <div className="tabbedWindowContent" key={`${mainId}_tabWindow`}>
@@ -27,13 +25,12 @@ export default function TabbedWindowContent({props}) {
             </Tab>) })}
       </Tabs>
     </div>
-  )
+  );
 
   function loadFilters(tab) {
     return !!tab.content.filters ?
               tab.content.filters.map(f => {
                 return <DropdownFilter key={`${f.id}_filter`} props={f}/> })
             : null
-    }
-
-  }
+    };
+  };

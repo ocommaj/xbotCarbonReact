@@ -1,16 +1,12 @@
-import React from 'react'
-import Headline from '@components/Headline'
+import React from 'react';
+import Headline from '@components/Headline';
 
-export default function SinglePaneContent({props}) {
-  const { title, content } = {...props}
+export default function SinglePaneContent( { props } ) {
+  const { activeSection: { content: { defaultStr: title } } } = props;
 
   return (
     <div>
-      { content ? renderHeadline(content.defaultStr) : renderHeadline(title) }
+      <Headline text={title} />
     </div>
-  )
-
-  function renderHeadline(text) {
-    return <Headline props={ {text} } />
-  }
-}
+  );
+};

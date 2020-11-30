@@ -1,17 +1,15 @@
-import React, { useRef, useState, useEffect } from 'react'
-import ArticleTile from './ArticleTile'
-import PreviewPane from './PreviewPane'
+import React, { useRef, useState, useEffect } from 'react';
+import ArticleTile from './ArticleTile';
+import PreviewPane from './PreviewPane';
 
-import placeholderData from './_placeholderData'
+import placeholderData from './_placeholderData';
 
-export default function TilesPreviewer({ props }) {
-  const { animate, data } = props,
-        previewCol = useRef(),
-        previewPane = useRef(),
-        tilesCol = useRef();
-
-  const [previewArticle, setPreviewArticle] = useState(null),
-        [tiles] = useState( loadTiles(data || placeholderData) );
+export default function TilesPreviewer({ props: { animate, data } }) {
+  const previewCol = useRef();
+  const previewPane = useRef();
+  const tilesCol = useRef();
+  const [previewArticle, setPreviewArticle] = useState(null);
+  const [tiles] = useState( loadTiles(data || placeholderData) );
 
   useEffect(() => {
     if (!previewArticle) return

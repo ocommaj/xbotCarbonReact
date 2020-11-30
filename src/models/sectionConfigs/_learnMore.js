@@ -1,8 +1,10 @@
 const learnMore = {
     "mainId": "learnMore",
     "displayTitle": "Learn More",
-    "defaultStr": "All Our Platforms",
     "windowType": "singlePane",
+    "content": {
+      "defaultStr": "All Our Platforms",
+    },
     "options": {
       "type": "singlePane",
       "contentTemplateId": "singlePane"

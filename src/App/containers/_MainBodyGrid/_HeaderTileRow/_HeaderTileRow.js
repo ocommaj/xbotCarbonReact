@@ -1,7 +1,11 @@
 import React, { useRef, useCallback, useEffect } from 'react';
 import HeaderTile from '@components/HeaderTile';
 
-const DOM = { COLUMN: "bx--col bx--col-sm-4 bx--col-md-2 bx--col-lg-4" };
+const DOM = {
+  ROW: "bx--row",
+  COLUMN: "bx--col bx--col-sm-4 bx--col-md-2 bx--col-lg-4",
+  OFFSET: "bx--offset-lg-1",
+ };
 
 export default function HeaderTileRow(props) {
   const {
@@ -37,9 +41,9 @@ export default function HeaderTileRow(props) {
 
   if (!tileConfigs) return null;
   return (
-    <div className={ `bx--row ${ className }` } ref={ headerTileRow }>
+    <div className={ `${DOM.ROW} ${ className }` } ref={ headerTileRow }>
       { tileConfigs.map((config, i) => {
-          const col = i === 0 ? `${DOM.COLUMN} bx--offset-lg-1` : DOM.COLUMN;
+          const col = i === 0 ? `${DOM.COLUMN} ${DOM.OFFSET}` : DOM.COLUMN;
           return (
             <HeaderTile
               key={ `headerTile_${ config.mainId }` }

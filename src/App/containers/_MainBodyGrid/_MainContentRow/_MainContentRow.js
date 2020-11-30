@@ -1,44 +1,38 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import ContentWindow, { templates } from '@components/ContentWindow';
 
-export default function MainContentRow(props) {
-  const { animate, activeSection } = props,
-        [ nextWindow, setNextWindow ] = useState(null),
-        [ contentWindow, setContentWindow ] = useState(null);
+const DOM = { ROW: 'bx--row' };
+
+export default function MainContentRow({ className, animate, activeSection }) {
+  const [ nextWindow, setNextWindow ] = useState(null);
+  const [ contentWindow, setContentWindow ] = useState(null);
 
   const loadTemplate = useCallback(() => {
       if (!activeSection) return
-
       const template = templates[activeSection.windowType];
-      setNextWindow( template({
-              'animate': animate.content,
-              'mainId': activeSection.mainId,
-              'title': activeSection.defaultStr,
-              'tabs': activeSection.options.tabs,
-            })
-          );
-  }, [animate, setNextWindow, activeSection])
+      const props = { activeSection, animate: animate.content };
+      setNextWindow( template(props) );
+  }, [animate, setNextWindow, activeSection]);
 
   const loadContentWindow = useCallback(() => {
     setContentWindow(prevState => !prevState
        ? nextWindow
-       : animate.collapse( () => setContentWindow(nextWindow) )
-    )
-  }, [animate, nextWindow, setContentWindow])
+       : animate.collapse( () => setContentWindow(nextWindow) );
+    );
+  }, [animate, nextWindow, setContentWindow]);
 
   const displayContentWindow = useCallback(() => {
-    if (contentWindow) { animate.reveal() }
-  }, [animate, contentWindow])
+    if (contentWindow) { animate.reveal() };
+  }, [animate, contentWindow]);
 
-  useEffect(() => loadTemplate(), [loadTemplate])
-  useEffect(() => loadContentWindow(), [loadContentWindow])
-  useEffect(() => displayContentWindow(), [displayContentWindow])
+  useEffect(() => loadTemplate(), [loadTemplate]);
+  useEffect(() => loadContentWindow(), [loadContentWindow]);
+  useEffect(() => displayContentWindow(), [displayContentWindow]);
 
-  if (!activeSection) return null
-
+  if (!activeSection) return null;
   return (
-    <div className="bx--row mainContentRow">
+    <div className={ `${ DOM.ROW } ${ className }` }>
       <ContentWindow content={ contentWindow } />
     </div>
-  )
-}
+  );
+};
