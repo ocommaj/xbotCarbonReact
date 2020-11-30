@@ -14,25 +14,25 @@ export default function HeaderTileRow(props) {
   const tileFaderAnim = animate.effects.labelFader( headerTileRow.current );
 
   const clickHandler = useCallback(() => ({
-      args: { activeId: activeId.current, setActive: activeId.set },
+      setActive: activeId.set,
       func: !activeId.current
         ? animate.effects.reduceTiles
         : animate.effects.switchTiles
   }), [activeId, animate]);
 
   useEffect(() => {
-    if (!tileFaderAnim) return
-    if (activeId.current) return
+    if (!tileFaderAnim) return;
+    if (activeId.current) return;
     timelineRef.current.add( tileFaderAnim.play() );
   });
 
   useEffect(() => {
-    if (!activeId.current) return
+    if (!activeId.current) return;
       timelineRef.current.progress(1);
       timelineRef.current.clear();
   });
 
-  if (!tileConfigs) return null
+  if (!tileConfigs) return null;
   return (
     <div className={ `bx--row ${ className }` } ref={ headerTileRow }>
       { tileConfigs.map((config, i) => {
@@ -41,14 +41,15 @@ export default function HeaderTileRow(props) {
 
           return (
             <HeaderTile
-              key={ `headerTile_${ config.mainId }`}
+              key={ `headerTile_${ config.mainId }` }
+              timeline={ animate.timeline }
               sectionId={ config.mainId }
               displayTitle={ config.displayTitle }
               clickHandler={ clickHandler() }
               colClass={ colClass }
             />
-          )
+          );
         }) }
     </div>
   );
-}
+};

@@ -1,15 +1,11 @@
 import { gsap } from 'gsap';
 
-export default function switchActiveHeaderTiles(params) {
-  const { caller: clickedTile, setActive } = params;
+export default function switchActiveHeaderTiles(args) {
+  const { caller: clickedTile } = args;
   const outgoingTile = document.querySelector('.headerTile.activeSection');
   if (outgoingTile === clickedTile) return
 
-  const tl = gsap.timeline({
-          paused: true,
-          onComplete: () => setActive(clickedTile.id)
-        })
+  return gsap.timeline({ paused: true })
           .toggleActiveTile(outgoingTile)
           .toggleActiveTile(clickedTile, '<');
-  tl.play();
 };

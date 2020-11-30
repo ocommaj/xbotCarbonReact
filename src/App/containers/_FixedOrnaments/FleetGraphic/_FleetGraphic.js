@@ -26,7 +26,9 @@ export default function FleetGraphic(props) {
           />
         )})}
       </span>
-      <div className="helperText" ref={ fleetHelperText }>{ helperMsg }</div>
+      <div className="helperText" ref={ fleetHelperText }>
+        { helperMsg }
+      </div>
     </div>
   )
 
