@@ -22,7 +22,8 @@ const reducers = {
       fullName: `${apolloUserRecord.firstName} ${apolloUserRecord.familyName}`,
       goesBy: apolloUserRecord.goesBy || '',
       isEditor: apolloUserRecord.isEditor,
-      lastLogin: new Date().toUTCString(apolloUserRecord.lastLogin)
+      lastLogin: new Date().toUTCString(apolloUserRecord.lastLogin),
+      lastUpdate: new Date().toUTCString(apolloUserRecord.lastUpdate),
     }
   },
   updateUserInfo: (userRecord, updateInput) => {
@@ -32,7 +33,8 @@ const reducers = {
       update[key] = updateInput[key] ? updateInput[key] : userRecord[key];
       }
     }
-    update.fullName = `${update.firstName} ${update.familyName}`
+    update.lastUpdate = new Date();
+    update.fullName = `${update.firstName} ${update.familyName}`;
     return update;
   }
 };

@@ -17,10 +17,10 @@ export default function ProfileModal({ props }) {
     logout
   } = props;
   const [ mutate, error ] = useUserUpdateMutation();
-  const [, setRerender] = useState(false)
+  const [, setRerender] = useState(false);
   const updateInput = useRef({});
 
-  if ( !modalState.isOpen ) { return null }
+  if ( !modalState.isOpen || !activeUser ) { return null }
 
   return ReactDOM.createPortal(
     <>
