@@ -11,7 +11,7 @@ export default function revealFromHidden({ row, content }) {
     const tl = gsap.timeline({
             paused: true,
             defaults: {ease: 'entrance_expressive'}})
-            .to(contentWindow, {height: height})
+            .to(contentWindow, {height: height}, '<.4')
             .fromTo(contentWindow.children, {opacity: 0}, {opacity: 1}, '<.2');
 
     tl.play();
