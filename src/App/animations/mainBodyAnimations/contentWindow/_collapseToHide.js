@@ -1,7 +1,7 @@
 import { gsap } from 'gsap';
 
-export default function collapseToHide(onComplete) {
-  const contentWindow = document.querySelector('.mainContentWindow');
+export default function collapseToHide({ content, onComplete }) {
+  const contentWindow = content.current;
   const tl = gsap.timeline({
           paused: true,
           defaults: { ease: "exit_expressive" },

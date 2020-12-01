@@ -1,8 +1,8 @@
 import { gsap } from 'gsap';
 
-export default function revealFromHidden() {
-  const contentRow = document.querySelector('.mainContentRow');
-  const contentWindow = contentRow.querySelector('.mainContentWindow');
+export default function revealFromHidden({ row, content }) {
+  const contentRow = row.current;
+  const contentWindow = content.current;
 
   if (contentWindow) {
     const padding = window.getComputedStyle(contentRow)
@@ -11,7 +11,7 @@ export default function revealFromHidden() {
     const tl = gsap.timeline({
             paused: true,
             defaults: {ease: 'entrance_expressive'}})
-            .to(contentWindow, {height: height}, '<.4')
+            .to(contentWindow, {height: height})
             .fromTo(contentWindow.children, {opacity: 0}, {opacity: 1}, '<.2');
 
     tl.play();

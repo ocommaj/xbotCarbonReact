@@ -1,11 +1,19 @@
 import React from 'react';
 
-export default function ContentWindow({ content }) {
+const DOM = {
+  CARBON_COL: 'bx--col bx--offset-lg-1',
+  COLUMN: 'mainContentCol',
+  CONTENT: 'mainContentWindow'
+};
+
+const ContentWindowWrapper = React.forwardRef( ({ content }, ref) => {
   return (
-    <div className="bx--col bx--offset-lg-1 mainContentCol">
-      <div className="mainContentWindow">
+    <div className={ `${DOM.CARBON_COL} ${DOM.COLUMN}` }>
+      <div className={ DOM.CONTENT } ref={ ref }>
         { content }
       </div>
     </div>
   );
-};
+});
+
+export default ContentWindowWrapper;

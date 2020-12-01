@@ -2,6 +2,9 @@
   "name": "xbot-carbon-react",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "14.5.0"
+  },
   "dependencies": {
     "@apollo/client": "^3.2.9",
     "@auth0/auth0-react": "^1.2.0",

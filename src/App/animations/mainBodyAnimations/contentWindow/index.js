@@ -4,8 +4,8 @@ import heightToggler from './_heightToggler';
 import TilesPreviewerAnimations from './tilesPreviewer';
 
 const animations = {
-  collapse: (completionHandler) => collapseToHide(completionHandler),
-  reveal: (obj) => revealFromHidden(obj),
+  collapse: (args) => collapseToHide(args),
+  reveal: (args) => revealFromHidden(args),
   heightToggler: (state, onComplete) => heightToggler(state, onComplete),
   content: {
     tilesPreviewer: () => TilesPreviewerAnimations()

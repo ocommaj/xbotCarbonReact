@@ -19,19 +19,19 @@ export default function MainBodyGrid() {
     <div className={ DOM.MAIN_GRID }>
         <HeaderTileRow
           className={ DOM.HEADER_ROW }
-          activeId={{
+          activeId={ {
             current: activeSection ? activeSection.mainId : null,
             set: (id) => setActiveSection( __getById(id) )
-          }}
-          animate={{
+          } }
+          animate={ {
             timeline: animate.wrapperTimeline,
             effects: animate.header
-          }}
+          } }
           tileConfigs={ tileConfigs } />
         <MainContentRow
           className={ DOM.MAIN_ROW }
           activeSection={ activeSection }
-          animate={ animate.contentWindow } />
+          animate={ animate.contentWindow }/>
     </div>
   );
   function __getById(id) { return sections.find(s => s.mainId === id) };
