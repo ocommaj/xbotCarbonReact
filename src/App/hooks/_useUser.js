@@ -10,6 +10,7 @@ export default function useUser() {
 
   useEffect(() => {
     if (authUser) {
+      console.dir(authUser)
       const errorCallback = () => logout({ returnTo: window.location.origin });
       setActiveUser( UserRecord.loginUser(authUser, {login, errorCallback}) );
     }

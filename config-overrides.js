@@ -20,6 +20,7 @@ module.exports = override(
     ['@containers']: path.resolve(__dirname, './src/App/containers'),
     ['@hooks']: path.resolve(__dirname, './src/App/hooks'),
     ['@Models']: path.resolve(__dirname, './src/Models'),
-    ['@Styles']: path.resolve(__dirname, './src/Styles')
+    ['@Providers']: path.resolve(__dirname, './src/Providers'),
+    ['@Styles']: path.resolve(__dirname, './src/Styles'),
   })
 )
