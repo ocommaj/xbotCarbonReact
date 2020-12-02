@@ -1,25 +1,28 @@
 import reducer from './_reducers';
 
 export default class UserRecord {
-  constructor(cleanedInput={}) {
+  constructor(getToken, cleanedInput={}) {
+    getToken().then(res => this.token = res);
+    this.getToken = () => getToken();
     Object.assign(this, cleanedInput);
   };
 
-  static loginUser(authorizedUser, apolloHook) {
-    const newUser = new UserRecord();
+  static loginUser({ authorizedUser, getToken, apolloHook }) {
     const { login, errorCallback } = apolloHook;
-    const input = reducer.apolloRequest(authorizedUser);
-    login({ variables: { input } })
-      .then(({ data }) => {
-        const apolloResponse = data.loginUser.loggedInUser;
-        const record = reducer.apolloResponse(apolloResponse);
-        Object.assign(newUser, record)
-      })
-      .catch(( error ) => {
+    try {
+      const newUser = new UserRecord(getToken);
+      const input = reducer.apolloRequest(authorizedUser);
+      login({ variables: { input } })
+        .then(({ data }) => {
+          const apolloResponse = data.loginUser.loggedInUser;
+          const record = reducer.apolloResponse(apolloResponse);
+          Object.assign(newUser, record)
+        })
+      return newUser
+    } catch(error) {
         errorCallback()
         return
-      });
-    return newUser;
+      };
   };
 
   updateRecord(apolloHook, updateInput) {

@@ -4,17 +4,22 @@ import { UserRecord } from '@Models';
 import { useLoggedInUserRecord } from '@hooks';
 
 export default function useUser() {
-  const { user: authUser, logout } = useAuth0();
+  const { logout, getAccessTokenSilently, user: authUser } = useAuth0();
   const [ activeUser, setActiveUser ] = useState(null);
   const [ login ] = useLoggedInUserRecord();
 
   useEffect(() => {
     if (authUser) {
-      console.dir(authUser)
       const errorCallback = () => logout({ returnTo: window.location.origin });
-      setActiveUser( UserRecord.loginUser(authUser, {login, errorCallback}) );
+      const user = UserRecord.loginUser({
+        authorizedUser: authUser,
+        apolloHook: { login, errorCallback },
+        getToken: getAccessTokenSilently,
+      });
+      
+      setActiveUser(user);
     }
-  }, [authUser, login, logout]);
+  }, [authUser, getAccessTokenSilently, login, logout]);
 
   return activeUser;
 }
