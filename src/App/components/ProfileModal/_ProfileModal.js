@@ -29,21 +29,21 @@ export default function ProfileModal({ props }) {
       onClose={ () => modalState.setOpen(false) }
       preventCloseOnClickOutside={ true }>
       <ModalHeader>
-        {  activeUser ? activeUser.fullName : 'Profile' }
+        {  activeUser ? activeUser.profile.fullName : 'Profile' }
       </ModalHeader>
       <ModalBody>
         <TextInput
           id={ `activeUserFirstNameInput` }
           labelText={ 'First Name' }
-          placeholder={ !activeUser.firstName ? 'First Name' : null }
-          defaultValue={ activeUser.firstName || null }
+          placeholder={ !activeUser.profile.firstName ? 'First Name' : null }
+          defaultValue={ activeUser.profile.firstName || null }
           onChange={ (e) => updateInput.current.firstName=e.target.value }
         />
         <TextInput
           id={ `activeUserFamilyNameInput` }
           labelText={ 'Family Name' }
-          placeholder={ !activeUser.familyName ? 'Family Name' : null }
-          defaultValue={ activeUser.familyName || null }
+          placeholder={ !activeUser.profile.familyName ? 'Family Name' : null}
+          defaultValue={ activeUser.profile.familyName || null }
           onChange={ (e) => updateInput.current.familyName=e.target.value }
         />
       </ModalBody>
@@ -66,8 +66,10 @@ export default function ProfileModal({ props }) {
 
   function updateUserClickHandler(input) {
     if (!activeUser) return
-      activeUser.updateRecord({mutate, error}, updateInput.current)
-            .then(() => setRerender(prevState => !prevState) )
-            .catch((error) => console.dir(error))
+      activeUser.authorize().then( (headers) => {
+        activeUser.updateRecord({mutate, error}, updateInput.current, headers)
+          .then( () => setRerender(prevState => !prevState) )
+          .catch((error) => console.error(error))
+      })
   }
 }

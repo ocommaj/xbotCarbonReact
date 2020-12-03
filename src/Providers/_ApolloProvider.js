@@ -8,7 +8,7 @@ export default function Apollo({ children }) {
   });
 
   return (
-    <ApolloProvider client={ apolloClient}>
+    <ApolloProvider client={ apolloClient }>
       { children }
     </ApolloProvider>
   );

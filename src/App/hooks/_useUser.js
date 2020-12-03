@@ -11,12 +11,12 @@ export default function useUser() {
   useEffect(() => {
     if (authUser) {
       const errorCallback = () => logout({ returnTo: window.location.origin });
-      const user = UserRecord.loginUser({
+      const user = UserRecord.login({
         authorizedUser: authUser,
         apolloHook: { login, errorCallback },
         getToken: getAccessTokenSilently,
       });
-      
+
       setActiveUser(user);
     }
   }, [authUser, getAccessTokenSilently, login, logout]);

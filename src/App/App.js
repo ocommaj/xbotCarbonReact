@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef } from 'react';
 import { useLocalStorage, useUser } from '@hooks/';
 import { SectionConfigs } from '@Models';
 import Animate from '@animations';
@@ -19,8 +19,6 @@ export default function App() {
           sections,
           animate: animate.current,
         };
-
-  useEffect(() => console.dir(activeUser), [activeUser])
 
   return (
       <AppContext.Provider value={ contextValue }>

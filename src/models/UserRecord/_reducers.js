@@ -1,5 +1,5 @@
 const reducers = {
-  apolloRequest: (auth0userRecord) => {
+  apolloRequest(auth0userRecord) {
     return {
       atXavierAccount: auth0userRecord.email,
       verifiedEmail: auth0userRecord.email_verified,
@@ -13,9 +13,9 @@ const reducers = {
       }
     }
   },
-  apolloResponse: (apolloUserRecord) => {
+  apolloResponse(apolloUserRecord) {
     return {
-      _id: apolloUserRecord._id,
+      //_id: apolloUserRecord._id,
       atXavierAccount: apolloUserRecord.atXavierAccount,
       firstName: apolloUserRecord.firstName,
       familyName: apolloUserRecord.familyName,
@@ -26,17 +26,15 @@ const reducers = {
       lastUpdate: new Date().toUTCString(apolloUserRecord.lastUpdate),
     }
   },
-  updateUserInfo: (userRecord, updateInput) => {
-    const update = {};
-    for (const key of Object.keys(userRecord)) {
-      if (key !== '_id') {
-      update[key] = updateInput[key] ? updateInput[key] : userRecord[key];
-      }
+  updateUserInfo(profile, updateInput) {
+    const update = {}
+    for (const key of Object.keys(profile)) {
+      update[key] = updateInput[key] ? updateInput[key] : profile[key];
     }
     update.lastUpdate = new Date();
     update.fullName = `${update.firstName} ${update.familyName}`;
-    return update;
-  }
+    return { input: update };
+  },
 };
 
 export default reducers;
