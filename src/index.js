@@ -4,6 +4,8 @@ import App from '@App';
 import { Auth0, Apollo } from '@Providers';
 import '@Styles/Index.scss';
 
+const tokenWorker = new SharedWorker('/_tokenWorker.js');
+
 ReactDOM.render(
   <React.StrictMode>
     <Auth0>

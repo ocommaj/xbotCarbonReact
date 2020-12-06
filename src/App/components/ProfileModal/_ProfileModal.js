@@ -8,7 +8,7 @@ import {
   Button,
   TextInput
  } from 'carbon-components-react';
-import { useUserUpdateMutation } from '@hooks';
+import { useUserUpdateMutation } from '@hooks/ApolloClient';
 
 export default function ProfileModal({ props }) {
   const {

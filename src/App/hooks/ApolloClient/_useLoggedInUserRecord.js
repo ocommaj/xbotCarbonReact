@@ -1,6 +1,6 @@
 import { useMutation, gql } from '@apollo/client';
 
-export default function useLoggedInUserRecord() {
+export default function useLoggedInUserQuery() {
   const LOGIN_USER = gql`
     mutation ($input: LoginInput) {
       loginUser(input: $input) {
@@ -21,5 +21,5 @@ export default function useLoggedInUserRecord() {
   `
 
   const [login, {error}] = useMutation(LOGIN_USER)
-  return [login, {loginError: error}]
+  return { login, loginError: error }
 }
