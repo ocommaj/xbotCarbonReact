@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 import { UserRecord } from '@Models';
-import { useLoggedInUserQuery } from '@hooks/ApolloClient';
+import { useLoggedInUserRecord } from '@hooks/ApolloClient';
 
 export default function useUser() {
   const { logout, getAccessTokenSilently, user: authUser } = useAuth0();
   const [ activeUser, setActiveUser ] = useState(null);
-  const { login } = useLoggedInUserQuery();
+  const [ login ] = useLoggedInUserRecord();
 
   useEffect(() => {
     if (authUser) {

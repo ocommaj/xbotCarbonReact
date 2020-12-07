@@ -18,8 +18,7 @@ export default function useUserUpdateMutation() {
         }
       }
     }
-  `
+  `;
 
-  const [mutate, {error}] = useMutation(UPDATE_USER)
-  return [mutate, error] 
-}
+  return useMutation(UPDATE_USER);
+};

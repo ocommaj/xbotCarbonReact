@@ -1,32 +1,29 @@
 import React, { useState, useEffect } from 'react';
-import { Accordion } from 'carbon-components-react';
+import { Accordion, AccordionSkeleton } from 'carbon-components-react';
 import AccordionItem from './_AccordionItem';
 import placeholderData from './_placeholderData';
 
 export default function AccordionViewer({ props }) {
-  const [expandedItem, setExpandedItem] = useState(),
-        [accordionItems, setAccordionItems] = useState();
+  const loading = false;
+  const [expandedItem, setExpandedItem] = useState(null);
 
-  useEffect(() => {
-    const loadItems = (fromList) => {
-          return fromList.map((item, idx) => {
-                  const key = `accordionItem_${item.id}`,
-                        itemProps = {
-                          key,
-                          item,
-                          setExpandedItem,
-                          isOpen: key === expandedItem ? true : false };
+  const accordionItemArgs = (item) => {
+    const key = `accordionItem_${item.id}`;
+    return {
+      item,
+      key,
+      setExpandedItem,
+      isOpen: key === expandedItem,
+    }
+  }
 
-                  return <AccordionItem key={key} props={ itemProps } /> }) }
-
-    setAccordionItems( loadItems(placeholderData) )
-
-    }, [expandedItem])
-
+  if (loading) return <AccordionSkeleton open={ false } count={ 15 }/>
   return (
-    <Accordion
-      className="accordionViewer"
-      children={ accordionItems }
-    />
+    <Accordion className="accordionViewer">
+      { placeholderData.map((item) => {
+          const props = accordionItemArgs(item);
+          return <AccordionItem key={ props.key } props={ props } />
+        }) }
+    </Accordion>
   )
 }

@@ -11,8 +11,8 @@ const registerAnimations = () => ({
   switchTiles: (params) => switchTiles(params),
   showPreviewPane: (params) => showPreviewPane(params),
   hidePreviewPane: (params) => hidePreviewPane(params),
-  maximizePreviewPane: (params) => {return maximizePreviewPane(params)},
-  reducePreviewPane: (params) => {return reducePreviewPane(params)}
+  maximizePane: (params) => {return maximizePreviewPane(params)},
+  reducePane: (params) => {return reducePreviewPane(params)}
 });
 
 export default function ComposeAnimations() {

@@ -4,7 +4,6 @@ const techSupport = {
   "defaultStr": "Get Help with Your Tech",
   "windowType": "tabbedWindow",
   "options": {
-    "type": "tabbedWindow",
     "contentTemplateId": "tabbedWindow",
     "tabs": [
       {

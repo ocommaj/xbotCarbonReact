@@ -4,7 +4,6 @@ const projectGallery = {
   "defaultStr": "Things People Made",
   "windowType": "tabbedWindow",
   "options": {
-    "type": "tabbedWindow",
     "contentTemplateId": "tabbedWindow",
     "tabs": [
       {

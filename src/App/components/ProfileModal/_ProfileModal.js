@@ -16,7 +16,7 @@ export default function ProfileModal({ props }) {
     modalState,
     logout
   } = props;
-  const [ mutate, error ] = useUserUpdateMutation();
+  const [mutate, { error }] = useUserUpdateMutation();
   const [, setRerender] = useState(false);
   const updateInput = useRef({});
 

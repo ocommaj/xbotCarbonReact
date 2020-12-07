@@ -4,16 +4,17 @@ const codeDemos = {
     "defaultStr": "Coding Tutorials",
     "windowType": "tabbedWindow",
     "options": {
-      "type": "tabbedWindow",
       "contentTemplateId": "tabbedWindow",
       "tabs": [
         {
         "id": "internalCodeDemos",
         "title": "Xavier Made",
+        "apolloBaseQuery": {
+          "internalOrigin": true,
+        },
         "content": {
           "defaultStr": "Locally sourced tutorials & livestreams.",
           "panelTemplateId": "tilesPreviewer",
-          "sourceJSON": "@models/sectionConfigs/_codeDemos.json",
           "filters": [
             {
               "id": "language",
@@ -42,10 +43,12 @@ const codeDemos = {
         {
         "id": "externalCodeDemos",
         "title": "External",
+        "apolloBaseQuery": {
+          "internalOrigin": false,
+        },
         "content": {
           "defaultStr": "Great Stuff from the wide wide world of sports.",
           "panelTemplateId": "accordionViewer",
-          "sourceJSON": "some-url"
           }
         }
       ]

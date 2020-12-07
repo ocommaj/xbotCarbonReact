@@ -1,28 +1,33 @@
 import { useQuery, gql } from '@apollo/client';
 
 export default function useArticlesQuery(input) {
-  const ARTICLE_TILE = gql`
-  fragment ArticleTile on Article {
+  const PREVIEW_TILE = gql`
+  fragment PreviewTile on Article {
     _id
     title
-    content
   }
-  `
-  const GET_ARTICLES = gql`
+  `;
+
+  const GET_POSTS = gql`
     query GetTutorials($input: TutorialsQueryInput) {
       tutorials(input: $input) {
         cursor
         hasMore
         payload {
-          collection
           articles {
-            ...ArticleTile
+            ...PreviewTile
           }
         }
       }
     }
-    ${ARTICLE_TILE}
+    ${PREVIEW_TILE}
   `;
 
-  return useQuery(GET_ARTICLES, { variables: { input } });
-}
+  const {
+    error,
+    data: articles,
+    loading: queryLoading
+  } = useQuery(GET_POSTS, { variables: { input } });
+
+  return { articles, error, queryLoading };
+};

@@ -4,9 +4,9 @@ export default class UserRecord {
   constructor(getToken, rawInput={}, apolloHook={}) {
     this.getToken = () => getToken();
 
-    this.authorize().then(
-      (headers) => this.profile = _dbLogin(headers, rawInput, apolloHook)
-    );
+    this.authorize().then((headers) => {
+      this.profile = _dbLogin(headers, rawInput, apolloHook)
+    });
 
       function _dbLogin(headers, rawInput, { login, errorCallback }) {
         const userData = {};

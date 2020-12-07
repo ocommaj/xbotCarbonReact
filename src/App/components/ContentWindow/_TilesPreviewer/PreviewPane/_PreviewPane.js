@@ -4,8 +4,8 @@ import { AppContext } from '@App';
 import Maximize32 from '@carbon/icons-react/lib/maximize/32';
 import Minimize32 from '@carbon/icons-react/lib/minimize/32';
 
-const PreviewPane = React.forwardRef( ({props}, ref) => {
-  const { previewHeadline, maximizePane, minimizePane } = props;
+const PreviewPane = React.forwardRef((props, ref) => {
+  const { article: { previewHeadline }, maximize, normalize } = props;
   const { animate, showToolTips } = useContext(AppContext);
   const [ isMaximized, setIsMaximized ] = useState(false);
 
@@ -28,7 +28,7 @@ const PreviewPane = React.forwardRef( ({props}, ref) => {
 
   function clickHandler() {
     animate.wrapperTimeline()
-      .add(isMaximized ? minimizePane.play() : maximizePane.play())
+      .add(isMaximized ? normalize.play() : maximize.play())
       .then(() => setIsMaximized(prevState => !prevState));
   }
 })

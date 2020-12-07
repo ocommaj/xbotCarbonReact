@@ -27,3 +27,27 @@
     color: $text-04;
   }
 }
+
+.bx--skeleton__placeholder.articlePreviewTile {
+    position: relative;
+    padding: 0;
+    background: #353535;
+    border: none;
+    box-shadow: none;
+    pointer-events: none;
+    margin-bottom: $spacing-03;
+    width: 100%;
+}
+
+
+.bx--skeleton__placeholder.articlePreviewTile::before {
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    background: #525252;
+    animation: 3000ms ease-in-out skeleton infinite;
+    content: '';
+}
