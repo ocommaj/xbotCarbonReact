@@ -6,16 +6,14 @@ import hidePreviewPane from './_hidePreviewPane';
 import maximizePreviewPane from './_maximizePreviewPane';
 import reducePreviewPane from './_reducePreviewPane';
 
-const registerAnimations = () => ({
-  collapseTiles: (params) => collapsePreviewerTiles(params),
-  switchTiles: (params) => switchTiles(params),
-  showPreviewPane: (params) => showPreviewPane(params),
-  hidePreviewPane: (params) => hidePreviewPane(params),
-  maximizePane: (params) => {return maximizePreviewPane(params)},
-  reducePane: (params) => {return reducePreviewPane(params)}
-});
-
 export default function ComposeAnimations() {
   RegisterEffects();
-  return Object.assign({}, registerAnimations());
+  return {
+    collapseTiles: (params) => collapsePreviewerTiles(params),
+    switchTiles: (params) => switchTiles(params),
+    showPreviewPane: (params) => showPreviewPane(params),
+    hidePreviewPane: (params) => hidePreviewPane(params),
+    maximizePane: (params) => maximizePreviewPane(params),
+    reducePane: (params) => reducePreviewPane(params),
+  }
 }
