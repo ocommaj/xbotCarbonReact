@@ -14,16 +14,16 @@ export default function ExtendedItem({ props }) {
     <AccordionItem
       key={ key }
       open={ isOpen }
-      title={ <h3>{ item.itemHeadline }</h3> }
+      title={ <h3>{ item.title }</h3> }
       onHeadingClick={ () => setExpandedItem(key) }>
       <p>
-        { item.belowTheFoldLabel }
+        { item.summary }
       </p>
       <Link
         size='lg'
         target="_blank"
         href={ item.externalUrl }>
-        { item.externalUrlDisplay }
+        { item.source }
         <Launch16 style={
           { margin: 'auto',
             display: 'inline-block',

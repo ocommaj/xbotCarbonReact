@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Accordion, AccordionSkeleton } from 'carbon-components-react';
 import AccordionItem from './_AccordionItem';
 import { useArticlesQuery } from '@hooks/ApolloClient';
-import placeholderData from './_placeholderData';
 
 export default function AccordionViewer({ props }) {
   const { activeSection: { apolloQuery } } = props;
@@ -11,11 +10,31 @@ export default function AccordionViewer({ props }) {
     pattern: apolloQuery.pattern
   };
 
-  const { queryResponse, queryLoading } = useArticlesQuery(query);
+  const { queryResponse } = useArticlesQuery(query);
+  const [items, setItems] = useState([]);
   const [expandedItem, setExpandedItem] = useState(null);
+  const getProps = (item) => accordionItemProps(item);
 
-  const accordionItemArgs = (item) => {
-    const key = `accordionItem_${item.id}`;
+  useEffect(() => {
+    if (!queryResponse) return
+    const { articles } = queryResponse.tutorials;
+    setItems(prevState => [...prevState, ...articles])
+  }, [queryResponse]);
+
+  useEffect(() => console.dir(items), [items])
+
+  if (!items.length) return <AccordionSkeleton open={ false } count={ 15 }/>
+  return (
+    <Accordion className="accordionViewer">
+      { items.map((item) => {
+          const props = getProps(item);
+          return <AccordionItem key={ props.key } props={ props } />
+        }) }
+    </Accordion>
+  )
+
+  function accordionItemProps(item) {
+    const key = `accordionItem_${item._id}`;
     return {
       item,
       key,
@@ -23,14 +42,4 @@ export default function AccordionViewer({ props }) {
       isOpen: key === expandedItem,
     }
   };
-
-  if (queryLoading) return <AccordionSkeleton open={ false } count={ 15 }/>
-  return (
-    <Accordion className="accordionViewer">
-      { placeholderData.map((item) => {
-          const props = accordionItemArgs(item);
-          return <AccordionItem key={ props.key } props={ props } />
-        }) }
-    </Accordion>
-  )
 }

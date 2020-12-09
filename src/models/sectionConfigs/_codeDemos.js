@@ -22,11 +22,9 @@ const codeDemos = {
                   tutorials(input: $input) {
                     cursor
                     hasMore
-                    payload {
-                      articles {
-                        _id
-                        title
-                      }
+                    articles {
+                      _id
+                      title
                     }
                   }
                 }
@@ -76,13 +74,12 @@ const codeDemos = {
                 tutorials(input: $input) {
                   cursor
                   hasMore
-                  payload {
-                    articles {
-                      _id
-                      title
-                      summary
-                      externalUrl
-                    }
+                  articles {
+                    _id
+                    title
+                    summary
+                    externalUrl
+                    source
                   }
                 }
               }
