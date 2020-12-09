@@ -4,10 +4,10 @@ import projectGallery from './_projectGallery';
 import techSupport from './_techSupport';
 
 const sectionConfigs = [
-  Object.freeze(codeDemos),
+  codeDemos,
   projectGallery,
   techSupport,
   learnMore,
 ];
 
-export default sectionConfigs;
+export default sectionConfigs.map(config => Object.freeze(config))
