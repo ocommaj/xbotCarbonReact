@@ -6,10 +6,10 @@ export default function heightToggler(respondToState, onComplete) {
   const tl = gsap.timeline({
             paused: true,
             defaults: { ease: "standard_productive" },
-            onComplete: () => { if (onComplete) { onComplete(respondToState) }}
+            onComplete: () => { if (onComplete) onComplete(respondToState) }
           });
 
-    if (!!mainWindow) { tl.to(mainWindow, {height: deltaHeight}) };
+    if (mainWindow) tl.to(mainWindow, {height: deltaHeight});
 
     tl.play();
 };

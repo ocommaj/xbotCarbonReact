@@ -4,7 +4,7 @@ import projectGallery from './_projectGallery';
 import techSupport from './_techSupport';
 
 const sectionConfigs = [
-  codeDemos,
+  Object.freeze(codeDemos),
   projectGallery,
   techSupport,
   learnMore,

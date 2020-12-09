@@ -7,7 +7,7 @@ export default function collapseToHide({ content, onComplete }) {
           defaults: { ease: "exit_expressive" },
           onComplete: () => onComplete()
         })
-          .to(contentWindow, { height: 0})
-          .to(contentWindow.children, {opacity: 0}, '<');
+          .to(contentWindow, { height: 0 })
+          .to(contentWindow.children, { opacity: 0 }, '<');
   tl.play();
 };

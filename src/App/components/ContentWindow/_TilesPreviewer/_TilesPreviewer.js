@@ -6,16 +6,17 @@ import { useArticlesQuery } from '@hooks/ApolloClient';
 import placeholderData from './_placeholderData';
 
 export default function TilesPreviewer({ props }) {
-  const { animate, activeSection: { apolloBaseQuery } } = props;
-  const input = { articleQuery: { ...apolloBaseQuery } };
+  const { animate, activeSection: { apolloQuery } } = props;
+  const query = {
+    input: apolloQuery.input,
+    pattern: apolloQuery.previewTile
+  };
 
   const previewCol = useRef();
   const previewPane = useRef();
   const tilesCol = useRef();
   const [previewArticle, setPreviewArticle] = useState(null);
-  const { articles, queryLoading } = useArticlesQuery(input);
-
-  useEffect(() => console.dir(articles), [articles]);
+  const { queryResponse, queryLoading } = useArticlesQuery(query);
 
   useEffect(() => {
     if (!previewArticle) return
