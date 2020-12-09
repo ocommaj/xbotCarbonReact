@@ -1,4 +1,4 @@
-import { useQuery, gql } from '@apollo/client';
+import { useQuery } from '@apollo/client';
 
 export default function useArticlesQuery({ input, pattern }) {
   const {
