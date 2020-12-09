@@ -12,8 +12,7 @@ const projectGallery = {
         content: {
           defaultStr: "Get inspired.",
           sampleText: "Projects we've made.",
-          panelTemplateId: "singlePane",
-          sourceJSON: "some-url"
+          panelTemplateId: "cardGallery",
         }
       },
       {
@@ -23,7 +22,6 @@ const projectGallery = {
           defaultStr: "Try out some html / css / js.",
           sampleText: "Test drive your html / css / js.",
           panelTemplateId: "codepen",
-          sourceJSON: "some-url"
         }
       }
     ]

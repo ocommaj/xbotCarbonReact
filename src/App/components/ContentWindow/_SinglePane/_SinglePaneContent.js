@@ -1,12 +1,9 @@
 import React from 'react';
 import Headline from '@components/Headline';
 
-export default function SinglePaneContent( { props } ) {
-  const { activeSection: { content: { defaultStr: title } } } = props;
+export default function SinglePaneContent({ props: { activeSection } }) {
+  const { content: { defaultStr: title } } = activeSection;
 
-  return (
-    <div>
-      <Headline text={title} />
-    </div>
-  );
+  return <Headline text={title} />
+  
 };
