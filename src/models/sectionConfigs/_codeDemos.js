@@ -13,9 +13,7 @@ const codeDemos = {
         title: "Xavier Made",
         apolloQuery: {
           input: {
-            articleQuery: {
-              internalOrigin: true
-            }
+            collectionName: "internalTutorials",
           },
           previewTile: gql`
             query GetTutorials($input: TutorialsQueryInput) {
@@ -65,9 +63,7 @@ const codeDemos = {
         title: "External",
         apolloQuery: {
           input: {
-            articleQuery: {
-              internalOrigin: false,
-            }
+            collectionName: "externalTutorials",
           },
           pattern: gql`
               query GetTutorials($input: TutorialsQueryInput) {
