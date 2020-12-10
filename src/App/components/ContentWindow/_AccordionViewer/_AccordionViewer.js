@@ -21,8 +21,6 @@ export default function AccordionViewer({ props }) {
     setItems(prevState => [...prevState, ...articles])
   }, [queryResponse]);
 
-  useEffect(() => console.dir(items), [items])
-
   if (!items.length) return <AccordionSkeleton open={ false } count={ 15 }/>
   return (
     <Accordion className="accordionViewer">

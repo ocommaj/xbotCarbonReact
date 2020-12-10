@@ -1,0 +1,27 @@
+.galleryCard.bx--tile {
+  background: $ui-03;
+  box-shadow: 0 $spacing-01 $ui-background;
+}
+
+.galleryCard:nth-child(3), .galleryCard:nth-child(14n + 13) {
+  grid-column: span 2;
+  grid-row: span 2;
+  .cardLabel {
+    @include carbon--type-style('productive-heading-05');
+  }
+}
+
+.cardLabel {
+  @include carbon--type-style('productive-heading-02');
+
+}
+
+.imgWrapper {
+  display: block;
+  width: 100%;
+  margin-bottom: $spacing-02;
+  box-shadow: $spacing-01 0 $ui-01;
+}
+.tilePreviewImage {
+  width: inherit;
+}

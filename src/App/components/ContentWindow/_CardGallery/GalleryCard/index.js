@@ -1,2 +1,2 @@
 import GalleryCard from './_GalleryCard';
-export default GalleryCard
+export default GalleryCard;
