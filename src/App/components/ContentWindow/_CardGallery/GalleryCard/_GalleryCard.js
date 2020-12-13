@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Tile } from 'carbon-components-react';
 import FitToScreen32 from '@carbon/icons-react/lib/fit-to-screen/32';
-import testSrc from "./_testSrc";
+import srcData from "./_testSrc";
 
 const DOM = {
   WRAPPER: "galleryCard",
@@ -13,20 +13,25 @@ const DOM = {
 }
 
 export default function GalleryCard(props) {
-  const demo = testSrc()
+  const { clickHandler: launchModal } = props;
+  const demo = srcData.template();
+
   return (
     <Tile className={ DOM.WRAPPER }>
         <iframe
           className={ DOM.PREVIEW_IFRAME }
           loading="lazy"
-          sandbox="allow-scripts allow-pointer-lock allow-same-origin" scrolling="no"
+          sandbox="allow-scripts allow-pointer-lock"
+          scrolling="no"
           srcDoc={ demo }
-          tabindex="-1"
+          tabIndex="-1"
           title="CSS Loading Animations"
-          frameborder="0" />
-          <a className={ DOM.COVER_LINK }>
+          frameBorder="0" />
+          <button
+            className={ DOM.COVER_LINK }
+            onClick={ () => launchModal(srcData) }>
             <FitToScreen32 className={ DOM.OPEN_ICON } />
-          </a>
+          </button>
       <div className={ DOM.LABEL }>
         Gallery Card
       </div>

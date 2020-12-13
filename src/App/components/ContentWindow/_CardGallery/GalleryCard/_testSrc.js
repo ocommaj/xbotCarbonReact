@@ -1,7 +1,6 @@
 import testExample from './_testExample';
 
 const { data: { html, css } } = testExample;
-
 const template = ({body, style, script}) => {
   return `
   <html>
@@ -12,6 +11,10 @@ const template = ({body, style, script}) => {
   `
 };
 
-const testSrc = () => template({body: html, style: css});
+const srcData = {
+  html,
+  css,
+  template() { return template({body: html, style: css}) }
+};
 
-export default testSrc;
+export default srcData;

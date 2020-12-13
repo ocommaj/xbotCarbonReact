@@ -20,10 +20,9 @@ export default function ProfileModal({ props }) {
   const [, setRerender] = useState(false);
   const updateInput = useRef({});
 
-  if ( !modalState.isOpen || !activeUser ) { return null }
+  if ( !modalState.isOpen || !activeUser ) return null
 
   return ReactDOM.createPortal(
-    <>
     <ComposedModal
       open={ modalState.isOpen }
       onClose={ () => modalState.setOpen(false) }
@@ -59,8 +58,7 @@ export default function ProfileModal({ props }) {
           Edit Profile
         </Button>
       </ModalFooter>
-    </ComposedModal>
-    </>,
+    </ComposedModal>,
     document.getElementById('modalPortal')
   )
 

@@ -1,0 +1,28 @@
+.codePenModal.bx--modal.is-visible {
+  animation: showModal .4s carbon--motion(entrance);
+}
+
+.codePenModal
+ {
+   .bx--modal-container--lg {
+     width: 96%;
+     height: 90vh;
+   }
+
+   .bx--modal-container {
+   .bx--modal-content, .bx--modal-content--with-form {
+     margin-bottom: $layout-01;
+   }
+  }
+}
+
+@keyframes showModal {
+  from {
+    opacity: 0;
+    transform: translate3d(-$spacing-03, $spacing-03, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}

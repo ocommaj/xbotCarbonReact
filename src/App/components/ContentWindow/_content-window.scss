@@ -1,10 +1,10 @@
 @import './_AccordionViewer/accordion-viewer';
 @import './_CardGallery/card-gallery';
 @import './_CodePen/codepen';
+@import '../CodePenModal/codepen-modal';
 @import './_Tabbed/tabbed-window-content';
 @import './_TilesPreviewer/tiles-previewer';
-@import './_SinglePane/_single-pane-content';
-
+@import './_SinglePane/single-pane-content';
 
 .mainContentWindow {
   background-color: $ui-01;

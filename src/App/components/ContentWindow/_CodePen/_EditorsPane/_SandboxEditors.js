@@ -3,19 +3,19 @@ import { useLocalStorage } from '@hooks';
 import CodeMirrorEditor from '@components/CodeMirrorEditor';
 import DefaultSrc from './_DefaultSrc';
 
-export default function EditorsPane(props) {
-  const { setSrcDoc } = props,
-        prefix = 'codepen-',
-        [html, setHtml] = useLocalStorage(`${prefix}-html`, DefaultSrc.html()),
-        [css, setCss] = useLocalStorage(`${prefix}-css`, DefaultSrc.css()),
-        [js, setJs] = useLocalStorage(`${prefix}-js`, DefaultSrc.js());
+export default function SandboxEditors(props) {
+  const { setSrcDoc } = props;
+  const prefix = 'codepen-';
+  const [html, setHtml] = useLocalStorage(`${prefix}-html`, DefaultSrc.html());
+  const [css, setCss] = useLocalStorage(`${prefix}-css`, DefaultSrc.css());
+  const [js, setJs] = useLocalStorage(`${prefix}-js`, DefaultSrc.js());
 
   useEffect(() => {
     const timeout = setTimeout(
           setSrcDoc( DefaultSrc.template(html, css, js) ) , 250)
 
     return () => clearTimeout(timeout)
-  }, [html, css, js, setSrcDoc])
+  }, [html, css, js, setSrcDoc]);
 
   return (
     <>

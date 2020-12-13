@@ -1,14 +1,20 @@
 import React, { useState } from 'react';
 import ResizablePane from '@components/ResizablePane';
-import EditorsPane from './_EditorsPane';
+import { GalleryEditors, SandboxEditors } from './_EditorsPane';
 
-export default function CodePen() {
-  const [srcDoc, setSrcDoc] = useState()
+export default function CodePen(props) {
+  const { galleryMode=false, srcData=null } = props;
+  const [srcDoc, setSrcDoc] = useState();
 
   return (
     <div className="codepen">
-      <ResizablePane id="codepenTopPane" content={
-        <EditorsPane setSrcDoc={ setSrcDoc } /> }/>
+      <ResizablePane id="codepenTopPane">
+        {
+          (!!galleryMode && !!srcData)
+            ? <GalleryEditors setSrcDoc={ setSrcDoc } srcData={ srcData } />
+            : <SandboxEditors setSrcDoc={ setSrcDoc } />
+        }
+      </ResizablePane>
       <div className="pane bottom-pane">
         <iframe
           srcDoc={ srcDoc }
@@ -17,5 +23,5 @@ export default function CodePen() {
           frameBorder="0" />
       </div>
     </div>
-  )
+  );
 }
