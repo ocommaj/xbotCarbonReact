@@ -14,7 +14,7 @@ const DOM = {
 
 export default function GalleryCard(props) {
   const { clickHandler: launchModal } = props;
-  const demo = srcData.template();
+  const demo = srcData.template(srcData.html, srcData.css);
 
   return (
     <Tile className={ DOM.WRAPPER }>

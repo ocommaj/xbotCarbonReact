@@ -28,8 +28,8 @@ export default function CodeMirrorEditor(props) {
         </button>
       </div>
       <ControlledEditor
-        onBeforeChange={handleChange}
-        value={value}
+        onBeforeChange={ handleChange }
+        value={ value }
         className="code-mirror-wrapper"
         options={{
           lineWrapping: true,

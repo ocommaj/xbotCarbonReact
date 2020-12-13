@@ -15,7 +15,8 @@ export default function GalleryEditors(props) {
 
   useEffect(() => {
     const timeout = setTimeout(
-          setSrcDoc( srcData.template(html, css, script) ) , 250)
+          setSrcDoc(() => srcData.template(html, css, script)
+          ) , 250)
 
     return () => clearTimeout(timeout)
   }, [html, css, script, setSrcDoc]);

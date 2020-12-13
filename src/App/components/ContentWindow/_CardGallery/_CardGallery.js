@@ -9,7 +9,7 @@ export default function CardGallery({ props: { activeSection } }) {
   const [ srcData, setSrcData ] = useState(null);
 
   function launchCodePenModal(withSrc) {
-    setSrcData({ ...withSrc });
+    setSrcData(withSrc);
     setCodePenModalOpen(true);
   }
 
