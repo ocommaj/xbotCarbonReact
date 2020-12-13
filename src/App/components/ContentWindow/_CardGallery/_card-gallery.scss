@@ -4,7 +4,7 @@
   overflow: scroll;
   height: 100%;
   display: grid;
-  grid-template-columns: repeat(5, 5fr);
+  grid-template-columns: repeat(auto-fit, minmax(200px, 5fr));
   grid-auto-flow: dense;
   grid-auto-rows: 24vh;
   grid-gap: $layout-01;

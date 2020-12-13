@@ -1,27 +1,38 @@
 import React, { useState } from 'react';
 import { Tile } from 'carbon-components-react';
-import testImg from "./testPenThumbnail.png";
+import FitToScreen32 from '@carbon/icons-react/lib/fit-to-screen/32';
+import testSrc from "./_testSrc";
 
 const DOM = {
   WRAPPER: "galleryCard",
-  IMG_WRAPPER: "imgWrapper",
-  IMG: "tilePreviewImage",
-  LABEL: "cardLabel",
+  PREVIEW_IFRAME: "previewIFrame",
+  LABEL: "galleryCardLabel",
+  SUB_LABEL: "galleryCardLabel__secondary",
+  OPEN_ICON: "galleryCardIconButton",
+  COVER_LINK: "coverLink"
 }
 
 export default function GalleryCard(props) {
+  const demo = testSrc()
   return (
     <Tile className={ DOM.WRAPPER }>
-      <span className={ DOM.IMG_WRAPPER }>
-        <img
-          className={ DOM.IMG }
+        <iframe
+          className={ DOM.PREVIEW_IFRAME }
           loading="lazy"
-          src={ testImg }
-          alt="" />
-      </span>
-      <span className={ DOM.LABEL }>
+          sandbox="allow-scripts allow-pointer-lock allow-same-origin" scrolling="no"
+          srcDoc={ demo }
+          tabindex="-1"
+          title="CSS Loading Animations"
+          frameborder="0" />
+          <a className={ DOM.COVER_LINK }>
+            <FitToScreen32 className={ DOM.OPEN_ICON } />
+          </a>
+      <div className={ DOM.LABEL }>
         Gallery Card
-      </span>
+      </div>
+      <div className={ DOM.SUB_LABEL }>
+        Author's Name
+      </div>
     </Tile>
   )
 }

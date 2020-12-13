@@ -2,8 +2,13 @@ import React from 'react'
 import { Button } from 'carbon-components-react'
 import Graphic from '@components/VectorGraphics'
 
+const DOM = {
+  WRAPPER: "stickyButton"
+}
+
 export default function StickyButton(props) {
   const {
+    className,
     clickHandler,
     pictogram,
     assistiveText,
@@ -13,9 +18,9 @@ export default function StickyButton(props) {
   } = props;
 
   return (
-  <span className="stickyButton">
+  <span className={ `${DOM.WRAPPER} ${className && className}`}>
     <Button
-      className={ className() }
+      className={ toggleToolTipClassName() }
       kind={ kind || 'primary' }
       onClick={ () => {
         try { clickHandler() }
@@ -26,13 +31,13 @@ export default function StickyButton(props) {
         catch { return }
       } }
     >
-      <span className="bx--assistive-text">{ assistiveText}</span>
+      <span className="bx--assistive-text">{ assistiveText }</span>
       <Graphic pictogram={ pictogram } />
     </Button>
   </span>
   )
 
-  function className() {
+  function toggleToolTipClassName() {
     const baseClassStr = "bx--btn bx--btn--primary bx--btn--icon-only";
     const toolTipStr = "bx--tooltip__trigger bx--tooltip--a11y bx--tooltip--top bx--tooltip--align-center";
 

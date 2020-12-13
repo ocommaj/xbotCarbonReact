@@ -1,3 +1,7 @@
 .accordionViewer {
   overflow-y: scroll;
+
+  .itemSummaryText {
+    margin-bottom: $layout-01;
+  }
 }

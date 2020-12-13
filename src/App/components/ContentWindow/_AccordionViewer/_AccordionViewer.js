@@ -3,6 +3,11 @@ import { Accordion, AccordionSkeleton } from 'carbon-components-react';
 import AccordionItem from './_AccordionItem';
 import { useArticlesQuery } from '@hooks/ApolloClient';
 
+const DOM = {
+  WRAPPER: 'accordionViewer',
+  ITEM: 'accordionItem'
+}
+
 export default function AccordionViewer({ props }) {
   const { activeSection: { apolloQuery } } = props;
   const query = {
@@ -23,7 +28,7 @@ export default function AccordionViewer({ props }) {
 
   if (!items.length) return <AccordionSkeleton open={ false } count={ 15 }/>
   return (
-    <Accordion className="accordionViewer">
+    <Accordion className={ DOM.WRAPPER }>
       { items.map((item) => {
           const props = getProps(item);
           return <AccordionItem key={ props.key } props={ props } />
@@ -32,12 +37,13 @@ export default function AccordionViewer({ props }) {
   )
 
   function accordionItemProps(item) {
-    const key = `accordionItem_${item._id}`;
+    const key = `${ DOM.ITEM }_${ item._id }`;
     return {
       item,
       key,
       setExpandedItem,
       isOpen: key === expandedItem,
+      className: DOM.ITEM,
     }
   };
 }

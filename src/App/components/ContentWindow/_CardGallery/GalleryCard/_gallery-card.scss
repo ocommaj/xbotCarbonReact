@@ -1,28 +1,53 @@
 .galleryCard.bx--tile {
   background: $ui-03;
   box-shadow: 0 $spacing-01 $ui-background;
+  padding: $layout-01;
 }
 
 .galleryCard:nth-child(3), .galleryCard:nth-child(14n + 13) {
   grid-column: span 2;
   grid-row: span 2;
-  .cardLabel {
+  .galleryCardLabel {
     @include carbon--type-style('productive-heading-05');
+  }
+  .galleryCardLabel__secondary {
+    @include carbon--type-style('productive-heading-03');
   }
 }
 
-.cardLabel {
-  @include carbon--type-style('productive-heading-02');
-
+.galleryCardLabel {
+  @include carbon--type-style('productive-heading-03');
 }
 
-.imgWrapper {
-  display: block;
+.galleryCardLabel__secondary {
+  @include carbon--type-style('productive-heading-01');
+}
+
+.galleryCardIconButton {
+  position: absolute;
+  top: $layout-01;
+  right: $layout-01;
+  fill: $decorative-01;
+}
+
+.coverLink {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 27.5%;
+  cursor: pointer;
+  //background-color: blue;
+  opacity: 0;
+  transition: opacity .4s carbon--motion(standard);
+}
+
+.coverLink:hover {
+  opacity: 1;
+}
+
+.previewIFrame {
   width: 100%;
+  height: 70%;
   margin-bottom: $spacing-02;
-  box-shadow: $spacing-01 0 $ui-01;
-}
-
-.tilePreviewImage {
-  width: inherit;
 }

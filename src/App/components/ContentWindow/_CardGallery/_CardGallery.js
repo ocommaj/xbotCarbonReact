@@ -7,7 +7,7 @@ const DOM = {
 
 export default function CardGallery({ props: { activeSection } }) {
   return (
-    <div className={ DOM.WRAPPER }>
+    <section className={ DOM.WRAPPER }>
           <GalleryCard />
           <GalleryCard />
           <GalleryCard />
@@ -39,6 +39,6 @@ export default function CardGallery({ props: { activeSection } }) {
           <GalleryCard />
           <GalleryCard />
           <GalleryCard />
-      </div>
+      </section>
   )
 }
