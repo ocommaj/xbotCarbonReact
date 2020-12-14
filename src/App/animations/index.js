@@ -1,7 +1,7 @@
-import WrapperTimeline from './wrapperTimeline';
-import RegisterEffects from './effects';
-import MainBodyAnimations from './mainBodyAnimations';
 import FixedOrnamentAnimations from './fixedOrnaments';
+import MainBodyAnimations from './mainBodyAnimations';
+import RegisterEffects from './effects';
+import WrapperTimeline from './wrapperTimeline';
 
 export default function Animate() {
   const self = {
@@ -9,6 +9,7 @@ export default function Animate() {
           header: MainBodyAnimations.header,
           contentWindow: MainBodyAnimations.contentWindow,
           footerControls: MainBodyAnimations.footerControls,
+          sideDrawerFX: MainBodyAnimations.sideDrawer,
           background: FixedOrnamentAnimations.background,
           fleet: FixedOrnamentAnimations.fleet,
           stickyButton: FixedOrnamentAnimations.stickyButtons
@@ -16,5 +17,5 @@ export default function Animate() {
 
   RegisterEffects();
 
-  return Object.assign(self);
+  return { ...self }
 };

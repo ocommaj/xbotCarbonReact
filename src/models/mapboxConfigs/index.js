@@ -9,5 +9,5 @@ export default function configMapbox() {
 
   setStaticImgUrls(client, staticLocations);
 
-  return [staticLocations, randomBG];
+  return { randomBG, staticMaps: staticLocations };
 };
