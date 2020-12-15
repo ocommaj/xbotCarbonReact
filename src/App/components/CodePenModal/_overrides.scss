@@ -14,6 +14,32 @@
      margin-bottom: $layout-01;
    }
   }
+
+  .bx--modal-header {
+    margin-bottom: 0;
+  }
+
+  .bx--btn--tertiary:hover {
+    color: $ui-05;
+  }
+}
+
+.bx--btn.headerIconButton {
+  width: $layout-04;
+  height: $layout-04;
+  position: absolute;
+  top: 0;
+  padding: $spacing-04;
+  right: $layout-04;
+  border: 0;
+
+  svg {
+    fill: $ui-05;
+  }
+}
+
+.bx--btn.headerIconButton:hover {
+  background-color: $hover-ui;
 }
 
 @keyframes showModal {

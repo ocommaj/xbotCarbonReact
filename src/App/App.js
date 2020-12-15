@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import { useLocalStorage, useUser } from '@hooks/';
 import { SectionConfigs } from '@Models';
 import Animate from '@animations';
@@ -9,6 +9,7 @@ export const AppContext = React.createContext();
 
 export default function App() {
   const [ showToolTips, setShowToolTips ] = useLocalStorage('showToolTips');
+  const [ sideDrawerMemos, setSideDrawerMemos ] = useState([])
   const animate = useRef( Animate() );
   const activeUser = useUser();
   const sections = SectionConfigs;
@@ -17,6 +18,8 @@ export default function App() {
           setShowToolTips,
           activeUser,
           sections,
+          sideDrawerMemos,
+          setSideDrawerMemos,
           animate: animate.current,
         };
 

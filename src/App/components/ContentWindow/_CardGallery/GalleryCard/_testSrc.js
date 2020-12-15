@@ -14,7 +14,9 @@ const template = ({body, style, script}) => {
 const srcData = {
   html,
   css,
-  template(html, css, script) { 
+  id: "testSrcSrc",
+  title: "Dot Loader",
+  template(html, css, script) {
     return template({ body: html, style: css, script: script })
   }
 };
