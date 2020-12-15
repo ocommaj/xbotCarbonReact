@@ -1,3 +1,64 @@
 .drawerMemo {
-  
+  position: relative;
+  width: 0;
+  height: 8rem;
+  background-color: $ui-02;
+  flex-grow: 1;
+  margin: $spacing-02 0;
+  //padding: $spacing-02;
+  padding: 0;
+}
+
+.drawerMemo:nth-child(1) {
+  margin-top: $spacing-04;
+}
+
+.iFrameMemoPreview {
+  width: 100%;
+  height: 100%;
+}
+
+.drawerMemo {
+  .coverLink {
+    width: calc(100% - 16px);
+    position: absolute;
+    top: $spacing-03;
+    left: $spacing-03;
+    bottom: $spacing-03;
+    border: 0;
+    opacity: 0;
+    background: transparent;
+    cursor: pointer;
+
+    transition: opacity .4s carbon--motion(exit);
+  }
+
+  .coverLink:hover {
+    opacity: 1;
+    animation: showIcon .4s carbon--motion(entrance);
+  }
+
+  .coverLink:focus {
+    outline: 0;
+  }
+
+  .drawerMemoOpenIcon {
+    position: absolute;
+    top: $spacing-02;
+    right: $spacing-02;
+    fill: $icon-02;
+  }
+
+  @keyframes showIcon {
+    from {
+      opacity: 0;
+      transform: translate3d(-$spacing-03, $spacing-03, 0);
+      filter: hue-rotate(180deg);
+    }
+    to {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+      filter: hue-rotate(0);
+    }
+  }
 }

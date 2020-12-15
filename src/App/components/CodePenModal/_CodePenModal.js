@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import ReactDOM from 'react-dom';
 import {
   ComposedModal,
@@ -48,14 +48,15 @@ export default function CodePenModal(props) {
 
   function addToMemoDrawer() {
     setSideDrawerMemos(prevState => {
-      return _isAlreadyMemo() ? prevState : [srcData, ...prevState];
+      return !!_isAlreadyMemo() ? [ ...prevState ] : [srcData, ...prevState];
 
       function _isAlreadyMemo() {
-        for (const memo of prevState) {
-          if (memo.id === srcData.id) return true;
-          return false;
+          for (const memo of prevState) {
+            if (memo.id === srcData.id) return true;
+          }
+          return false
         }
-      }
-    })
-  }
+      })
+    }
+
 }

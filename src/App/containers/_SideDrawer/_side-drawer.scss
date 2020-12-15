@@ -1,13 +1,25 @@
+@import '../../components/DrawerMemo/drawer-memo';
+
 .sideDrawer {
-  //background-color: $ui-01;
-  //background-color: rgba(82, 82, 82, 0.4);
-  background-color: rgba(15, 98, 254, 0.4);
+  background: rgba(82, 82, 82, 0.6);
+  backdrop-filter: blur(5px);
   border-left: inset $spacing-01 $interactive-01;
   position: fixed;
   height: 100vh;
   top: 0;
   right: -$spacing-01;
   z-index: 20;
+}
+
+.sideDrawerContent {
+  width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.sideDrawerContent.isOpen {
+  padding: 0 $spacing-03;
 }
 
 .drawerToggler {
@@ -35,4 +47,8 @@
     transform: rotateZ(-180deg);
     transition: transform .4s carbon--motion(standard);
   }
+}
+
+.drawerToggler:focus {
+  outline: 0;
 }
