@@ -12,7 +12,7 @@ export default function App() {
   const [ sideDrawerMemos, setSideDrawerMemos ] = useState([])
   const animate = useRef( Animate() );
   const activeUser = useUser();
-  const sections = SectionConfigs;
+  const sections = [...SectionConfigs];
   const contextValue = {
           showToolTips,
           setShowToolTips,
