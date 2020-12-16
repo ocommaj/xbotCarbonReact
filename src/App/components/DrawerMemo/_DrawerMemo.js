@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import FitToScreen24 from '@carbon/icons-react/lib/fit-to-screen/24';
 
 const DOM = {
@@ -16,7 +16,6 @@ export default function DrawerMemo(props) {
   const srcDoc = template(html, css, script);
 
   return (
-    <>
     <div className={ DOM.WRAPPER }>
       <iframe
         className={ DOM.IFRAME }
@@ -34,9 +33,5 @@ export default function DrawerMemo(props) {
         <FitToScreen24 className={ DOM.OPEN_ICON } />
       </button>
     </div>
-
-    </>
   )
 }
-
-//onClick={ () => launchModal(srcData) }>

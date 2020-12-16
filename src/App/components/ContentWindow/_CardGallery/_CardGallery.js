@@ -51,7 +51,6 @@ export default function CardGallery({ props: { activeSection } }) {
       <GalleryCard clickHandler={ (withSrc) => launchCodePenModal(withSrc) }/>
       <GalleryCard clickHandler={ (withSrc) => launchCodePenModal(withSrc) }/>
       <GalleryCard clickHandler={ (withSrc) => launchCodePenModal(withSrc) }/>
-      <GalleryCard clickHandler={ (withSrc) => launchCodePenModal(withSrc) }/>
     </section>
     <CodePenModal
       modalState={ {
