@@ -1,4 +1,4 @@
-import React, { useState, useRef, useContext } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import { PageFirst24 } from '@carbon/icons-react';
 import { AppContext } from '@App';
 import DrawerMemo from '@components/DrawerMemo';
@@ -15,6 +15,7 @@ const DOM = {
 export default function SideDrawer() {
   const {
     sideDrawerMemos,
+    setSideDrawerMemos,
     animate: { wrapperTimeline, sideDrawerFX }
   } = useContext(AppContext);
   const [drawerIsOpen, setDrawerOpen] = useState(false);
@@ -28,6 +29,10 @@ export default function SideDrawer() {
     if (codePenModalOpen || !drawerIsOpen) return
     closeDrawerTimeline(drawerRef)
   });
+
+  useEffect(() => {
+    if (!sideDrawerMemos.length) setDrawerOpen(false);
+  }, [sideDrawerMemos])
 
   if (!sideDrawerMemos.length) return null
   return (
@@ -46,6 +51,7 @@ export default function SideDrawer() {
                 key={ `memo_${memo.id}` }
                 record={ memo }
                 launchModal={ () => launchCodePenModal(memo) }
+                removeItem={ () => removeItemFromList(memo) }
                 />
               )
           })
@@ -72,8 +78,9 @@ export default function SideDrawer() {
 
   function openDrawerTimeline(ref) {
     wrapperTimeline()
-      .call( () => setDrawerOpen(prevState => !prevState) )
+
       .add( sideDrawerFX.openDrawer({ drawerRef: ref }).play() )
+      .call( () => setDrawerOpen(prevState => !prevState) )
   }
 
   function closeDrawerTimeline(ref) {
@@ -85,5 +92,12 @@ export default function SideDrawer() {
   function launchCodePenModal(withSrc) {
     setModalRecord(withSrc);
     setCodePenModalOpen(true);
+  }
+
+  function removeItemFromList(toRemove) {
+    setSideDrawerMemos(prevState => {
+      const updatedList = prevState.filter(item => item.id !== toRemove.id);
+      return updatedList;
+    })
   }
 }

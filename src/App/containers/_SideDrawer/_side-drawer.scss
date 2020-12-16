@@ -16,12 +16,19 @@
   height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   overflow-y: scroll;
+
+  button.removeItem {
+    opacity: 0;
+  }
 }
 
 .sideDrawerContent.isOpen {
   padding: 0 $spacing-03;
+
+  button.removeItem {
+    opacity: 1;
+  }
 }
 
 .drawerToggler {
