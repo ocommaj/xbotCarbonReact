@@ -19,7 +19,7 @@ export default function GalleryEditors(props) {
           ) , 250)
 
     return () => clearTimeout(timeout)
-  }, [html, css, script, setSrcDoc]);
+  }, [html, css, script, srcData, setSrcDoc]);
 
   return (
     <>
