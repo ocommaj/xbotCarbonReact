@@ -36,11 +36,12 @@ export default function DrawerMemo(props) {
       <button className={ DOM.COVER_LINK } onClick={ () => launchModal() }>
         <ContentView24 className={ DOM.OPEN_ICON } />
       </button>
-      <button className={ DOM.REMOVE_ITEM_BTN } onClick={ () => removeItem() }>
+      <button
+        className={ DOM.REMOVE_ITEM_BTN }
+        onClick={ (e) => removeItem(e.currentTarget) }>
         <SubtractAlt32 />
         <CloseOutline32 />
       </button>
     </div>
   )
-
 }

@@ -5,6 +5,7 @@ export default function WrapperTimeline(args={}) {
     repeat: args.repeat || 0,
     repeatDelay: args.repeatDelay || 0,
     defaults: {
+      //smoothChildTiming: true,
       duration: args.defaultDuration || .7,
       ease: args.defaultEase || "standard_productive",
     }

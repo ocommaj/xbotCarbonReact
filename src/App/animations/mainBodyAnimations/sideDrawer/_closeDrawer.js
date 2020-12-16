@@ -8,7 +8,7 @@ export default function closeSideDrawer(params) {
           paused: true,
           defaults: { ease: 'exit_expressive' }
         })
-          .to(children, { height: 0 })
-          .to(children, { opacity: 0, width: 0, padding: 0 }, '<')
-          .to(target, { width: 0, padding: 0 }, '<');
+        .to(children, { height: 0 })
+        .to(children, { opacity: 0, width: 0, padding: 0 }, '<')
+        .to(target, { width: 0, padding: 0 }, '<');
 }

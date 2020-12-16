@@ -51,7 +51,7 @@ export default function SideDrawer() {
                 key={ `memo_${memo.id}` }
                 record={ memo }
                 launchModal={ () => launchCodePenModal(memo) }
-                removeItem={ () => removeItemFromList(memo) }
+                removeItem={ (button) => removeItem(button, memo, drawerRef) }
                 />
               )
           })
@@ -78,20 +78,29 @@ export default function SideDrawer() {
 
   function openDrawerTimeline(ref) {
     wrapperTimeline()
-
       .add( sideDrawerFX.openDrawer({ drawerRef: ref }).play() )
-      .call( () => setDrawerOpen(prevState => !prevState) )
+      .then( () => setDrawerOpen(prevState => !prevState) );
   }
 
   function closeDrawerTimeline(ref) {
     wrapperTimeline()
       .add( sideDrawerFX.closeDrawer({ drawerRef: ref }).play() )
-      .then( () => setDrawerOpen(prevState => !prevState) )
+      .then( () => setDrawerOpen(false) );
   }
 
   function launchCodePenModal(withSrc) {
     setModalRecord(withSrc);
     setCodePenModalOpen(true);
+  }
+
+  function removeItem(button, item) {
+    wrapperTimeline()
+      .add( sideDrawerFX.removeItem({ button }).play() )
+      .add(
+        !!(sideDrawerMemos.length === 1)
+          ? sideDrawerFX.closeDrawer({ drawerRef }).play()
+          : null)
+      .then( () => removeItemFromList(item) );
   }
 
   function removeItemFromList(toRemove) {

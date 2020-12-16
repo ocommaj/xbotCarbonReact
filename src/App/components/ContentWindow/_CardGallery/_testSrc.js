@@ -30,9 +30,6 @@ function dataArray() {
   return objects;
 }
 
-const srcData = dataArray();
+const srcArray = dataArray();
 
-
-
-
-export default srcData;
+export default srcArray;
