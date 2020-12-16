@@ -13,9 +13,11 @@
 
 .sideDrawerContent {
   width: 0;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  overflow-y: scroll;
 }
 
 .sideDrawerContent.isOpen {

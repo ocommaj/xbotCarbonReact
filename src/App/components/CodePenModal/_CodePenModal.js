@@ -40,7 +40,7 @@ export default function CodePenModal(props) {
           kind={ "tertiary" }
           onClick={ () => addToMemoDrawer() }>
           <span className={DOM.CARBON_TIPTEXT}>{ 'Pin to Reading List' }</span>
-          </Button>
+        </Button>
       </ModalHeader>
       <ModalBody hasForm={ true }>
         <CodePen galleryMode={ true } srcData={ srcData }/>
@@ -53,7 +53,8 @@ export default function CodePenModal(props) {
   function addToMemoDrawer() {
     setSideDrawerMemos(prevState => {
       return !!_isAlreadyMemo() ? [ ...prevState ] : [srcData, ...prevState];
-
+      //return [srcData, ...prevState]
+      
       function _isAlreadyMemo() {
           for (const memo of prevState) {
             if (memo.id === srcData.id) return true;
