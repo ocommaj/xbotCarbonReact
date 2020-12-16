@@ -1,7 +1,6 @@
 import React from 'react';
 import { Tile } from 'carbon-components-react';
-import FitToScreen32 from '@carbon/icons-react/lib/fit-to-screen/32';
-import srcData from "./_testSrc";
+import { ContentView32 } from '@carbon/icons-react/';
 
 const DOM = {
   WRAPPER: "galleryCard",
@@ -13,7 +12,7 @@ const DOM = {
 }
 
 export default function GalleryCard(props) {
-  const { clickHandler: launchModal } = props;
+  const { srcData, clickHandler: launchModal } = props;
   const demo = srcData.template(srcData.html, srcData.css);
 
   return (
@@ -29,8 +28,8 @@ export default function GalleryCard(props) {
           frameBorder="0" />
           <button
             className={ DOM.COVER_LINK }
-            onClick={ () => launchModal(srcData) }>
-            <FitToScreen32 className={ DOM.OPEN_ICON } />
+            onClick={ () => launchModal( srcData ) }>
+            <ContentView32 className={ DOM.OPEN_ICON } />
           </button>
       <div className={ DOM.LABEL }>
         Gallery Card

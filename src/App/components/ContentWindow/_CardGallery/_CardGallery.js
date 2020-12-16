@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import GalleryCard from './GalleryCard';
 import CodePenModal from '@components/CodePenModal';
+import srcArray from './_testSrc';
 
 const DOM = { WRAPPER: "cardGallery" };
 
@@ -20,37 +21,14 @@ export default function CardGallery({ props: { activeSection } }) {
   return (
     <>
     <section className={ DOM.WRAPPER }>
-      <GalleryCard clickHandler={ (withSrc) => launchCodePenModal(withSrc) }/>
-      <GalleryCard clickHandler={ (withSrc) => launchCodePenModal(withSrc) }/>
-      <GalleryCard clickHandler={ (withSrc) => launchCodePenModal(withSrc) }/>
-      <GalleryCard clickHandler={ (withSrc) => launchCodePenModal(withSrc) }/>
-      <GalleryCard clickHandler={ (withSrc) => launchCodePenModal(withSrc) }/>
-      <GalleryCard clickHandler={ (withSrc) => launchCodePenModal(withSrc) }/>
-      <GalleryCard clickHandler={ (withSrc) => launchCodePenModal(withSrc) }/>
-      <GalleryCard clickHandler={ (withSrc) => launchCodePenModal(withSrc) }/>
-      <GalleryCard clickHandler={ (withSrc) => launchCodePenModal(withSrc) }/>
-      <GalleryCard clickHandler={ (withSrc) => launchCodePenModal(withSrc) }/>
-      <GalleryCard clickHandler={ (withSrc) => launchCodePenModal(withSrc) }/>
-      <GalleryCard clickHandler={ (withSrc) => launchCodePenModal(withSrc) }/>
-      <GalleryCard clickHandler={ (withSrc) => launchCodePenModal(withSrc) }/>
-      <GalleryCard clickHandler={ (withSrc) => launchCodePenModal(withSrc) }/>
-      <GalleryCard clickHandler={ (withSrc) => launchCodePenModal(withSrc) }/>
-      <GalleryCard clickHandler={ (withSrc) => launchCodePenModal(withSrc) }/>
-      <GalleryCard clickHandler={ (withSrc) => launchCodePenModal(withSrc) }/>
-      <GalleryCard clickHandler={ (withSrc) => launchCodePenModal(withSrc) }/>
-      <GalleryCard clickHandler={ (withSrc) => launchCodePenModal(withSrc) }/>
-      <GalleryCard clickHandler={ (withSrc) => launchCodePenModal(withSrc) }/>
-      <GalleryCard clickHandler={ (withSrc) => launchCodePenModal(withSrc) }/>
-      <GalleryCard clickHandler={ (withSrc) => launchCodePenModal(withSrc) }/>
-      <GalleryCard clickHandler={ (withSrc) => launchCodePenModal(withSrc) }/>
-      <GalleryCard clickHandler={ (withSrc) => launchCodePenModal(withSrc) }/>
-      <GalleryCard clickHandler={ (withSrc) => launchCodePenModal(withSrc) }/>
-      <GalleryCard clickHandler={ (withSrc) => launchCodePenModal(withSrc) }/>
-      <GalleryCard clickHandler={ (withSrc) => launchCodePenModal(withSrc) }/>
-      <GalleryCard clickHandler={ (withSrc) => launchCodePenModal(withSrc) }/>
-      <GalleryCard clickHandler={ (withSrc) => launchCodePenModal(withSrc) }/>
-      <GalleryCard clickHandler={ (withSrc) => launchCodePenModal(withSrc) }/>
-      <GalleryCard clickHandler={ (withSrc) => launchCodePenModal(withSrc) }/>
+      { srcArray.map(record =>
+            <GalleryCard
+              key={ record.id }
+              srcData={ record }
+              clickHandler={ (withSrc) => launchCodePenModal(withSrc) }
+            />
+          )
+      }
     </section>
     <CodePenModal
       modalState={ {

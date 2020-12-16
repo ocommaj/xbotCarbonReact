@@ -47,6 +47,7 @@
   padding: $spacing-04;
   right: $layout-04;
   border: 0;
+  color: $ui-05;
 
   svg {
     fill: $ui-05;
@@ -54,16 +55,21 @@
   }
 }
 
+.headerIconButton.bx--btn.bx--btn--tertiary.bx--btn--icon-only:active {
+  background-color: $ui-05;
+  color: $ui-02;
+}
+
 .headerIconButton.bx--btn.bx--btn--tertiary.bx--btn--icon-only.bx--tooltip__trigger.bx--tooltip--a11y.bx--tooltip--bottom.bx--tooltip--align-center:focus {
   outline: none;
   box-shadow: none;
   background: transparent;
   color: $text-02;
+}
 
-  svg {
-    fill: $text-02;
-
-  }
+.headerIconButton.bx--btn.bx--btn--tertiary.bx--btn--icon-only.bx--tooltip__trigger.bx--tooltip--a11y.bx--tooltip--bottom.bx--tooltip--align-center:active {
+  background-color: $ui-05;
+  color: $ui-02;
 }
 
 .bx--btn.bx--btn--icon-only:focus {
@@ -71,11 +77,6 @@
   box-shadow: none;
   background: transparent;
   color: $text-02;
-
-  svg {
-    fill: $text-02;
-
-  }
 }
 
 .bx--btn.bx--btn--icon-only.bx--tooltip__trigger:focus .bx--assistive-text,

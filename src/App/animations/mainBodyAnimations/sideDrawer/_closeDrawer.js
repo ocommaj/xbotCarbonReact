@@ -10,5 +10,5 @@ export default function closeSideDrawer(params) {
         })
           .to(children, { height: 0 })
           .to(children, { opacity: 0, width: 0, padding: 0 }, '<')
-          .to(target, { width: 0 }, '<');
+          .to(target, { width: 0, padding: 0 }, '<');
 }

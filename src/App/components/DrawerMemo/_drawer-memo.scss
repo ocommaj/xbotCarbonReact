@@ -3,21 +3,60 @@
   width: 0;
   height: 0;
   background-color: $ui-02;
-  flex-grow: 1;
-  margin: $spacing-02 0;
+  margin: $spacing-03 0;
   padding: 0;
-}
 
-.drawerMemo:nth-child(1) {
-  margin-top: $spacing-04;
-}
+  .iFrameMemoPreview {
+    width: 100%;
+    height: 100%;
+  }
 
-.iFrameMemoPreview {
-  width: 100%;
-  height: 100%;
-}
+  button.removeItem {
+    position: absolute;
+    right: -$spacing-02;
+    bottom: -$spacing-03;
+    display: flex;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    background: none;
+    color: $support-04;
+    transition: all .4s carbon--motion(standard);
+    transform-origin: 50% 50%;
+    cursor: pointer;
 
-.drawerMemo {
+    svg {
+      margin: auto;
+    }
+
+    svg:nth-child(2) {
+      margin-left: -$layout-03;
+      opacity: 0;
+    }
+  }
+
+  button.removeItem:hover {
+    transform: rotateZ(90deg);
+    transform-origin: 50% 50%;
+    color: $support-01;
+
+    svg:nth-child(1) {
+      opacity: 0;
+    }
+
+    svg:nth-child(2) {
+      opacity: 1;
+    }
+  }
+
+  button.removeItem:active {
+    color: $inverse-02;
+  }
+
+  button.removeItem:focus {
+    outline: none;
+  }
+
   .coverLink {
     width: calc(100% - 16px);
     position: absolute;
@@ -29,7 +68,14 @@
     background: transparent;
     cursor: pointer;
 
-    transition: opacity .4s carbon--motion(exit);
+    transition: all .4s carbon--motion(exit);
+
+    svg {
+      position: absolute;
+      top: $spacing-02;
+      left: $spacing-02;
+      fill: $icon-02;
+    }
   }
 
   .coverLink:hover {
@@ -41,17 +87,10 @@
     outline: 0;
   }
 
-  .drawerMemoOpenIcon {
-    position: absolute;
-    top: $spacing-02;
-    right: $spacing-02;
-    fill: $icon-02;
-  }
-
   @keyframes showIcon {
     from {
       opacity: 0;
-      transform: translate3d(-$spacing-03, $spacing-03, 0);
+      transform: translate3d($spacing-03, $spacing-03, 0);
       filter: hue-rotate(180deg);
     }
     to {
@@ -60,4 +99,8 @@
       filter: hue-rotate(0);
     }
   }
+}
+
+.drawerMemo:nth-child(1) {
+  margin-top: $spacing-04;
 }

@@ -1,16 +1,22 @@
 import React from 'react';
-import FitToScreen24 from '@carbon/icons-react/lib/fit-to-screen/24';
+import {
+  ContentView24,
+  SubtractAlt32,
+  CloseOutline32,
+ } from '@carbon/icons-react';
 
 const DOM = {
   WRAPPER: "drawerMemo",
   IFRAME: "iFrameMemoPreview",
   COVER_LINK: "coverLink",
-  OPEN_ICON: "drawerMemoOpenIcon"
+  OPEN_ICON: "drawerMemoOpenIcon",
+  REMOVE_ITEM_BTN: "removeItem"
 }
 
 export default function DrawerMemo(props) {
   const {
     launchModal,
+    removeItem,
     record: { title, template, html='', css='', script='' }
   } = props;
   const srcDoc = template(html, css, script);
@@ -27,11 +33,14 @@ export default function DrawerMemo(props) {
         title={ title }
         frameBorder="0"
       />
-      <button
-        className={ DOM.COVER_LINK }
-        onClick={ () => launchModal() }>
-        <FitToScreen24 className={ DOM.OPEN_ICON } />
+      <button className={ DOM.COVER_LINK } onClick={ () => launchModal() }>
+        <ContentView24 className={ DOM.OPEN_ICON } />
+      </button>
+      <button className={ DOM.REMOVE_ITEM_BTN } onClick={ () => removeItem() }>
+        <SubtractAlt32 />
+        <CloseOutline32 />
       </button>
     </div>
   )
+
 }

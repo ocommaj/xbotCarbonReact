@@ -1,4 +1,4 @@
-import testExample from './_testExample';
+import testExample from './GalleryCard/_testExample';
 
 const { data: { html, css } } = testExample;
 const template = ({body, style, script}) => {
@@ -11,14 +11,28 @@ const template = ({body, style, script}) => {
   `
 };
 
-const srcData = {
+const srcObj = {
   html,
   css,
-  id: "testSrcSrc",
+  id: "testSrc",
   title: "Dot Loader",
   template(html, css, script) {
     return template({ body: html, style: css, script: script })
   }
 };
+
+function dataArray() {
+  const objects = [];
+  for (let i = 0; i < 48; i++) {
+    const entry = { ...srcObj, id: `${srcObj.id}_${i}` };
+    objects.push(entry)
+  }
+  return objects;
+}
+
+const srcData = dataArray();
+
+
+
 
 export default srcData;
