@@ -11,6 +11,10 @@ export default function css() {
 h1 {
   font-family: monospace;
   color: #8d8d8d;
+}
+
+.fancy::after {
+  content: 'great stuff."'
 }`
 
   return () => defaultStr

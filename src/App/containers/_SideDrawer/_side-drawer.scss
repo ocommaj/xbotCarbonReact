@@ -3,7 +3,7 @@
 .sideDrawer {
   background: rgba(82, 82, 82, 0.6);
   backdrop-filter: blur(5px);
-  border-left: inset $spacing-01 $interactive-01;
+  border-left: solid $spacing-01 $interactive-01;
   position: fixed;
   height: 100vh;
   top: 0;
