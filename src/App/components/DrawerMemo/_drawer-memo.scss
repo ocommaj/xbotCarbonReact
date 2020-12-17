@@ -80,14 +80,14 @@
 
   .coverLink:hover {
     opacity: 1;
-    animation: showIcon .4s carbon--motion(entrance);
+    animation: drawerMemo_ShowIcon .4s carbon--motion(entrance);
   }
 
   .coverLink:focus {
     outline: 0;
   }
 
-  @keyframes showIcon {
+  @keyframes drawerMemo_ShowIcon {
     from {
       opacity: 0;
       transform: translate3d($spacing-03, $spacing-03, 0);

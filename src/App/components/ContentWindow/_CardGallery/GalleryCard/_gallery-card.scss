@@ -72,6 +72,13 @@
   outline: 0;
 }
 
+.inReadingListIcon {
+  position: absolute;
+  top: $spacing-02;
+  left: $spacing-02;
+  transition: all .4s carbon--motion(standard);
+}
+
 @keyframes showIcon {
   from {
     opacity: 0;

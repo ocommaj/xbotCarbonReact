@@ -6,7 +6,7 @@ import {
   ModalBody,
   Button
 } from 'carbon-components-react';
-import { NotebookReference32 } from '@carbon/icons-react';
+import { Attachment32, SubtractAlt32 } from '@carbon/icons-react';
 import { AppContext } from '@App';
 import CodePen from '@components/ContentWindow/_CodePen';
 
@@ -21,7 +21,8 @@ const DOM = {
 export default function CodePenModal(props) {
   const {
     modalState,
-    srcData
+    srcData,
+    inReadingList=false
   } = props;
   const { setSideDrawerMemos, showToolTips } = useContext(AppContext);
 
@@ -36,7 +37,7 @@ export default function CodePenModal(props) {
       <ModalHeader title={ srcData.title }>
         <Button
           className={ toggleToolTipClassName() }
-          renderIcon={ NotebookReference32 }
+          renderIcon={ !inReadingList ? Attachment32 : SubtractAlt32 }
           title={ showToolTips ? null : 'Pin to Reading List'  }
           aria-label={ 'Pin to Reading List' }
           kind={ "tertiary" }
@@ -52,7 +53,7 @@ export default function CodePenModal(props) {
   );
 
 
-  async function addToMemoDrawer() {
+  function addToMemoDrawer() {
     setSideDrawerMemos(prevState => {
       return !!_isAlreadyMemo() ? [ ...prevState ] : [srcData, ...prevState];
 
@@ -60,7 +61,7 @@ export default function CodePenModal(props) {
           for (const memo of prevState) {
             if (memo.id === srcData.id) return true;
           }
-          return false
+          //return false;
         }
       })
     }

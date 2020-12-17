@@ -3,6 +3,7 @@ import { PageFirst24 } from '@carbon/icons-react';
 import { AppContext } from '@App';
 import DrawerMemo from '@components/DrawerMemo';
 import CodePenModal from '@components/CodePenModal';
+import ToastAlert from '@components/CodePenModal';
 import { useClickOutsideDetector } from '@hooks';
 
 const DOM = {
@@ -64,6 +65,7 @@ export default function SideDrawer() {
         close: () => setCodePenModalOpen(false)
         } }
       srcData={ modalRecord }
+      inReadingList={ true }
     />
     </>
   );

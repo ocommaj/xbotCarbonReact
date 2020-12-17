@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import GalleryCard from './GalleryCard';
 import CodePenModal from '@components/CodePenModal';
+import { AppContext } from '@App';
 import srcArray from './_testSrc';
 
 const DOM = { WRAPPER: "cardGallery" };
 
 export default function CardGallery({ props: { activeSection } }) {
+  const { sideDrawerMemos } = useContext(AppContext)
   const [ codePenModalOpen, setCodePenModalOpen ] = useState(false);
   const [ srcData, setSrcData ] = useState(null);
 
@@ -26,6 +28,7 @@ export default function CardGallery({ props: { activeSection } }) {
               key={ record.id }
               srcData={ record }
               clickHandler={ (withSrc) => launchCodePenModal(withSrc) }
+              inReadingList={ isInReadingList(record.id) }
             />
           )
       }
@@ -36,7 +39,14 @@ export default function CardGallery({ props: { activeSection } }) {
         close: () => setCodePenModalOpen(false)
         } }
       srcData={ srcData }
+      inReadingList={ srcData && isInReadingList(srcData.id) }
     />
     </>
   )
+
+  function isInReadingList(id) {
+    for (const item of sideDrawerMemos) {
+      if (item.id === id) return true
+    }
+  }
 }

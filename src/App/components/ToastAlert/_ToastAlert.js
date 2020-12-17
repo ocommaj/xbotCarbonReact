@@ -1,15 +1,17 @@
 import React from 'react';
-import { ToastNotification } from 'carbon-components-react';
+import ReactDOM from 'react-dom';
+import { ToastNotification, InlineNotification } from 'carbon-components-react';
 
 export default function ToastAlert(props) {
-  const { alertData: { kind, title, subtitle='' } } = props;
-  return (
-    <ToastNotification
+  const { trigger, alertData: { kind, title, subtitle='' } } = props;
+  if (!trigger) return null
+  return ReactDOM.createPortal(
+    <InlineNotification
       kind={ kind }
       title={ title }
       subtitle={ subtitle }
-      lowContrast={ true }
       hideCloseButton={ true }
-    />
+    />,
+    document.getElementById('alertPortal')
   )
 }
