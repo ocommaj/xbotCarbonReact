@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import GalleryCard from './GalleryCard';
 import CodePenModal from '@components/CodePenModal';
 import { AppContext } from '@App';
@@ -15,10 +15,6 @@ export default function CardGallery({ props: { activeSection } }) {
     setSrcData(withSrc);
     setCodePenModalOpen(true);
   }
-
-  useEffect(() => {
-    if (!codePenModalOpen) setSrcData(null)
-  }, [codePenModalOpen]);
 
   return (
     <>

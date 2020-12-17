@@ -1,1 +1,63 @@
 @import './overrides';
+
+.codePenModal {
+  .headerIconButton {
+    position: absolute;
+    margin: 0;
+    box-sizing: border-box;
+    padding: $spacing-04;
+    top: 0;
+    right: $layout-04;
+    display: flex;
+    align-items: center;
+    color: $icon-02;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: background-color 110ms carbon--motion(standard);
+
+    svg {
+      transform-origin: 50% 50%;
+      transform: translateY($spacing-01);
+    }
+  }
+
+  .headerIconButton:focus {
+    outline: none;
+  }
+
+  .headerIconButton:hover {
+    background-color: $hover-ui;
+  }
+
+  .headerIconButton:active {
+    background-color: $active-light-ui;
+    color: $inverse-02;
+  }
+
+  .headerIconButton.removeFromList {
+    svg {
+      transition: all .4s carbon--motion(standard);
+    }
+
+    svg:nth-child(2) {
+      margin-left: -$layout-02;
+      opacity: 0;
+    }
+  }
+
+  .headerIconButton.removeFromList:hover {
+    color: $support-01;
+
+    svg {
+      transform: translateY($spacing-01) rotateZ(90deg);
+    }
+    svg:nth-child(1) {
+      opacity: 0;
+    }
+
+    svg:nth-child(2) {
+      opacity: 1;
+    }
+  }
+}

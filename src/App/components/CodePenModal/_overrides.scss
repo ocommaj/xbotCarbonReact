@@ -2,8 +2,7 @@
   animation: showModal .4s carbon--motion(entrance);
 }
 
-.codePenModal
- {
+.codePenModal {
    .bx--modal-container--lg {
      width: 96%;
      height: 90vh;
@@ -19,87 +18,12 @@
     margin-bottom: 0;
   }
 
-  .bx--btn--tertiary:hover {
-    color: $ui-05;
-  }
-}
-
-.headerIconButton.bx--btn.bx--btn--tertiary.bx--btn--icon-only.bx--tooltip__trigger.bx--tooltip--a11y.bx--tooltip--bottom.bx--tooltip--align-center {
-    width: $layout-04;
-    height: $layout-04;
-    position: absolute;
-    top: 0;
-    padding: $spacing-04;
-    right: $layout-04;
-    border: 0;
-
+  .bx--modal-close {
     svg {
-      fill: $ui-05;
-      margin: auto;
+      width: 24px;
+      height: 24px;
     }
   }
-
-.headerIconButton.bx--btn.bx--btn--tertiary.bx--btn--icon-only {
-  width: $layout-04;
-  height: $layout-04;
-  position: absolute;
-  top: 0;
-  padding: $spacing-04;
-  right: $layout-04;
-  border: 0;
-  color: $ui-05;
-
-  svg {
-    fill: $ui-05;
-    margin: auto;
-  }
-}
-
-.headerIconButton.bx--btn.bx--btn--tertiary.bx--btn--icon-only:active {
-  background-color: $ui-05;
-  color: $ui-02;
-}
-
-.headerIconButton.bx--btn.bx--btn--tertiary.bx--btn--icon-only.bx--tooltip__trigger.bx--tooltip--a11y.bx--tooltip--bottom.bx--tooltip--align-center:focus {
-  outline: none;
-  box-shadow: none;
-  background: transparent;
-  color: $text-02;
-}
-
-.headerIconButton.bx--btn.bx--btn--tertiary.bx--btn--icon-only.bx--tooltip__trigger.bx--tooltip--a11y.bx--tooltip--bottom.bx--tooltip--align-center:active {
-  background-color: $ui-05;
-  color: $ui-02;
-}
-
-.bx--btn.bx--btn--icon-only:focus {
-  outline: none;
-  box-shadow: none;
-  background: transparent;
-  color: $text-02;
-}
-
-.bx--btn.bx--btn--icon-only.bx--tooltip__trigger:focus .bx--assistive-text,
-.bx--btn.bx--btn--icon-only.bx--tooltip__trigger:focus.bx--tooltip--a11y::before {
-    visibility: hidden;
-}
-
-.bx--btn.headerIconButton {
-  width: $layout-04;
-  height: $layout-04;
-  position: absolute;
-  top: 0;
-  padding: $spacing-04;
-  right: $layout-04;
-  border: 0;
-
-  svg {
-    fill: $ui-05;
-  }
-}
-
-.bx--btn.headerIconButton:hover {
-  background-color: $hover-ui;
 }
 
 @keyframes showModal {

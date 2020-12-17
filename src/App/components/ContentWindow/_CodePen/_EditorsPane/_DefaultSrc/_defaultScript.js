@@ -9,6 +9,7 @@ hd.addEventListener('click', () => {
 
 function handleClick(count) {
 	logCounter(count);
+  toggleMessage(count);
     count++;
     return count;
 };
@@ -16,6 +17,17 @@ function handleClick(count) {
 function logCounter(count) {
 	const logStr = \`Counter: \${count}\`;
     console.log(logStr);
+};
+
+function toggleMessage(count) {
+  const message = count % 2 === 0
+    ? 'great stuff."'
+    : 'odd stuff."'
+  try {
+    hd.setAttribute('data', message);
+    }
+  catch(error) {
+    console.error(error)
 };`
 
   return () => defaultStr

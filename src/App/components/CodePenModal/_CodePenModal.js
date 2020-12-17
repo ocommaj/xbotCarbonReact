@@ -1,21 +1,23 @@
-import React, { useContext } from 'react';
+import React, { useContext, useMemo, useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import {
   ComposedModal,
   ModalHeader,
   ModalBody,
-  Button
 } from 'carbon-components-react';
-import { Attachment32, SubtractAlt32 } from '@carbon/icons-react';
+import {
+  Attachment24,
+  SubtractAlt24,
+  CloseOutline24
+} from '@carbon/icons-react';
 import { AppContext } from '@App';
 import CodePen from '@components/ContentWindow/_CodePen';
 
 const DOM = {
-  WRAPPER: "codePenModal",
-  HEADER_ICON_BTN: "headerIconButton",
-  CARBON_ICON_BTN: "bx--btn bx--btn--tertiary bx--btn--icon-only",
-  CARBON_TIPTEXT: "bx--assistive-text",
-  CARBON_TOOLTIP: "bx--tooltip__trigger bx--tooltip--a11y bx--tooltip--bottom bx--tooltip--align-center"
+  WRAPPER: { CLASS: "codePenModal", TARGET_ID: "modalPortal" },
+  HEADER_ICON: "headerIconButton",
+  ADD_BTN: { CLASS: "addToReadingList", TITLE: "Pin to reading list" },
+  REMOVE_BTN: { CLASS: "removeFromList", TITLE: "Remove from reading list" },
 }
 
 export default function CodePenModal(props) {
@@ -25,51 +27,64 @@ export default function CodePenModal(props) {
     inReadingList=false
   } = props;
   const { setSideDrawerMemos, showToolTips } = useContext(AppContext);
+  const [readingListButton, setReadingListButton] = useState();
+
+  const updateButton = useMemo(() => {
+    const baseStr = DOM.HEADER_ICON;
+    const button = !inReadingList ? DOM.ADD_BTN : DOM.REMOVE_BTN;
+    const onClick = (record) => {
+      return !inReadingList ? _addToList(record) : _removeFromList(record)
+    }
+    const icon = !inReadingList
+      ? <Attachment24 />
+      : (<>
+          <SubtractAlt24 />
+          <CloseOutline24 />
+        </>);
+
+    function _addToList(record) {
+      setSideDrawerMemos(prevState => [record, ...prevState])
+    }
+
+    function _removeFromList(record) {
+      setSideDrawerMemos(prevState => {
+        const updatedList = prevState.filter(item => item.id !== record.id);
+        return [...updatedList];
+      })
+    }
+
+    return {
+      icon,
+      onClick,
+      className: `${baseStr} ${button.CLASS}`,
+      title: button.TITLE,
+      ariaLabel: button.TITLE,
+    }
+  }, [inReadingList, setSideDrawerMemos])
+
+  useEffect(() => setReadingListButton(updateButton), [updateButton]);
 
   if (!modalState.isOpen) return null
   return ReactDOM.createPortal(
     <ComposedModal
-      className={ DOM.WRAPPER }
+      className={ DOM.WRAPPER.CLASS }
       open={ modalState.isOpen }
       size={ 'lg' }
       onClose={ () => modalState.close() }
       preventCloseOnClickOutside={ true }>
       <ModalHeader title={ srcData.title }>
-        <Button
-          className={ toggleToolTipClassName() }
-          renderIcon={ !inReadingList ? Attachment32 : SubtractAlt32 }
-          title={ showToolTips ? null : 'Pin to Reading List'  }
-          aria-label={ 'Pin to Reading List' }
-          kind={ "tertiary" }
-          onClick={ () => addToMemoDrawer() }>
-          <span className={DOM.CARBON_TIPTEXT}>{ 'Pin to Reading List' }</span>
-        </Button>
+        <button
+          className={ readingListButton.className }
+          title={ showToolTips ? readingListButton.title : null }
+          aria-label={ readingListButton.ariaLabel }
+          onClick={ () => readingListButton.onClick(srcData) }>
+          { readingListButton.icon }
+        </button>
       </ModalHeader>
       <ModalBody hasForm={ true }>
         <CodePen galleryMode={ true } srcData={ srcData }/>
       </ModalBody>
     </ComposedModal>,
-    document.getElementById('modalPortal')
+    document.getElementById(DOM.WRAPPER.TARGET_ID)
   );
-
-
-  function addToMemoDrawer() {
-    setSideDrawerMemos(prevState => {
-      return !!_isAlreadyMemo() ? [ ...prevState ] : [srcData, ...prevState];
-
-      function _isAlreadyMemo() {
-          for (const memo of prevState) {
-            if (memo.id === srcData.id) return true;
-          }
-          //return false;
-        }
-      })
-    }
-
-  function toggleToolTipClassName() {
-    const baseClass = `${DOM.HEADER_ICON_BTN} ${DOM.CARBON_ICON_BTN}`;
-    const toolTip = DOM.CARBON_TOOLTIP;
-
-    return !!showToolTips ? baseClass.concat(' ', toolTip) : baseClass;
-  }
 }

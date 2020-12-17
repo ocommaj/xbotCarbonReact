@@ -14,7 +14,7 @@ h1 {
 }
 
 .fancy::after {
-  content: 'great stuff."'
+  content: attr(data)
 }`
 
   return () => defaultStr

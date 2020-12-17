@@ -1,6 +1,6 @@
 import React from 'react';
 import { Tile } from 'carbon-components-react';
-import { ContentView32, Attachment32 } from '@carbon/icons-react/';
+import { ContentView32, Attachment24 } from '@carbon/icons-react/';
 
 const DOM = {
   WRAPPER: "galleryCard",
@@ -18,7 +18,7 @@ export default function GalleryCard(props) {
 
   return (
     <Tile className={ DOM.WRAPPER }>
-        { !!inReadingList && <Attachment32 className={ DOM.RD_LIST_ICON } /> }
+        { !!inReadingList && <Attachment24 className={ DOM.RD_LIST_ICON } /> }
         <iframe
           className={ DOM.PREVIEW_IFRAME }
           loading="lazy"

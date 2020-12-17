@@ -11,18 +11,6 @@
   z-index: 20;
 }
 
-/*.sideDrawer::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 100%;
-  height: 100vh;
-  background-color: $interactive-01;
-  opacity: .4;
-  filter: hue-rotate(180deg);
-}*/
-
 .sideDrawerContent {
   height: 100vh;
   display: flex;
@@ -56,6 +44,7 @@
   padding: 0;
   padding-left: $spacing-03;
   padding-top: $spacing-02;
+  cursor: pointer;
 
   svg {
     fill: $text-02;
