@@ -10,10 +10,12 @@ export default function initDisplayPreviewPane() {
                 duration: 1,
                 ease: "standard_productive"},
               })
-                .set(previewPane.children, {width: 'auto'})
-                .to(previewCol, {flexGrow: 1})
-                .to(previewPane, {opacity: "100%", flexGrow: 1}, '<')
-                .to(previewPane.children, { opacity: "100%"}, '<');
+                .set(previewPane, { marginLeft: '1rem' })
+                .set(previewCol, {flex: 'auto'})
+                .to(previewPane, { right: 0, opacity: "100%" }, '<')
+                .to(previewPane, { bottom: 0 }, '<.4')
+                .to(previewPane.children, { opacity: "100%"}, '<')
+                .call( () => previewCol.classList.toggle('visible') );
             },
     extendTimeline: true
   });

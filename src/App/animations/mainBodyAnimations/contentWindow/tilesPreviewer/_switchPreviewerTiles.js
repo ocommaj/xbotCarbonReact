@@ -8,8 +8,20 @@ export default function switchPreviewerTiles(params) {
           setPreviewArticle,
           previewShows
         } = params;
-  const tiles = tileCol.children;
+  const deltaWidth = previewCol.clientWidth;
+  const tiles = gsap.utils.toArray(tileCol.children);
   const outgoingTile = document.querySelector('.activeArticleTile');
+
+  const transform = {
+    outgoing: {
+      idx: tiles.indexOf(outgoingTile),
+      delta: `+=${deltaWidth}`
+    },
+    incoming: {
+      idx: tiles.indexOf(tile),
+      delta: `-=${deltaWidth}`
+    }
+  };
 
   const tl = gsap.timeline({
             paused: true,
@@ -17,13 +29,14 @@ export default function switchPreviewerTiles(params) {
               outgoingTile.classList.toggle('activeArticleTile')
               tile.classList.toggle('activeArticleTile')
             },
-            onComplete: () => setPreviewArticle()
+            //onComplete: () => setPreviewArticle()
           })
           .collapsePreviewPane({ previewCol, previewPane })
-          .resizeArticlePreviewTiles(
-            {tile: outgoingTile, tiles, previewShows}, '<.4')
-          .resizeArticlePreviewTiles(
-            {tile, tiles, previewShows: false});
+          .resizeArticlePreviewTiles({
+            tiles, transform: transform.outgoing }, '<.4')
+          .resizeArticlePreviewTiles({
+            tiles, transform: transform.incoming }, '-=.4')
+          .displayPreviewPane({ previewCol, previewPane });
 
     tl.play();
 

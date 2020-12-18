@@ -17,5 +17,12 @@
       overflow-x: hidden;
       flex-grow: 1;
     }
+
+    .previewColumn {
+      flex-basis: 0;
+      position: relative;
+      display: inline-block;
+      //align-content: stretch;
+    }
   }
 }

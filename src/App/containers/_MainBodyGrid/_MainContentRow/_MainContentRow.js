@@ -8,26 +8,34 @@ export default function MainContentRow({ className, animate, activeSection }) {
   const [ contentWindow, setContentWindow ] = useState(null);
   const rowRef = useRef();
   const windowRef = useRef();
+  const timeline = animate.timeline();
 
   const loadTemplate = useCallback(() => {
       if (!activeSection) return
       const template = templates[activeSection.windowType];
-      const props = { activeSection, animate: animate.content };
+      const props = {
+        activeSection,
+        animate: animate.effects.content,
+        timeline: animate.timeline
+       };
       setNextWindow( template(props) );
   }, [animate, setNextWindow, activeSection]);
 
   const loadContentWindow = useCallback(() => {
-    setContentWindow(prevState => !prevState
-       ? nextWindow
-       : animate.collapse({
-          content: windowRef,
-          onComplete() { setContentWindow(nextWindow) }
-        })
-    );
-  }, [animate, nextWindow, setContentWindow]);
+    const delay = !!contentWindow ? '+=.3' : '+=0';
+    timeline
+      .add( !!contentWindow
+          ? animate.effects.collapse({ windowRef }).play()
+          : null )
+      .add(() => setContentWindow(nextWindow), delay)
+    }, [nextWindow]);
 
   const displayContentWindow = useCallback(() => {
-    if (contentWindow) { animate.reveal({ row: rowRef, content: windowRef }) };
+    if (contentWindow) {
+      timeline
+        .add( animate.effects.reveal({ rowRef, windowRef }).play() )
+
+    };
   }, [animate, contentWindow]);
 
   useEffect(() => loadTemplate(), [loadTemplate]);

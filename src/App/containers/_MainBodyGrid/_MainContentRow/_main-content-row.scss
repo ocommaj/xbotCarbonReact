@@ -4,6 +4,7 @@
   padding: $layout-01 0;
 
   .bx--col {
-    display: flex;
+    display: inline-block;
+    overflow: hidden;
   }
 }

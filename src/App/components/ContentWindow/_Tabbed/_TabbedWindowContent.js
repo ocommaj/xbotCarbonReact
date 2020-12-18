@@ -4,7 +4,11 @@ import TabPanel from './TabPanel';
 import DropdownFilter from '@components/DropdownFilter';
 
 export default function TabbedWindowContent({ props }) {
-  const { animate, activeSection: { mainId, options: { tabs } } } = props;
+  const {
+    animate,
+    timeline,
+    activeSection: { mainId, options: { tabs } }
+  } = props;
   const [filters, setFilters] = useState( loadFilters(tabs[0]) );
 
   return (
@@ -21,7 +25,7 @@ export default function TabbedWindowContent({ props }) {
               tabIndex={i}
               id={`tab_${tab.id}`}
               label={tab.title}>
-              <TabPanel props={ { animate, tab } } />
+              <TabPanel props={ { animate, timeline, tab } } />
             </Tab>) })}
       </Tabs>
     </div>

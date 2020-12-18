@@ -1,13 +1,17 @@
 import { gsap } from 'gsap';
 
-export default function collapseToHide({ content, onComplete }) {
-  const contentWindow = content.current;
-  const tl = gsap.timeline({
+export default function collapseToHide({ windowRef }) {
+  const contentWindow = windowRef.current;
+
+  return gsap.timeline({
           paused: true,
-          defaults: { ease: "exit_expressive" },
-          onComplete: () => onComplete()
+          defaults: {
+            duration: .7,
+            ease: "exit_expressive",
+            smoothChildTiming: true,
+          },
         })
           .to(contentWindow, { height: 0 })
-          .to(contentWindow.children, { opacity: 0 }, '<');
-  tl.play();
+
+
 };

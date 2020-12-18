@@ -4,20 +4,19 @@ export default function initCollapsePreviewPane() {
   gsap.registerEffect({
     name: 'collapsePreviewPane',
     effect: (target, config) => {
-      const { previewPane } = [...target][0];
+      const { previewCol, previewPane } = [...target][0];
       return gsap.timeline({
               defaults: {
                 duration: 1,
                 transformOrigin: "center right",
                 ease: "standard_productive"},
               })
-                .to(previewPane.children, {
-                  opacity: 0, duration: .5})
-                .to(previewPane, {
-                  opacity: 0 }, '<.2')
-                .to(previewPane.children, {
-                  width: 0,
-                }, '<');
+                .to(previewPane, { bottom: "100%", opacity: 0 })
+                .to(previewPane, { right: "100%" }, '<.4')
+                .to(previewPane, { marglinLeft: 0, padding: 0 }, '<.2')
+                .set(previewCol, { flex: 0 })
+                .call( () => previewCol.classList.toggle('visible') )
+
     },
     extendTimeline: true
   });

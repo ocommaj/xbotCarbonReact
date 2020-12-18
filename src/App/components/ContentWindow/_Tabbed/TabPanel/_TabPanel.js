@@ -1,13 +1,14 @@
 import React, { useState, useCallback, useEffect } from 'react'
 import { templates } from '@components/ContentWindow'
 
-export default function TabPanel({ props: { animate, tab } }) {
+export default function TabPanel({ props: { animate, timeline, tab } }) {
   const [panelContent, setPanelContent] = useState();
 
   const loadPanel = useCallback(() => {
     const templateId = tab.content.panelTemplateId;
     const template = templates[templateId];
     setPanelContent( template({
+            timeline,
             activeSection: { ...tab },
             animate: animate[templateId] ? animate[templateId]() : null
           })

@@ -1,19 +1,22 @@
 import { gsap } from 'gsap';
 
-export default function revealFromHidden({ row, content }) {
-  const contentRow = row.current;
-  const contentWindow = content.current;
+export default function revealFromHidden({ rowRef, windowRef }) {
+  const contentRow = rowRef.current;
+  const contentWindow = windowRef.current;
 
   if (contentWindow) {
     const padding = window.getComputedStyle(contentRow)
                           .getPropertyValue('padding-top').slice(0,2);
-    const height = contentRow.clientHeight - padding*2;
-    const tl = gsap.timeline({
+    const targetHeight = contentRow.clientHeight;
+    const windowHeight = targetHeight - padding*2;
+    return gsap.timeline({
             paused: true,
-            defaults: {ease: 'entrance_expressive'}})
-            .to(contentWindow, {height: height}, '<.4')
-            .fromTo(contentWindow.children, {opacity: 0}, {opacity: 1}, '<.2');
-
-    tl.play();
+            smoothChildTiming: true,
+            defaults: {
+              duration: .7,
+              ease: 'entrance_expressive'
+              }
+            })
+            .to(contentWindow, { height: windowHeight, opacity: 1 })
   };
 };

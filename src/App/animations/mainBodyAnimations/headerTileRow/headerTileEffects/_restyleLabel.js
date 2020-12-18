@@ -17,9 +17,12 @@ export default function initRestyleHeaderLabel() {
   });
 
   function _toggleLabelClass(labels) {
+    const useSmaller = window.matchMedia('(max-width: 1000px)')
+    const toSize = !!useSmaller.matches ? 'small' : 'medium';
+
     for (let label of labels) {
         label.classList.toggle('large');
-        label.classList.toggle('medium');
+        label.classList.toggle(toSize);
       };
    };
 };

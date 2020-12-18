@@ -31,7 +31,10 @@ export default function MainBodyGrid() {
         <MainContentRow
           className={ DOM.MAIN_ROW }
           activeSection={ activeSection }
-          animate={ animate.contentWindow }/>
+          animate={ {
+            timeline: animate.wrapperTimeline,
+            effects: animate.contentWindow
+          } }/>
     </div>
   );
   function __getById(id) { return sections.find(s => s.mainId === id) };

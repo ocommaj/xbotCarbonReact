@@ -1,36 +1,56 @@
 @import '../../../StickyButton/sticky-button';
 
 .previewColumn {
-  position: relative;
-  display: flex;
-  align-content: stretch;
-
   .previewPane {
     background-color: $ui-02;
-    margin-left: $layout-01;
     opacity: 0;
-    flex-grow: 0;
-    padding: $spacing-03;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-  }
+    padding: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
 
-  .previewPane {
+    .stickyButton {
+      position: absolute;
+      right: $spacing-03;
+      top: $spacing-03;
+    }
+
+    * {
+      opacity: 0;
+      transition: opacity .4s carbon--motion(standard);
+    }
+
     .contentColumn {
-      flex-grow: 1;
+      flex-grow: 0;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
     }
-    .buttonColumn {
-      flex-grow: 0;
-      flex-basis: $layout-01;
 
-      button {
-        margin-bottom: $spacing-03;
-        padding: $spacing-03;
-      }
+    .sideColumn {
+      position: absolute;
+      width: $layout-03;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      background-color: $interactive-01;
     }
+
+    h1 {
+      @include carbon--type-style('productive-heading-05')
+    }
+  }
+}
+
+.previewColumn.visible {
+  .previewPane {
+    bottom: 0;
+    right: 0;
+    padding: $spacing-03;
+    margin-left: $layout-01;
+  }
+
+  * {
+    opacity: 1;
   }
 }
