@@ -3,6 +3,7 @@ import { gsap } from 'gsap';
 export default function initCollapsePreviewPane() {
   gsap.registerEffect({
     name: 'collapsePreviewPane',
+    extendTimeline: true,
     effect: (target, config) => {
       const { previewCol, previewPane } = [...target][0];
       const childNodes = gsap.utils.toArray(previewPane.children);
@@ -19,7 +20,6 @@ export default function initCollapsePreviewPane() {
                 .set(previewCol, { flex: 0 })
                 .call( () => previewCol.classList.toggle('visible') )
 
-    },
-    extendTimeline: true
+    }
   });
 };

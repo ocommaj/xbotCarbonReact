@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useMemo, useState } from 'react';
-import StickyButton from '@components/StickyButton';
 import { AppContext } from '@App';
 import {
   Attachment32,
@@ -10,10 +9,15 @@ import {
 } from '@carbon/icons-react';
 
 const DOM = {
+  WRAPPER: "previewPane",
+  CONTENT_COL: "previewPaneContentCol",
+  BUTTON_COL: "previewPaneButtonCol",
   BTN: "previewPaneButton",
   ADD_BTN: { CLASS: "addToReadingList", TITLE: "Add to reading list" },
-  REMOVE_BTN: { CLASS: "removeFromList", TITLE: "Remove from reading list" }
-}
+  REMOVE_BTN: { CLASS: "removeFromList", TITLE: "Remove from reading list" },
+  EXPAND_BTN: { CLASS: "expandPane", TITLE: "Expand article view" },
+  REDUCE_BTN: { CLASS: "reducePane", TITLE: "Reduce article view" }
+};
 
 const PreviewPane = React.forwardRef((props, ref) => {
   const { article, maximize, normalize, inReadingList=false } = props;
@@ -21,11 +25,33 @@ const PreviewPane = React.forwardRef((props, ref) => {
     animate, showToolTips, setSideDrawerMemos
   } = useContext(AppContext);
 
-  const [ isMaximized, setIsMaximized ] = useState(false);
-  const [readingListButton, setReadingListButton] = useState();
   const [testToggler, setTestToggler] = useState(true);
+  const [isMaximized, setIsMaximized] = useState(false);
+  const [readingListButton, setReadingListButton] = useState();
+  const [expanderButton, setExpanderButton] = useState();
 
-  const updateButton = useMemo(() => {
+  const expandToggler = useMemo(() => {
+    const baseStr = DOM.BTN;
+    const button = !!isMaximized ? DOM.REDUCE_BTN : DOM.EXPAND_BTN;
+    const onClick = () => _clickHandler();
+    const icon = !!isMaximized ? <Minimize32 /> : <Maximize32 />;
+
+    function _clickHandler() {
+      animate.wrapperTimeline()
+        .add( !!isMaximized ? normalize().play() : maximize().play() )
+        .then(() => setIsMaximized(prevState => !prevState));
+    }
+
+    return {
+      icon,
+      onClick,
+      className: `${baseStr} ${button.CLASS}`,
+      title: button.TITLE,
+      ariaLabel: button.TITLE
+    }
+  }, [animate, maximize, normalize, isMaximized]);
+
+  const rListToggler = useMemo(() => {
     const baseStr = DOM.BTN;
     const button = !!testToggler ? DOM.ADD_BTN : DOM.REMOVE_BTN;
     //const button = !inReadingList ? DOM.ADD_BTN : DOM.REMOVE_BTN;
@@ -61,37 +87,39 @@ const PreviewPane = React.forwardRef((props, ref) => {
       title: button.TITLE,
       ariaLabel: button.TITLE,
     }
-  }, [inReadingList, testToggler, setSideDrawerMemos])
+  }, [inReadingList, testToggler, setSideDrawerMemos]);
 
-  useEffect(() => setReadingListButton(updateButton), [updateButton]);
+  useEffect(() => setReadingListButton(rListToggler), [rListToggler]);
+  useEffect(() => setExpanderButton(expandToggler), [expandToggler]);
 
   return (
-    <div className="previewPane" ref={ ref }>
-      <h1>{ article && article.title }</h1>
-      <StickyButton
-        clickHandler={ () => clickHandler() }
-        pictogram={ isMaximized ? <Minimize32 /> : <Maximize32 /> }
-        assistiveText={ isMaximized ? "shrink" : "expand" }
-        hoverAnimation={ animate.stickyButton.bounceScale }
-        showToolTip={ showToolTips }
-        kind="tertiary" />
+    <div className={ DOM.WRAPPER } ref={ ref }>
       { article &&
-        <button
-          className={ readingListButton.className }
-          title={ showToolTips ? readingListButton.title : null }
-          aria-label={ readingListButton.ariaLabel }
-          onClick={ () => readingListButton.onClick() }>
-          { readingListButton.icon }
-        </button>
+        <div className={ DOM.CONTENT_COL }>
+          <h1>{ article.title }</h1>
+        </div>
+      }
+      { article &&
+        <div className={ DOM.BUTTON_COL }>
+          <button
+            className={ expanderButton.className  }
+            title={ showToolTips ? expanderButton.title : null }
+            aria-label={ expanderButton.ariaLabel }
+            onClick={ () => expanderButton.onClick() }>
+             { expanderButton.icon }
+          </button>
+          <button
+            className={ readingListButton.className }
+            title={ showToolTips ? readingListButton.title : null }
+            aria-label={ readingListButton.ariaLabel }
+            onClick={ () => readingListButton.onClick() }>
+            { readingListButton.icon }
+          </button>
+        </div>
       }
     </div>
   )
 
-  function clickHandler() {
-    animate.wrapperTimeline()
-      .add(isMaximized ? normalize().play() : maximize().play())
-      .then(() => setIsMaximized(prevState => !prevState));
-  }
-})
+});
 
-export default PreviewPane
+export default PreviewPane;
