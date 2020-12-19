@@ -1,10 +1,10 @@
-import { gsap } from 'gsap'
+import { gsap } from 'gsap';
 
 export default function reducePreviewPane(params) {
   const { tilesCol, previewPane } = params;
   const deltaWidth = previewPane.current.clientWidth * .4;
   const tiles = gsap.utils.toArray(tilesCol.current.children);
-  const tileContents = tiles.map(tile => tile.children[0])
+  const tileContents = tiles.map(tile => tile.children[0]);
 
   return gsap.timeline({
           paused: true,

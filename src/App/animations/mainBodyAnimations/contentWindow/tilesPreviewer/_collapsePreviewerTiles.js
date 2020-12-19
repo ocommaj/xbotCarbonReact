@@ -19,10 +19,7 @@ export default function collapsePreviewerTiles(params) {
   const tl = gsap.timeline({
           paused: true,
           onStart: () => tile.classList.toggle('activeArticleTile'),
-          onComplete: () => {
-            //previewCol.classList.toggle('visible');
-            //setPreviewArticle();
-          }
+          onComplete: () => setPreviewArticle()
         })
           .resizeArticlePreviewTiles({ tiles, transform })
           .set(tileCol, { flexGrow: 0 })

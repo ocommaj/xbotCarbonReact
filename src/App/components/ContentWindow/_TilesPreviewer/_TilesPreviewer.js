@@ -2,7 +2,6 @@ import React, { useRef, useState, useEffect } from 'react';
 import ArticleTile from './ArticleTile';
 import PreviewPane from './PreviewPane';
 import { useArticlesQuery } from '@hooks/ApolloClient';
-//import placeholderData from './_placeholderData';
 
 const DOM = {
   TOP_CLASS: "tilesPreviewer",
@@ -13,7 +12,7 @@ const DOM = {
 }
 
 export default function TilesPreviewer({ props }) {
-  const { animate, timeline, activeSection: { apolloQuery } } = props;
+  const { animate, activeSection: { apolloQuery } } = props;
   const query = {
     input: apolloQuery.input,
     pattern: apolloQuery.previewTile
@@ -32,17 +31,6 @@ export default function TilesPreviewer({ props }) {
     setTiles(articles)
   }, [queryResponse])
 
-  useEffect(() => {
-    if (!previewArticle) return
-    timeline()
-      .add(
-        animate.showPreviewPane({
-          previewCol: previewCol.current,
-          previewPane: previewPane.current
-        })
-      )
-  }, [animate, previewArticle])
-
   return (
     <div className={ DOM.TOP_CLASS }>
       <div className={ DOM.OVERFLOW_WRAPPER }>
@@ -58,9 +46,7 @@ export default function TilesPreviewer({ props }) {
             ref= { previewPane }
             article={ previewArticle || null }
             maximize={ () => animate.maximizePane({ tilesCol }) }
-            normalize={
-              () => animate.reducePane({ tilesCol, previewCol, previewPane })
-            }
+            normalize={ () => animate.reducePane({ tilesCol, previewPane }) }
           />
         </div>
       </div>
@@ -82,7 +68,6 @@ export default function TilesPreviewer({ props }) {
     return {
       func: previewShows ? animate.switchTiles : animate.collapseTiles,
       args: {
-        previewShows: previewShows,
         tileCol: tilesCol.current,
         previewCol: previewCol.current,
         previewPane: previewPane.current,

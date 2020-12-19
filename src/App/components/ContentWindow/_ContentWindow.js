@@ -1,8 +1,6 @@
 import React from 'react';
 
 const DOM = {
-  CARBON_COL: 'bx--col bx--offset-lg-1',
-  COLUMN: 'mainContentCol',
   CONTENT: 'mainContentWindow'
 };
 

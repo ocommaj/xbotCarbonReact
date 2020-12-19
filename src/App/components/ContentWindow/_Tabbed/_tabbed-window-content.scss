@@ -7,6 +7,7 @@
   display: flex;
   flex-grow: 1;
   flex-direction: column;
+  z-index: 100;
 
   // sections about dropdown filters below TODO: refactor to component
   .headerDropdowns {

@@ -6,7 +6,6 @@ export default function switchPreviewerTiles(params) {
           previewCol,
           tileCol,
           setPreviewArticle,
-          previewShows
         } = params;
   const deltaWidth = previewCol.clientWidth;
   const tiles = gsap.utils.toArray(tileCol.children);
@@ -28,14 +27,14 @@ export default function switchPreviewerTiles(params) {
             onStart: () => {
               outgoingTile.classList.toggle('activeArticleTile')
               tile.classList.toggle('activeArticleTile')
-            },
-            //onComplete: () => setPreviewArticle()
+            }
           })
           .collapsePreviewPane({ previewCol, previewPane })
           .resizeArticlePreviewTiles({
             tiles, transform: transform.outgoing }, '<.4')
           .resizeArticlePreviewTiles({
             tiles, transform: transform.incoming }, '-=.4')
+          .call( () => setPreviewArticle() )
           .displayPreviewPane({ previewCol, previewPane });
 
     tl.play();
