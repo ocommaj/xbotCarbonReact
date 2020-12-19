@@ -9,17 +9,17 @@ export const AppContext = React.createContext();
 
 export default function App() {
   const [ showToolTips, setShowToolTips ] = useLocalStorage('showToolTips');
-  const [ sideDrawerMemos, setSideDrawerMemos ] = useState([])
+  const [ readingList, setReadingList ] = useState([]);
   const animate = useRef( Animate() );
   const activeUser = useUser();
   const sections = [...SectionConfigs];
   const contextValue = {
-          showToolTips,
-          setShowToolTips,
           activeUser,
           sections,
-          sideDrawerMemos,
-          setSideDrawerMemos,
+          readingList,
+          setReadingList,
+          showToolTips,
+          setShowToolTips,
           animate: animate.current,
         };
 

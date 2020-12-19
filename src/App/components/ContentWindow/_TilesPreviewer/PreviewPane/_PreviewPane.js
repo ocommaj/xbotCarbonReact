@@ -21,9 +21,7 @@ const DOM = {
 
 const PreviewPane = React.forwardRef((props, ref) => {
   const { article, maximize, normalize, inReadingList=false } = props;
-  const {
-    animate, showToolTips, setSideDrawerMemos
-  } = useContext(AppContext);
+  const { animate, showToolTips, setReadingList } = useContext(AppContext);
 
   const [testToggler, setTestToggler] = useState(true);
   const [isMaximized, setIsMaximized] = useState(false);
@@ -69,12 +67,12 @@ const PreviewPane = React.forwardRef((props, ref) => {
 
     function _addToList(record) {
       setTestToggler(false)
-      //setSideDrawerMemos(prevState => [record, ...prevState])
+      //setReadingList(prevState => [record, ...prevState])
     }
 
     function _removeFromList(record) {
       setTestToggler(true)
-      /*setSideDrawerMemos(prevState => {
+      /*setReadingList(prevState => {
         const updatedList = prevState.filter(item => item.id !== record.id);
         return [...updatedList];
       })*/
@@ -87,7 +85,7 @@ const PreviewPane = React.forwardRef((props, ref) => {
       title: button.TITLE,
       ariaLabel: button.TITLE,
     }
-  }, [inReadingList, testToggler, setSideDrawerMemos]);
+  }, [inReadingList, testToggler, setReadingList]);
 
   useEffect(() => setReadingListButton(rListToggler), [rListToggler]);
   useEffect(() => setExpanderButton(expandToggler), [expandToggler]);

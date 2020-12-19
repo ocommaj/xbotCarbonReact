@@ -15,8 +15,8 @@ const DOM = {
 
 export default function SideDrawer() {
   const {
-    sideDrawerMemos,
-    setSideDrawerMemos,
+    readingList,
+    setReadingList,
     animate: { wrapperTimeline, sideDrawerFX }
   } = useContext(AppContext);
   const [drawerIsOpen, setDrawerOpen] = useState(false);
@@ -32,10 +32,10 @@ export default function SideDrawer() {
   });
 
   useEffect(() => {
-    if (!sideDrawerMemos.length) setDrawerOpen(false);
-  }, [sideDrawerMemos])
+    if (!readingList.length) setDrawerOpen(false);
+  }, [readingList])
 
-  if (!sideDrawerMemos.length) return null
+  if (!readingList.length) return null
   return (
     <>
     <div className={ DOM.WRAPPER } ref={ wrapperRef }>
@@ -46,7 +46,7 @@ export default function SideDrawer() {
       </button>
       <div className={ makeClassName(DOM.CONTENT) } ref={ drawerRef }>
         {
-          sideDrawerMemos.map(memo => {
+          readingList.map(memo => {
             return (
               <DrawerMemo
                 key={ `memo_${memo.id}` }
@@ -99,14 +99,14 @@ export default function SideDrawer() {
     wrapperTimeline()
       .add( sideDrawerFX.removeItem({ button }).play() )
       .add(
-        !!(sideDrawerMemos.length === 1)
+        !!(readingList.length === 1)
           ? sideDrawerFX.closeDrawer({ drawerRef }).play()
           : null)
       .then( () => removeItemFromList(item) );
   }
 
   function removeItemFromList(toRemove) {
-    setSideDrawerMemos(prevState => {
+    setReadingList(prevState => {
       const updatedList = prevState.filter(item => item.id !== toRemove.id);
       return updatedList;
     })

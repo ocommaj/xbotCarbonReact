@@ -17,9 +17,9 @@ export default function DrawerMemo(props) {
   const {
     launchModal,
     removeItem,
-    record: { title, template, html='', css='', script='' }
+    record: { title, template='', html='', css='', script='' }
   } = props;
-  const srcDoc = template(html, css, script);
+  const srcDoc = !!template ? template(html, css, script) : null;
 
   return (
     <div className={ DOM.WRAPPER }>

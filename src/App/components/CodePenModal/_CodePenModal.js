@@ -26,7 +26,7 @@ export default function CodePenModal(props) {
     srcData,
     inReadingList=false
   } = props;
-  const { setSideDrawerMemos, showToolTips } = useContext(AppContext);
+  const { setReadingList, showToolTips } = useContext(AppContext);
   const [readingListButton, setReadingListButton] = useState();
 
   const updateButton = useMemo(() => {
@@ -43,11 +43,11 @@ export default function CodePenModal(props) {
         </>);
 
     function _addToList(record) {
-      setSideDrawerMemos(prevState => [record, ...prevState])
+      setReadingList(prevState => [record, ...prevState])
     }
 
     function _removeFromList(record) {
-      setSideDrawerMemos(prevState => {
+      setReadingList(prevState => {
         const updatedList = prevState.filter(item => item.id !== record.id);
         return [...updatedList];
       })
@@ -60,7 +60,7 @@ export default function CodePenModal(props) {
       title: button.TITLE,
       ariaLabel: button.TITLE,
     }
-  }, [inReadingList, setSideDrawerMemos])
+  }, [inReadingList, setReadingList])
 
   useEffect(() => setReadingListButton(updateButton), [updateButton]);
 

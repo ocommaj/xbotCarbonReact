@@ -7,7 +7,7 @@ import srcArray from './_testSrc';
 const DOM = { WRAPPER: "cardGallery" };
 
 export default function CardGallery({ props: { activeSection } }) {
-  const { sideDrawerMemos } = useContext(AppContext)
+  const { readingList } = useContext(AppContext)
   const [ codePenModalOpen, setCodePenModalOpen ] = useState(false);
   const [ srcData, setSrcData ] = useState(null);
 
@@ -41,7 +41,7 @@ export default function CardGallery({ props: { activeSection } }) {
   )
 
   function isInReadingList(id) {
-    for (const item of sideDrawerMemos) {
+    for (const item of readingList) {
       if (item.id === id) return true
     }
   }
