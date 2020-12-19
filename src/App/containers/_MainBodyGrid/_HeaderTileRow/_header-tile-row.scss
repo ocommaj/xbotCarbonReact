@@ -1,3 +1,7 @@
 @import '../../../components/HeaderTile/header-tile.scss';
 @import './overrides';
 @import './media-queries';
+
+.headerTileRow {
+  grid-row: 1 / span 1;
+}

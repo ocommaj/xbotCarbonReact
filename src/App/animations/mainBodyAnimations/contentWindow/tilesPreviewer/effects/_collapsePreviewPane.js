@@ -13,7 +13,7 @@ export default function initCollapsePreviewPane() {
               })
                 .to(previewPane, { bottom: "100%", opacity: 0 })
                 .to(previewPane, { right: "100%" }, '<.4')
-                .to(previewPane, { marglinLeft: 0, padding: 0 }, '<.2')
+                .to(previewPane, { marginLeft: 0, padding: 0 }, '<.2')
                 .set(previewCol, { flex: 0 })
                 .call( () => previewCol.classList.toggle('visible') )
 

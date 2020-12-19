@@ -7,12 +7,11 @@ const DOM = {
 };
 
 const ContentWindowWrapper = React.forwardRef( ({ content }, ref) => {
+  if (!content) return null
   return (
-    <div className={ `${DOM.CARBON_COL} ${DOM.COLUMN}` }>
       <div className={ DOM.CONTENT } ref={ ref }>
         { content }
       </div>
-    </div>
   );
 });
 
