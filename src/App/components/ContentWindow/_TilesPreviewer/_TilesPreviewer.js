@@ -1,6 +1,7 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import ArticleTile from './ArticleTile';
 import PreviewPane from './PreviewPane';
+import { AppContext } from '@App';
 import { useArticlesQuery } from '@hooks/ApolloClient';
 
 const DOM = {
@@ -13,6 +14,7 @@ const DOM = {
 
 export default function TilesPreviewer({ props }) {
   const { animate, activeSection: { apolloQuery } } = props;
+  const { readingList } = useContext(AppContext);
   const query = {
     input: apolloQuery.input,
     pattern: apolloQuery.previewTile
@@ -47,6 +49,9 @@ export default function TilesPreviewer({ props }) {
             article={ previewArticle || null }
             maximize={ () => animate.maximizePane({ tilesCol }) }
             normalize={ () => animate.reducePane({ tilesCol, previewPane }) }
+            isInReadingList={
+              previewArticle && isInReadingList(previewArticle._id)
+            }
           />
         </div>
       </div>
@@ -73,6 +78,12 @@ export default function TilesPreviewer({ props }) {
         previewPane: previewPane.current,
         setPreviewArticle() { return setPreviewArticle(article) },
       }
+    }
+  };
+
+  function isInReadingList(id) {
+    for (const item of readingList) {
+      if (item._id === id) return true
     }
   };
 

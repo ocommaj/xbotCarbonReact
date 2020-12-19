@@ -3,7 +3,6 @@ import { PageFirst24 } from '@carbon/icons-react';
 import { AppContext } from '@App';
 import DrawerMemo from '@components/DrawerMemo';
 import CodePenModal from '@components/CodePenModal';
-import ToastAlert from '@components/CodePenModal';
 import { useClickOutsideDetector } from '@hooks';
 
 const DOM = {
@@ -46,13 +45,13 @@ export default function SideDrawer() {
       </button>
       <div className={ makeClassName(DOM.CONTENT) } ref={ drawerRef }>
         {
-          readingList.map(memo => {
+          readingList.map(item => {
             return (
               <DrawerMemo
-                key={ `memo_${memo.id}` }
-                record={ memo }
-                launchModal={ () => launchCodePenModal(memo) }
-                removeItem={ (button) => removeItem(button, memo, drawerRef) }
+                key={ `memo_${item._id}` }
+                record={ item }
+                launchModal={ () => launchCodePenModal(item) }
+                removeItem={ (button) => removeItem(button, item, drawerRef) }
                 />
               )
           })
@@ -107,7 +106,7 @@ export default function SideDrawer() {
 
   function removeItemFromList(toRemove) {
     setReadingList(prevState => {
-      const updatedList = prevState.filter(item => item.id !== toRemove.id);
+      const updatedList = prevState.filter(item => item._id !== toRemove._id);
       return updatedList;
     })
   }

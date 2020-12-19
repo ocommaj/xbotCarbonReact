@@ -24,31 +24,30 @@ export default function CodePenModal(props) {
   const {
     modalState,
     srcData,
-    inReadingList=false
+    isInReadingList=false
   } = props;
   const { setReadingList, showToolTips } = useContext(AppContext);
   const [readingListButton, setReadingListButton] = useState();
 
-  const updateButton = useMemo(() => {
+  const inListToggler = useMemo(() => {
     const baseStr = DOM.HEADER_ICON;
-    const button = !inReadingList ? DOM.ADD_BTN : DOM.REMOVE_BTN;
-    const onClick = (record) => {
-      return !inReadingList ? _addToList(record) : _removeFromList(record)
-    }
-    const icon = !inReadingList
+    const button = !isInReadingList ? DOM.ADD_BTN : DOM.REMOVE_BTN;
+    const onClick = (item) => !isInReadingList ? _add(item) : _remove(item);
+    const icon = !isInReadingList
       ? <Attachment24 />
       : (<>
           <SubtractAlt24 />
           <CloseOutline24 />
         </>);
 
-    function _addToList(record) {
-      setReadingList(prevState => [record, ...prevState])
+    function _add(record) {
+      const newEntry = { type: 'codePen', ...record };
+      setReadingList(prevState => [newEntry, ...prevState]);
     }
 
-    function _removeFromList(record) {
+    function _remove(record) {
       setReadingList(prevState => {
-        const updatedList = prevState.filter(item => item.id !== record.id);
+        const updatedList = prevState.filter(item => item._id !== record._id);
         return [...updatedList];
       })
     }
@@ -60,9 +59,9 @@ export default function CodePenModal(props) {
       title: button.TITLE,
       ariaLabel: button.TITLE,
     }
-  }, [inReadingList, setReadingList])
+  }, [isInReadingList, setReadingList])
 
-  useEffect(() => setReadingListButton(updateButton), [updateButton]);
+  useEffect(() => setReadingListButton(inListToggler), [inListToggler]);
 
   if (!modalState.isOpen) return null
   return ReactDOM.createPortal(

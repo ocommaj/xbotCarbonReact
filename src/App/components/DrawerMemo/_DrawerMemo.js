@@ -17,22 +17,25 @@ export default function DrawerMemo(props) {
   const {
     launchModal,
     removeItem,
-    record: { title, template='', html='', css='', script='' }
+    record,
+    record: { type, title, template='', html='', css='', script='' }
   } = props;
-  const srcDoc = !!template ? template(html, css, script) : null;
+  const srcDoc = (type === 'codePen') ? template(html, css, script) : null;
 
   return (
     <div className={ DOM.WRAPPER }>
-      <iframe
-        className={ DOM.IFRAME }
-        loading="lazy"
-        sandbox="allow-scripts allow-pointer-lock"
-        scrolling="no"
-        srcDoc={ srcDoc }
-        tabIndex="-1"
-        title={ title }
-        frameBorder="0"
-      />
+      { (type === 'codePen') &&
+        <iframe
+          className={ DOM.IFRAME }
+          loading="lazy"
+          sandbox="allow-scripts allow-pointer-lock"
+          scrolling="no"
+          srcDoc={ srcDoc }
+          tabIndex="-1"
+          title={ title }
+          frameBorder="0"
+        />
+      }
       <button className={ DOM.COVER_LINK } onClick={ () => launchModal() }>
         <ContentView24 className={ DOM.OPEN_ICON } />
       </button>

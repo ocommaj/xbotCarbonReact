@@ -23,6 +23,9 @@ const codeDemos = {
                     articles {
                       _id
                       title
+                      shortTitle
+                      summary
+                      content
                     }
                   }
                 }

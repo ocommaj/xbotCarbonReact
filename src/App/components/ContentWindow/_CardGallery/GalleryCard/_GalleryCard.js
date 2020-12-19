@@ -13,26 +13,26 @@ const DOM = {
 }
 
 export default function GalleryCard(props) {
-  const { srcData, clickHandler: launchModal, inReadingList=false } = props;
+  const { srcData, clickHandler: launchModal, isInReadingList=false } = props;
   const demo = srcData.template(srcData.html, srcData.css);
 
   return (
     <Tile className={ DOM.WRAPPER }>
-        { !!inReadingList && <Attachment24 className={ DOM.RD_LIST_ICON } /> }
-        <iframe
-          className={ DOM.PREVIEW_IFRAME }
-          loading="lazy"
-          sandbox="allow-scripts allow-pointer-lock"
-          scrolling="no"
-          srcDoc={ demo }
-          tabIndex="-1"
-          title="CSS Loading Animations"
-          frameBorder="0" />
-          <button
-            className={ DOM.COVER_LINK }
-            onClick={ () => launchModal( srcData ) }>
-            <ContentView32 className={ DOM.OPEN_ICON } />
-          </button>
+      { !!isInReadingList && <Attachment24 className={ DOM.RD_LIST_ICON } /> }
+      <iframe
+        className={ DOM.PREVIEW_IFRAME }
+        loading="lazy"
+        sandbox="allow-scripts allow-pointer-lock"
+        scrolling="no"
+        srcDoc={ demo }
+        tabIndex="-1"
+        title="CSS Loading Animations"
+        frameBorder="0" />
+        <button
+          className={ DOM.COVER_LINK }
+          onClick={ () => launchModal( srcData ) }>
+          <ContentView32 className={ DOM.OPEN_ICON } />
+        </button>
       <div className={ DOM.LABEL }>
         Gallery Card
       </div>

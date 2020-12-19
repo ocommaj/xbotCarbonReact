@@ -54,6 +54,60 @@
       outline: none;
     }
 
+    .previewPaneButton.expandPane:hover {
+      svg {
+        animation: bounceScaleOut .7s carbon--motion(standard);
+      }
+
+      @keyframes bounceScaleOut {
+        from {
+          transform: scaleX(1) scaleY(1);
+        }
+        50% {
+          transform: scaleX(1.1) scaleY(1.1);
+        }
+        to {
+          transform: scaleX(1) scaleY(1);
+        }
+      }
+    }
+
+    .previewPaneButton.reducePane:hover {
+      svg {
+        animation: bounceScaleIn .7s carbon--motion(standard);
+      }
+
+      @keyframes bounceScaleIn {
+        from {
+          transform: scaleX(1) scaleY(1);
+        }
+        50% {
+          transform: scaleX(.9) scaleY(.9);
+        }
+        to {
+          transform: scaleX(1) scaleY(1);
+        }
+      }
+    }
+
+    .previewPaneButton.addToReadingList:hover {
+      svg {
+        animation: bounceTip .7s carbon--motion(standard);
+      }
+
+      @keyframes bounceTip {
+        from {
+          transform: rotateZ(0);
+        }
+        50% {
+          transform: rotateZ(60deg);
+        }
+        to {
+          transform: rotateZ(0);
+        }
+      }
+    }
+
     .previewPaneButton.removeFromList {
       svg {
         transition: all .4s carbon--motion(standard);

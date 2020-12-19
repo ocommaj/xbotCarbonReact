@@ -20,10 +20,9 @@ const DOM = {
 };
 
 const PreviewPane = React.forwardRef((props, ref) => {
-  const { article, maximize, normalize, inReadingList=false } = props;
+  const { article, maximize, normalize, isInReadingList=false } = props;
   const { animate, showToolTips, setReadingList } = useContext(AppContext);
 
-  const [testToggler, setTestToggler] = useState(true);
   const [isMaximized, setIsMaximized] = useState(false);
   const [readingListButton, setReadingListButton] = useState();
   const [expanderButton, setExpanderButton] = useState();
@@ -49,33 +48,27 @@ const PreviewPane = React.forwardRef((props, ref) => {
     }
   }, [animate, maximize, normalize, isMaximized]);
 
-  const rListToggler = useMemo(() => {
+  const inListToggler = useMemo(() => {
     const baseStr = DOM.BTN;
-    const button = !!testToggler ? DOM.ADD_BTN : DOM.REMOVE_BTN;
-    //const button = !inReadingList ? DOM.ADD_BTN : DOM.REMOVE_BTN;
-    const onClick = (record) => {
-      //return !inReadingList ? _addToList(record) : _removeFromList(record)
-      return !!testToggler ? _addToList(record) : _removeFromList(record)
-    }
-    //const icon = !inReadingList
-    const icon = !!testToggler
+    const button = !isInReadingList ? DOM.ADD_BTN : DOM.REMOVE_BTN;
+    const onClick = (item) => !isInReadingList ? _add(item) : _remove(item);
+    const icon = !isInReadingList
       ? <Attachment32 />
       : (<>
           <SubtractAlt32 />
           <CloseOutline32 />
         </>);
 
-    function _addToList(record) {
-      setTestToggler(false)
-      //setReadingList(prevState => [record, ...prevState])
+    function _add(record) {
+      const newEntry = { type: 'internalTutorial', ...record };
+      setReadingList(prevState => [newEntry, ...prevState])
     }
 
-    function _removeFromList(record) {
-      setTestToggler(true)
-      /*setReadingList(prevState => {
-        const updatedList = prevState.filter(item => item.id !== record.id);
+    function _remove(record) {
+      setReadingList(prevState => {
+        const updatedList = prevState.filter(item => item._id !== record._id);
         return [...updatedList];
-      })*/
+      })
     }
 
     return {
@@ -85,9 +78,9 @@ const PreviewPane = React.forwardRef((props, ref) => {
       title: button.TITLE,
       ariaLabel: button.TITLE,
     }
-  }, [inReadingList, testToggler, setReadingList]);
+  }, [isInReadingList, setReadingList]);
 
-  useEffect(() => setReadingListButton(rListToggler), [rListToggler]);
+  useEffect(() => setReadingListButton(inListToggler), [inListToggler]);
   useEffect(() => setExpanderButton(expandToggler), [expandToggler]);
 
   return (
@@ -110,7 +103,7 @@ const PreviewPane = React.forwardRef((props, ref) => {
             className={ readingListButton.className }
             title={ showToolTips ? readingListButton.title : null }
             aria-label={ readingListButton.ariaLabel }
-            onClick={ () => readingListButton.onClick() }>
+            onClick={ () => readingListButton.onClick(article) }>
             { readingListButton.icon }
           </button>
         </div>

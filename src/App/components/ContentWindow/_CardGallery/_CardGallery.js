@@ -21,10 +21,10 @@ export default function CardGallery({ props: { activeSection } }) {
     <section className={ DOM.WRAPPER }>
       { srcArray.map(record =>
             <GalleryCard
-              key={ record.id }
+              key={ record._id }
               srcData={ record }
               clickHandler={ (withSrc) => launchCodePenModal(withSrc) }
-              inReadingList={ isInReadingList(record.id) }
+              isInReadingList={ isInReadingList(record._id) }
             />
           )
       }
@@ -35,14 +35,14 @@ export default function CardGallery({ props: { activeSection } }) {
         close: () => setCodePenModalOpen(false)
         } }
       srcData={ srcData }
-      inReadingList={ srcData && isInReadingList(srcData.id) }
+      isInReadingList={ srcData && isInReadingList(srcData._id) }
     />
     </>
   )
 
   function isInReadingList(id) {
     for (const item of readingList) {
-      if (item.id === id) return true
+      if (item._id === id) return true
     }
   }
 }
