@@ -85,8 +85,8 @@ export default function SideDrawer() {
 
   function closeDrawerTimeline(ref) {
     wrapperTimeline()
-      .add( sideDrawerFX.closeDrawer({ drawerRef: ref }).play() )
-      .then( () => setDrawerOpen(false) );
+      .call( () => setDrawerOpen(false) )
+      .add( sideDrawerFX.closeDrawer({ drawerRef: ref }).play() );
   }
 
   function launchCodePenModal(withSrc) {

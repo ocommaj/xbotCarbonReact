@@ -18,7 +18,9 @@ export default function DrawerMemo(props) {
     launchModal,
     removeItem,
     record,
-    record: { type, title, template='', html='', css='', script='' }
+    record: {
+      type, title, shortTitle='', template='', html='', css='', script=''
+    }
   } = props;
   const srcDoc = (type === 'codePen') ? template(html, css, script) : null;
 
@@ -35,6 +37,9 @@ export default function DrawerMemo(props) {
           title={ title }
           frameBorder="0"
         />
+      }
+      { (type === 'internalTutorial') &&
+        <h3>{ title }</h3>
       }
       <button className={ DOM.COVER_LINK } onClick={ () => launchModal() }>
         <ContentView24 className={ DOM.OPEN_ICON } />

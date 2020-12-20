@@ -10,22 +10,23 @@
     justify-content: space-between;
     overflow-y: scroll;
 
-
     .previewPaneContentCol {
-      //background-color: $support-02;
-      padding-right: $layout-01;
+      padding: $layout-01;
+      padding-top: 0;
       flex-grow: 1;
+      //background-color: $support-02;
 
       p {
+        text-align: justify;
         margin: $layout-01 0;
       }
     }
 
     .previewPaneButtonCol {
-      //background-color: $support-01;
       flex-grow: 0;
       position: sticky;
       top: 0;
+      //background-color: $support-01;
     }
 
     .previewPaneButton {

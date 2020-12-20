@@ -101,6 +101,25 @@
   }
 }
 
+.sideDrawerContent {
+  .drawerMemo {
+    h3 {
+      opacity: 0;
+      transition: opacity .4s carbon--motion(standard);
+      visibility: collapse;
+    }
+  }
+}
+
+.sideDrawerContent.isOpen {
+  .drawerMemo {
+    h3 {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+}
+
 .drawerMemo:nth-child(1) {
   margin-top: $spacing-04;
 }
