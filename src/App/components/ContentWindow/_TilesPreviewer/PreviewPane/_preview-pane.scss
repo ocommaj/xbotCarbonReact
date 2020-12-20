@@ -8,19 +8,28 @@
     left: 0;
     display: flex;
     justify-content: space-between;
+    overflow-y: scroll;
+
 
     .previewPaneContentCol {
       //background-color: $support-02;
+      padding-right: $layout-01;
       flex-grow: 1;
+
+      p {
+        margin: $layout-01 0;
+      }
     }
 
     .previewPaneButtonCol {
       //background-color: $support-01;
       flex-grow: 0;
+      position: sticky;
+      top: 0;
     }
 
     .previewPaneButton {
-      margin: $spacing-02 0;
+      margin: $spacing-03 0;
       padding: $spacing-04;
       border-radius: $layout-03;
       display: flex;
@@ -34,10 +43,6 @@
       svg: {
         margin-left: $spacing-01;
       }
-    }
-
-    .previewPaneButton:nth-child(1) {
-      margin-top: 0;
     }
 
     .previewPaneButton:hover {

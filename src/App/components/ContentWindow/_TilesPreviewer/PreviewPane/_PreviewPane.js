@@ -88,6 +88,12 @@ const PreviewPane = React.forwardRef((props, ref) => {
       { article &&
         <div className={ DOM.CONTENT_COL }>
           <h1>{ article.title }</h1>
+          {
+            paragraphParser(article.content).map((paragraph, i) => {
+              const key = `${DOM.CONTENT_COL}_para_${i}`;
+              return <p key={ key }>{ paragraph }</p>
+            })
+          }
         </div>
       }
       { article &&
@@ -112,5 +118,9 @@ const PreviewPane = React.forwardRef((props, ref) => {
   )
 
 });
+
+function paragraphParser(text) {
+  return text.match(/[^\r\n]+/g);
+}
 
 export default PreviewPane;
