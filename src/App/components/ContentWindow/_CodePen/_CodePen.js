@@ -1,21 +1,30 @@
 import React, { useState } from 'react';
-import ResizablePane from '@components/ResizablePane';
+import { Resizable } from 're-resizable';
 import { GalleryEditors, SandboxEditors } from './_EditorsPane';
+
+const DOM = {
+  WRAPPER: "codePen",
+  PANE: "pane",
+  TOP: "top-pane",
+  BOTTOM: "bottom-pane",
+}
 
 export default function CodePen(props) {
   const { galleryMode=false, srcData=null } = props;
   const [srcDoc, setSrcDoc] = useState();
 
   return (
-    <div className="codepen">
-      <ResizablePane id="codepenTopPane">
+    <div className={ DOM.WRAPPER }>
+      <Resizable
+        className={ `${DOM.PANE} ${DOM.TOP}` }
+        enable={ { bottom: true } }>
         {
           (!!galleryMode && !!srcData)
             ? <GalleryEditors setSrcDoc={ setSrcDoc } srcData={ srcData } />
             : <SandboxEditors setSrcDoc={ setSrcDoc } />
         }
-      </ResizablePane>
-      <div className="pane bottom-pane">
+      </Resizable>
+      <div className={ `${DOM.PANE} ${DOM.BOTTOM}` }>
         <iframe
           srcDoc={ srcDoc }
           title="output"
@@ -25,3 +34,11 @@ export default function CodePen(props) {
     </div>
   );
 }
+
+/*<ResizablePane id="codepenTopPane">
+  {
+    (!!galleryMode && !!srcData)
+      ? <GalleryEditors setSrcDoc={ setSrcDoc } srcData={ srcData } />
+      : <SandboxEditors setSrcDoc={ setSrcDoc } />
+  }
+</ResizablePane>*/

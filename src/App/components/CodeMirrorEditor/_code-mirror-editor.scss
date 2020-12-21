@@ -9,7 +9,7 @@
   transition: flex-grow 0.7s carbon--motion(standard);
 }
 
-.cm-editor-container:nth-child(2) {
+.cm-editor-container:nth-of-type(2) {
   padding: 0 $spacing-03;
   padding-bottom: $spacing-02;
 }

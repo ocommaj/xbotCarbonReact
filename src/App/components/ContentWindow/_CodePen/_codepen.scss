@@ -1,6 +1,6 @@
 @import './_EditorsPane/editors-pane';
 
-.codepen {
+.codePen {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -10,27 +10,21 @@
 
 .pane {
   display: flex;
-  position: relative;
-  flex-grow: 1;
-}
-
-#codepenTopPane {
-    background-color: $ui-01;
-    overflow-y: auto;
-    overflow-x: hidden;
-    max-height: 40vh;
 }
 
 .top-pane {
+  min-height: $layout-04;
+  max-height: 45vh;
+
   background-color: $ui-01;
-  max-height: 40vh;
+  overflow-y: hidden;
+  overflow-x: hidden;
 }
 
 .bottom-pane {
-  align-content: stretch;
+  flex-grow: 1;
 
   iframe {
     flex-grow: 1;
-    margin: 0;
   }
 }

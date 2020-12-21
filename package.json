@@ -27,6 +27,7 @@
     "include-media": "^1.4.9",
     "mapbox": "^1.0.0-beta10",
     "node-sass": "^4.14.1",
+    "re-resizable": "^6.9.0",
     "react": "^16.14.0",
     "react-app-rewired": "^2.1.6",
     "react-codemirror2": "^7.2.1",
