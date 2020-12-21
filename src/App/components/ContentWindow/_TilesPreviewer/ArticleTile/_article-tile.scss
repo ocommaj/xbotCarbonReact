@@ -11,12 +11,17 @@
   .bx--tile:hover {
       background-color: $ui-04;
     }
+
+  .inReadingListIcon {
+    position: absolute;
+    left: initial;
+    right: $spacing-02;
+    top: -$spacing-02;
+    transform: rotateY(180deg);
+    transition: all .4s carbon--motion(standard);
   }
-.articlePreviewTile:first-of-type {
-  .bx--tile {
-      margin-top: 0;
-    }
-  }
+}
+
 .articlePreviewTile.activeArticleTile {
   .bx--tile {
     background-color: $ui-02;

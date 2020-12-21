@@ -7,17 +7,7 @@ import {
   Maximize32,
   Minimize32
 } from '@carbon/icons-react';
-
-const DOM = {
-  WRAPPER: "previewPane",
-  CONTENT_COL: "previewPaneContentCol",
-  BUTTON_COL: "previewPaneButtonCol",
-  BTN: "previewPaneButton",
-  ADD_BTN: { CLASS: "addToReadingList", TITLE: "Add to reading list" },
-  REMOVE_BTN: { CLASS: "removeFromList", TITLE: "Remove from reading list" },
-  EXPAND_BTN: { CLASS: "expandPane", TITLE: "Expand article view" },
-  REDUCE_BTN: { CLASS: "reducePane", TITLE: "Reduce article view" }
-};
+import DOM from './_DOMkeys';
 
 const PreviewPane = React.forwardRef((props, ref) => {
   const { article, maximize, normalize, isInReadingList=false } = props;
@@ -88,12 +78,10 @@ const PreviewPane = React.forwardRef((props, ref) => {
       { article &&
         <div className={ DOM.CONTENT_COL }>
           <h1>{ article.title }</h1>
-          {
-            paragraphParser(article.content).map((paragraph, i) => {
+          { paragraphParser(article.content).map((paragraph, i) => {
               const key = `${DOM.CONTENT_COL}_para_${i}`;
               return <p key={ key }>{ paragraph }</p>
-            })
-          }
+            }) }
         </div>
       }
       { article &&

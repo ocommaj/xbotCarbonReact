@@ -3,14 +3,7 @@ import ArticleTile from './ArticleTile';
 import PreviewPane from './PreviewPane';
 import { AppContext } from '@App';
 import { useArticlesQuery } from '@hooks/ApolloClient';
-
-const DOM = {
-  TOP_CLASS: "tilesPreviewer",
-  OVERFLOW_WRAPPER: "overflowWrapper",
-  TILES_COLUMN: "tilesColumn",
-  PREVIEW_COLUMN: "previewColumn",
-  ARTICLE_TILE: "articleTile"
-}
+import DOM from './_DOMkeys';
 
 export default function TilesPreviewer({ props }) {
   const { animate, activeSection: { apolloQuery } } = props;
@@ -62,14 +55,15 @@ export default function TilesPreviewer({ props }) {
     return {
       clickHandler() { return constClickHandler(article) },
       key: `${DOM.ARTICLE_TILE}_${article._id}`,
-      activePreviewId: previewArticle && previewArticle.id,
+      activePreviewId: previewArticle && previewArticle._id,
       headline: article.title,
       loading: queryLoading,
+      isInReadingList: isInReadingList(article._id),
     }
   };
 
   function constClickHandler(article) {
-    const previewShows = previewCol.current.classList.contains('visible');
+    const previewShows = previewCol.current.classList.contains(DOM.VISIBLE);
     return {
       func: previewShows ? animate.switchTiles : animate.collapseTiles,
       args: {
