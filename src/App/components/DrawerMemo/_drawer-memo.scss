@@ -2,13 +2,14 @@
   position: relative;
   width: 0;
   height: 0;
-  background-color: $ui-02;
-  margin: $spacing-03 0;
+  margin: 0;
   padding: 0;
 
   .iFrameMemoPreview {
     width: 100%;
-    height: 100%;
+    height: 8rem;
+    padding: $spacing-02;
+    background-color: $ui-02;
   }
 
   button.removeItem {
@@ -98,6 +99,24 @@
       transform: translate3d(0, 0, 0);
       filter: hue-rotate(0);
     }
+  }
+}
+
+.sideDrawer.isOpen {
+  .drawerMemo {
+    position: relative;
+    width: 0;
+    height: 0;
+    margin: $spacing-03 0;
+    padding: $spacing-02;
+    transition: all .7s carbon--motion(standard);
+  }
+
+  .iFrameMemoPreview {
+    width: 100%;
+    height: 8rem;
+    padding: $spacing-02;
+    background-color: $ui-02;
   }
 }
 

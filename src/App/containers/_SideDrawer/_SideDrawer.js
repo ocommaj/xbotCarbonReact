@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
+import { Droppable, Draggable } from 'react-beautiful-dnd';
 import { PageFirst24 } from '@carbon/icons-react';
 import { AppContext } from '@App';
 import DrawerMemo from '@components/DrawerMemo';
@@ -37,25 +38,29 @@ export default function SideDrawer() {
   if (!readingList.length) return null
   return (
     <>
-    <div className={ DOM.WRAPPER } ref={ wrapperRef }>
+    <div className={ makeClassName(DOM.WRAPPER) } ref={ wrapperRef }>
       <button
         className={ makeClassName(DOM.TOGGLER) }
         onClick ={ () => toggleOpen(drawerRef) }>
         <PageFirst24 />
       </button>
       <div className={ makeClassName(DOM.CONTENT) } ref={ drawerRef }>
-        {
-          readingList.map(item => {
-            return (
-              <DrawerMemo
-                key={ `memo_${item._id}` }
-                record={ item }
-                launchModal={ () => launchCodePenModal(item) }
-                removeItem={ (button) => removeItem(button, item, drawerRef) }
-                />
-              )
-          })
-        }
+        <Droppable droppableId={ "readingListDrawer" }>
+          {provided => (
+            <div ref={ provided.innerRef } { ...provided.droppableProps }>
+              { readingList.map((item, index) => (
+                  <DrawerMemo
+                    key={ `memo_${item._id}` }
+                    index={ index }
+                    record={ item }
+                    launchModal={ () => launchCodePenModal(item) }
+                    remove={ (button) => removeItem(button, item) }
+                  />
+                )) }
+              { provided.placeholder }
+            </div>
+          )}
+        </Droppable>
       </div>
     </div>
     <CodePenModal
@@ -64,7 +69,7 @@ export default function SideDrawer() {
         close: () => setCodePenModalOpen(false)
         } }
       srcData={ modalRecord }
-      inReadingList={ true }
+      isInReadingList={ true }
     />
     </>
   );

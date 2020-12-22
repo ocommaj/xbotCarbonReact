@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Mapbox } from '@Models';
+import { DragDropContext } from '@Providers';
 import FixedOrnaments from '@containers/_FixedOrnaments';
 import FooterControls from '@containers/_FooterControls';
 import MainBodyGrid from '@containers/_MainBodyGrid';
@@ -14,9 +15,11 @@ export default function ScreenContents() {
   return (
     <>
       <FixedOrnaments props={ bg }/>
-      <MainBodyGrid />
-      <FooterControls props={ props }/>
-      <SideDrawer />
+      <DragDropContext>
+        <MainBodyGrid />
+        <FooterControls props={ props }/>
+        <SideDrawer />
+      </DragDropContext>
     </>
   )
 }

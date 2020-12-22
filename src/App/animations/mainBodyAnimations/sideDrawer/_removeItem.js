@@ -11,7 +11,7 @@ export default function removeItem(params) {
         }).to(button, { opacity: 0 });
 
   if (!!text) tl.to(text, { visibility: 'collapse' }, '<');
-  tl.to(parentItem, { height: 0 }, '<')
+  tl.to(parentItem, { height: 0 }, '<.2')
     .to(parentItem, { width: 0, opacity: 0 }, '<.1');
 
   return tl;
