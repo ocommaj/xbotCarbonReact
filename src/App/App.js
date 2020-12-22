@@ -10,6 +10,7 @@ export const AppContext = React.createContext();
 export default function App() {
   const [ showToolTips, setShowToolTips ] = useLocalStorage('showToolTips');
   const [ readingList, setReadingList ] = useState([]);
+  const [ sideDrawerOpener, setSideDrawerOpener ] = useState();
   const animate = useRef( Animate() );
   const activeUser = useUser();
   const sections = [...SectionConfigs];
@@ -20,6 +21,8 @@ export default function App() {
           setReadingList,
           showToolTips,
           setShowToolTips,
+          sideDrawerOpener,
+          setSideDrawerOpener,
           animate: animate.current,
         };
 

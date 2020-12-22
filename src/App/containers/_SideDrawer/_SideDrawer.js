@@ -17,6 +17,7 @@ export default function SideDrawer() {
   const {
     readingList,
     setReadingList,
+    sideDrawerOpener,
     animate: { wrapperTimeline, sideDrawerFX }
   } = useContext(AppContext);
   const [drawerIsOpen, setDrawerOpen] = useState(false);
@@ -35,7 +36,21 @@ export default function SideDrawer() {
     if (!readingList.length) setDrawerOpen(false);
   }, [readingList])
 
-  if (!readingList.length) return null
+  useEffect(() => {
+    if (sideDrawerOpener === "readingListDrawer") {
+       openDrawerTimeline(drawerRef);
+     }
+    if (!sideDrawerOpener && drawerIsOpen) {
+      closeDrawerTimeline(drawerRef);
+    }
+  }, [sideDrawerOpener])
+
+  if (
+    !readingList.length &&
+    !drawerIsOpen &&
+    sideDrawerOpener !== "readingListDrawer"
+  ) return null
+
   return (
     <>
     <div className={ makeClassName(DOM.WRAPPER) } ref={ wrapperRef }>
@@ -48,7 +63,7 @@ export default function SideDrawer() {
         <Droppable droppableId={ "readingListDrawer" }>
           {provided => (
             <div ref={ provided.innerRef } { ...provided.droppableProps }>
-              { readingList.map((item, index) => (
+              { readingList?.map((item, index) => (
                   <DrawerMemo
                     key={ `memo_${item._id}` }
                     index={ index }
@@ -90,8 +105,8 @@ export default function SideDrawer() {
 
   function closeDrawerTimeline(ref) {
     wrapperTimeline()
-      .call( () => setDrawerOpen(false) )
-      .add( sideDrawerFX.closeDrawer({ drawerRef: ref }).play() );
+      .add( sideDrawerFX.closeDrawer({ drawerRef: ref }).play() )
+      .call( () => setDrawerOpen(false) );
   }
 
   function launchCodePenModal(withSrc) {
