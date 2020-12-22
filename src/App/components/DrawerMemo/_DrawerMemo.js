@@ -20,10 +20,10 @@ export default function DrawerMemo(props) {
     launchModal,
     remove,
     record: {
-      _id, type, title, shortTitle='', template='', html='', css='', script=''
+      _id, type, title, html='', css='', script=''
     }
   } = props;
-  const srcDoc = (type === 'codePen') ? template(html, css, script) : null;
+  const srcDoc = (type === 'codePen') ? renderFrame(html, css, script) : null;
 
   return (
     <div className={ DOM.WRAPPER }>
@@ -62,4 +62,14 @@ export default function DrawerMemo(props) {
     </Draggable>
     </div>
   )
+
+  function renderFrame(html, style, script) {
+    return `
+      <html>
+        <body>${ html || '' }</body>
+        <style>${ css || '' }</style>
+        <script>${ script || '' }</script
+      </html>
+    `
+  }
 }

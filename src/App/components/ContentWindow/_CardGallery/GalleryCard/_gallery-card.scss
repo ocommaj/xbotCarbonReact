@@ -42,6 +42,17 @@
   @include carbon--type-style('productive-heading-01');
 }
 
+.galleryCard .dragHandle {
+  height: $layout-02;
+  position: absolute;
+  left: $spacing-03;
+  right: $spacing-03;
+  top: 70%;
+  transform: translateY(-$spacing-04);
+  cursor: grab;
+  z-index: 150;
+}
+
 .galleryCardIconButton {
   position: absolute;
   top: $spacing-03;

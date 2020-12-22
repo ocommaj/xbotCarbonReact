@@ -1,7 +1,6 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import { Tile } from 'carbon-components-react';
 import { ContentView32, Attachment24 } from '@carbon/icons-react/';
-
 
 const DOM = {
   WRAPPER: "galleryCard",
@@ -10,30 +9,17 @@ const DOM = {
   SUB_LABEL: "galleryCardLabel__secondary",
   OPEN_ICON: "galleryCardIconButton",
   COVER_LINK: "coverLink",
-  RD_LIST_ICON: "inReadingListIcon"
+  RD_LIST_ICON: "inReadingListIcon",
+  DRAG_HANDLE: "dragHandle",
 }
 
 export default function GalleryCard(props) {
   const {
-    index,
     srcData,
     dragHandler,
     isInReadingList=false,
     clickHandler: launchModal } = props;
   const demo = srcData.template(srcData.html, srcData.css);
-  const cardRef = useRef()
-
-  const HandleStyle = {
-    height: '20px',
-    position: 'absolute',
-    left: '.5rem',
-    right: '.5rem',
-    top: '70%',
-    transform: 'translateY(-10px)',
-    cursor: 'grab',
-    zIndex: 150,
-    //backgroundColor: 'blue',
-  }
 
   return (
     <Tile className={ DOM.WRAPPER } id={ `${srcData._id}_card` }>
@@ -59,20 +45,22 @@ export default function GalleryCard(props) {
         Author's Name
       </div>
       <div
-        className={ 'Handle' }
-        style={ HandleStyle }
-        draggable
+        draggable={ !isInReadingList }
+        className={ DOM.DRAG_HANDLE }
         onDragStart={ startDrag }
         onDragEnd={ dragHandler.end }
+        style={ { 'visibility': isInReadingList ? 'hidden' : 'visible' } }
       />
     </Tile>
   )
 
   function startDrag(event) {
     dragHandler.start(() => {
-    const domElement = document.getElementById(`${srcData._id}_label`)
-    event.dataTransfer.setDragImage(domElement, 0, 0)
-    event.dataTransfer.setData("dragItem", srcData)
+      const transferString = JSON.stringify(srcData);
+      const domElement = document.getElementById(`${srcData._id}_label`);
+      event.dataTransfer.setDragImage(domElement, 0, 0);
+      event.dataTransfer.setData("dragItem", transferString);
+      event.dataTransfer.effectAllowed = "link";
     })
   }
 }

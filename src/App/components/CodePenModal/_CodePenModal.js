@@ -41,7 +41,7 @@ export default function CodePenModal(props) {
         </>);
 
     function _add(record) {
-      const newEntry = { type: 'codePen', ...record };
+      const newEntry = { ...record };
       setReadingList(prevState => [newEntry, ...prevState]);
     }
 

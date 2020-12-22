@@ -1,15 +1,6 @@
 import testExample from './GalleryCard/_testExample';
 
 const { data: { html, css } } = testExample;
-const template = ({body, style, script}) => {
-  return `
-  <html>
-    <body>${ body || '' }</body>
-    <style>${ style || '' }</style>
-    <script>${ script || '' }</script>
-  </html>
-  `
-};
 
 const srcObj = {
   html,
@@ -17,8 +8,16 @@ const srcObj = {
   _id: "testSrc",
   title: "Dot Loader",
   template(html, css, script) {
-    return template({ body: html, style: css, script: script })
-  }
+    return `
+      <html>
+        <body>${ html || '' }</body>
+        <style>${ css || '' }</style>
+        <script>${ script || '' }</script
+      </html>
+    `
+    //return template({ body: html, style: css, script: script })
+  },
+  type: 'codePen'
 };
 
 function dataArray() {

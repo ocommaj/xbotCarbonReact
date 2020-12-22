@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
-import { Droppable, Draggable } from 'react-beautiful-dnd';
+import { Droppable } from 'react-beautiful-dnd';
 import { PageFirst24 } from '@carbon/icons-react';
 import { AppContext } from '@App';
 import DrawerMemo from '@components/DrawerMemo';
@@ -38,12 +38,12 @@ export default function SideDrawer() {
 
   useEffect(() => {
     if (sideDrawerOpener === "readingListDrawer") {
-       openDrawerTimeline(drawerRef);
+      openDrawerTimeline(drawerRef, () => setDrawerOpen(true))
      }
     if (!sideDrawerOpener && drawerIsOpen) {
-      closeDrawerTimeline(drawerRef);
+      closeDrawerTimeline(drawerRef, () => setDrawerOpen(false))
     }
-  }, [sideDrawerOpener])
+  })
 
   if (
     !readingList.length &&
@@ -53,10 +53,17 @@ export default function SideDrawer() {
 
   return (
     <>
-    <div className={ makeClassName(DOM.WRAPPER) } ref={ wrapperRef }>
+    <div
+      className={ makeClassName(DOM.WRAPPER) }
+      ref={ wrapperRef }
+      onDragOver={ dragOver }
+      onDragEnter={ dragEnter }
+      onDrop={ addFromDrop }>
       <button
         className={ makeClassName(DOM.TOGGLER) }
-        onClick ={ () => toggleOpen(drawerRef) }>
+        onClick ={ () => {
+          toggleOpen(drawerRef, setDrawerOpen(prevState => !prevState))
+        } }>
         <PageFirst24 />
       </button>
       <div className={ makeClassName(DOM.CONTENT) } ref={ drawerRef }>
@@ -93,20 +100,22 @@ export default function SideDrawer() {
     return !!drawerIsOpen ? `${baseClass} ${DOM.OPEN}` : baseClass
   }
 
-  function toggleOpen(ref) {
-    !drawerIsOpen ? openDrawerTimeline(ref) : closeDrawerTimeline(ref)
+  function toggleOpen(ref, callback) {
+    !drawerIsOpen
+      ? openDrawerTimeline(ref, callback)
+      : closeDrawerTimeline(ref, callback)
   }
 
-  function openDrawerTimeline(ref) {
+  function openDrawerTimeline(ref, callback) {
     wrapperTimeline()
       .add( sideDrawerFX.openDrawer({ drawerRef: ref }).play() )
-      .then( () => setDrawerOpen(prevState => !prevState) );
+      .call( () => callback() )
   }
 
-  function closeDrawerTimeline(ref) {
+  function closeDrawerTimeline(ref, callback) {
     wrapperTimeline()
       .add( sideDrawerFX.closeDrawer({ drawerRef: ref }).play() )
-      .call( () => setDrawerOpen(false) );
+      .call( () => callback() )
   }
 
   function launchCodePenModal(withSrc) {
@@ -129,5 +138,21 @@ export default function SideDrawer() {
       const updatedList = prevState.filter(item => item._id !== toRemove._id);
       return updatedList;
     })
+  }
+
+  function dragOver(event) {
+    event.preventDefault();
+    event.dataTransfer.dropEffect = "link";
+  }
+
+  function dragEnter(event) {
+    event.dataTransfer.dropEffect = "link";
+  }
+
+  function addFromDrop(event) {
+    const data = event.dataTransfer.getData("dragItem");
+    const record = JSON.parse(data);
+
+    setReadingList(prevState => [record, ...prevState]);
   }
 }

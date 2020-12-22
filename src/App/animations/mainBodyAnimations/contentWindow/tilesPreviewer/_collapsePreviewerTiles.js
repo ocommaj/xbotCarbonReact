@@ -6,7 +6,6 @@ export default function collapsePreviewerTiles(params) {
           previewPane,
           previewCol,
           setPreviewArticle,
-          previewShows,
         } = params;
   const tiles = gsap.utils.toArray(tileCol.children);
   const deltaWidth = tileCol.clientWidth * .6;

@@ -58,7 +58,6 @@ export default function CardGallery({ props: { activeSection } }) {
   }
 
   function endDrag() {
-    console.log('firing!')
     setSideDrawerOpener(null)
   }
 }
