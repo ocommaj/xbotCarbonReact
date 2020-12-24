@@ -29,7 +29,7 @@ export default function SideDrawer() {
 
   useClickOutsideDetector(wrapperRef, () => {
     if (codePenModalOpen || !drawerIsOpen) return
-    closeDrawerTimeline(drawerRef)
+    closeDrawerTimeline(drawerRef, () => setDrawerOpen(false))
   });
 
   useEffect(() => {
@@ -40,9 +40,9 @@ export default function SideDrawer() {
     if (sideDrawerOpener === "readingListDrawer") {
       openDrawerTimeline(drawerRef, () => setDrawerOpen(true))
      }
-    if (!sideDrawerOpener && drawerIsOpen) {
+    /*if (!sideDrawerOpener && drawerIsOpen) {
       closeDrawerTimeline(drawerRef, () => setDrawerOpen(false))
-    }
+    }*/
   })
 
   if (
@@ -62,7 +62,7 @@ export default function SideDrawer() {
       <button
         className={ makeClassName(DOM.TOGGLER) }
         onClick ={ () => {
-          toggleOpen(drawerRef, setDrawerOpen(prevState => !prevState))
+          toggleOpen(drawerRef, () => setDrawerOpen(prevState => !prevState))
         } }>
         <PageFirst24 />
       </button>

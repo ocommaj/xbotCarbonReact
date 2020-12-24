@@ -7,6 +7,7 @@ const srcObj = {
   css,
   _id: "testSrc",
   title: "Dot Loader",
+  type: 'codePen',
   template(html, css, script) {
     return `
       <html>
@@ -15,9 +16,7 @@ const srcObj = {
         <script>${ script || '' }</script
       </html>
     `
-    //return template({ body: html, style: css, script: script })
   },
-  type: 'codePen'
 };
 
 function dataArray() {
