@@ -28,6 +28,7 @@ function toggleMessage(count) {
     }
   catch(error) {
     console.error(error)
+  }
 };`
 
   return () => defaultStr
