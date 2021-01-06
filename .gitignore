@@ -25,3 +25,5 @@ yarn-error.log*
 .eslintcache
 /gsap-member
 gsap-member.zip
+
+/.firebase
