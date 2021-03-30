@@ -21,6 +21,7 @@ export default function TilesPreviewer({ props }) {
   const { queryResponse, queryLoading } = useArticlesQuery(query);
 
   useEffect(() => {
+    if (!!queryLoading)
     if (!queryResponse) return
     const { articles } = queryResponse.tutorials;
     setTiles(articles)
@@ -30,10 +31,15 @@ export default function TilesPreviewer({ props }) {
     <div className={ DOM.TOP_CLASS }>
       <div className={ DOM.OVERFLOW_WRAPPER }>
         <div className={ DOM.TILES_COLUMN } ref={ tilesCol }>
-          { tiles.map((article) => {
-              const props = previewTileProps(article);
-              return <ArticleTile key={ props.key } props={ props } />
-            })
+          { !!tiles.length ?
+              tiles.map((article) => {
+                const props = previewTileProps(article);
+                return <ArticleTile key={ props.key } props={ props } />
+              })
+              : Array.from(Array(10)).map((_, i) => {
+                const props = { loading: true }
+                return <ArticleTile key={ `skeleton_${i}`} props={ props } />
+              })
           }
         </div>
         <div className={ DOM.PREVIEW_COLUMN } ref={ previewCol }>
