@@ -24,7 +24,7 @@ export default function TilesPreviewer({ props }) {
     if (!queryResponse) return
     const { articles } = queryResponse.tutorials;
     setTiles(articles)
-  }, [queryResponse])
+  }, [queryLoading, queryResponse])
 
   return (
     <div className={ DOM.TOP_CLASS }>

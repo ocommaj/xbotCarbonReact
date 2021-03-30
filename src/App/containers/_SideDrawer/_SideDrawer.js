@@ -146,10 +146,13 @@ export default function SideDrawer() {
   }
 
   function dragEnter(event) {
+    console.log('firing in dragEnter')
+    event.preventDefault();
     event.dataTransfer.dropEffect = "link";
   }
 
   function addFromDrop(event) {
+    event.preventDefault();
     const data = event.dataTransfer.getData("dragItem");
     const record = JSON.parse(data);
 

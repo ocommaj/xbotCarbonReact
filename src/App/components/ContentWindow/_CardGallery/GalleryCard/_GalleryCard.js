@@ -58,6 +58,7 @@ export default function GalleryCard(props) {
     dragHandler.start(() => {
       const transferString = JSON.stringify(srcData);
       const domElement = document.getElementById(`${srcData._id}_label`);
+      domElement.style.zIndex = 2000;
       event.dataTransfer.setDragImage(domElement, 0, 0);
       event.dataTransfer.setData("dragItem", transferString);
       event.dataTransfer.effectAllowed = "link";
